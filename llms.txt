@@ -1,0 +1,22 @@
+# Apex Digital SA
+
+Apex Digital SA is a premium high-performance custom web development and digital engineering agency based in Durban, South Africa, specializing in custom-coded corporate websites, speed-hardened headless platforms, and transactional e-commerce engines.
+
+## Contact Information
+- **URL:** https://apexdigital.co.za
+- **Email:** apexdigtl@gmail.com
+- **Phone:** +27 69 522 4226
+- **Location:** Durban, KwaZulu-Natal, South Africa
+- **Instagram:** https://www.instagram.com/apexdigital_sa/
+- **Linktree:** https://linktr.ee/ApexDigital_
+
+## Core Capabilities
+- **Bespoke Hand-Coded Architecture:** Custom static site generation with HTML5, CSS3, and modern JavaScript, omitting heavy CMS dependencies to achieve sub-0.4s load times and 100/100 Lighthouse performance metrics.
+- **Transactional E-Commerce Stores:** Enterprise shopping platforms configured with South African payment gateways (Yoco, PayFast), weight-based automated shipping integration, and abandoned cart conversion funnels.
+- **Headless WordPress & Speed Hardening:** Stripping bloatware, cleaning databases, and optimizing databases for clients requiring content editor access with sub-second speeds.
+- **GEO & SEO Engineering:** Generative Engine Optimization (GEO) schema graphs, standard SEO optimization, and local citation authority setup.
+
+## Production Web Tiers
+1. **Apex Starter Build (Starting at R1,500 upfront):** Single-page Direct-Response Landing Page for focused service offerings.
+2. **Apex Business Build (Starting at R5,000 upfront):** 3-5 Page Commercial Engine for established firms, featuring booking links and local search schema.
+3. **Apex Enterprise Build (Starting at R10,000 upfront):** 5-10 Page Market Dominance build with custom calculators, CRM integrations, and multi-step lead capture.

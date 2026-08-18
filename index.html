@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Digital SA — High-Performance Custom Websites &amp; Digital Engineering</title>
+  <meta name="description" content="Apex Digital SA engineers bespoke high-performance websites, speed-hardened platform builds, and transactional e-commerce stores for market leaders.">
+  
+  <!-- Favicon Configuration -->
+  <link rel="icon" type="image/png" href="logo-dark.png" id="favicon">
+  <link rel="apple-touch-icon" href="logo-dark.png">
+
+  <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans for Sovereign Minimalist Aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- GSAP & ScrollTrigger Animation Engines -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Schema.org Enterprise Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Apex Digital SA",
+    "image": "logo-dark.png",
+    "description": "High-performance bespoke web development, speed-hardened websites, and transactional e-commerce platforms.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Durban",
+      "addressRegion": "KwaZulu-Natal",
+      "addressCountry": "ZA"
+    },
+    "url": "https://apexdigital.co.za",
+    "sameAs": [
+      "https://www.instagram.com/apexdigital_sa/",
+      "https://linktr.ee/ApexDigital_"
+    ],
+    "priceRange": "$$$$"
+  }
+  </script>
+
+  <!-- FAQPage Schema for Google Rich Snippets & AI RAG Citation Systems -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Why custom-coded architecture instead of standard WordPress or Wix templates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WordPress and Wix template designs load massive piles of redundant script dependencies, styles, and heavy database queries that result in sub-30 Lighthouse scores, visual glitches, and massive bounce rates. Apex builds clean, pre-rendered static HTML/CSS/JS frontend engines directly on the edge, enabling sub-0.4s loads, zero layout shifts, and bulletproof security."
+      }
+    }, {
+      "@type": "Question",
+      "name": "What are the exact turnaround timelines for custom web projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Starter Single-Page landing pages are delivered and optimized within 5-7 business days. Standard multi-page commercial platforms average 14-21 business days. Custom Enterprise builds requiring dynamic ROI simulators or custom database integrations are built across a 30-45 day sprint calendar."
+      }
+    }, {
+      "@type": "Question",
+      "name": "How does Apex ensure local POPIA data protection compliance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every platform we deploy has secure cookie consent managers, encrypted serverless database schemas, SSL certification, and strictly configured forms that prevent lead-harvesting exposure, ensuring 100% compliance with South African Protection of Personal Information Act rules by default."
+      }
+    }, {
+      "@type": "Question",
+      "name": "Do you manage domain transfers, business email setup, and edge hosting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We handle DNS routing, secure business email onboarding (Google Workspace / Microsoft 365), and transfer your domains seamlessly. All builds are deployed on high-speed global CDN networks with 99.9% uptime guarantees managed by Apex."
+      }
+    }]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- 1. CINEMATIC INTRO BOOT SEQUENCE -->
+  <div id="cinematic-loader">
+    <div class="loader-ring"></div>
+    <div class="loader-text">Apex Digital Engine // Initializing...</div>
+  </div>
+
+  <!-- Custom Dual Ring Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-outline" id="cursor-outline"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <!-- PROMINENT LOGO -->
+        <img src="logo-dark.png" alt="Apex Digital SA Logo" class="nav-logo" id="nav-logo-img" width="150" height="46">
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#agency" class="nav-link">The Agency</a></li>
+        <li><a href="#services" class="nav-link">Web Packages</a></li>
+        <li><a href="#simulator" class="nav-link">ROI Calculator</a></li>
+        <li><a href="#portfolio" class="nav-link">Selected Works</a></li>
+        <li><a href="#architecture" class="nav-link">Tech Stack</a></li>
+        <li><a href="#strategy" class="nav-link">Start Project</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Light / Dark Theme Switcher Button -->
+        <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+          <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="btn-champagne" onclick="openModal()">Get Free Demo Website</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with 3D Parametric Wireframe Canvas Engine -->
+  <section class="hero">
+    <canvas id="hero-wireframe-canvas"></canvas>
+    
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-tag">
+          Apex Digital // Web • AI • Apps
+        </div>
+
+        <h1 class="hero-title" id="hero-title">
+          WE ENGINEER <span class="text-champagne-gradient">BESPOKE</span> HIGH-PERFORMANCE WEBSITES
+        </h1>
+
+        <p class="hero-description" id="hero-desc">
+          Custom-coded web architectures, high-speed platform builds, and transactional e-commerce stores designed to build authority, eliminate load lag, and turn visitors into enquiries.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn-champagne" onclick="openModal()">
+            Claim Free Consultation + Demo Website
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <a href="#simulator" class="btn-outline-luxury">
+            Test Speed Simulator
+          </a>
+        </div>
+
+        <!-- Performance Shield Metrics Strip -->
+        <div class="hero-stats-strip">
+          <div class="stat-item">
+            <div class="stat-number">&lt;0.4<span>s</span></div>
+            <div class="stat-label">Average Page Load Speed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99<span>/100</span></div>
+            <div class="stat-label">Google PageSpeed Score</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100<span>%</span></div>
+            <div class="stat-label">POPIA &amp; Privacy Compliant</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3.2<span>x</span></div>
+            <div class="stat-label">Average Conversion Lift</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kinetic Scrolling Marquee Ticker -->
+  <div class="marquee-container">
+    <div class="marquee-track">
+      <div class="marquee-item">High-Converting Starter Landing Pages <span class="dot"></span></div>
+      <div class="marquee-item">Custom Commercial Business Websites <span class="dot"></span></div>
+      <div class="marquee-item">Enterprise Custom Web Engineering <span class="dot"></span></div>
+      <div class="marquee-item">High-Speed Managed WordPress Platforms <span class="dot"></span></div>
+      <div class="marquee-item">Transactional E-Commerce Stores <span class="dot"></span></div>
+      <!-- Duplicate set for seamless infinite marquee loop -->
+      <div class="marquee-item">High-Converting Starter Landing Pages <span class="dot"></span></div>
+      <div class="marquee-item">Custom Commercial Business Websites <span class="dot"></span></div>
+      <div class="marquee-item">Enterprise Custom Web Engineering <span class="dot"></span></div>
+      <div class="marquee-item">High-Speed Managed WordPress Platforms <span class="dot"></span></div>
+      <div class="marquee-item">Transactional E-Commerce Stores <span class="dot"></span></div>
+    </div>
+  </div>
+
+  <!-- The Agency / Sovereign Manifesto Section -->
+  <section class="agency-section" id="agency">
+    <div class="container">
+      <div class="agency-grid">
+        <div class="agency-header-col">
+          <span class="section-tag">01 // THE AGENCY MANIFESTO</span>
+          <h2 class="agency-headline">
+            WE ENGINEER <span class="text-champagne-gradient">DIGITAL ECOSYSTEMS</span>, NOT JUST WEBSITES.
+          </h2>
+        </div>
+        <div class="agency-content-col">
+          <p class="agency-manifesto-text">
+            By integrating custom-coded architectures with high-throughput conversion infrastructure, we eliminate load lag, insulate user attention, and engineer digital assets that transform visitors into predictable commercial revenue.
+          </p>
+          
+          <div class="agency-pillars-grid">
+            <div class="agency-pillar-card">
+              <div class="pillar-num">01 // ARCHITECTURAL PURITY</div>
+              <h4 class="pillar-title">Custom-Coded Precision</h4>
+              <p class="pillar-desc">Detached from generic drag-and-drop builders. Lightweight, speed-hardened frontend architectures with zero script bloat.</p>
+            </div>
+            <div class="agency-pillar-card">
+              <div class="pillar-num">02 // PERFORMANCE HARDENING</div>
+              <h4 class="pillar-title">Sub-0.4s Edge Speed</h4>
+              <p class="pillar-desc">Global edge hosting and automated asset compression delivering instantaneous, friction-free customer experiences.</p>
+            </div>
+            <div class="agency-pillar-card">
+              <div class="pillar-num">03 // COMMERCIAL IMPACT</div>
+              <h4 class="pillar-title">Revenue Conversion</h4>
+              <p class="pillar-desc">Built for high-ticket lead capture, seamless South African payment gateways (PayFast/Yoco), and search entity dominance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Website Services Grid -->
+  <section class="capabilities-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Website Services</span>
+        <h2 class="section-title">ENGINEERED <span class="text-champagne-gradient">WEB PACKAGES</span></h2>
+        <p class="section-subtitle">Five high-performance web build solutions tailored to your business growth phase, engineered for speed, conversion, and market authority.</p>
+      </div>
+
+      <div class="capabilities-grid">
+        
+        <!-- Service 1: Apex Starter Build (Col 4) -->
+        <div class="capability-card border-beam-card col-4">
+          <div>
+            <span class="card-num">01 // SINGLE-PAGE LANDING PAGE</span>
+            <h3 class="card-title">Apex Starter Build</h3>
+            <p class="card-desc">High-speed single-page website engineered for focused service offerings, direct-response lead generation, and rapid customer capture without technical bloat.</p>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">1 Custom Core Page</span>
+            <span class="card-tag">Sub-Second Image Optimization</span>
+            <span class="card-tag">Mobile Touch &amp; Conversion Design</span>
+            <span class="card-tag">POPIA Compliance Built-In</span>
+          </div>
+        </div>
+
+        <!-- Service 2: Apex Business Build (Col 4) -->
+        <div class="capability-card border-beam-card col-4">
+          <div>
+            <span class="card-num">02 // MULTI-PAGE BUSINESS SITE</span>
+            <h3 class="card-title">Apex Business Build</h3>
+            <p class="card-desc">Comprehensive website system for established firms requiring multi-service representation, seamless booking links, and strong Google search visibility.</p>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">3–5 Structured Pages</span>
+            <span class="card-tag">Calendar &amp; Booking Links</span>
+            <span class="card-tag">Custom Lead Intake Capture</span>
+            <span class="card-tag">Google Search &amp; Rich Snippets</span>
+          </div>
+        </div>
+
+        <!-- Service 3: Apex Enterprise Build (Col 4) -->
+        <div class="capability-card border-beam-card col-4">
+          <div>
+            <span class="card-num">03 // ENTERPRISE GROWTH PLATFORM</span>
+            <h3 class="card-title">Apex Enterprise Build</h3>
+            <p class="card-desc">Our flagship web architecture engineered for high-growth businesses requiring custom interactive tools, calculators, multi-step intake flows, and maximum speed.</p>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">5–10 Structured Pages</span>
+            <span class="card-tag">Interactive Business Calculators</span>
+            <span class="card-tag">Search Entity Authority</span>
+            <span class="card-tag">Multi-Step Lead Workflows</span>
+          </div>
+        </div>
+
+        <!-- Service 4: High-Speed WordPress Builds (Col 6) -->
+        <div class="capability-card border-beam-card col-6">
+          <div>
+            <span class="card-num">04 // MANAGED PLATFORM BUILDS</span>
+            <h3 class="card-title">High-Speed WordPress Builds</h3>
+            <p class="card-desc">Optimized content management deployments for firms requiring internal editing control. Speed-hardened by Apex Digital to remove slow plugins and eliminate visual glitches.</p>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">Code Hardening &amp; Speed Optimization</span>
+            <span class="card-tag">Zero Visual Glitches</span>
+            <span class="card-tag">Easy Content Management</span>
+            <span class="card-tag">POPIA Policy Integration</span>
+          </div>
+        </div>
+
+        <!-- Service 5: Transactional E-Commerce Stores (Col 6) -->
+        <div class="capability-card border-beam-card col-6">
+          <div>
+            <span class="card-num">05 // TRANSACTIONAL COMMERCE</span>
+            <h3 class="card-title">Transactional E-Commerce Stores</h3>
+            <p class="card-desc">High-converting online store architectures built for local and international retail. Configured with PayFast/Yoco South African payment gateways, automated courier shipping, and abandoned cart recovery.</p>
+          </div>
+          <div class="card-tags">
+            <span class="card-tag">PayFast / Yoco Payment Gateways</span>
+            <span class="card-tag">Automated Courier Shipping Rates</span>
+            <span class="card-tag">Instant Checkout Flow</span>
+            <span class="card-tag">Abandoned Cart Recovery</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE APEX INVESTMENT & ROI CALCULATOR GENERATOR -->
+  <section class="simulator-section" id="simulator">
+    <div class="container">
+      <div class="simulator-card border-beam-card" style="max-width: 1050px;">
+        <div class="section-header" style="margin-bottom: 36px;">
+          <span class="section-tag">Interactive Investment Calculator</span>
+          <h2 class="section-title" style="font-size: 2.2rem;">INVESTMENT &amp; <span class="text-champagne-gradient">DELIVERABLES ROI GENERATOR</span></h2>
+          <p class="section-subtitle" style="font-size: 0.95rem;">Select your build tier and monthly growth pathway to calculate fixed deliverables, value stack, and projected business ROI.</p>
+        </div>
+
+        <div class="calculator-controls-grid">
+          <!-- Build Tier Selector -->
+          <div class="calc-control-group">
+            <label class="calc-label">1. Select Website Build Tier (Infrastructure Scope)</label>
+            <div class="calc-btn-group" id="build-tier-group">
+              <button class="calc-tier-btn" data-tier="starter">
+                <span class="btn-tier-name">Starter Build</span>
+                <span class="btn-tier-price">Core Web Footprint</span>
+              </button>
+              <button class="calc-tier-btn active" data-tier="standard">
+                <span class="btn-tier-name">Business Build</span>
+                <span class="btn-tier-price">Commercial Engine</span>
+              </button>
+              <button class="calc-tier-btn" data-tier="pro">
+                <span class="btn-tier-name">Enterprise Build</span>
+                <span class="btn-tier-price">Market Dominance</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Growth Retainer Selector -->
+          <div class="calc-control-group" style="margin-top: 24px;">
+            <label class="calc-label">2. Select Monthly Growth Pathway (SEO &amp; Dev Support)</label>
+            <div class="calc-btn-group" id="growth-path-group">
+              <button class="calc-path-btn" data-path="none">
+                <span class="btn-path-name">Self-Managed</span>
+                <span class="btn-path-price">In-House Managed</span>
+              </button>
+              <button class="calc-path-btn" data-path="essentials">
+                <span class="btn-path-name">Essentials Care</span>
+                <span class="btn-path-price">Technical SLA</span>
+              </button>
+              <button class="calc-path-btn active" data-path="visibility">
+                <span class="btn-path-name">Visibility Rank</span>
+                <span class="btn-path-price">Search &amp; Maps Rank</span>
+              </button>
+              <button class="calc-path-btn" data-path="partner">
+                <span class="btn-path-name">Partner Dominance</span>
+                <span class="btn-path-price">Dedicated Web Team</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Deliverables & ROI Results Matrix -->
+        <div class="calc-results-container" style="margin-top: 36px;">
+          <div class="calc-results-grid">
+            <!-- Box 1: Upfront & Stack Value -->
+            <div class="calc-result-card">
+              <span class="res-card-tag">Scope &amp; Architecture</span>
+              <div class="res-price-row">
+                <div class="res-big-num" id="calc-upfront">STANDARD SCOPE</div>
+                <div class="res-sub-text" id="calc-upfront-desc">Bespoke Commercial Architecture</div>
+              </div>
+              <div class="res-detail-row">
+                <span class="res-detail-label">Monthly Growth:</span>
+                <span class="res-detail-val" id="calc-monthly">Visibility Rank Pathway</span>
+              </div>
+              <div class="res-detail-row">
+                <span class="res-detail-label">Asset Classification:</span>
+                <span class="res-detail-val gold" id="calc-stacked-val">Enterprise Digital Asset</span>
+              </div>
+            </div>
+
+            <!-- Box 2: Knowledge Base Deliverables Matrix -->
+            <div class="calc-result-card">
+              <span class="res-card-tag">Deliverables Matrix</span>
+              <ul class="calc-deliverables-list" id="calc-deliverables-list">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+
+            <!-- Box 3: Projected Business ROI Impact -->
+            <div class="calc-result-card">
+              <span class="res-card-tag">Projected Business Impact</span>
+              <div class="sim-metrics-subgrid">
+                <div class="sim-metric-box">
+                  <div class="sim-metric-num" id="calc-leads-num">+25 to +40</div>
+                  <div class="sim-metric-label">Estimated Monthly Leads</div>
+                </div>
+                <div class="sim-metric-box">
+                  <div class="sim-metric-num" id="calc-hours-saved">15 Hours</div>
+                  <div class="sim-metric-label">Monthly Staff Admin Saved</div>
+                </div>
+                <div class="sim-metric-box">
+                  <div class="sim-metric-num" id="calc-conv-lift">3.2x</div>
+                  <div class="sim-metric-label">Visitor Conversion Lift</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 32px;">
+            <a id="calc-cta-btn" href="https://wa.me/27695224226" target="_blank" class="btn-champagne" style="padding: 14px 32px; font-size: 0.95rem; text-decoration: none;">
+              Claim This Custom Package Blueprint
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Client Portfolio Feature Section -->
+  <section class="capabilities-section" id="portfolio" style="background: var(--bg-pitch); border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">03 // SELECTED WORKS</span>
+        <h2 class="section-title">PROVEN <span class="text-champagne-gradient">ENGINEERING DEPLOYMENTS</span></h2>
+        <p class="section-subtitle">Real-world commercial platforms built with sub-second performance, zero bloatware, and high-converting customer pathways.</p>
+      </div>
+
+      <!-- 1. FLAGSHIP SPOTLIGHT BUILD: LASERGEN -->
+      <div class="capability-card col-12 border-beam-card" style="background: var(--surface-card); border: 1px solid var(--border-champagne); margin-bottom: 40px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+          <div>
+            <span class="card-num">FLAGSHIP DEPLOYMENT // INDUSTRIAL LASER TECH</span>
+            <h3 class="card-title" style="font-size: 2.2rem;">LASERGEN (lasergen.co.za)</h3>
+            <p class="card-desc" style="max-width: 800px; font-size: 1.05rem;">
+              Engineered a high-speed, modern platform for LaserGen featuring mobile-first responsiveness, zero bloatware, sub-0.4s speed, and friction-free enquiry pathways for industrial laser cleaning services.
+            </p>
+          </div>
+          <a href="https://lasergen.co.za" target="_blank" rel="noopener noreferrer" class="btn-champagne" style="padding: 14px 24px; text-decoration: none;">
+            Visit Live Platform
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+
+        <div class="card-tags" style="margin-top: 24px;">
+          <span class="card-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            Mobile-First Architecture
+          </span>
+          <span class="card-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Sub-0.4s Speed
+          </span>
+          <span class="card-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Frictionless Enquiries
+          </span>
+          <span class="card-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            Scalable Infrastructure
+          </span>
+        </div>
+      </div>
+
+      <!-- Studio Interactive Master List (Sovereign Minimalist List View) -->
+      <div class="works-list-container">
+        <!-- 01. COMPASS LOGISTICS -->
+        <a href="https://compasslogistics.co.za" target="_blank" rel="noopener noreferrer" class="work-list-item" data-preview="preview_compass.jpg">
+          <div class="work-item-left">
+            <span class="work-item-index">01</span>
+            <h3 class="work-item-name">Compass Logistics</h3>
+          </div>
+          <div class="work-item-right">
+            <span class="work-item-category">Logistics &amp; SADC Freight</span>
+            <span class="work-item-badge">B2B Quote Engine</span>
+            <div class="work-item-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 02. BOSS RIDES -->
+        <a href="https://bossrides.co.za/wordpress_5" target="_blank" rel="noopener noreferrer" class="work-list-item" data-preview="preview_boss.jpg">
+          <div class="work-item-left">
+            <span class="work-item-index">02</span>
+            <h3 class="work-item-name">Boss Rides</h3>
+          </div>
+          <div class="work-item-right">
+            <span class="work-item-category">Luxury Automotive Customization</span>
+            <span class="work-item-badge">Vehicle Showcase</span>
+            <div class="work-item-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 03. COLOUR CORRECT -->
+        <a href="https://globalcolourcorrect.com" target="_blank" rel="noopener noreferrer" class="work-list-item" data-preview="preview_colour.jpg">
+          <div class="work-item-left">
+            <span class="work-item-index">03</span>
+            <h3 class="work-item-name">Colour Correct</h3>
+          </div>
+          <div class="work-item-right">
+            <span class="work-item-category">Global Cosmetics E-Commerce</span>
+            <span class="work-item-badge">Shopify / Tunl Global</span>
+            <div class="work-item-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 04. AYESHA M JEWELLERY -->
+        <a href="https://ayesham.co.za/products/design-your-mag-case" target="_blank" rel="noopener noreferrer" class="work-list-item" data-preview="preview_ayesha.jpg">
+          <div class="work-item-left">
+            <span class="work-item-index">04</span>
+            <h3 class="work-item-name">Ayesha M Jewellery</h3>
+          </div>
+          <div class="work-item-right">
+            <span class="work-item-category">Custom E-Commerce Store</span>
+            <span class="work-item-badge">Product Configurator</span>
+            <div class="work-item-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 05. CATO RIDGE LAND -->
+        <a href="https://catoridge.netlify.app" target="_blank" rel="noopener noreferrer" class="work-list-item" data-preview="preview_catoridge.jpg">
+          <div class="work-item-left">
+            <span class="work-item-index">05</span>
+            <h3 class="work-item-name">Cato Ridge Land</h3>
+          </div>
+          <div class="work-item-right">
+            <span class="work-item-category">Industrial Land Development</span>
+            <span class="work-item-badge">Zoning &amp; Plot Portal</span>
+            <div class="work-item-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- 06. COMMERCIAL PROPERTY HUB -->
+        <a href="https://propertyportfolio.netlify.app" target="_blank" rel="noopener noreferrer" class="work-list-item" data-preview="preview_property.jpg">
+          <div class="work-item-left">
+            <span class="work-item-index">06</span>
+            <h3 class="work-item-name">Commercial Property Hub</h3>
+          </div>
+          <div class="work-item-right">
+            <span class="work-item-category">Real Estate Investment Portal</span>
+            <span class="work-item-badge">Yield Metrics &amp; Broker Routing</span>
+            <div class="work-item-arrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive System Architecture Matrix -->
+  <section class="architecture-section" id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Web Engineering</span>
+        <h2 class="section-title">THE <span class="text-champagne-gradient">WEB STACK</span> BLUEPRINT</h2>
+        <p class="section-subtitle">Toggle through the three web execution frameworks implemented by Apex Digital SA.</p>
+      </div>
+
+      <div class="arch-tabs">
+        <button class="arch-tab-btn active" onclick="switchTab('web', event)">01 // Custom Code Architecture</button>
+        <button class="arch-tab-btn" onclick="switchTab('cms', event)">02 // Managed Platform Architecture</button>
+        <button class="arch-tab-btn" onclick="switchTab('ecom', event)">03 // E-Commerce Architecture</button>
+      </div>
+
+      <div class="arch-display-card" id="arch-display">
+        <div class="arch-info">
+          <h3 id="arch-title">Custom Code Architecture</h3>
+          <p id="arch-desc">Bespoke frontend engines built directly in modern HTML5, CSS3, and JavaScript that deliver zero visual glitches, sub-0.4s rendering, and native search schema markup.</p>
+          
+          <ul class="arch-feature-list" id="arch-features">
+            <li class="arch-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Custom code execution (Zero slow CMS plugin dependencies)</span>
+            </li>
+            <li class="arch-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Sub-Second speed &amp; automated image optimization</span>
+            </li>
+            <li class="arch-feature-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>POPIA privacy protocols &amp; cookie consent management</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="arch-visual" id="arch-visual">
+          <div class="flow-node highlight">
+            <span class="node-title">Ultra-Fast Edge Hosting</span>
+            <span class="node-val">Global CDN // &lt;15ms</span>
+          </div>
+          <div class="flow-node">
+            <span class="node-title">Instant Page Cache</span>
+            <span class="node-val">Pre-Rendered Delivery</span>
+          </div>
+          <div class="flow-node">
+            <span class="node-title">Google Search Schema</span>
+            <span class="node-val">Rich Snippets Enabled</span>
+          </div>
+          <div class="flow-node highlight">
+            <span class="node-title">Direct Lead &amp; CRM Routing</span>
+            <span class="node-val">Instant Notifications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact & Case Study Metrics -->
+  <section class="impact-section" id="impact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Proven Results</span>
+        <h2 class="section-title">THE <span class="text-champagne-gradient">PERFORMANCE</span> BENCHMARK</h2>
+        <p class="section-subtitle">Empirical speed and conversion results achieved across client website deployments.</p>
+      </div>
+
+      <div class="impact-grid">
+        <div class="impact-card border-beam-card">
+          <div class="impact-metric">0.38s</div>
+          <h3 class="impact-title">Page Load Speed</h3>
+          <p class="impact-desc">Rebuilt bloated platform templates into custom-engineered code, reducing server latency and achieving a 99/100 PageSpeed score.</p>
+        </div>
+
+        <div class="impact-card border-beam-card">
+          <div class="impact-metric">3.2x</div>
+          <h3 class="impact-title">Lead Conversion Lift</h3>
+          <p class="impact-desc">Redesigned user navigation paths and clear call-to-actions to focus user attention and significantly increase inbound enquiries.</p>
+        </div>
+
+        <div class="impact-card border-beam-card">
+          <div class="impact-metric">100%</div>
+          <h3 class="impact-title">POPIA Compliance</h3>
+          <p class="impact-desc">Integrated strict South African data privacy standards, consent management, and secure form handlers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Speed Auditor & Comparison Simulator -->
+  <section class="auditor-section" id="speed-auditor">
+    <div class="container">
+      <div class="auditor-card border-beam-card">
+        <div class="section-header" style="margin-bottom: 40px;">
+          <span class="section-tag">04 // PERFORMANCE DIAGNOSTIC</span>
+          <h2 class="section-title">WEBSITE <span class="text-champagne-gradient">SPEED AUDITOR</span></h2>
+          <p class="section-subtitle">Simulate how your current website's mobile performance stacks up against Apex Custom Code Architecture.</p>
+        </div>
+        
+        <div class="auditor-grid">
+          <!-- Input Side -->
+          <div class="auditor-input-col">
+            <h3 class="auditor-sub-title">1. Scan Your Current Site</h3>
+            <p class="auditor-desc">Enter your website URL below to run a simulated mobile performance audit using Google Lighthouse core parameters.</p>
+            
+            <div class="auditor-form">
+              <input type="url" id="auditor-url" class="form-input" placeholder="e.g. www.yourcompany.co.za" required>
+              <button onclick="runSpeedAudit()" class="btn-champagne" style="width: 100%; margin-top: 16px;">
+                Execute Audit Protocol
+              </button>
+            </div>
+            
+            <!-- Audit Loading Console -->
+            <div id="auditor-console" class="auditor-console hidden">
+              <div class="console-line">// Requesting edge headers...</div>
+            </div>
+          </div>
+          
+          <!-- Results / Comparison Side -->
+          <div class="auditor-results-col">
+            <h3 class="auditor-sub-title">2. Mobile Performance Comparison</h3>
+            
+            <div class="comparison-visual-container">
+              <!-- Left Panel: Legacy Site -->
+              <div class="comp-panel legacy-panel">
+                <span class="panel-label">TYPICAL CMS BUILD</span>
+                <div class="dial-container">
+                  <div class="speed-dial" id="legacy-dial">--</div>
+                  <div class="dial-label">Google PageSpeed</div>
+                </div>
+                <ul class="comp-metrics-list">
+                  <li><strong>LCP:</strong> <span id="legacy-lcp">--</span></li>
+                  <li><strong>CLS:</strong> <span id="legacy-cls">--</span></li>
+                  <li><strong>TBT:</strong> <span id="legacy-tbt">--</span></li>
+                </ul>
+              </div>
+              
+              <!-- Divider vs -->
+              <div class="comp-versus">VS</div>
+              
+              <!-- Right Panel: Apex Site -->
+              <div class="comp-panel apex-panel">
+                <span class="panel-label">APEX HARDENED BUILD</span>
+                <div class="dial-container">
+                  <div class="speed-dial score-fast">99</div>
+                  <div class="dial-label">Google PageSpeed</div>
+                </div>
+                <ul class="comp-metrics-list">
+                  <li><strong>LCP:</strong> <span>0.38s</span></li>
+                  <li><strong>CLS:</strong> <span>0.00</span></li>
+                  <li><strong>TBT:</strong> <span>25ms</span></li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Verdict -->
+            <div id="auditor-verdict" class="auditor-verdict hidden">
+              <p>⚠️ Your site contains significant render-blocking scripts and bloated dependencies. Transitioning to Apex Code Architecture would reduce load times by <strong id="speed-saving">--</strong> and lift conversion rates by <strong id="conversion-lift">--</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- High-Converting FAQ Objections Section with JSON-LD Schema -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">05 // RESOLVING FRICTION</span>
+        <h2 class="section-title">FREQUENTLY ASKED <span class="text-champagne-gradient">QUESTIONS</span></h2>
+        <p class="section-subtitle">Straight answers to common technical, commercial, and operational enquiries about our custom-coded web architectures.</p>
+      </div>
+      
+      <div class="faq-grid" style="max-width: 900px; margin: 0 auto;">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(event)">
+            <span>Why custom-coded architecture instead of standard WordPress or Wix templates?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>WordPress and Wix template designs load massive piles of redundant script dependencies, styles, and heavy database queries that result in sub-30 Lighthouse scores, visual glitches, and massive bounce rates. Apex builds clean, pre-rendered static HTML/CSS/JS frontend engines directly on the edge, enabling sub-0.4s loads, zero layout shifts, and bulletproof security.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(event)">
+            <span>What are the exact turnaround timelines for custom web projects?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Starter Single-Page landing pages are delivered and optimized within 5-7 business days. Standard multi-page commercial platforms average 14-21 business days. Custom Enterprise builds requiring dynamic ROI simulators or custom database integrations are built across a 30-45 day sprint calendar.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(event)">
+            <span>How does Apex ensure local POPIA data protection compliance?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Every platform we deploy has secure cookie consent managers, encrypted serverless database schemas, SSL certification, and strictly configured forms that prevent lead-harvesting exposure, ensuring 100% compliance with South African Protection of Personal Information Act rules by default.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(event)">
+            <span>Do you manage domain transfers, business email setup, and edge hosting?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-content">
+            <p>Yes. We handle DNS routing, secure business email onboarding (Google Workspace / Microsoft 365), and transfer your domains seamlessly. All builds are deployed on high-speed global CDN networks with 99.9% uptime guarantees managed by Apex.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Website Strategy Intake Form Section -->
+  <section class="strategy-section" id="strategy">
+    <div class="container">
+      <div class="strategy-card border-beam-card">
+        <div class="section-header" style="margin-bottom: 40px;">
+          <span class="section-tag">Initiate Project</span>
+          <h2 class="section-title" style="font-size: 2.2rem;">START YOUR <span class="text-champagne-gradient">WEBSITE PROJECT</span></h2>
+          <p class="section-subtitle" style="font-size: 0.95rem;">Submit your business requirements below to receive a custom website architecture proposal from Apex Digital SA.</p>
+        </div>
+
+        <form id="intake-form" action="https://formsubmit.co/Apexdigtl@gmail.com" method="POST" onsubmit="handleFormSubmit(event)">
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_subject" value="New Website Project Request - Apex Digital SA">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name *</label>
+              <input type="text" name="name" class="form-input" placeholder="e.g. Rohan Ramlall" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label">Business Email *</label>
+              <input type="email" name="email" class="form-input" placeholder="e.g. rohan@enterprise.co.za" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Company / Organization *</label>
+              <input type="text" name="company" class="form-input" placeholder="e.g. Apex Enterprises" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Desired Website Package *</label>
+              <select name="package" class="form-select" required>
+                <option value="" disabled selected>Select Website Package</option>
+                <option value="Apex Starter Build (Starting at R1,500)">Apex Starter Build (Single-Page Landing Page)</option>
+                <option value="Apex Business Build (Starting at R5,000)">Apex Business Build (3-5 Pages Multi-Page Site)</option>
+                <option value="Apex Enterprise Build (Starting at R10,000)">Apex Enterprise Build (5-10 Pages + Custom Tools)</option>
+                <option value="High-Speed WordPress Build">High-Speed Managed WordPress Build</option>
+                <option value="Transactional E-Commerce Store">Transactional E-Commerce Store</option>
+              </select>
+            </div>
+
+            <div class="form-group form-full">
+              <label class="form-label">Website Scope & Goals</label>
+              <textarea name="message" class="form-textarea" placeholder="Describe your target audience, existing site bottlenecks, or specific feature requirements..."></textarea>
+            </div>
+
+            <div class="form-full" style="margin-top: 12px;">
+              <button type="submit" id="intake-submit-btn" class="btn-champagne" style="width: 100%;">
+                Submit Website Intake Protocol
+              </button>
+            </div>
+
+            <div class="form-full">
+              <div id="intake-form-status" style="margin-top: 14px; display: none; font-size: 0.95rem; text-align: center; border-radius: 8px; padding: 12px;"></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal Strategy Popup -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content border-beam-card">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 style="font-size: 1.8rem; margin-bottom: 12px; font-weight: 800; text-transform: uppercase;">
+        CLAIM YOUR <span class="text-champagne-gradient">DEMO WEBSITE</span>
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+        Connect directly with Apex Digital SA to claim a FREE Consultation + Demo Website built for your business.
+      </p>
+
+      <form id="modal-form" action="https://formsubmit.co/Apexdigtl@gmail.com" method="POST" onsubmit="handleModalSubmit(event)">
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_subject" value="Free Consultation & Demo Website Request - Apex Digital SA">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Full Name</label>
+          <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label class="form-label">Direct Contact Number / WhatsApp</label>
+          <input type="tel" name="phone" class="form-input" placeholder="+27 69 522 4226" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label class="form-label">Email Address</label>
+          <input type="email" name="email" class="form-input" placeholder="name@company.com" required>
+        </div>
+        <button type="submit" id="modal-submit-btn" class="btn-champagne" style="width: 100%;">
+          Request Free Consultation & Demo Website
+        </button>
+        <div id="modal-form-status" style="margin-top: 14px; display: none; font-size: 0.95rem; text-align: center; border-radius: 8px; padding: 12px;"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo-dark.png" alt="Apex Digital Logo" id="footer-logo-img" width="160" height="50">
+          <p>
+            Apex Digital SA engineers high-performance custom websites, speed-hardened platform builds, and transactional e-commerce platforms for market-leading enterprises.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Website Builds</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Apex Starter</a></li>
+            <li><a href="#services">Apex Business</a></li>
+            <li><a href="#services">Apex Enterprise</a></li>
+            <li><a href="#services">High-Speed WordPress</a></li>
+            <li><a href="#services">E-Commerce Stores</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Web Engineering</h4>
+          <ul class="footer-links">
+            <li><a href="#architecture">Code Architecture</a></li>
+            <li><a href="#simulator">Speed Simulator</a></li>
+            <li><a href="#portfolio">Featured Builds (LaserGen)</a></li>
+            <li><a href="#impact">Performance Metrics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Connect &amp; Social</h4>
+          <ul class="footer-links">
+            <li><a href="https://www.instagram.com/apexdigital_sa/" target="_blank">Instagram (@apexdigital_sa)</a></li>
+            <li><a href="https://linktr.ee/ApexDigital_" target="_blank">Linktree Profile</a></li>
+            <li><a href="mailto:apexdigtl@gmail.com">apexdigtl@gmail.com</a></li>
+            <li><a href="tel:+27695224226">+27 69 522 4226</a></li>
+            <li><a href="#">Durban, KZN // South Africa</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Apex Digital SA, Ltd. All rights reserved. High-Performance Digital Engineering.</div>
+        <div>POPIA &amp; Data Privacy Compliant</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- APEX RAG CHATBOT WIDGET -->
+  <div id="apex-chatbot-container">
+    <!-- Floating Trigger Button (Gold Apex Logo) -->
+    <button id="chatbot-trigger" aria-label="Open Apex Results Assistant">
+      <div class="trigger-icon">
+        <img src="logo-icon-gold.png" alt="Apex Logo" class="trigger-logo-img">
+      </div>
+      <span class="trigger-label">Apex Advisor</span>
+      <span class="trigger-badge">100% Results</span>
+    </button>
+
+    <!-- Chat Window Container -->
+    <div id="chatbot-window" class="chatbot-window hidden">
+      <!-- Chat Header -->
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="avatar-status">
+            <div class="avatar-ring">
+              <img src="logo-icon-gold.png" alt="Apex Logo" class="header-logo-img">
+            </div>
+            <span class="status-indicator"></span>
+          </div>
+          <div>
+            <h3 class="chat-title">APEX DIGITAL ADVISOR</h3>
+            <p class="chat-subtitle">Online 24/7 • Instant Web & Growth Advisor</p>
+          </div>
+        </div>
+        <button id="chatbot-close" aria-label="Close Chat Window">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Chat Messages Container -->
+      <div id="chat-messages" class="chat-messages">
+        <div class="message bot-message">
+          <div class="message-content">
+            <p class="msg-title">Welcome to Apex Digital SA</p>
+            <p>Welcome! I'm your AI Web & Growth Architect. Ask me anything about custom website builds, pricing packages, Google search visibility, or build timelines.</p>
+            <p><strong>What would you like to explore today?</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Suggested Quick Prompt Chips -->
+      <div id="chat-quick-prompts" class="chat-quick-prompts"></div>
+
+      <!-- Chat Input Bar -->
+      <div class="chat-input-area">
+        <form id="chat-form">
+          <input type="text" id="chat-input" placeholder="Ask about packages, prices, or results..." autocomplete="off" required>
+          <button type="submit" id="chat-send" aria-label="Send Message">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  <!-- Floating Portfolio Hover Preview Card -->
+  <div id="portfolio-hover-preview" class="portfolio-hover-preview">
+    <img id="hover-preview-img" src="" alt="Client Build Preview" width="340" height="191">
+  </div>
+
+  <script src="chatbot-rag.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -2783,5 +2783,369 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ==========================================================================
+   APEX DIGITAL SA — SOVEREIGN MINIMALISM MOBILE OPTIMIZATION SYSTEM
+   Enforces: 48px Touch Targets, Zero Overflow, Glass Drawer Nav, Clamp Type
+   ========================================================================== */
+
+/* Mobile Menu Toggle Button Styles */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1001;
+  padding: 12px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] .mobile-menu-toggle {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.mobile-menu-toggle .hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--text-white);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.mobile-menu-toggle.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background-color: var(--champagne);
+}
+
+.mobile-menu-toggle.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: var(--champagne);
+}
+
+/* Hide desktop custom cursor artifacts on touch screens */
+@media (hover: none) and (pointer: coarse) {
+  #cursor-dot, #cursor-outline {
+    display: none !important;
+  }
+}
+
+/* Tablet & Mobile Layout Breakpoint (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-container {
+    position: relative;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 72px);
+    background: var(--bg-pitch);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3rem 1.5rem 2rem 1.5rem;
+    gap: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s var(--ease-drawer), transform 0.3s var(--ease-drawer), visibility 0.3s;
+    z-index: 999;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-container.mobile-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid transparent;
+  }
+
+  .nav-link:hover, .nav-link:focus {
+    background: rgba(223, 195, 138, 0.08);
+    border-color: var(--border-champagne);
+  }
+
+  .nav-cta-btn {
+    display: none;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+/* Mobile Devices Breakpoint (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Root & Container Spacing */
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  /* 48px Minimum Touch Target Profiles */
+  button, a.btn-champagne, a.btn-outline-luxury, .nav-social-btn, .theme-toggle-btn, .work-filter-btn, .calc-tier-btn, .faq-trigger, .chatbot-toggle-btn {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  .nav-social-btn, .theme-toggle-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  /* Hero Section Mobile Polish */
+  .hero {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+
+  #hero-wireframe-canvas {
+    height: 280px;
+    opacity: 0.65;
+  }
+
+  .hero-tag {
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .hero-actions .btn-champagne, .hero-actions .btn-outline-luxury {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    padding: 14px 24px;
+  }
+
+  /* Grids to Single Column */
+  .agency-pillars-grid,
+  .services-grid,
+  .portfolio-grid,
+  .metrics-grid,
+  .footer-grid,
+  .audit-grid,
+  .simulator-grid,
+  .architecture-grid,
+  .faq-grid,
+  .tech-stack-grid,
+  .calculator-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Section Header Scales */
+  .section-title {
+    font-size: clamp(1.75rem, 7vw, 2.4rem);
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* Speed Auditor & Forms Mobile Optimization */
+  .form-group input,
+  .form-group select,
+  .form-group textarea,
+  .form-input {
+    font-size: 16px !important; /* Prevents iOS safari zoom on focus */
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+
+  /* Speed Auditor Card */
+  .auditor-card, .audit-result-card {
+    padding: 1.5rem;
+  }
+
+  .auditor-metrics-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Pricing / Package Cards */
+  .service-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .service-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .package-badge {
+    align-self: flex-start;
+  }
+
+  /* Speed Simulator / ROI Engine */
+  .calc-tier-selector {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .calc-tier-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Ecosystem Node Tags Stack on Mobile */
+  .node-tag {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: inline-block;
+    margin: 4px;
+    font-size: 0.7rem;
+  }
+
+  .ecosystem-canvas-card {
+    height: auto;
+    min-height: 320px;
+    padding: 1.5rem 1rem;
+  }
+
+  .node-tags-mobile-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 1rem;
+  }
+
+  /* Portfolio Cards */
+  .portfolio-card-img-wrap {
+    height: 220px;
+  }
+
+  .portfolio-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .portfolio-actions .btn-champagne, .portfolio-actions .btn-outline-luxury {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Consultation Modal Mobile */
+  .modal-overlay {
+    padding: 1rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem 1.25rem;
+    max-height: 90vh;
+    border-radius: 16px;
+    width: 100%;
+  }
+
+  .modal-close-btn {
+    top: 12px;
+    right: 12px;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Chatbot Floating Widget */
+  .chat-widget-window {
+    width: calc(100vw - 32px) !important;
+    right: 16px !important;
+    bottom: 80px !important;
+    max-height: 75vh;
+  }
+
+  /* Footer Mobile Layout */
+  .footer-brand {
+    text-align: left;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+}
+
+/* Small Screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .nav-brand .nav-logo {
+    width: 48px;
+    height: 60px;
+  }
+
+  .hero-tag {
+    font-size: 0.7rem;
+  }
+
+  .btn-champagne, .btn-outline-luxury {
+    font-size: 0.92rem;
+    padding: 12px 18px;
+  }
+}
+
 
 

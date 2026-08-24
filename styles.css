@@ -255,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 14px 0;
+  padding: 10px 0;
   transition: padding var(--transition-smooth), background var(--transition-smooth), border-color var(--transition-smooth);
   background: var(--surface-glass);
   backdrop-filter: blur(20px);
@@ -264,7 +264,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar.scrolled {
-  padding: 8px 0;
+  padding: 6px 0;
   background: var(--surface-glass);
   border-bottom: 1px solid var(--border-champagne);
 }
@@ -288,15 +288,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo {
-  height: 46px;
+  height: 64px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 12px var(--champagne-glow));
+  filter: drop-shadow(0 0 14px var(--champagne-glow));
   transition: height var(--transition-smooth), transform var(--transition-fast);
 }
 
 .navbar.scrolled .nav-logo {
-  height: 38px;
+  height: 52px;
 }
 
 .nav-brand:hover .nav-logo {

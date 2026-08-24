@@ -68,16 +68,14 @@ Designed for high-growth enterprises that need bespoke tools, zero performance b
     },
     {
       id: "maintenance_plans",
-      intents: ["maintenance", "monthly", "care", "upkeep", "hosting", "support", "retainer", "after launch", "sla"],
-      title: "Ongoing Maintenance & Growth Pathways",
-      response: `To ensure your digital asset remains fast, secure, and ranking high post-launch, Apex Digital offers 3 optional SLA growth pathways:
+      intents: ["maintenance", "monthly", "care", "upkeep", "hosting", "support", "after launch", "sla"],
+      title: "Hosting, Support & Post-Launch Security",
+      response: `Every website built by Apex Digital SA includes high-performance edge hosting, SSL security certification, and automated POPIA privacy protocols by default.
 
-- **Essentials Care**: 24/7 security shielding, framework updates, automated backups, and 1 hour of monthly developer time (48h turnaround).
-- **Visibility Rank**: Includes ongoing Google Search & Google Maps homepage ranking campaigns, monthly keyword reporting, and 3 hours of developer updates (24h turnaround).
-- **Partner Dominance**: Dedicated web engineering team for multi-page local search dominance, active conversion rate optimization, and 6 hours of priority dev time (<10h turnaround).
-
-Clients can also choose a Self-Managed option with zero monthly fees.`,
-      cta: { text: "Discuss Retainer Options", action: "openModal" }
+- **Included Edge Infrastructure**: Lightning-fast edge server hosting, automatic SSL encryption, and POPIA privacy form security built into your project.
+- **In-House Managed**: Clean, maintainable hand-coded architecture that is 100% self-managed post-launch with zero mandatory monthly fees.
+- **On-Demand Developer Support**: Available whenever you need structural updates, new page additions, or feature expansions.`,
+      cta: { text: "Discuss Website Project", action: "openModal" }
     },
     {
       id: "case_studies_results",
@@ -104,7 +102,7 @@ Clients can also choose a Self-Managed option with zero monthly fees.`,
 2. **Search Launchpad**: Comprehensive XML sitemaps, Google Search Console indexing, and rich snippet setup so your business stands out.
 3. **Generative Engine Optimization (GEO)**: Structured entity data so your business is cited inside AI search engines (ChatGPT Web Search, Gemini, Perplexity).
 
-Our **Visibility Rank** retainer pathway provides ongoing monthly keyword optimization and Google Maps local pack ranking campaigns.`,
+Every website build includes structured search engine optimization, Google Search Console indexing, and rich snippet setup built directly into your platform.`,
       cta: { text: "Audit My Google Ranking", action: "openModal" }
     },
     {

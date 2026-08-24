@@ -426,7 +426,8 @@ const buildTierData = {
     assetClass: 'Agile Launch Package',
     pages: '1–2 Custom Hand-Coded Pages',
     integrations: 'Mobile Responsive + Direct Contact Form',
-    seo: 'Baseline Google Indexing & Technical Hygiene',
+    seo: 'Baseline Google Indexing & Search Schema',
+    hosting: 'High-Performance Edge Hosting + POPIA Compliance',
     leads: '+10 to +18',
     hours: '5 Hours',
     lift: '1.8x'
@@ -437,7 +438,8 @@ const buildTierData = {
     assetClass: 'Commercial Growth Asset',
     pages: '5 Custom Hand-Coded Pages',
     integrations: 'WhatsApp Direct Chat / Booking Engine / Intake Forms',
-    seo: 'Baseline SEO + POPIA Privacy Protocols',
+    seo: 'Search Engine Optimization & Authority Schema',
+    hosting: 'High-Performance Edge Hosting + POPIA Compliance',
     leads: '+25 to +40',
     hours: '15 Hours',
     lift: '3.2x'
@@ -448,42 +450,18 @@ const buildTierData = {
     assetClass: 'Enterprise Market Dominance',
     pages: '5–8 Custom Pages + Lead Automation Suite',
     integrations: 'Full Niche Integration Suite + CRM Webhooks',
-    seo: 'Bundled Google Search Launchpad + Speed Tuning',
+    seo: 'Google Search Dominance + Speed & Conversion Hardening',
+    hosting: 'High-Performance Edge Hosting + POPIA Compliance',
     leads: '+50 to +90',
     hours: '30 Hours',
     lift: '4.8x'
   }
 };
 
-const growthPathData = {
-  none: {
-    monthlyTitle: 'Self-Managed (Independent)',
-    support: 'Self-Managed (Independent Hosting)',
-    seoPlan: 'None (Baseline Only)'
-  },
-  essentials: {
-    monthlyTitle: 'Essentials Technical Care',
-    support: '1 Hour Monthly Dev Time (48h Turnaround)',
-    seoPlan: '24/7 Security Shield & Weekly Maintenance'
-  },
-  visibility: {
-    monthlyTitle: 'Visibility Rank Pathway',
-    support: '3 Hours Monthly Dev Time (24h Turnaround)',
-    seoPlan: 'Includes Homepage Google Search Ranking Campaign'
-  },
-  partner: {
-    monthlyTitle: 'Partner Dominance Pathway',
-    support: '6 Hours Priority Dev Time (<10h Turnaround)',
-    seoPlan: 'Includes Multi-Page Local Search & Maps Dominance'
-  }
-};
-
 let currentTier = 'standard';
-let currentPath = 'visibility';
 
 function initCalculator() {
   const tierBtns = document.querySelectorAll('#build-tier-group .calc-tier-btn');
-  const pathBtns = document.querySelectorAll('#growth-path-group .calc-path-btn');
 
   tierBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -494,26 +472,15 @@ function initCalculator() {
     });
   });
 
-  pathBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      pathBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentPath = btn.getAttribute('data-path');
-      updateCalculator();
-    });
-  });
-
   updateCalculator();
 }
 
 function updateCalculator() {
   const tier = buildTierData[currentTier];
-  const path = growthPathData[currentPath];
-  if (!tier || !path) return;
+  if (!tier) return;
 
   const upfrontEl = document.getElementById('calc-upfront');
   const upfrontDescEl = document.getElementById('calc-upfront-desc');
-  const monthlyEl = document.getElementById('calc-monthly');
   const stackedEl = document.getElementById('calc-stacked-val');
   const listEl = document.getElementById('calc-deliverables-list');
   const leadsEl = document.getElementById('calc-leads-num');
@@ -522,15 +489,14 @@ function updateCalculator() {
 
   if (upfrontEl) upfrontEl.textContent = tier.upfrontTitle;
   if (upfrontDescEl) upfrontDescEl.textContent = tier.upfrontDesc;
-  if (monthlyEl) monthlyEl.textContent = path.monthlyTitle;
   if (stackedEl) stackedEl.textContent = tier.assetClass;
 
   if (listEl) {
     listEl.innerHTML = `
       <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Page Scope:</strong> ${tier.pages}</span></li>
       <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Integrations:</strong> ${tier.integrations}</span></li>
-      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Google Visibility:</strong> ${path.seoPlan !== 'None (Baseline Only)' ? path.seoPlan : tier.seo}</span></li>
-      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Developer Support:</strong> ${path.support}</span></li>
+      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Search Visibility:</strong> ${tier.seo}</span></li>
+      <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> <span><strong>Hosting &amp; Security:</strong> ${tier.hosting}</span></li>
     `;
   }
 
@@ -540,12 +506,11 @@ function updateCalculator() {
 
   const ctaBtn = document.getElementById('calc-cta-btn');
   if (ctaBtn) {
-    const msg = `Hi Apex Digital SA, I ran the speed/ROI calculator and would like to claim the package:
+    const msg = `Hi Apex Digital SA, I reviewed your website packages and would like to claim the blueprint:
 - Build Tier: ${tier.upfrontTitle} (${tier.upfrontDesc})
-- Asset Class: ${tier.assetClass}
-- Growth Pathway: ${path.monthlyTitle}
-- Projected Leads: ${tier.leads}
-- Staff Admin Saved: ${tier.hours}
+- Asset Scope: ${tier.assetClass}
+- Deliverables: ${tier.pages}
+- Estimated Leads: ${tier.leads}
 - Expected Conversion Lift: ${tier.lift}`;
     ctaBtn.href = `https://wa.me/27695224226?text=${encodeURIComponent(msg)}`;
   }

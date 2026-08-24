@@ -1383,7 +1383,7 @@ function initEcosystemCanvas() {
   const orbitNodes = [];
   for (let i = 0; i < nodeCount; i++) {
     const angle = (Math.PI * 2 / nodeCount) * i + (Math.random() * 0.4);
-    const distance = 50 + Math.random() * (Math.min(width, height) * 0.38);
+    const distance = 72 + Math.random() * (Math.min(width, height) * 0.35);
     orbitNodes.push({
       angle: angle,
       distance: distance,
@@ -1417,7 +1417,7 @@ function initEcosystemCanvas() {
 
     // 1. Draw Central Concentric Pulse Aura Rings
     for (let r = 1; r <= 3; r++) {
-      const ringRadius = 40 + r * 30 + Math.sin(time + r) * 4;
+      const ringRadius = 66 + r * 28 + Math.sin(time + r) * 4;
       ctx.beginPath();
       ctx.arc(currentCenterX, currentCenterY, ringRadius, 0, Math.PI * 2);
       ctx.strokeStyle = `rgba(223, 195, 138, ${0.08 / r})`;

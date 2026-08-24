@@ -2568,5 +2568,52 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Navbar Social Icon Buttons */
+.nav-social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+}
+
+.nav-social-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-champagne);
+  color: var(--gold-champagne);
+  background: var(--surface-card-hover);
+  box-shadow: 0 0 12px var(--champagne-glow);
+}
+
+.nav-social-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Footer Social Link Icons */
+.footer-social-links li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.footer-social-links li a svg {
+  color: var(--gold-champagne);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.footer-social-links li a:hover svg {
+  transform: scale(1.15);
+  color: var(--text-white);
+}
+
 
 

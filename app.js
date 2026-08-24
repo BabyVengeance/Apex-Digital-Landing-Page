@@ -1328,6 +1328,11 @@ function initEcosystemCanvas() {
   let mouseX = 0, mouseY = 0;
   let isHovered = false;
 
+  const tagTL = document.getElementById('node-tag-tl');
+  const tagTR = document.getElementById('node-tag-tr');
+  const tagBL = document.getElementById('node-tag-bl');
+  const tagBR = document.getElementById('node-tag-br');
+
   function resize() {
     width = canvas.width = container.clientWidth;
     height = canvas.height = container.clientHeight;
@@ -1348,86 +1353,155 @@ function initEcosystemCanvas() {
     isHovered = false;
   });
 
-  // Generate 36 interactive orbiting gold particles
-  const nodeCount = 36;
-  const nodes = [];
+  // Calculate 4 Aspect Target Anchor Coordinates relative to canvas
+  function getTagCenter(el, fallbackX, fallbackY) {
+    if (!el) return { x: fallbackX, y: fallbackY };
+    const rect = el.getBoundingClientRect();
+    const cRect = container.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2 - cRect.left,
+      y: rect.top + rect.height / 2 - cRect.top
+    };
+  }
 
+  // Energy Photons Traveling along 4 Fixed Aspect Beams
+  const photonCountPerBeam = 3;
+  const beamPhotons = [0, 1, 2, 3].map(() => {
+    const arr = [];
+    for (let p = 0; p < photonCountPerBeam; p++) {
+      arr.push({
+        progress: (p / photonCountPerBeam) + Math.random() * 0.2,
+        speed: 0.003 + Math.random() * 0.003,
+        pulse: Math.random() * Math.PI * 2
+      });
+    }
+    return arr;
+  });
+
+  // Orbiting Grid Web Particles
+  const nodeCount = 28;
+  const orbitNodes = [];
   for (let i = 0; i < nodeCount; i++) {
-    const angle = (Math.PI * 2 / nodeCount) * i + (Math.random() * 0.5);
-    const distance = 55 + Math.random() * (Math.min(width, height) * 0.38);
-    nodes.push({
-      baseAngle: angle,
+    const angle = (Math.PI * 2 / nodeCount) * i + (Math.random() * 0.4);
+    const distance = 50 + Math.random() * (Math.min(width, height) * 0.38);
+    orbitNodes.push({
       angle: angle,
       distance: distance,
-      baseDistance: distance,
-      radius: 1.5 + Math.random() * 2.5,
-      speed: (0.002 + Math.random() * 0.004) * (i % 2 === 0 ? 1 : -1),
+      radius: 1.5 + Math.random() * 2,
+      speed: (0.0015 + Math.random() * 0.003) * (i % 2 === 0 ? 1 : -1),
       pulse: Math.random() * Math.PI * 2
     });
   }
 
   function render() {
-    ctx.clearRect(0, 0, width, height);
+    // Pure pitch black canvas clearing
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, width, height);
 
-    // Dynamic mouse parallax offsets
-    const targetOffsetX = isHovered ? mouseX * 0.12 : 0;
-    const targetOffsetY = isHovered ? mouseY * 0.12 : 0;
+    // Mouse parallax offsets
+    const targetOffsetX = isHovered ? mouseX * 0.08 : 0;
+    const targetOffsetY = isHovered ? mouseY * 0.08 : 0;
 
-    // Draw central ambient pulse rings
+    const currentCenterX = centerX + targetOffsetX * 0.2;
+    const currentCenterY = centerY + targetOffsetY * 0.2;
+
+    // Get live positions of 4 Aspect Tags
+    const aspectTargets = [
+      getTagCenter(tagTL, width * 0.2, height * 0.2),
+      getTagCenter(tagTR, width * 0.8, height * 0.2),
+      getTagCenter(tagBL, width * 0.2, height * 0.8),
+      getTagCenter(tagBR, width * 0.8, height * 0.8)
+    ];
+
     const time = Date.now() * 0.002;
+
+    // 1. Draw Central Concentric Pulse Aura Rings
     for (let r = 1; r <= 3; r++) {
-      const ringRadius = 42 + r * 32 + Math.sin(time + r) * 5;
+      const ringRadius = 40 + r * 30 + Math.sin(time + r) * 4;
       ctx.beginPath();
-      ctx.arc(centerX + targetOffsetX * 0.25, centerY + targetOffsetY * 0.25, ringRadius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(223, 195, 138, ${0.09 / r})`;
+      ctx.arc(currentCenterX, currentCenterY, ringRadius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(223, 195, 138, ${0.08 / r})`;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
 
-    // Update & draw nodes and geometric connecting webs
-    nodes.forEach((node, idx) => {
-      node.angle += node.speed;
-      node.pulse += 0.03;
-      
-      const currentDistance = node.distance + Math.sin(node.pulse) * 4;
-      const x = centerX + Math.cos(node.angle) * currentDistance + targetOffsetX * (node.distance / 140);
-      const y = centerY + Math.sin(node.angle) * currentDistance + targetOffsetY * (node.distance / 140);
+    // 2. Draw Permanent Golden Beams & Traveling Energy Photons to the 4 Fixed Aspects
+    const photonCoords = [];
 
-      // Line connecting to central gold logo
-      const distToCenter = Math.hypot(x - centerX, y - centerY);
-      const lineAlpha = Math.max(0, 0.32 - distToCenter / (width * 0.5));
+    aspectTargets.forEach((target, bIdx) => {
+      // Permanent Primary Connection Vector
       ctx.beginPath();
-      ctx.moveTo(centerX + targetOffsetX * 0.2, centerY + targetOffsetY * 0.2);
-      ctx.lineTo(x, y);
-      ctx.strokeStyle = `rgba(223, 195, 138, ${lineAlpha})`;
-      ctx.lineWidth = 1;
+      ctx.moveTo(currentCenterX, currentCenterY);
+      ctx.lineTo(target.x, target.y);
+      ctx.strokeStyle = 'rgba(223, 195, 138, 0.45)';
+      ctx.lineWidth = 1.5;
       ctx.stroke();
 
-      // Inter-node network grid connections
-      nodes.forEach((otherNode, oIdx) => {
-        if (idx >= oIdx) return;
-        const otherX = centerX + Math.cos(otherNode.angle) * otherNode.distance + targetOffsetX * (otherNode.distance / 140);
-        const otherY = centerY + Math.sin(otherNode.angle) * otherNode.distance + targetOffsetY * (otherNode.distance / 140);
-        const d = Math.hypot(x - otherX, y - otherY);
+      // Pulsing outer aura line
+      ctx.beginPath();
+      ctx.moveTo(currentCenterX, currentCenterY);
+      ctx.lineTo(target.x, target.y);
+      ctx.strokeStyle = `rgba(223, 195, 138, ${0.15 + Math.sin(time * 2 + bIdx) * 0.08})`;
+      ctx.lineWidth = 3.5;
+      ctx.stroke();
 
-        if (d < 85) {
+      // Animate Traveling Energy Photons Along Vector
+      beamPhotons[bIdx].forEach(photon => {
+        photon.progress += photon.speed;
+        if (photon.progress > 1) photon.progress = 0;
+        photon.pulse += 0.04;
+
+        const px = currentCenterX + (target.x - currentCenterX) * photon.progress;
+        const py = currentCenterY + (target.y - currentCenterY) * photon.progress;
+        photonCoords.push({ x: px, y: py });
+
+        // Draw Photon Energy Bead
+        ctx.beginPath();
+        ctx.arc(px, py, 3 + Math.sin(photon.pulse) * 1.2, 0, Math.PI * 2);
+        ctx.fillStyle = '#FFF2D4';
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = '#dfc38a';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      // Target Anchor Node Pulse Dot at the fixed aspect tag end
+      ctx.beginPath();
+      ctx.arc(target.x, target.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#dfc38a';
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = '#dfc38a';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+
+    // 3. Update & Draw Morphing Inter-Node Grid Webs
+    orbitNodes.forEach((node, idx) => {
+      node.angle += node.speed;
+      node.pulse += 0.025;
+
+      const currentDist = node.distance + Math.sin(node.pulse) * 4;
+      const nx = currentCenterX + Math.cos(node.angle) * currentDist;
+      const ny = currentCenterY + Math.sin(node.angle) * currentDist;
+
+      // Connect morphing nodes to neighboring traveling photons
+      photonCoords.forEach(p => {
+        const pd = Math.hypot(nx - p.x, ny - p.y);
+        if (pd < 75) {
           ctx.beginPath();
-          ctx.moveTo(x, y);
-          ctx.lineTo(otherX, otherY);
-          ctx.strokeStyle = `rgba(223, 195, 138, ${0.25 * (1 - d / 85)})`;
+          ctx.moveTo(nx, ny);
+          ctx.lineTo(p.x, p.y);
+          ctx.strokeStyle = `rgba(223, 195, 138, ${0.25 * (1 - pd / 75)})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
       });
 
-      // Draw Glowing Gold Node Point
+      // Orbiting Node Dot
       ctx.beginPath();
-      ctx.arc(x, y, node.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(244, 226, 187, ${0.45 + Math.sin(node.pulse) * 0.35})`;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = '#dfc38a';
+      ctx.arc(nx, ny, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(244, 226, 187, ${0.4 + Math.sin(node.pulse) * 0.3})`;
       ctx.fill();
-      ctx.shadowBlur = 0;
     });
 
     requestAnimationFrame(render);

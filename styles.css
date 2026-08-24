@@ -2785,55 +2785,50 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ==========================================================================
    APEX DIGITAL SA — SOVEREIGN MINIMALISM MOBILE OPTIMIZATION SYSTEM
-   Enforces: 48px Touch Targets, Zero Overflow, Glass Drawer Nav, Clamp Type
+   Features: Glass Drawer Nav, Dual-SVG Hamburger Toggle, Dedicated Mobile Ecosystem Grid,
+   & Single-Column Calculator Deliverables Matrix
    ========================================================================== */
+
+/* Hide mobile ecosystem pills on desktop */
+.mobile-ecosystem-pills {
+  display: none;
+}
 
 /* Mobile Menu Toggle Button Styles */
 .mobile-menu-toggle {
   display: none;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 5px;
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  min-height: 48px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-champagne);
   border-radius: 10px;
+  color: var(--champagne);
   cursor: pointer;
-  z-index: 1001;
-  padding: 12px;
+  z-index: 10001;
+  padding: 0;
   transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.mobile-menu-toggle .close-icon {
+  display: none;
+}
+
+.mobile-menu-toggle.active .hamburger-icon {
+  display: none;
+}
+
+.mobile-menu-toggle.active .close-icon {
+  display: block;
+  color: var(--champagne);
 }
 
 [data-theme="light"] .mobile-menu-toggle {
   background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.12);
-}
-
-.mobile-menu-toggle .hamburger-bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background-color: var(--text-white);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
-}
-
-.mobile-menu-toggle.active .hamburger-bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-  background-color: var(--champagne);
-}
-
-.mobile-menu-toggle.active .hamburger-bar:nth-child(2) {
-  opacity: 0;
-}
-
-.mobile-menu-toggle.active .hamburger-bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-  background-color: var(--champagne);
+  border-color: rgba(184, 146, 85, 0.4);
 }
 
 /* Hide desktop custom cursor artifacts on touch screens */
@@ -2846,7 +2841,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Tablet & Mobile Layout Breakpoint (max-width: 1024px) */
 @media (max-width: 1024px) {
   .mobile-menu-toggle {
-    display: flex;
+    display: inline-flex;
   }
 
   .nav-container {
@@ -2855,50 +2850,57 @@ h1, h2, h3, h4, h5, h6 {
 
   .nav-links {
     position: fixed;
-    top: 72px;
+    top: 0;
     left: 0;
     width: 100vw;
-    height: calc(100vh - 72px);
+    height: 100vh;
     background: var(--bg-pitch);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    padding: 3rem 1.5rem 2rem 1.5rem;
-    gap: 1.5rem;
+    padding: 4rem 2rem 2rem 2rem;
+    gap: 1.25rem;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
+    pointer-events: none;
+    transform: translateY(-20px);
     transition: opacity 0.3s var(--ease-drawer), transform 0.3s var(--ease-drawer), visibility 0.3s;
-    z-index: 999;
+    z-index: 10000;
     overflow-y: auto;
-    border-bottom: 1px solid var(--border-subtle);
   }
 
   .nav-container.mobile-open .nav-links {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
     transform: translateY(0);
   }
 
   .nav-link {
-    font-size: 1.15rem;
-    font-weight: 600;
-    padding: 0.75rem 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-ivory);
+    padding: 12px 24px;
     width: 100%;
+    max-width: 340px;
     text-align: center;
     min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 12px;
-    border: 1px solid transparent;
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.02);
   }
 
-  .nav-link:hover, .nav-link:focus {
+  .nav-link:active, .nav-link:hover {
+    border-color: var(--champagne);
+    color: var(--champagne);
     background: rgba(223, 195, 138, 0.08);
-    border-color: var(--border-champagne);
   }
 
   .nav-cta-btn {
@@ -2912,7 +2914,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Mobile Devices Breakpoint (max-width: 768px) */
 @media (max-width: 768px) {
-  /* Root & Container Spacing */
   .container {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -2923,45 +2924,27 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 3.5rem;
   }
 
-  /* 48px Minimum Touch Target Profiles */
+  /* Minimum 48px Touch Targets */
   button, a.btn-champagne, a.btn-outline-luxury, .nav-social-btn, .theme-toggle-btn, .work-filter-btn, .calc-tier-btn, .faq-trigger, .chatbot-toggle-btn {
     min-height: 48px;
     min-width: 48px;
   }
 
-  .nav-social-btn, .theme-toggle-btn {
-    width: 48px;
-    height: 48px;
-  }
-
-  /* Hero Section Mobile Polish */
+  /* Hero Section Mobile */
   .hero {
     min-height: auto;
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 3.5rem;
   }
 
   #hero-wireframe-canvas {
-    height: 280px;
-    opacity: 0.65;
-  }
-
-  .hero-tag {
-    font-size: 0.75rem;
-    padding: 6px 14px;
-    margin-bottom: 1.25rem;
+    height: 240px;
+    opacity: 0.55;
   }
 
   .hero-title {
-    font-size: clamp(2.2rem, 9vw, 3.4rem);
+    font-size: clamp(2rem, 8.5vw, 3.2rem);
     line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-desc {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
   }
 
   .hero-actions {
@@ -2974,13 +2957,128 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     justify-content: center;
     text-align: center;
-    font-size: 1rem;
-    padding: 14px 24px;
   }
 
-  /* Grids to Single Column */
+  /* --- "HOW IT WORKS" / ECOSYSTEM SECTION MOBILE FRIENDLY OVERHAUL --- */
+  .ecosystem-canvas-card {
+    height: auto;
+    min-height: 220px;
+    padding: 1.5rem 1rem;
+  }
+
+  #ecosystem-canvas {
+    height: 180px !important;
+  }
+
+  /* Hide overlapping floating corner tags on mobile */
+  .ecosystem-canvas-card .node-tag {
+    display: none !important;
+  }
+
+  /* Display clean dedicated mobile ecosystem grid */
+  .mobile-ecosystem-pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  .mobile-pill-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-champagne);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-pill-card .pill-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .mobile-pill-card .pill-text {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* --- INVESTMENT & DELIVERABLES ROI CALCULATOR MOBILE FRIENDLY OVERHAUL --- */
+  .calc-btn-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .calc-tier-btn {
+    width: 100% !important;
+    min-height: 52px !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .calc-results-container {
+    margin-top: 24px !important;
+  }
+
+  .calc-results-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .calc-result-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .sim-metrics-subgrid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .sim-metric-box {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 14px 16px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 10px !important;
+    border: 1px solid var(--border-subtle) !important;
+  }
+
+  .sim-metric-num {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    color: var(--champagne) !important;
+    font-family: var(--font-display) !important;
+  }
+
+  .sim-metric-label {
+    font-size: 0.8rem !important;
+    color: var(--text-muted) !important;
+    text-align: right !important;
+  }
+
+  /* Single Column Layout For All Grids */
   .agency-pillars-grid,
   .services-grid,
+  .capabilities-grid,
   .portfolio-grid,
   .metrics-grid,
   .footer-grid,
@@ -2988,162 +3086,49 @@ h1, h2, h3, h4, h5, h6 {
   .simulator-grid,
   .architecture-grid,
   .faq-grid,
-  .tech-stack-grid,
-  .calculator-grid {
+  .tech-stack-grid {
     grid-template-columns: 1fr !important;
     gap: 1.25rem !important;
   }
 
-  /* Section Header Scales */
-  .section-title {
-    font-size: clamp(1.75rem, 7vw, 2.4rem);
+  .col-4, .col-6, .col-12 {
+    grid-column: span 1 !important;
+    width: 100% !important;
   }
 
-  .section-subtitle {
-    font-size: 0.95rem;
-  }
-
-  /* Speed Auditor & Forms Mobile Optimization */
+  /* Form Input Fixes */
   .form-group input,
   .form-group select,
   .form-group textarea,
   .form-input {
-    font-size: 16px !important; /* Prevents iOS safari zoom on focus */
+    font-size: 16px !important;
     min-height: 48px;
     padding: 12px 16px;
   }
 
-  /* Speed Auditor Card */
-  .auditor-card, .audit-result-card {
-    padding: 1.5rem;
-  }
-
-  .auditor-metrics-row {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  /* Pricing / Package Cards */
-  .service-card {
-    padding: 1.75rem 1.25rem;
-  }
-
-  .service-card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .package-badge {
-    align-self: flex-start;
-  }
-
-  /* Speed Simulator / ROI Engine */
-  .calc-tier-selector {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .calc-tier-btn {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-
-  /* Ecosystem Node Tags Stack on Mobile */
-  .node-tag {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    display: inline-block;
-    margin: 4px;
-    font-size: 0.7rem;
-  }
-
-  .ecosystem-canvas-card {
-    height: auto;
-    min-height: 320px;
-    padding: 1.5rem 1rem;
-  }
-
-  .node-tags-mobile-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 1rem;
-  }
-
-  /* Portfolio Cards */
-  .portfolio-card-img-wrap {
-    height: 220px;
-  }
-
-  .portfolio-actions {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .portfolio-actions .btn-champagne, .portfolio-actions .btn-outline-luxury {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Consultation Modal Mobile */
-  .modal-overlay {
-    padding: 1rem;
-  }
-
+  /* Consultation Modal */
   .modal-content {
     padding: 1.5rem 1.25rem;
     max-height: 90vh;
-    border-radius: 16px;
-    width: 100%;
+    width: 95%;
   }
 
-  .modal-close-btn {
-    top: 12px;
-    right: 12px;
-    width: 44px;
-    height: 44px;
-  }
-
-  /* Chatbot Floating Widget */
+  /* Floating Chatbot */
   .chat-widget-window {
     width: calc(100vw - 32px) !important;
     right: 16px !important;
     bottom: 80px !important;
-    max-height: 75vh;
-  }
-
-  /* Footer Mobile Layout */
-  .footer-brand {
-    text-align: left;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 0.75rem;
-    text-align: center;
   }
 }
 
 /* Small Screens (max-width: 480px) */
 @media (max-width: 480px) {
+  .mobile-ecosystem-pills {
+    grid-template-columns: 1fr;
+  }
+
   .nav-brand .nav-logo {
-    width: 48px;
-    height: 60px;
-  }
-
-  .hero-tag {
-    font-size: 0.7rem;
-  }
-
-  .btn-champagne, .btn-outline-luxury {
-    font-size: 0.92rem;
-    padding: 12px 18px;
+    height: 42px;
   }
 }
 

@@ -1394,8 +1394,17 @@ function initEcosystemCanvas() {
   }
 
   function render() {
-    // Pure pitch black canvas clearing
-    ctx.fillStyle = '#000000';
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+
+    // Dynamic theme colors
+    const bgFill = isLight ? '#FFFFFF' : '#000000';
+    const ringStroke = isLight ? 'rgba(184, 146, 85, ' : 'rgba(223, 195, 138, ';
+    const beamPrimary = isLight ? 'rgba(184, 146, 85, 0.65)' : 'rgba(223, 195, 138, 0.45)';
+    const photonFill = isLight ? '#6D5422' : '#FFF2D4';
+    const shadowColor = isLight ? '#b89655' : '#dfc38a';
+
+    // Canvas background clearing
+    ctx.fillStyle = bgFill;
     ctx.fillRect(0, 0, width, height);
 
     // Mouse parallax offsets
@@ -1420,7 +1429,7 @@ function initEcosystemCanvas() {
       const ringRadius = 54 + r * 26 + Math.sin(time + r) * 4;
       ctx.beginPath();
       ctx.arc(currentCenterX, currentCenterY, ringRadius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(223, 195, 138, ${0.08 / r})`;
+      ctx.strokeStyle = `${ringStroke}${0.1 / r})`;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -1433,7 +1442,7 @@ function initEcosystemCanvas() {
       ctx.beginPath();
       ctx.moveTo(currentCenterX, currentCenterY);
       ctx.lineTo(target.x, target.y);
-      ctx.strokeStyle = 'rgba(223, 195, 138, 0.45)';
+      ctx.strokeStyle = beamPrimary;
       ctx.lineWidth = 1.5;
       ctx.stroke();
 
@@ -1441,7 +1450,7 @@ function initEcosystemCanvas() {
       ctx.beginPath();
       ctx.moveTo(currentCenterX, currentCenterY);
       ctx.lineTo(target.x, target.y);
-      ctx.strokeStyle = `rgba(223, 195, 138, ${0.15 + Math.sin(time * 2 + bIdx) * 0.08})`;
+      ctx.strokeStyle = isLight ? `rgba(184, 146, 85, ${0.2 + Math.sin(time * 2 + bIdx) * 0.1})` : `rgba(223, 195, 138, ${0.15 + Math.sin(time * 2 + bIdx) * 0.08})`;
       ctx.lineWidth = 3.5;
       ctx.stroke();
 
@@ -1458,9 +1467,9 @@ function initEcosystemCanvas() {
         // Draw Photon Energy Bead
         ctx.beginPath();
         ctx.arc(px, py, 3 + Math.sin(photon.pulse) * 1.2, 0, Math.PI * 2);
-        ctx.fillStyle = '#FFF2D4';
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = '#dfc38a';
+        ctx.fillStyle = photonFill;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = shadowColor;
         ctx.fill();
         ctx.shadowBlur = 0;
       });
@@ -1468,9 +1477,9 @@ function initEcosystemCanvas() {
       // Target Anchor Node Pulse Dot at the fixed aspect tag end
       ctx.beginPath();
       ctx.arc(target.x, target.y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = '#dfc38a';
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = '#dfc38a';
+      ctx.fillStyle = shadowColor;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = shadowColor;
       ctx.fill();
       ctx.shadowBlur = 0;
     });

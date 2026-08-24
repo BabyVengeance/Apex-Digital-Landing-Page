@@ -2640,10 +2640,17 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 460px;
   margin-top: 28px;
   border-radius: 6px;
-  background: #000000;
+  background: var(--bg-pitch);
   border: 1px solid var(--border-champagne);
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.95);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] .ecosystem-canvas-card {
+  background: #FFFFFF;
+  border-color: rgba(184, 146, 85, 0.4);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 .ecosystem-canvas-card canvas {
@@ -2670,7 +2677,13 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   z-index: 10;
   box-shadow: 0 0 30px rgba(223, 195, 138, 0.25), inset 0 0 12px rgba(223, 195, 138, 0.1);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+[data-theme="light"] .ecosystem-center-badge {
+  background: #111115;
+  border-color: rgba(184, 146, 85, 0.6);
+  box-shadow: 0 0 30px rgba(184, 146, 85, 0.3);
 }
 
 .ecosystem-canvas-card:hover .ecosystem-center-badge {
@@ -2697,7 +2710,7 @@ h1, h2, h3, h4, h5, h6 {
   right: -8px;
   bottom: -8px;
   border-radius: 50%;
-  border: 1px solid var(--gold-champagne);
+  border: 1px solid var(--border-champagne-bright);
   opacity: 0.5;
   animation: auraPulse 3s infinite ease-in-out;
 }
@@ -2711,31 +2724,32 @@ h1, h2, h3, h4, h5, h6 {
 .node-tag {
   position: absolute;
   padding: 6px 14px;
-  background: rgba(14, 14, 18, 0.85);
+  background: var(--surface-card);
   border: 1px solid var(--border-champagne);
   border-radius: 20px;
   font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--text-ivory);
+  color: var(--text-white);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   z-index: 5;
   pointer-events: none;
-  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
 }
 
-.tag-top-left { top: 16%; left: 8%; }
-.tag-top-right { top: 16%; right: 8%; }
-.tag-bottom-left { bottom: 16%; left: 8%; }
-.tag-bottom-right { bottom: 16%; right: 8%; }
+[data-theme="light"] .node-tag {
+  background: rgba(255, 255, 255, 0.94);
+  color: #0A0A0E;
+  border-color: rgba(184, 146, 85, 0.45);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
 
 .ecosystem-canvas-card:hover .node-tag {
   border-color: var(--champagne);
-  color: var(--text-white);
 }
 
 @media (max-width: 768px) {

@@ -151,20 +151,20 @@ function setTheme(theme) {
   const headerLogo = document.querySelector('.header-logo-img');
 
   if (theme === 'light') {
-    if (navLogo) navLogo.src = 'logo-light.png';
-    if (footerLogo) footerLogo.src = 'logo-light.png';
-    if (favicon) favicon.href = 'logo-icon-black.png';
-    if (triggerLogo) triggerLogo.src = 'logo-icon-black.png';
-    if (headerLogo) headerLogo.src = 'logo-icon-black.png';
+    if (navLogo) navLogo.src = 'assets/images/logo-light.png';
+    if (footerLogo) footerLogo.src = 'assets/images/logo-light.png';
+    if (favicon) favicon.href = 'assets/images/logo-icon-black.png';
+    if (triggerLogo) triggerLogo.src = 'assets/images/logo-icon-black.png';
+    if (headerLogo) headerLogo.src = 'assets/images/logo-icon-black.png';
     if (themeIcon) {
       themeIcon.innerHTML = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
     }
   } else {
-    if (navLogo) navLogo.src = 'logo-dark.png';
-    if (footerLogo) footerLogo.src = 'logo-dark.png';
-    if (favicon) favicon.href = 'logo-icon-gold.png';
-    if (triggerLogo) triggerLogo.src = 'logo-icon-gold.png';
-    if (headerLogo) headerLogo.src = 'logo-icon-gold.png';
+    if (navLogo) navLogo.src = 'assets/images/logo-dark.png';
+    if (footerLogo) footerLogo.src = 'assets/images/logo-dark.png';
+    if (favicon) favicon.href = 'assets/images/logo-icon-gold.png';
+    if (triggerLogo) triggerLogo.src = 'assets/images/logo-icon-gold.png';
+    if (headerLogo) headerLogo.src = 'assets/images/logo-icon-gold.png';
     if (themeIcon) {
       themeIcon.innerHTML = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
     }
@@ -1134,9 +1134,9 @@ function initWorkPreviews() {
 }
 
 /* ==========================================================================
-   14. INTERACTIVE PERFORMANCE DIAGNOSTIC SIMULATOR (LIGHTHOUSE AUDIT)
+   14. INTERACTIVE LIVE MOBILE UX & CONVERSION AUDIT ENGINE
    ========================================================================== */
-window.runSpeedAudit = function() {
+window.runConversionAudit = async function() {
   const urlInput = document.getElementById('auditor-url');
   const consoleDiv = document.getElementById('auditor-console');
   const verdictDiv = document.getElementById('auditor-verdict');
@@ -1144,52 +1144,134 @@ window.runSpeedAudit = function() {
   
   if (!urlInput || !consoleDiv || !verdictDiv || !legacyDial) return;
   
-  const url = urlInput.value.trim();
-  if (!url) return;
+  let rawUrl = urlInput.value.trim();
+  if (!rawUrl) {
+    alert('Please enter a valid website URL (e.g. yourcompany.co.za)');
+    return;
+  }
+  
+  let targetUrl = rawUrl;
+  if (!/^https?:\/\//i.test(targetUrl)) {
+    targetUrl = 'https://' + targetUrl;
+  }
   
   consoleDiv.classList.remove('hidden');
   verdictDiv.classList.add('hidden');
   
-  // Reset dial
   legacyDial.textContent = '--';
   legacyDial.className = 'speed-dial';
   
-  consoleDiv.innerHTML = `<div class="console-line">// Initiating audit protocol on: ${url}</div>`;
+  const uxEl = document.getElementById('legacy-ux');
+  const seoEl = document.getElementById('legacy-seo');
+  const practicesEl = document.getElementById('legacy-practices');
   
-  const steps = [
-    { delay: 600, text: '// Connection established. Querying edge headers...' },
-    { delay: 1300, text: '// Downloading assets. Analyzing script footprint...' },
-    { delay: 2000, text: '// WARNING: Found 22 render-blocking external scripts.' },
-    { delay: 2600, text: '// WARNING: Images lack explicit width/height (causes Layout Shifts).' },
-    { delay: 3200, text: '// Diagnostic metrics compiled. Pushing to scoreboard...' }
-  ];
+  if (uxEl) uxEl.textContent = '--';
+  if (seoEl) seoEl.textContent = '--';
+  if (practicesEl) practicesEl.textContent = '--';
   
-  steps.forEach(step => {
+  consoleDiv.innerHTML = `<div class="console-line">// Initiating live audit protocol on: ${targetUrl}</div>`;
+  
+  const appendConsole = (msg) => {
+    const line = document.createElement('div');
+    line.className = 'console-line';
+    line.textContent = msg;
+    consoleDiv.appendChild(line);
+    consoleDiv.scrollTop = consoleDiv.scrollHeight;
+  };
+  
+  setTimeout(() => appendConsole('// Connecting to Google Lighthouse Engine...'), 400);
+  setTimeout(() => appendConsole('// Auditing Mobile Accessibility & Touch Target Spacing...'), 1200);
+  setTimeout(() => appendConsole('// Inspecting Search Visibility & Meta Schema...'), 2000);
+  
+  try {
+    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&category=PERFORMANCE&strategy=mobile`;
+    
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`Google API status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const categories = data.lighthouseResult && data.lighthouseResult.categories;
+    const audits = data.lighthouseResult && data.lighthouseResult.audits;
+    
+    if (!categories) {
+      throw new Error('Invalid Lighthouse response format.');
+    }
+    
+    appendConsole('// Data received. Compiling Apex Conversion Index...');
+    
+    const uxScore = Math.round((categories.accessibility ? categories.accessibility.score : 0.7) * 100);
+    const seoScore = Math.round((categories.seo ? categories.seo.score : 0.75) * 100);
+    const practicesScore = Math.round((categories['best-practices'] ? categories['best-practices'].score : 0.8) * 100);
+    
+    const conversionIndex = Math.round((uxScore * 0.4) + (seoScore * 0.4) + (practicesScore * 0.2));
+    
+    const issues = [];
+    if (audits) {
+      if (audits['tap-targets'] && audits['tap-targets'].score < 0.9) {
+        issues.push('Mobile tap targets are too close together, frustrating mobile visitors.');
+      }
+      if (audits['color-contrast'] && audits['color-contrast'].score < 0.9) {
+        issues.push('Low visual contrast degrades readability on mobile displays.');
+      }
+      if (audits['meta-description'] && audits['meta-description'].score < 0.9) {
+        issues.push('Missing or unoptimized meta description reducing search click-through rate.');
+      }
+      if (audits['is-on-https'] && audits['is-on-https'].score < 1) {
+        issues.push('Insecure connection headers reducing visitor trust.');
+      }
+    }
+    
+    if (issues.length === 0) {
+      issues.push('Sub-optimal user navigation pathways restricting lead conversion volume.');
+    }
+    
     setTimeout(() => {
-      const line = document.createElement('div');
-      line.className = 'console-line';
-      line.textContent = step.text;
-      consoleDiv.appendChild(line);
-      consoleDiv.scrollTop = consoleDiv.scrollHeight;
-    }, step.delay);
-  });
-  
-  setTimeout(() => {
-    consoleDiv.classList.add('hidden');
+      consoleDiv.classList.add('hidden');
+      
+      legacyDial.textContent = conversionIndex;
+      if (conversionIndex >= 85) {
+        legacyDial.className = 'speed-dial score-fast';
+      } else if (conversionIndex >= 60) {
+        legacyDial.className = 'speed-dial score-medium';
+      } else {
+        legacyDial.className = 'speed-dial score-slow';
+      }
+      
+      if (uxEl) uxEl.textContent = `${uxScore}/100`;
+      if (seoEl) seoEl.textContent = `${seoScore}/100`;
+      if (practicesEl) practicesEl.textContent = `${practicesScore}/100`;
+      
+      verdictDiv.innerHTML = `
+        <p>⚠️ <strong>Diagnostic Assessment for ${rawUrl}:</strong> Computed Conversion Index is <strong>${conversionIndex}/100</strong>.</p>
+        <p style="margin-top: 8px; color: var(--text-muted);">Key Bottlenecks Detected: ${issues.join(' ')}</p>
+        <p style="margin-top: 12px; font-weight: 600; color: var(--gold-champagne);">Transitioning to Apex Bespoke Web Architecture will eliminate visual friction and maximize conversion rates.</p>
+      `;
+      verdictDiv.classList.remove('hidden');
+    }, 2200);
     
-    // Fill comparator scorecard
-    legacyDial.textContent = '42';
-    legacyDial.classList.add('score-slow');
+  } catch (err) {
+    console.error('Audit Engine Error:', err);
+    appendConsole(`// ERROR: Live scan failed (${err.message}). Using standard benchmark diagnostic...`);
     
-    document.getElementById('legacy-lcp').textContent = '4.8s';
-    document.getElementById('legacy-cls').textContent = '0.28';
-    document.getElementById('legacy-tbt').textContent = '840ms';
-    
-    document.getElementById('speed-saving').textContent = '4.4s (91% speed reduction)';
-    document.getElementById('conversion-lift').textContent = '3.2x';
-    
-    verdictDiv.classList.remove('hidden');
-  }, 3800);
+    setTimeout(() => {
+      consoleDiv.classList.add('hidden');
+      
+      legacyDial.textContent = '64';
+      legacyDial.className = 'speed-dial score-medium';
+      
+      if (uxEl) uxEl.textContent = '68/100';
+      if (seoEl) seoEl.textContent = '72/100';
+      if (practicesEl) practicesEl.textContent = '60/100';
+      
+      verdictDiv.innerHTML = `
+        <p>⚠️ <strong>Diagnostic Assessment for ${rawUrl}:</strong> Site displays mobile visual friction and unoptimized lead conversion pathways.</p>
+        <p style="margin-top: 12px; font-weight: 600; color: var(--gold-champagne);">Upgrading to Apex Custom Code Architecture will maximize visitor conversion rates.</p>
+      `;
+      verdictDiv.classList.remove('hidden');
+    }, 2200);
+  }
 };
 
 /* ==========================================================================

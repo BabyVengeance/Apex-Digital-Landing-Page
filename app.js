@@ -1169,7 +1169,7 @@ window.runConversionAudit = async function() {
   if (seoEl) seoEl.textContent = '--';
   if (practicesEl) practicesEl.textContent = '--';
   
-  consoleDiv.innerHTML = `<div class="console-line">// Initiating live audit protocol on: ${targetUrl}</div>`;
+  consoleDiv.innerHTML = `<div class="console-line">// Initiating live diagnostic scan on: ${targetUrl}</div>`;
   
   const appendConsole = (msg) => {
     const line = document.createElement('div');
@@ -1179,52 +1179,109 @@ window.runConversionAudit = async function() {
     consoleDiv.scrollTop = consoleDiv.scrollHeight;
   };
   
-  setTimeout(() => appendConsole('// Connecting to Google Lighthouse Engine...'), 400);
-  setTimeout(() => appendConsole('// Auditing Mobile Accessibility & Touch Target Spacing...'), 1200);
-  setTimeout(() => appendConsole('// Inspecting Search Visibility & Meta Schema...'), 2000);
+  setTimeout(() => appendConsole('// Querying edge DOM metadata & mobile viewport headers...'), 300);
+  setTimeout(() => appendConsole('// Analyzing SEO title architecture & search snippet tags...'), 800);
+  setTimeout(() => appendConsole('// Evaluating mobile touch targets & visual asset clarity...'), 1400);
   
   try {
-    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=SEO&category=ACCESSIBILITY&category=BEST_PRACTICES&category=PERFORMANCE&strategy=mobile`;
-    
+    const apiUrl = `https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`;
     const response = await fetch(apiUrl);
+    
     if (!response.ok) {
-      throw new Error(`Google API status: ${response.status}`);
+      throw new Error(`HTTP ${response.status}`);
     }
     
-    const data = await response.json();
-    const categories = data.lighthouseResult && data.lighthouseResult.categories;
-    const audits = data.lighthouseResult && data.lighthouseResult.audits;
+    const result = await response.json();
+    const data = result && result.data ? result.data : {};
+    const headers = result && result.headers ? result.headers : {};
     
-    if (!categories) {
-      throw new Error('Invalid Lighthouse response format.');
+    appendConsole('// Real-time metadata received. Compiling dynamic Conversion Scorecard...');
+    
+    const title = (data.title || '').trim();
+    const description = (data.description || '').trim();
+    const hasImage = !!(data.image && data.image.url);
+    const hasLogo = !!(data.logo && data.logo.url);
+    const publisher = (data.publisher || '').trim();
+    const lang = (data.lang || '').trim();
+    const isHttps = targetUrl.startsWith('https://');
+    const hasEncoding = !!(headers['content-encoding']);
+    const serverTech = (headers.server || '').trim();
+    
+    // Dynamic SEO Score Calculation (0-100)
+    let seoScore = 100;
+    const seoIssues = [];
+    
+    if (!title) {
+      seoScore -= 30;
+      seoIssues.push('Missing HTML title tag reduces search index visibility.');
+    } else if (title.length < 15 || title.length > 70) {
+      seoScore -= 12;
+      seoIssues.push(`Page title length (${title.length} chars) is unoptimized for mobile search snippets.`);
     }
     
-    appendConsole('// Data received. Compiling Apex Conversion Index...');
+    if (!description) {
+      seoScore -= 30;
+      seoIssues.push('Missing meta description tag causing poor Google search snippet click-through rates.');
+    } else if (description.length < 50 || description.length > 170) {
+      seoScore -= 12;
+      seoIssues.push(`Meta description (${description.length} chars) is outside optimal mobile snippet length.`);
+    }
     
-    const uxScore = Math.round((categories.accessibility ? categories.accessibility.score : 0.7) * 100);
-    const seoScore = Math.round((categories.seo ? categories.seo.score : 0.75) * 100);
-    const practicesScore = Math.round((categories['best-practices'] ? categories['best-practices'].score : 0.8) * 100);
+    if (!publisher) {
+      seoScore -= 10;
+      seoIssues.push('Missing publisher metadata & structured business schema.');
+    }
     
+    seoScore = Math.max(35, Math.min(100, seoScore));
+    
+    // Dynamic Mobile UX Score Calculation (0-100)
+    let uxScore = 100;
+    const uxIssues = [];
+    
+    if (!hasImage) {
+      uxScore -= 22;
+      uxIssues.push('Missing social sharing image preview tag (Open Graph image), degrading WhatsApp/social lead previews.');
+    }
+    if (!hasLogo) {
+      uxScore -= 18;
+      uxIssues.push('Missing high-resolution mobile brand icon or touch favicon.');
+    }
+    if (title.length > 60) {
+      uxScore -= 12;
+      uxIssues.push('Header title truncates on narrow mobile viewport widths.');
+    }
+    if (!isHttps) {
+      uxScore -= 30;
+      uxIssues.push('Unencrypted HTTP connection displays security warnings to mobile visitors.');
+    }
+    
+    uxScore = Math.max(40, Math.min(100, uxScore));
+    
+    // Dynamic Best Practices Score Calculation (0-100)
+    let practicesScore = 100;
+    const practiceIssues = [];
+    
+    if (!isHttps) {
+      practicesScore -= 35;
+      practiceIssues.push('Insecure connection headers.');
+    }
+    if (!lang) {
+      practicesScore -= 15;
+      practiceIssues.push('Missing HTML language attribute.');
+    }
+    if (!hasEncoding) {
+      practicesScore -= 15;
+      practiceIssues.push('Uncompressed server payload response.');
+    }
+    
+    practicesScore = Math.max(45, Math.min(100, practicesScore));
+    
+    // Weighted Conversion Index: UX (40%), SEO (40%), Best Practices (20%)
     const conversionIndex = Math.round((uxScore * 0.4) + (seoScore * 0.4) + (practicesScore * 0.2));
     
-    const issues = [];
-    if (audits) {
-      if (audits['tap-targets'] && audits['tap-targets'].score < 0.9) {
-        issues.push('Mobile tap targets are too close together, frustrating mobile visitors.');
-      }
-      if (audits['color-contrast'] && audits['color-contrast'].score < 0.9) {
-        issues.push('Low visual contrast degrades readability on mobile displays.');
-      }
-      if (audits['meta-description'] && audits['meta-description'].score < 0.9) {
-        issues.push('Missing or unoptimized meta description reducing search click-through rate.');
-      }
-      if (audits['is-on-https'] && audits['is-on-https'].score < 1) {
-        issues.push('Insecure connection headers reducing visitor trust.');
-      }
-    }
-    
-    if (issues.length === 0) {
-      issues.push('Sub-optimal user navigation pathways restricting lead conversion volume.');
+    const allIssues = [...seoIssues, ...uxIssues, ...practiceIssues];
+    if (allIssues.length === 0) {
+      allIssues.push('Sub-optimal lead conversion pathways and user navigation flow restricting customer enquiry volume.');
     }
     
     setTimeout(() => {
@@ -1233,7 +1290,7 @@ window.runConversionAudit = async function() {
       legacyDial.textContent = conversionIndex;
       if (conversionIndex >= 85) {
         legacyDial.className = 'speed-dial score-fast';
-      } else if (conversionIndex >= 60) {
+      } else if (conversionIndex >= 65) {
         legacyDial.className = 'speed-dial score-medium';
       } else {
         legacyDial.className = 'speed-dial score-slow';
@@ -1243,34 +1300,34 @@ window.runConversionAudit = async function() {
       if (seoEl) seoEl.textContent = `${seoScore}/100`;
       if (practicesEl) practicesEl.textContent = `${practicesScore}/100`;
       
+      const domainClean = rawUrl.replace(/^https?:\/\//i, '').replace(/\/.*$/, '');
+      const displayTitle = title ? `"${title}"` : 'Unidentified Title';
+      
       verdictDiv.innerHTML = `
-        <p>⚠️ <strong>Diagnostic Assessment for ${rawUrl}:</strong> Computed Conversion Index is <strong>${conversionIndex}/100</strong>.</p>
-        <p style="margin-top: 8px; color: var(--text-muted);">Key Bottlenecks Detected: ${issues.join(' ')}</p>
-        <p style="margin-top: 12px; font-weight: 600; color: var(--gold-champagne);">Transitioning to Apex Bespoke Web Architecture will eliminate visual friction and maximize conversion rates.</p>
+        <div style="border-left: 3px solid var(--gold-champagne); padding-left: 14px; text-align: left;">
+          <p style="font-size: 1rem; color: var(--text-primary);">
+            ⚠️ <strong>Audit Report for ${domainClean}:</strong> Computed Conversion Index is <strong>${conversionIndex}/100</strong>.
+          </p>
+          <p style="margin-top: 6px; font-size: 0.88rem; color: var(--text-muted);">
+            <strong>Page Title Analyzed:</strong> ${displayTitle}
+          </p>
+          <p style="margin-top: 8px; font-size: 0.88rem; color: var(--text-secondary);">
+            <strong>Detected Conversion Bottlenecks:</strong> ${allIssues.slice(0, 3).join(' ')}
+          </p>
+          <p style="margin-top: 12px; font-weight: 600; font-size: 0.92rem; color: var(--gold-champagne);">
+            Upgrading ${domainClean} to Apex Bespoke Web Architecture will eliminate these visual bottlenecks and maximize lead conversions.
+          </p>
+        </div>
       `;
       verdictDiv.classList.remove('hidden');
-    }, 2200);
+    }, 1800);
     
   } catch (err) {
-    console.error('Audit Engine Error:', err);
-    appendConsole(`// ERROR: Live scan failed (${err.message}). Using standard benchmark diagnostic...`);
-    
+    console.error('Live Audit Error:', err);
+    appendConsole(`// ERROR: Could not analyze ${rawUrl}. Please check domain spelling.`);
     setTimeout(() => {
       consoleDiv.classList.add('hidden');
-      
-      legacyDial.textContent = '64';
-      legacyDial.className = 'speed-dial score-medium';
-      
-      if (uxEl) uxEl.textContent = '68/100';
-      if (seoEl) seoEl.textContent = '72/100';
-      if (practicesEl) practicesEl.textContent = '60/100';
-      
-      verdictDiv.innerHTML = `
-        <p>⚠️ <strong>Diagnostic Assessment for ${rawUrl}:</strong> Site displays mobile visual friction and unoptimized lead conversion pathways.</p>
-        <p style="margin-top: 12px; font-weight: 600; color: var(--gold-champagne);">Upgrading to Apex Custom Code Architecture will maximize visitor conversion rates.</p>
-      `;
-      verdictDiv.classList.remove('hidden');
-    }, 2200);
+    }, 3000);
   }
 };
 

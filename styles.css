@@ -2660,8 +2660,8 @@ h1, h2, h3, h4, h5, h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 118px;
-  height: 118px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
   background: #000000;
   border: 1.5px solid var(--border-champagne);
@@ -2669,22 +2669,25 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  box-shadow: 0 0 40px rgba(223, 195, 138, 0.3), inset 0 0 15px rgba(223, 195, 138, 0.15);
+  box-shadow: 0 0 30px rgba(223, 195, 138, 0.25), inset 0 0 12px rgba(223, 195, 138, 0.1);
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .ecosystem-canvas-card:hover .ecosystem-center-badge {
-  transform: translate(-50%, -50%) scale(1.06);
+  transform: translate(-50%, -50%) scale(1.05);
   border-color: var(--champagne-light);
 }
 
 .center-badge-logo {
-  width: 78px;
-  height: 78px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(223, 195, 138, 0.5));
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  filter: drop-shadow(0 0 6px rgba(223, 195, 138, 0.35));
+  image-rendering: auto;
+  image-rendering: smooth;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .badge-ring-pulse {

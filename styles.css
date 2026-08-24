@@ -288,15 +288,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo {
-  height: 64px;
+  height: 80px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 14px var(--champagne-glow));
+  filter: drop-shadow(0 0 16px var(--champagne-glow));
   transition: height var(--transition-smooth), transform var(--transition-fast);
 }
 
 .navbar.scrolled .nav-logo {
-  height: 52px;
+  height: 65px;
 }
 
 .nav-brand:hover .nav-logo {

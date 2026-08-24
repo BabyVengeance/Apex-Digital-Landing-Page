@@ -675,27 +675,38 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 16px;
 }
 
+.agency-content-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .agency-manifesto-text {
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   line-height: 1.75;
   color: var(--text-ivory);
-  margin-bottom: 40px;
+  margin-bottom: 28px;
   font-weight: 300;
 }
 
 .agency-pillars-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
+  flex: 1;
 }
 
 .agency-pillar-card {
   background: var(--surface-card);
   border: 1px solid var(--border-subtle);
   border-left: 3px solid var(--border-champagne);
-  padding: 24px 28px;
+  padding: 22px 28px;
   border-radius: 2px;
   transition: var(--transition-smooth);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .agency-pillar-card:hover {

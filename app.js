@@ -867,6 +867,44 @@ function initChatbotWidget() {
         submitUserQuery(queryText);
       });
     });
+
+    // Enable Mouse Wheel Horizontal Scrolling
+    promptsEl.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        promptsEl.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+
+    // Enable Click & Drag Physics for Mouse Users
+    let isDown = false;
+    let startX;
+    let scrollLeftPos;
+
+    promptsEl.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - promptsEl.offsetLeft;
+      scrollLeftPos = promptsEl.scrollLeft;
+      promptsEl.style.cursor = 'grabbing';
+    });
+
+    promptsEl.addEventListener('mouseleave', () => {
+      isDown = false;
+      promptsEl.style.cursor = 'default';
+    });
+
+    promptsEl.addEventListener('mouseup', () => {
+      isDown = false;
+      promptsEl.style.cursor = 'default';
+    });
+
+    promptsEl.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - promptsEl.offsetLeft;
+      const walk = (x - startX) * 2;
+      promptsEl.scrollLeft = scrollLeftPos - walk;
+    });
   }
 
   // Submit Handler

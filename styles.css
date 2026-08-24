@@ -2022,10 +2022,29 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   background: rgba(10, 10, 14, 0.95);
   border-top: 1px solid rgba(212, 175, 55, 0.15);
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--champagne-dark) transparent;
 }
 
 .chat-quick-prompts::-webkit-scrollbar {
-  display: none;
+  height: 4px;
+  display: block;
+}
+
+.chat-quick-prompts::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.chat-quick-prompts::-webkit-scrollbar-thumb {
+  background: var(--champagne-dark);
+  border-radius: 2px;
+}
+
+.chat-quick-prompts::-webkit-scrollbar-thumb:hover {
+  background: var(--champagne);
 }
 
 .prompt-chip {

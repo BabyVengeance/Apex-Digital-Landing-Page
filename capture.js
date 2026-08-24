@@ -2,12 +2,12 @@ const fs = require('fs');
 const https = require('https');
 
 const sites = [
-  { url: 'https://compasslogistics.co.za', file: 'preview_compass.jpg' },
-  { url: 'https://bossrides.co.za/wordpress_5', file: 'preview_boss.jpg' },
-  { url: 'https://globalcolourcorrect.com', file: 'preview_colour.jpg' },
-  { url: 'https://ayesham.co.za/products/design-your-mag-case', file: 'preview_ayesha.jpg' },
-  { url: 'https://catoridge.netlify.app', file: 'preview_catoridge.jpg' },
-  { url: 'https://propertyportfolio.netlify.app', file: 'preview_property.jpg' }
+  { url: 'https://compasslogistics.co.za', file: 'assets/images/preview_compass.jpg' },
+  { url: 'https://bossrides.co.za/wordpress_5', file: 'assets/images/preview_boss.jpg' },
+  { url: 'https://globalcolourcorrect.com', file: 'assets/images/preview_colour.jpg' },
+  { url: 'https://ayesham.co.za/products/design-your-mag-case', file: 'assets/images/preview_ayesha.jpg' },
+  { url: 'https://catoridge.netlify.app', file: 'assets/images/preview_catoridge.jpg' },
+  { url: 'https://propertyportfolio.netlify.app', file: 'assets/images/preview_property.jpg' }
 ];
 
 function getJson(url) {

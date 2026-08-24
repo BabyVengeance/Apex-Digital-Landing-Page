@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initChatbotWidget();
   initCalculator();
   initWorkPreviews();
+  initEcosystemCanvas();
 
   // Register service worker for offline edge caching
   if ('serviceWorker' in navigator) {
@@ -1313,5 +1314,125 @@ window.toggleFaq = function(e) {
     item.classList.add('active');
   }
 };
+
+/* ==========================================================================
+   16. INTERACTIVE ECOSYSTEM NODE NETWORK CANVAS ENGINE
+   ========================================================================== */
+function initEcosystemCanvas() {
+  const container = document.getElementById('ecosystem-canvas-card');
+  const canvas = document.getElementById('ecosystem-canvas');
+  if (!container || !canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width, height, centerX, centerY;
+  let mouseX = 0, mouseY = 0;
+  let isHovered = false;
+
+  function resize() {
+    width = canvas.width = container.clientWidth;
+    height = canvas.height = container.clientHeight;
+    centerX = width / 2;
+    centerY = height / 2;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    mouseX = e.clientX - rect.left - centerX;
+    mouseY = e.clientY - rect.top - centerY;
+    isHovered = true;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isHovered = false;
+  });
+
+  // Generate 36 interactive orbiting gold particles
+  const nodeCount = 36;
+  const nodes = [];
+
+  for (let i = 0; i < nodeCount; i++) {
+    const angle = (Math.PI * 2 / nodeCount) * i + (Math.random() * 0.5);
+    const distance = 55 + Math.random() * (Math.min(width, height) * 0.38);
+    nodes.push({
+      baseAngle: angle,
+      angle: angle,
+      distance: distance,
+      baseDistance: distance,
+      radius: 1.5 + Math.random() * 2.5,
+      speed: (0.002 + Math.random() * 0.004) * (i % 2 === 0 ? 1 : -1),
+      pulse: Math.random() * Math.PI * 2
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Dynamic mouse parallax offsets
+    const targetOffsetX = isHovered ? mouseX * 0.12 : 0;
+    const targetOffsetY = isHovered ? mouseY * 0.12 : 0;
+
+    // Draw central ambient pulse rings
+    const time = Date.now() * 0.002;
+    for (let r = 1; r <= 3; r++) {
+      const ringRadius = 42 + r * 32 + Math.sin(time + r) * 5;
+      ctx.beginPath();
+      ctx.arc(centerX + targetOffsetX * 0.25, centerY + targetOffsetY * 0.25, ringRadius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(223, 195, 138, ${0.09 / r})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Update & draw nodes and geometric connecting webs
+    nodes.forEach((node, idx) => {
+      node.angle += node.speed;
+      node.pulse += 0.03;
+      
+      const currentDistance = node.distance + Math.sin(node.pulse) * 4;
+      const x = centerX + Math.cos(node.angle) * currentDistance + targetOffsetX * (node.distance / 140);
+      const y = centerY + Math.sin(node.angle) * currentDistance + targetOffsetY * (node.distance / 140);
+
+      // Line connecting to central gold logo
+      const distToCenter = Math.hypot(x - centerX, y - centerY);
+      const lineAlpha = Math.max(0, 0.32 - distToCenter / (width * 0.5));
+      ctx.beginPath();
+      ctx.moveTo(centerX + targetOffsetX * 0.2, centerY + targetOffsetY * 0.2);
+      ctx.lineTo(x, y);
+      ctx.strokeStyle = `rgba(223, 195, 138, ${lineAlpha})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Inter-node network grid connections
+      nodes.forEach((otherNode, oIdx) => {
+        if (idx >= oIdx) return;
+        const otherX = centerX + Math.cos(otherNode.angle) * otherNode.distance + targetOffsetX * (otherNode.distance / 140);
+        const otherY = centerY + Math.sin(otherNode.angle) * otherNode.distance + targetOffsetY * (otherNode.distance / 140);
+        const d = Math.hypot(x - otherX, y - otherY);
+
+        if (d < 85) {
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(otherX, otherY);
+          ctx.strokeStyle = `rgba(223, 195, 138, ${0.25 * (1 - d / 85)})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      });
+
+      // Draw Glowing Gold Node Point
+      ctx.beginPath();
+      ctx.arc(x, y, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(244, 226, 187, ${0.45 + Math.sin(node.pulse) * 0.35})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#dfc38a';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+
+    requestAnimationFrame(render);
+  }
+  render();
+}
 
 

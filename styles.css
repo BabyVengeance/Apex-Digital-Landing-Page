@@ -2700,9 +2700,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [data-theme="light"] .ecosystem-center-badge {
-  background: #111115;
-  border-color: rgba(184, 146, 85, 0.6);
-  box-shadow: 0 0 30px rgba(184, 146, 85, 0.3);
+  background: #FFFFFF;
+  border-color: rgba(184, 146, 85, 0.45);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
 }
 
 .ecosystem-canvas-card:hover .ecosystem-center-badge {
@@ -2714,7 +2714,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 58px;
   height: 58px;
   object-fit: contain;
-  filter: drop-shadow(0 0 6px rgba(223, 195, 138, 0.35));
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
   image-rendering: auto;
   image-rendering: smooth;
   -webkit-backface-visibility: hidden;
@@ -2759,6 +2759,11 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
   transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
 }
+
+.tag-top-left { top: 14%; left: 6%; }
+.tag-top-right { top: 14%; right: 6%; }
+.tag-bottom-left { bottom: 14%; left: 6%; }
+.tag-bottom-right { bottom: 14%; right: 6%; }
 
 [data-theme="light"] .node-tag {
   background: rgba(255, 255, 255, 0.94);

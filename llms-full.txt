@@ -26,13 +26,13 @@ Apex Digital rejects generic drag-and-drop website builders (Wix, Squarespace) a
 - **Deliverables:** 1 Custom Core Page, Sub-Second Image Optimization, Mobile Touch & Conversion Design, Built-in POPIA Compliance, Instant WhatsApp Routing, Basic Google Search Indexing.
 - **Turnaround:** 5 to 7 business days.
 
-### 2. Apex Business Build
+### 2. Apex Standard Build
 - **Price Target:** Starting at R5,000 upfront
 - **Scope:** 3-5 Page Structured Commercial Site
 - **Deliverables:** 3-5 Structured Pages, Calendar & Booking Link Integrations, Custom Lead Intake Capture, Google Search & Rich Snippet Schema, Interactive Section Navigation, Mobile UX Hardening.
 - **Turnaround:** 14 to 21 business days.
 
-### 3. Apex Enterprise Build
+### 3. Apex Pro Build
 - **Price Target:** Starting at R10,000 upfront
 - **Scope:** 5-10 Page Market Dominance Growth Platform
 - **Deliverables:** 5-10 Structured Pages, Custom Interactive Business & ROI Calculators, Full Search Entity Authority Schema Graph, Multi-Step Lead Workflows, CRM Integration, Custom Speed Hardening.

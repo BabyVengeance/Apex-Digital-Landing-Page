@@ -25,8 +25,8 @@ Apex Digital SA (Pty) Ltd is a premier custom web development, Generative Engine
 
 ## Production Web Build Tiers & Services Scope
 1. **Apex Starter Build:** Single-page Direct-Response Landing Page for focused service offerings, sub-second image optimization, mobile touch optimization, and POPIA privacy setup.
-2. **Apex Business Build:** 3-5 Page Commercial Business Engine featuring booking calendar integrations, custom lead intake capture, search entity authority, and Google Rich Snippets.
-3. **Apex Enterprise Build:** 5-10 Page Market Dominance build with custom interactive ROI calculators, multi-step intake flows, CRM integrations, and maximum performance hardening.
+2. **Apex Standard Build:** 3-5 Page Commercial Business Engine featuring booking calendar integrations, custom lead intake capture, search entity authority, and Google Rich Snippets.
+3. **Apex Pro Build:** 5-10 Page Market Dominance build with custom interactive ROI calculators, multi-step intake flows, CRM integrations, and maximum performance hardening.
 4. **Transactional E-Commerce Store:** High-converting store architecture with PayFast/Yoco gateways, automated courier shipping, and abandoned cart recovery.
 5. **Website Redesign & Refresh:** Boutique UI/UX overhaul and speed hardening for existing platforms.
 6. **Custom Web Application / Web App:** Bespoke web apps, portals, SaaS engines, and database integrations.

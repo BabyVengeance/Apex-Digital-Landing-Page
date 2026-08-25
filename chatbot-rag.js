@@ -39,8 +39,8 @@ Ideal for running paid ad traffic, launching a new service, or replacing an outd
     {
       id: "standard_tier",
       intents: ["standard", "business website", "5 page", "normal site", "booking widget", "whatsapp chat", "r5000", "commercial"],
-      title: "Apex Business Build (Starting at R5,000)",
-      response: `Our **Apex Business Build** is our most popular multi-page commercial architecture, engineered to establish strong industry authority and double visitor conversion rates:
+      title: "Apex Standard Build (Starting at R5,000)",
+      response: `Our **Apex Standard Build** is our most popular multi-page commercial architecture, engineered to establish strong industry authority and double visitor conversion rates:
 
 ### Key Deliverables:
 - **Scope**: 3–5 structured pages (Home, About, Core Services, Portfolio/Showcase, Contact).
@@ -49,13 +49,13 @@ Ideal for running paid ad traffic, launching a new service, or replacing an outd
 - **Speed Engineering**: Hand-crafted CSS/JS animations with sub-0.4s page load speeds.
 
 Built for established service providers, logistics firms, real estate agencies, and commercial vendors looking for continuous qualified inbound leads.`,
-      cta: { text: "Request Business Quote", action: "openModal" }
+      cta: { text: "Request Standard Quote", action: "openModal" }
     },
     {
       id: "pro_tier",
       intents: ["pro", "enterprise", "full website", "complete site", "automation", "best package", "top tier", "r10000", "dominance"],
-      title: "Apex Enterprise Build (Starting at R10,000)",
-      response: `The **Apex Enterprise Build** is our premier growth engine for businesses seeking market dominance and maximum administrative automation:
+      title: "Apex Pro Build (Starting at R10,000)",
+      response: `The **Apex Pro Build** is our premier growth engine for businesses seeking market dominance and maximum administrative automation:
 
 ### Advanced Capabilities:
 - **Scope**: 5–10 bespoke pages with tailored UI/UX design systems.
@@ -64,7 +64,7 @@ Built for established service providers, logistics firms, real estate agencies, 
 - **Included SLA**: First month of dedicated web engineering & technical maintenance free of charge.
 
 Designed for high-growth enterprises that need bespoke tools, zero performance bottlenecks, and a platform that scales seamlessly.`,
-      cta: { text: "Request Enterprise Blueprint", action: "openModal" }
+      cta: { text: "Request Pro Blueprint", action: "openModal" }
     },
     {
       id: "maintenance_plans",
@@ -207,8 +207,8 @@ A 1-second delay in page load time reduces conversions by up to 20%. Apex Digita
 ====================================================================
 A. APEX WEB BUILD TIERS:
 - Apex Starter Build (Starting at R1,500): 1–2 custom hand-coded pages (Home & Contact). Designed for lean startups, sole proprietors, or single-service offers needing a fast, slick, direct-response landing page with direct lead form capture, POPIA compliance, and sub-second mobile loading. Zero monthly builder lock-in.
-- Apex Business Build (Starting at R5,000): Flagship commercial 3–5 page business site (Home, About, Services, Showcase, Contact). Engineered for established SA SMBs needing structured service showcases, WhatsApp direct chat, calendar booking widgets, custom intake calculators, and baseline Google Search & Rich Snippet setup.
-- Apex Enterprise Build (Starting at R10,000): Complete market dominance engine (5–10 bespoke pages). Features custom interactive business calculators, multi-step lead workflows, CRM webhook routing, sub-0.4s performance tuning, Google Search launchpad, and 1st month maintenance & priority SLA free.
+- Apex Standard Build (Starting at R5,000): Flagship commercial 3–5 page business site (Home, About, Services, Showcase, Contact). Engineered for established SA SMBs needing structured service showcases, WhatsApp direct chat, calendar booking widgets, custom intake calculators, and baseline Google Search & Rich Snippet setup.
+- Apex Pro Build (Starting at R10,000): Complete market dominance engine (5–10 bespoke pages). Features custom interactive business calculators, multi-step lead workflows, CRM webhook routing, sub-0.4s performance tuning, Google Search launchpad, and 1st month maintenance & priority SLA free.
 
 B. ONGOING GROWTH PATHWAYS & SLA RETAINERS:
 - Self-Managed: Client owns 100% custom code with zero monthly fees.

@@ -218,7 +218,7 @@ B. ONGOING GROWTH PATHWAYS & SLA RETAINERS:
 
 C. THE APEX ARCHITECTURAL ADVANTAGE (CUSTOM CODE VS CMS):
 - Custom Hand-Coded Architecture (HTML5, CSS3, Vanilla JS): Sub-0.4s load speed, 99/100 Google PageSpeed scores, zero slow CMS plugin bloat, zero vulnerability to plugin exploits, 100% code ownership with zero monthly subscription locks.
-- Transactional E-Commerce Stores: Built with PayFast and Yoco South African payment gateways, Tunl global shipping, automated courier rates, abandoned cart recovery, and mobile-first checkout flows.
+- Transactional E-Commerce Stores: High-converting e-commerce engines across Shopify, WooCommerce, Wix, and bespoke custom code architectures. Integrated with PayFast/Yoco South African payment gateways, automated courier shipping rates, abandoned cart recovery, and mobile-first checkout flows.
 - Website Redesign & Refresh: Modern boutique UI/UX overhaul, speed hardening, and mobile conversion refactoring for existing websites.
 - Custom Web Applications & Apps: Bespoke SaaS MVP engines, interactive client portals, dynamic web apps, and serverless API/database integrations.
 - AI Automation & AI-Ops Engines: Custom RAG chatbot deployment, lead-to-viewing automated routing, CRM webhook sync, and operational AI workflow agents.

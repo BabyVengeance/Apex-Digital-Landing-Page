@@ -1214,200 +1214,166 @@ function initWorkPreviews() {
 /* ==========================================================================
    14. INTERACTIVE LIVE MOBILE UX & CONVERSION AUDIT ENGINE
    ========================================================================== */
-window.runConversionAudit = async function() {
-  const urlInput = document.getElementById('auditor-url');
-  const consoleDiv = document.getElementById('auditor-console');
-  const verdictDiv = document.getElementById('auditor-verdict');
-  const legacyDial = document.getElementById('legacy-dial');
+let currentDigitalStatus = 'no-website'; // 'no-website' or 'outdated-website'
+let currentSimMode = 'b2b';
+let currentSelectedSpeed = 3.5;
+
+window.setDigitalStatus = function(status) {
+  currentDigitalStatus = status;
+  const noSiteBtn = document.getElementById('status-no-site');
+  const oldSiteBtn = document.getElementById('status-old-site');
+  const speedGroup = document.getElementById('speed-control-group');
   
-  if (!urlInput || !consoleDiv || !verdictDiv || !legacyDial) return;
+  if (noSiteBtn) noSiteBtn.classList.toggle('active', status === 'no-website');
+  if (oldSiteBtn) oldSiteBtn.classList.toggle('active', status === 'outdated-website');
   
-  let rawUrl = urlInput.value.trim();
-  if (!rawUrl) {
-    alert('Please enter a valid website URL (e.g. yourcompany.co.za)');
-    return;
+  if (speedGroup) {
+    speedGroup.style.display = status === 'no-website' ? 'none' : 'block';
   }
   
-  let targetUrl = rawUrl;
-  if (!/^https?:\/\//i.test(targetUrl)) {
-    targetUrl = 'https://' + targetUrl;
+  const demandLabel = document.getElementById('demand-label');
+  const inputTitle = document.getElementById('input-title');
+  const inputDesc = document.getElementById('input-desc');
+  const scorecardTitle = document.getElementById('scorecard-title');
+  const metricLabel = document.getElementById('scorecard-metric-label');
+  const citationText = document.getElementById('citation-text');
+  const ctaBtn = document.getElementById('sim-cta-btn');
+  
+  if (status === 'no-website') {
+    if (demandLabel) demandLabel.innerText = "Monthly Local Industry Searches";
+    if (inputTitle) inputTitle.innerText = "1. Local Search Demand & Contract Value";
+    if (inputDesc) inputDesc.innerText = "Adjust local monthly search volume and deal size to calculate lost revenue handed to competitors.";
+    if (scorecardTitle) scorecardTitle.innerText = "2. Competitor Market Leakage Scorecard";
+    if (metricLabel) metricLabel.innerText = "ESTIMATED REVENUE HANDED TO COMPETITORS EVERY MONTH";
+    if (citationText) citationText.innerHTML = "Calculations based on BrightLocal 2024 Study (81% of buyers research online before hiring) &amp; Google Local Search Intent Data (62% of clicks go to top local websites).";
+    if (ctaBtn) ctaBtn.innerHTML = "CAPTURE YOUR LOCAL MARKET REVENUE &rarr;";
+  } else {
+    if (demandLabel) demandLabel.innerText = "Monthly Website Visitors";
+    if (inputTitle) inputTitle.innerText = "1. Business Metrics &amp; Speed Profile";
+    if (inputDesc) inputDesc.innerText = "Adjust your monthly traffic, deal size, and estimated load time to analyze your current revenue tax.";
+    if (scorecardTitle) scorecardTitle.innerText = "2. Financial Revenue Latency Tax";
+    if (metricLabel) metricLabel.innerText = "ESTIMATED MONTHLY LEAKED REVENUE";
+    if (citationText) citationText.innerHTML = "Calculations based on Deloitte Digital's <em>'Milliseconds Make Millions'</em> study (10.1% B2B lead loss per 0.1s delay) and Google Consumer Insights.";
+    if (ctaBtn) ctaBtn.innerHTML = "ELIMINATE REVENUE LATENCY TAX &rarr;";
   }
   
-  consoleDiv.classList.remove('hidden');
-  verdictDiv.classList.add('hidden');
+  window.updateRevenueSimulator();
+};
+
+window.setSimulatorMode = function(mode) {
+  currentSimMode = mode;
+  const b2bBtn = document.getElementById('sim-mode-b2b');
+  const b2cBtn = document.getElementById('sim-mode-b2c');
+  if (b2bBtn) b2bBtn.classList.toggle('active', mode === 'b2b');
+  if (b2cBtn) b2cBtn.classList.toggle('active', mode === 'b2c');
   
-  legacyDial.textContent = '--';
-  legacyDial.className = 'speed-dial';
+  const valueLabel = document.getElementById('value-label');
+  const valueSlider = document.getElementById('sim-value');
   
-  const uxEl = document.getElementById('legacy-ux');
-  const seoEl = document.getElementById('legacy-seo');
-  const practicesEl = document.getElementById('legacy-practices');
+  if (valueLabel && valueSlider) {
+    if (mode === 'b2b') {
+      valueLabel.innerText = "Average Client / Deal Value (ZAR)";
+      valueSlider.min = 1500;
+      valueSlider.max = 150000;
+      valueSlider.step = 1000;
+      valueSlider.value = 15000;
+    } else {
+      valueLabel.innerText = "Average Order / Transaction Value (ZAR)";
+      valueSlider.min = 150;
+      valueSlider.max = 15000;
+      valueSlider.step = 100;
+      valueSlider.value = 1200;
+    }
+  }
   
-  if (uxEl) uxEl.textContent = '--';
-  if (seoEl) seoEl.textContent = '--';
-  if (practicesEl) practicesEl.textContent = '--';
+  window.updateRevenueSimulator();
+};
+
+window.setSpeedTier = function(button, speed) {
+  document.querySelectorAll('.sim-speed-btn').forEach(btn => btn.classList.remove('active'));
+  if (button) button.classList.add('active');
+  currentSelectedSpeed = parseFloat(speed);
+  window.updateRevenueSimulator();
+};
+
+window.updateRevenueSimulator = function() {
+  const trafficEl = document.getElementById('sim-traffic');
+  const valueEl = document.getElementById('sim-value');
+  if (!trafficEl || !valueEl) return;
   
-  consoleDiv.innerHTML = `<div class="console-line">// Initiating live diagnostic scan on: ${targetUrl}</div>`;
+  const traffic = parseInt(trafficEl.value, 10);
+  const dealValue = parseInt(valueEl.value, 10);
   
-  const appendConsole = (msg) => {
-    const line = document.createElement('div');
-    line.className = 'console-line';
-    line.textContent = msg;
-    consoleDiv.appendChild(line);
-    consoleDiv.scrollTop = consoleDiv.scrollHeight;
-  };
+  const trafficBadge = document.getElementById('traffic-badge');
+  const valueBadge = document.getElementById('value-badge');
+  if (trafficBadge) trafficBadge.innerText = traffic.toLocaleString() + " / mo";
+  if (valueBadge) valueBadge.innerText = "R " + dealValue.toLocaleString();
   
-  setTimeout(() => appendConsole('// Querying edge DOM metadata & mobile viewport headers...'), 300);
-  setTimeout(() => appendConsole('// Analyzing SEO title architecture & search snippet tags...'), 800);
-  setTimeout(() => appendConsole('// Evaluating mobile touch targets & visual asset clarity...'), 1400);
+  let monthlyLoss = 0;
+  let currentCaptureRate = 0;
+  let apexTargetRate = 0.15; // 15% target market capture
   
-  try {
-    const apiUrl = `https://api.microlink.io?url=${encodeURIComponent(targetUrl)}`;
-    const response = await fetch(apiUrl);
+  if (currentDigitalStatus === 'no-website') {
+    // 81% of buyers search online (BrightLocal)
+    const activeOnlineBuyers = traffic * 0.81;
+    // Top 3 websites capture ~62% of traffic, producing 15% lead conversions
+    const competitorCapturedLeads = activeOnlineBuyers * apexTargetRate;
     
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+    monthlyLoss = Math.round(competitorCapturedLeads * dealValue);
+    currentCaptureRate = 0.0;
+  } else {
+    // Outdated Website Mode
+    const baseRate = currentSimMode === 'b2b' ? 0.0235 : 0.0182;
+    apexTargetRate = baseRate * 1.6;
+    
+    let latencyPenalty = 0.45;
+    if (currentSelectedSpeed <= 1.5) latencyPenalty = 0.0;
+    else if (currentSelectedSpeed <= 3.5) latencyPenalty = 0.45;
+    else if (currentSelectedSpeed <= 5.0) latencyPenalty = 0.65;
+    else latencyPenalty = 0.82;
+    
+    currentCaptureRate = baseRate * (1 - latencyPenalty);
+    const lostConversions = Math.max(0, (traffic * apexTargetRate) - (traffic * currentCaptureRate));
+    monthlyLoss = Math.round(lostConversions * dealValue);
+  }
+  
+  const annualLoss = monthlyLoss * 12;
+  
+  const monthlyLossDisplay = document.getElementById('monthly-loss-display');
+  const annualLossDisplay = document.getElementById('annual-loss-display');
+  if (monthlyLossDisplay) {
+    monthlyLossDisplay.innerHTML = `R ${monthlyLoss.toLocaleString()} <span class="monthly-loss-sub">/ mo</span>`;
+  }
+  if (annualLossDisplay) {
+    annualLossDisplay.innerText = `R ${annualLoss.toLocaleString()} / yr`;
+  }
+  
+  const currentConvLabel = document.getElementById('current-conv-label');
+  const currentConvEl = document.getElementById('current-conv-rate');
+  const apexConvEl = document.getElementById('apex-conv-rate');
+  const currentBar = document.getElementById('current-bar');
+  
+  if (currentDigitalStatus === 'no-website') {
+    if (currentConvLabel) currentConvLabel.innerText = "Current Search Capture Rate:";
+    if (currentConvEl) currentConvEl.innerText = "0.0% (Invisible)";
+    if (apexConvEl) apexConvEl.innerText = "15.0% (Market Leader)";
+    if (currentBar) currentBar.style.width = "0%";
+  } else {
+    if (currentConvLabel) currentConvLabel.innerText = "Current Estimated Conversion Rate:";
+    if (currentConvEl) currentConvEl.innerText = (currentCaptureRate * 100).toFixed(2) + "%";
+    if (apexConvEl) apexConvEl.innerText = (apexTargetRate * 100).toFixed(2) + "%";
+    if (currentBar) {
+      const barPercent = Math.max(10, Math.min(100, (currentCaptureRate / apexTargetRate) * 100));
+      currentBar.style.width = barPercent + "%";
     }
-    
-    const result = await response.json();
-    const data = result && result.data ? result.data : {};
-    const headers = result && result.headers ? result.headers : {};
-    
-    appendConsole('// Real-time metadata received. Compiling dynamic Conversion Scorecard...');
-    
-    const title = (data.title || '').trim();
-    const description = (data.description || '').trim();
-    const hasImage = !!(data.image && data.image.url);
-    const hasLogo = !!(data.logo && data.logo.url);
-    const publisher = (data.publisher || '').trim();
-    const lang = (data.lang || '').trim();
-    const isHttps = targetUrl.startsWith('https://');
-    const hasEncoding = !!(headers['content-encoding']);
-    const serverTech = (headers.server || '').trim();
-    
-    // Dynamic SEO Score Calculation (0-100)
-    let seoScore = 100;
-    const seoIssues = [];
-    
-    if (!title) {
-      seoScore -= 30;
-      seoIssues.push('Missing HTML title tag reduces search index visibility.');
-    } else if (title.length < 15 || title.length > 70) {
-      seoScore -= 12;
-      seoIssues.push(`Page title length (${title.length} chars) is unoptimized for mobile search snippets.`);
-    }
-    
-    if (!description) {
-      seoScore -= 30;
-      seoIssues.push('Missing meta description tag causing poor Google search snippet click-through rates.');
-    } else if (description.length < 50 || description.length > 170) {
-      seoScore -= 12;
-      seoIssues.push(`Meta description (${description.length} chars) is outside optimal mobile snippet length.`);
-    }
-    
-    if (!publisher) {
-      seoScore -= 10;
-      seoIssues.push('Missing publisher metadata & structured business schema.');
-    }
-    
-    seoScore = Math.max(35, Math.min(100, seoScore));
-    
-    // Dynamic Mobile UX Score Calculation (0-100)
-    let uxScore = 100;
-    const uxIssues = [];
-    
-    if (!hasImage) {
-      uxScore -= 22;
-      uxIssues.push('Missing social sharing image preview tag (Open Graph image), degrading WhatsApp/social lead previews.');
-    }
-    if (!hasLogo) {
-      uxScore -= 18;
-      uxIssues.push('Missing high-resolution mobile brand icon or touch favicon.');
-    }
-    if (title.length > 60) {
-      uxScore -= 12;
-      uxIssues.push('Header title truncates on narrow mobile viewport widths.');
-    }
-    if (!isHttps) {
-      uxScore -= 30;
-      uxIssues.push('Unencrypted HTTP connection displays security warnings to mobile visitors.');
-    }
-    
-    uxScore = Math.max(40, Math.min(100, uxScore));
-    
-    // Dynamic Best Practices Score Calculation (0-100)
-    let practicesScore = 100;
-    const practiceIssues = [];
-    
-    if (!isHttps) {
-      practicesScore -= 35;
-      practiceIssues.push('Insecure connection headers.');
-    }
-    if (!lang) {
-      practicesScore -= 15;
-      practiceIssues.push('Missing HTML language attribute.');
-    }
-    if (!hasEncoding) {
-      practicesScore -= 15;
-      practiceIssues.push('Uncompressed server payload response.');
-    }
-    
-    practicesScore = Math.max(45, Math.min(100, practicesScore));
-    
-    // Weighted Conversion Index: UX (40%), SEO (40%), Best Practices (20%)
-    const conversionIndex = Math.round((uxScore * 0.4) + (seoScore * 0.4) + (practicesScore * 0.2));
-    
-    const allIssues = [...seoIssues, ...uxIssues, ...practiceIssues];
-    if (allIssues.length === 0) {
-      allIssues.push('Sub-optimal lead conversion pathways and user navigation flow restricting customer enquiry volume.');
-    }
-    
-    setTimeout(() => {
-      consoleDiv.classList.add('hidden');
-      
-      legacyDial.textContent = conversionIndex;
-      if (conversionIndex >= 85) {
-        legacyDial.className = 'speed-dial score-fast';
-      } else if (conversionIndex >= 65) {
-        legacyDial.className = 'speed-dial score-medium';
-      } else {
-        legacyDial.className = 'speed-dial score-slow';
-      }
-      
-      if (uxEl) uxEl.textContent = `${uxScore}/100`;
-      if (seoEl) seoEl.textContent = `${seoScore}/100`;
-      if (practicesEl) practicesEl.textContent = `${practicesScore}/100`;
-      
-      const domainClean = rawUrl.replace(/^https?:\/\//i, '').replace(/\/.*$/, '');
-      const displayTitle = title ? `"${title}"` : 'Unidentified Title';
-      
-      verdictDiv.innerHTML = `
-        <div style="border-left: 3px solid var(--gold-champagne); padding-left: 14px; text-align: left;">
-          <p style="font-size: 1rem; color: var(--text-primary);">
-            ⚠️ <strong>Audit Report for ${domainClean}:</strong> Computed Conversion Index is <strong>${conversionIndex}/100</strong>.
-          </p>
-          <p style="margin-top: 6px; font-size: 0.88rem; color: var(--text-muted);">
-            <strong>Page Title Analyzed:</strong> ${displayTitle}
-          </p>
-          <p style="margin-top: 8px; font-size: 0.88rem; color: var(--text-secondary);">
-            <strong>Detected Conversion Bottlenecks:</strong> ${allIssues.slice(0, 3).join(' ')}
-          </p>
-          <p style="margin-top: 12px; font-weight: 600; font-size: 0.92rem; color: var(--gold-champagne);">
-            Upgrading ${domainClean} to Apex Bespoke Web Architecture will eliminate these visual bottlenecks and maximize lead conversions.
-          </p>
-        </div>
-      `;
-      verdictDiv.classList.remove('hidden');
-    }, 1800);
-    
-  } catch (err) {
-    console.error('Live Audit Error:', err);
-    appendConsole(`// ERROR: Could not analyze ${rawUrl}. Please check domain spelling.`);
-    setTimeout(() => {
-      consoleDiv.classList.add('hidden');
-    }, 3000);
   }
 };
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('sim-traffic')) {
+    window.setDigitalStatus('no-website');
+  }
+});
 
 /* ==========================================================================
    15. HIGH-CONVERTING FAQ ACCORDION TRIGGER

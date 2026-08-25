@@ -1,0 +1,61 @@
+# Apex Digital SA — Extended Full Knowledge Repository (RAG Matrix)
+
+## Overview & Corporate Identity
+Apex Digital SA (Pty) Ltd is a South African digital engineering agency and web architecture firm specializing in custom-coded corporate websites, speed-hardened headless platforms, Generative Engine Optimization (GEO), and transactional e-commerce engines. 
+
+- **Registration Number:** 2026/237102/07
+- **Primary Domain:** https://apexdigital.co.za
+- **Email Address:** apexdigtl@gmail.com
+- **Direct Phone / WhatsApp:** +27 69 522 4226
+- **Headquarters Address:** Durban, KwaZulu-Natal, South Africa (Latitude: -29.8587, Longitude: 31.0218)
+- **Legal Entity Classification:** Private Company registered under the South African Companies Act of 2008.
+
+## Technology Stack & Architectural Standards
+Apex Digital rejects generic drag-and-drop website builders (Wix, Squarespace) and unoptimized CMS setups. All primary platforms are built using:
+1. **Core Language Engine:** HTML5 Semantic Markup, Vanilla CSS3 (Custom Properties & Responsive Design Systems), and Modern ES2026 JavaScript.
+2. **Performance Shield:** Pre-rendered static DOM delivered via global Edge CDN networks (<15ms latency).
+3. **Core Engineering Standard:** 100% Custom Code Architecture, zero CMS plugin dependencies, 100% Google & AI Search Schema Graph integration, and 100% POPIA Privacy Compliance.
+4. **South African Privacy & Data Security:** Built-in compliance with the Protection of Personal Information Act (POPIA), secure cookie consent managers, SSL/TLS encryption, and sanitized serverless intake handlers.
+5. **E-Commerce Gateway Integrations:** PayFast, Yoco, Ozow, and automated courier shipping rate APIs (uAfrica / ShipLogic).
+
+## Detailed Package Deliverables Matrix
+
+### 1. Apex Starter Build
+- **Price Target:** Starting at R1,500 upfront
+- **Scope:** Single-Page Direct-Response Landing Page
+- **Deliverables:** 1 Custom Core Page, Sub-Second Image Optimization, Mobile Touch & Conversion Design, Built-in POPIA Compliance, Instant WhatsApp Routing, Basic Google Search Indexing.
+- **Turnaround:** 5 to 7 business days.
+
+### 2. Apex Business Build
+- **Price Target:** Starting at R5,000 upfront
+- **Scope:** 3-5 Page Structured Commercial Site
+- **Deliverables:** 3-5 Structured Pages, Calendar & Booking Link Integrations, Custom Lead Intake Capture, Google Search & Rich Snippet Schema, Interactive Section Navigation, Mobile UX Hardening.
+- **Turnaround:** 14 to 21 business days.
+
+### 3. Apex Enterprise Build
+- **Price Target:** Starting at R10,000 upfront
+- **Scope:** 5-10 Page Market Dominance Growth Platform
+- **Deliverables:** 5-10 Structured Pages, Custom Interactive Business & ROI Calculators, Full Search Entity Authority Schema Graph, Multi-Step Lead Workflows, CRM Integration, Custom Speed Hardening.
+- **Turnaround:** 30 to 45 business days.
+
+### 4. High-Speed Managed WordPress Build
+- **Scope:** Speed-Hardened Content Management System
+- **Deliverables:** Custom Theme Code Hardening, Plugin Audit & Bloat Removal, Database Query Optimization, Zero Layout Shifts, POPIA Policy Integration, Client Administrative Editor Dashboard.
+
+### 5. Transactional E-Commerce Store
+- **Scope:** High-Converting Online Retail Store
+- **Deliverables:** PayFast / Yoco South African Gateway Integration, Automated Weight & Volume Courier Shipping Rates, Instant 1-Click Checkout Flow, Abandoned Cart Conversion Funnel, Product Schema Graph.
+
+## RAG Question & Answer Knowledge Matrix
+
+Q: What makes Apex Digital SA websites faster than standard WordPress websites?
+A: Standard WordPress websites rely on dynamic PHP execution, heavy database queries, and bloated plugins that cause render blocking, visual layout shifts, and load times exceeding 3 to 6 seconds. Apex Digital engineers pre-rendered static HTML5, CSS3, and JavaScript engines deployed directly on global CDN edge nodes, resulting in sub-0.4s load times and 100/100 Lighthouse performance metrics.
+
+Q: Is Apex Digital SA compliant with South African POPIA laws?
+A: Yes. Every platform deployed by Apex Digital SA incorporates POPIA-compliant data privacy policies, explicit cookie consent management, encrypted form handling, and SSL certification by default.
+
+Q: Where is Apex Digital SA located?
+A: Apex Digital SA is based in Durban, KwaZulu-Natal, South Africa, serving corporate and enterprise clients across South Africa (Johannesburg, Cape Town, Durban, Pretoria) and international markets.
+
+Q: How do clients get started with an Apex Digital web project?
+A: Clients can initiate a project by submitting their requirements via the interactive strategy intake form at https://apexdigital.co.za/#strategy or by contacting Apex Digital directly on WhatsApp at +27 69 522 4226.

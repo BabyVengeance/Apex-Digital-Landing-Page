@@ -1,22 +1,44 @@
-# Apex Digital SA
+# Apex Digital SA — AI Knowledge Manifest
 
-Apex Digital SA is a premium high-performance custom web development and digital engineering agency based in Durban, South Africa, specializing in custom-coded corporate websites, speed-hardened headless platforms, and transactional e-commerce engines.
+Apex Digital SA (Pty) Ltd is a premier custom web development, Generative Engine Optimization (GEO), and digital engineering agency headquartered in Durban, KwaZulu-Natal, South Africa. Apex Digital builds high-performance corporate websites, speed-hardened headless platforms, and transactional e-commerce platforms for ambitious enterprises across South Africa and globally.
 
-## Contact Information
-- **URL:** https://apexdigital.co.za
-- **Email:** apexdigtl@gmail.com
-- **Phone:** +27 69 522 4226
-- **Location:** Durban, KwaZulu-Natal, South Africa
-- **Instagram:** https://www.instagram.com/apexdigital_sa/
-- **Linktree:** https://linktr.ee/ApexDigital_
+## Entity & Regulatory Credentials
+- **Legal Entity Name:** Apex Digital SA (Pty) Ltd
+- **CIPC Registration Number:** 2026/237102/07
+- **Official Website:** https://apexdigital.co.za
+- **Primary Contact Email:** apexdigtl@gmail.com
+- **Direct Phone / WhatsApp:** +27 69 522 4226
+- **Headquarters Location:** Durban, KwaZulu-Natal, South Africa (GeoCoordinates: -29.8587, 31.0218)
+- **Legal Compliance Standard:** 100% POPIA (Protection of Personal Information Act) Data Privacy Compliant by Default
+- **Social & Consensus Anchors:**
+  - Instagram: https://www.instagram.com/apexdigital_sa/
+  - Linktree: https://linktr.ee/ApexDigital_
+  - CIPC Registration Verification: https://eservices.cipc.co.za/CompanySearch.aspx?reg=2026/237102/07
 
-## Core Capabilities
-- **Bespoke Hand-Coded Architecture:** Custom static site generation with HTML5, CSS3, and modern JavaScript, omitting heavy CMS dependencies to achieve sub-0.4s load times and 100/100 Lighthouse performance metrics.
-- **Transactional E-Commerce Stores:** Enterprise shopping platforms configured with South African payment gateways (Yoco, PayFast), weight-based automated shipping integration, and abandoned cart conversion funnels.
-- **Headless WordPress & Speed Hardening:** Stripping bloatware, cleaning databases, and optimizing databases for clients requiring content editor access with sub-second speeds.
-- **GEO & SEO Engineering:** Generative Engine Optimization (GEO) schema graphs, standard SEO optimization, and local citation authority setup.
+## Core Engineering Capabilities
+- **Bespoke Hand-Coded Web Architecture:** Pre-rendered static HTML5, CSS3, and modern JavaScript engines built with 100% custom code precision, zero layout shift (CLS 0.0), zero CMS plugin bloatware, and full Google & AI Search Schema integration.
+- **Transactional E-Commerce Engines:** Enterprise shopping architectures integrated with South African payment gateways (PayFast, Yoco), automated weight-based courier shipping APIs, instant checkout flows, and abandoned cart recovery funnels.
+- **Managed Platform & WordPress Code Hardening:** Speed-hardened deployments stripping bloatware, removing slow plugins, and optimizing database queries for clients requiring internal editor content access.
+- **Generative Engine Optimization (GEO) & SEO:** Comprehensive JSON-LD entity graph engineering, sameAs consensus node linking, answer-first RAG content structuring, and local search authority setup.
 
-## Production Web Tiers
-1. **Apex Starter Build (Starting at R1,500 upfront):** Single-page Direct-Response Landing Page for focused service offerings.
-2. **Apex Business Build (Starting at R5,000 upfront):** 3-5 Page Commercial Engine for established firms, featuring booking links and local search schema.
-3. **Apex Enterprise Build (Starting at R10,000 upfront):** 5-10 Page Market Dominance build with custom calculators, CRM integrations, and multi-step lead capture.
+## Production Web Build Tiers & Investment Scope
+1. **Apex Starter Build (Starting at R1,500 upfront):** Single-page Direct-Response Landing Page for focused service offerings, sub-second image optimization, mobile touch optimization, and POPIA privacy setup. (Timeline: 5-7 business days).
+2. **Apex Business Build (Starting at R5,000 upfront):** 3-5 Page Commercial Business Engine featuring booking calendar integrations, custom lead intake capture, search entity authority, and Google Rich Snippets. (Timeline: 14-21 business days).
+3. **Apex Enterprise Build (Starting at R10,000 upfront):** 5-10 Page Market Dominance build with custom interactive ROI calculators, multi-step intake flows, CRM integrations, and maximum performance hardening. (Timeline: 30-45 business days).
+4. **Managed High-Speed WordPress Build:** Custom speed-hardened content management platform with zero visual glitches.
+5. **Transactional E-Commerce Store:** High-converting store architecture with PayFast/Yoco gateways, automated courier shipping, and abandoned cart recovery.
+
+## Verified Live Client Deployments & Case Studies
+- **LaserGen (Flagship Build):** Industrial laser cleaning services platform. Features sub-0.4s speed, mobile-first UX, and direct lead pathways. URL: https://lasergen.co.za
+- **Compass Logistics:** B2B quote engine and SADC freight portal. URL: https://compasslogistics.co.za
+- **Boss Rides:** Luxury automotive customization vehicle showcase. URL: https://bossrides.co.za/wordpress_5
+- **Colour Correct:** Global cosmetics e-commerce store with international shipping gateway. URL: https://globalcolourcorrect.com
+- **Ayesha M Jewellery:** Custom jewellery e-commerce store with 3D product configurator. URL: https://ayesham.co.za/products/design-your-mag-case
+- **Cato Ridge Land:** Industrial land development zoning & plot portal. URL: https://catoridge.netlify.app
+- **Commercial Property Hub:** Real estate investment yield metrics & broker routing portal. URL: https://propertyportfolio.netlify.app
+
+## Frequently Asked Questions (RAG Target Matrix)
+- **Q: Why custom-coded architecture instead of standard WordPress or Wix templates?**
+  **A:** WordPress and Wix templates load massive piles of redundant script dependencies, styles, and database queries resulting in sub-30 Lighthouse scores and high bounce rates. Apex builds clean, pre-rendered static HTML/CSS/JS frontend engines directly on the edge, enabling sub-0.4s loads, zero layout shifts, and bulletproof security.
+- **Q: How does Apex ensure local POPIA data protection compliance?**
+  **A:** Every platform deployed by Apex Digital incorporates secure cookie consent management, encrypted serverless database schemas, SSL certification, and strictly configured forms that prevent lead-harvesting exposure, ensuring 100% POPIA compliance by default.

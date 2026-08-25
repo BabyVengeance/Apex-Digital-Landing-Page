@@ -707,7 +707,7 @@ function switchTab(key, evt) {
 /* ==========================================================================
    10. MODAL CONTROLS & FORMSUBMIT MAIL SERVICE INTEGRATION
    ========================================================================== */
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/Apexdigtl@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/apexdigtl@gmail.com';
 
 function openModal() {
   const modal = document.getElementById('modal');
@@ -760,7 +760,7 @@ async function handleFormSubmit(e) {
         statusDiv.style.backgroundColor = 'rgba(40, 167, 69, 0.15)';
         statusDiv.style.color = '#2ecc71';
         statusDiv.style.border = '1px solid rgba(46, 204, 113, 0.4)';
-        statusDiv.innerText = '✓ Protocol Received! An Apex Systems Engineer will contact you within 4 business hours.';
+        statusDiv.innerText = '✓ Protocol Received! An Apex Systems Engineer will contact you at apexdigtl@gmail.com within 4 business hours.';
       }
       form.reset();
     } else {
@@ -772,7 +772,7 @@ async function handleFormSubmit(e) {
       statusDiv.style.backgroundColor = 'rgba(220, 53, 69, 0.15)';
       statusDiv.style.color = '#e74c3c';
       statusDiv.style.border = '1px solid rgba(231, 76, 60, 0.4)';
-      statusDiv.innerText = '⚠️ Transmission delay. Please call or WhatsApp us directly at 069 522 4226.';
+      statusDiv.innerText = '⚠️ Transmission note: If this is your first submission, please confirm FormSubmit activation at apexdigtl@gmail.com, or reach out via WhatsApp at +27 69 522 4226.';
     }
   } finally {
     if (submitBtn) {
@@ -839,7 +839,7 @@ async function handleModalSubmit(e) {
       statusDiv.style.backgroundColor = 'rgba(220, 53, 69, 0.15)';
       statusDiv.style.color = '#e74c3c';
       statusDiv.style.border = '1px solid rgba(231, 76, 60, 0.4)';
-      statusDiv.innerText = '⚠️ Request delay. Please reach out via WhatsApp at 069 522 4226.';
+      statusDiv.innerText = '⚠️ Request note: Please confirm FormSubmit activation at apexdigtl@gmail.com if needed, or reach out via WhatsApp at +27 69 522 4226.';
     }
   } finally {
     if (submitBtn) {

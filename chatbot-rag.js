@@ -217,9 +217,12 @@ B. ONGOING GROWTH PATHWAYS & SLA RETAINERS:
 - Partner Dominance: Dedicated web engineering team for multi-page local search dominance, continuous conversion optimization, 6hrs priority dev time.
 
 C. THE APEX ARCHITECTURAL ADVANTAGE (CUSTOM CODE VS CMS):
-- Custom Hand-Coded Architecture (HTML5, CSS3, Vanilla JS): Sub-0.4s load speed, 99/100 Google PageSpeed scores, zero slow WordPress/Elementor plugin bloat, zero vulnerability to plugin exploits, 100% code ownership with zero monthly subscription locks.
-- High-Speed Managed WordPress Builds: Hardened, plugin-stripped WordPress deployments for clients requiring internal non-technical staff editing capabilities.
+- Custom Hand-Coded Architecture (HTML5, CSS3, Vanilla JS): Sub-0.4s load speed, 99/100 Google PageSpeed scores, zero slow CMS plugin bloat, zero vulnerability to plugin exploits, 100% code ownership with zero monthly subscription locks.
 - Transactional E-Commerce Stores: Built with PayFast and Yoco South African payment gateways, Tunl global shipping, automated courier rates, abandoned cart recovery, and mobile-first checkout flows.
+- Website Redesign & Refresh: Modern boutique UI/UX overhaul, speed hardening, and mobile conversion refactoring for existing websites.
+- Custom Web Applications & Apps: Bespoke SaaS MVP engines, interactive client portals, dynamic web apps, and serverless API/database integrations.
+- AI Automation & AI-Ops Engines: Custom RAG chatbot deployment, lead-to-viewing automated routing, CRM webhook sync, and operational AI workflow agents.
+- GEO & SEO Authority Services: Generative Engine Optimization schema graphs, full technical SEO audits, and Google AI search citation authority.
 
 D. PROVEN REAL-WORLD CLIENT BUILDS & CASE STUDIES:
 - LaserGen (lasergen.co.za): High-speed industrial laser refurbishment platform with sub-second mobile loading.

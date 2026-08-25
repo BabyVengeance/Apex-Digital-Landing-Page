@@ -38,13 +38,25 @@ Apex Digital rejects generic drag-and-drop website builders (Wix, Squarespace) a
 - **Deliverables:** 5-10 Structured Pages, Custom Interactive Business & ROI Calculators, Full Search Entity Authority Schema Graph, Multi-Step Lead Workflows, CRM Integration, Custom Speed Hardening.
 - **Turnaround:** 30 to 45 business days.
 
-### 4. High-Speed Managed WordPress Build
-- **Scope:** Speed-Hardened Content Management System
-- **Deliverables:** Custom Theme Code Hardening, Plugin Audit & Bloat Removal, Database Query Optimization, Zero Layout Shifts, POPIA Policy Integration, Client Administrative Editor Dashboard.
-
-### 5. Transactional E-Commerce Store
+### 4. Transactional E-Commerce Store
 - **Scope:** High-Converting Online Retail Store
 - **Deliverables:** PayFast / Yoco South African Gateway Integration, Automated Weight & Volume Courier Shipping Rates, Instant 1-Click Checkout Flow, Abandoned Cart Conversion Funnel, Product Schema Graph.
+
+### 5. Website Redesign & Platform Refresh
+- **Scope:** Boutique UI/UX Overhaul & Performance Refactoring
+- **Deliverables:** Modern Sovereign Minimalist visual design, code hardening, sub-second speed optimization, mobile touch target compliance, and zero downtime migration.
+
+### 6. Custom Web Application & Apps
+- **Scope:** Bespoke SaaS Engines & Interactive Portals
+- **Deliverables:** Custom serverless API & database integrations, interactive client tools, SaaS MVP frameworks, and dynamic portals built with modern JavaScript.
+
+### 7. AI Automation & AI-Ops Engines
+- **Scope:** 24/7 Operational AI Agents & Workflow Automation
+- **Deliverables:** Custom RAG chatbot deployment, lead-to-viewing automated routing, multi-channel CRM webhook sync, and autonomous AI agents.
+
+### 8. GEO & SEO Authority Services
+- **Scope:** Search Engine & AI Citation Dominance
+- **Deliverables:** Generative Engine Optimization schema graphs, full technical & on-page SEO audits, structured JSON-LD entity graph, and Google AI search citation authority.
 
 ## RAG Question & Answer Knowledge Matrix
 

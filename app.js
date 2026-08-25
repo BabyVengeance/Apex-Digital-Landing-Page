@@ -643,18 +643,18 @@ const archData = {
     ]
   },
   cms: {
-    title: "Managed Platform Architecture (WordPress High-Speed)",
-    desc: "Content management deployments for clients requiring internal content editing control, speed-hardened by Apex Digital to remove slow plugins and eliminate visual glitches.",
+    title: "Custom Web Application & Web App Architecture",
+    desc: "Bespoke web applications, interactive portals, and SaaS MVP engines engineered with serverless APIs, custom databases, and high-throughput workflows.",
     features: [
-      "Code hardening & speed optimization array",
-      "Deep database query cleaning & caching rules",
-      "Full POPIA policy configurations & cookie notice handlers"
+      "Custom serverless API & database architecture integration",
+      "Interactive calculation tools & client portal workflows",
+      "Scalable SaaS MVP framework & zero-vendor-lock codebase"
     ],
     visual: [
-      { title: "High-Speed CMS Engine", val: "Optimized Execution", highlight: true },
-      { title: "Code Hardening Array", val: "Bloatware Stripped", highlight: false },
-      { title: "Database Query Cache", val: "Sub-50ms Response", highlight: true },
-      { title: "POPIA Privacy Shield", val: "Compliant Storage", highlight: false }
+      { title: "Custom Web App Engine", val: "Serverless Execution", highlight: true },
+      { title: "API & Database Sync", val: "Real-time Data Flow", highlight: false },
+      { title: "Interactive UI Portal", val: "High-Touch Conversion", highlight: true },
+      { title: "POPIA Privacy Shield", val: "Encrypted Storage", highlight: false }
     ]
   },
   ecom: {

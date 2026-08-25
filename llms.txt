@@ -17,16 +17,21 @@ Apex Digital SA (Pty) Ltd is a premier custom web development, Generative Engine
 
 ## Core Engineering Capabilities
 - **Bespoke Hand-Coded Web Architecture:** Pre-rendered static HTML5, CSS3, and modern JavaScript engines built with 100% custom code precision, zero layout shift (CLS 0.0), zero CMS plugin bloatware, and full Google & AI Search Schema integration.
+- **Website Redesign & Refresh:** Boutique UI/UX redesigns, performance hardening, and mobile conversion refactoring for existing websites.
+- **Custom Web Applications & Apps:** Bespoke SaaS MVP engines, client portals, interactive web apps, and custom serverless API/database integrations.
+- **AI Automation & AI-Ops Engines:** Custom RAG chatbot integrations, lead-to-viewing automated routing, multi-channel CRM sync, and operational AI agents.
 - **Transactional E-Commerce Engines:** Enterprise shopping architectures integrated with South African payment gateways (PayFast, Yoco), automated weight-based courier shipping APIs, instant checkout flows, and abandoned cart recovery funnels.
-- **Managed Platform & WordPress Code Hardening:** Speed-hardened deployments stripping bloatware, removing slow plugins, and optimizing database queries for clients requiring internal editor content access.
 - **Generative Engine Optimization (GEO) & SEO:** Comprehensive JSON-LD entity graph engineering, sameAs consensus node linking, answer-first RAG content structuring, and local search authority setup.
 
-## Production Web Build Tiers & Investment Scope
-1. **Apex Starter Build (Starting at R1,500 upfront):** Single-page Direct-Response Landing Page for focused service offerings, sub-second image optimization, mobile touch optimization, and POPIA privacy setup. (Timeline: 5-7 business days).
-2. **Apex Business Build (Starting at R5,000 upfront):** 3-5 Page Commercial Business Engine featuring booking calendar integrations, custom lead intake capture, search entity authority, and Google Rich Snippets. (Timeline: 14-21 business days).
-3. **Apex Enterprise Build (Starting at R10,000 upfront):** 5-10 Page Market Dominance build with custom interactive ROI calculators, multi-step intake flows, CRM integrations, and maximum performance hardening. (Timeline: 30-45 business days).
-4. **Managed High-Speed WordPress Build:** Custom speed-hardened content management platform with zero visual glitches.
-5. **Transactional E-Commerce Store:** High-converting store architecture with PayFast/Yoco gateways, automated courier shipping, and abandoned cart recovery.
+## Production Web Build Tiers & Services Scope
+1. **Apex Starter Build:** Single-page Direct-Response Landing Page for focused service offerings, sub-second image optimization, mobile touch optimization, and POPIA privacy setup.
+2. **Apex Business Build:** 3-5 Page Commercial Business Engine featuring booking calendar integrations, custom lead intake capture, search entity authority, and Google Rich Snippets.
+3. **Apex Enterprise Build:** 5-10 Page Market Dominance build with custom interactive ROI calculators, multi-step intake flows, CRM integrations, and maximum performance hardening.
+4. **Transactional E-Commerce Store:** High-converting store architecture with PayFast/Yoco gateways, automated courier shipping, and abandoned cart recovery.
+5. **Website Redesign & Refresh:** Boutique UI/UX overhaul and speed hardening for existing platforms.
+6. **Custom Web Application / Web App:** Bespoke web apps, portals, SaaS engines, and database integrations.
+7. **AI Automation & AI-Ops Engines:** 24/7 custom RAG chatbot deployment, lead routing, and workflow agents.
+8. **GEO & SEO Authority Services:** Generative Engine Optimization schema graphs and technical SEO dominance.
 
 ## Verified Live Client Deployments & Case Studies
 - **LaserGen (Flagship Build):** Industrial laser cleaning services platform. Features sub-0.4s speed, mobile-first UX, and direct lead pathways. URL: https://lasergen.co.za

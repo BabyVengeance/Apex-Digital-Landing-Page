@@ -3127,10 +3127,31 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
 
-  .nav-brand .nav-logo {
-    height: 42px;
-  }
 }
+
+/* Services Category Tab Panel Animations & Height Controls */
+.services-tab-panel {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.services-tab-panel.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.services-tab-panel .capabilities-grid {
+  align-items: stretch;
+}
+
+.services-tab-panel .capability-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 
 
 

@@ -704,6 +704,29 @@ function switchTab(key, evt) {
   `).join('');
 }
 
+function switchServiceTab(tabId, evt) {
+  const tabs = document.querySelectorAll('.service-tab-btn');
+  const panels = document.querySelectorAll('.services-tab-panel');
+
+  tabs.forEach(tab => tab.classList.remove('active'));
+  panels.forEach(panel => {
+    panel.classList.remove('active');
+    panel.style.display = 'none';
+  });
+
+  if (evt && evt.currentTarget) {
+    evt.currentTarget.classList.add('active');
+  }
+
+  const targetPanel = document.getElementById(tabId);
+  if (targetPanel) {
+    targetPanel.style.display = 'block';
+    setTimeout(() => {
+      targetPanel.classList.add('active');
+    }, 10);
+  }
+}
+
 /* ==========================================================================
    10. MODAL CONTROLS & FORMSUBMIT MAIL SERVICE INTEGRATION
    ========================================================================== */

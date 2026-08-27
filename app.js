@@ -224,8 +224,8 @@ function initMobileMenu() {
 }
 
 /* ==========================================================================
-   3. INFINITE 3D PARAMETRIC LOGO WIREFRAME SHADER WITH ENERGY PHOTONS
-   Smooth infinite multi-axis rotation without pulse/beating click artifacts
+   3. INFINITE 3D DUAL PARAMETRIC LOGO VORTEX SHADER WITH WAVE NOISE & PHOTONS
+   Outer Knot (p=2, q=3) + Inner Core Knot (p=3, q=2) + Dynamic 3D Harmonic Noise + 180 Particles
    ========================================================================== */
 function initWireframeCanvas() {
   const canvas = document.getElementById('hero-wireframe-canvas');
@@ -235,7 +235,6 @@ function initWireframeCanvas() {
   let width = canvas.width = canvas.offsetWidth;
   let height = canvas.height = canvas.offsetHeight;
 
-  // Infinite continuous rotation state
   let angleX = 0.2;
   let angleY = 0.3;
   let angleZ = 0.1;
@@ -259,52 +258,7 @@ function initWireframeCanvas() {
     angleY += window.scrollY * 0.0001;
   });
 
-  // Generate 3D Parametric Mesh Points (Trefoil / Torus Knot)
-  const points = [];
-  const lines = [];
-  const uSteps = 84;
-  const vSteps = 16;
-
-  for (let i = 0; i < uSteps; i++) {
-    const u = (i / uSteps) * Math.PI * 2;
-    const p = 2, q = 3;
-    const r = 180 + 40 * Math.cos(q * u);
-    const x = r * Math.cos(p * u);
-    const y = r * Math.sin(p * u);
-    const z = 80 * Math.sin(q * u);
-
-    for (let j = 0; j < vSteps; j++) {
-      const v = (j / vSteps) * Math.PI * 2;
-      const tubeR = 25;
-      const px = x + tubeR * Math.cos(v) * Math.cos(u);
-      const py = y + tubeR * Math.cos(v) * Math.sin(u);
-      const pz = z + tubeR * Math.sin(v);
-
-      points.push({ x: px, y: py, z: pz });
-    }
-  }
-
-  for (let i = 0; i < uSteps; i++) {
-    for (let j = 0; j < vSteps; j++) {
-      const current = i * vSteps + j;
-      const nextV = i * vSteps + ((j + 1) % vSteps);
-      const nextU = ((i + 1) % uSteps) * vSteps + j;
-
-      lines.push([current, nextV]);
-      lines.push([current, nextU]);
-    }
-  }
-
-  // Energy Photon Particles traveling continuously along the 3D curves
-  const photons = [];
-  for (let p = 0; p < 20; p++) {
-    photons.push({
-      progress: (p / 20) * Math.PI * 2,
-      speed: 0.005 + Math.random() * 0.003,
-      vOffset: (Math.floor(Math.random() * 16) / 16) * Math.PI * 2
-    });
-  }
-
+  // Helper 3D rotation functions
   function rotateX(pt, a) {
     const cos = Math.cos(a), sin = Math.sin(a);
     return { x: pt.x, y: pt.y * cos - pt.z * sin, z: pt.y * sin + pt.z * cos };
@@ -320,15 +274,55 @@ function initWireframeCanvas() {
     return { x: pt.x * cos - pt.y * sin, y: pt.x * sin + pt.y * cos, z: pt.z };
   }
 
+  // Generate Base Mesh Definitions
+  // 1. Primary Outer Trefoil Knot (p=2, q=3)
+  const outerStepsU = 84;
+  const outerStepsV = 16;
+
+  // 2. Secondary Inner Core Knot (p=3, q=2, 68% Scale)
+  const innerStepsU = 64;
+  const innerStepsV = 12;
+
+  // Particle Swarm Initializations (40 Track Photons + 140 Ambient Vortex Dust)
+  const trackPhotons = [];
+  for (let p = 0; p < 40; p++) {
+    trackPhotons.push({
+      progress: (p / 40) * Math.PI * 2,
+      speed: 0.004 + Math.random() * 0.004,
+      vOffset: (Math.floor(Math.random() * 16) / 16) * Math.PI * 2,
+      isInner: p % 2 === 0
+    });
+  }
+
+  const vortexParticles = [];
+  for (let i = 0; i < 140; i++) {
+    const radius = 60 + Math.random() * 260;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = (Math.random() - 0.5) * Math.PI;
+    vortexParticles.push({
+      x: radius * Math.cos(theta) * Math.cos(phi),
+      y: radius * Math.sin(theta) * Math.cos(phi),
+      z: radius * Math.sin(phi),
+      orbitSpeed: 0.002 + Math.random() * 0.005,
+      orbitRadius: radius,
+      angle: theta,
+      elevation: phi,
+      size: 0.8 + Math.random() * 2.2,
+      alphaOffset: Math.random() * Math.PI * 2
+    });
+  }
+
+  let animTime = 0;
+
   function animate() {
     ctx.clearRect(0, 0, width, height);
+    animTime += 0.016;
 
-    // Continuous Infinite Multi-Axis Rotation
-    angleY += 0.005; // Primary smooth Y spin
-    angleX += 0.002; // Secondary pitch tilt
-    angleZ += 0.001; // Subtle roll
+    // Continuous Multi-Axis Rotation State
+    angleY += 0.004;
+    angleX += 0.0018;
+    angleZ += 0.0008;
 
-    // Eased mouse parallax tracking
     mouseX += (targetMouseX - mouseX) * 0.05;
     mouseY += (targetMouseY - mouseY) * 0.05;
 
@@ -336,73 +330,214 @@ function initWireframeCanvas() {
     const renderAngleY = angleY + mouseX;
     const renderAngleZ = angleZ;
 
+    // Inverse Rotation State for Inner Core
+    const innerAngleX = renderAngleX + 0.45;
+    const innerAngleY = -renderAngleY * 1.35;
+    const innerAngleZ = -renderAngleZ * 0.8;
+
     const centerX = width * 0.55;
     const centerY = height * 0.48;
     const fov = 450;
 
-    const projectedPoints = points.map(pt => {
-      let rPt = rotateX(pt, renderAngleX);
-      rPt = rotateY(rPt, renderAngleY);
-      rPt = rotateZ(rPt, renderAngleZ);
-
-      const scale = fov / (fov + rPt.z + 300);
-      return {
-        x: centerX + rPt.x * scale,
-        y: centerY + rPt.y * scale,
-        z: rPt.z,
-        scale: scale
-      };
-    });
-
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const strokeColor = currentTheme === 'light' ? 'rgba(184, 146, 85, ' : 'rgba(223, 195, 138, ';
+    const outerStrokeBase = currentTheme === 'light' ? 'rgba(184, 146, 85, ' : 'rgba(223, 195, 138, ';
+    const innerStrokeBase = currentTheme === 'light' ? 'rgba(140, 105, 50, ' : 'rgba(255, 220, 160, ';
 
-    // Draw 3D Wireframe Mesh Lines
+    // --- 1. GENERATE & DRAW PRIMARY OUTER MESH ---
+    const outerPoints = [];
+    const outerLines = [];
+
+    for (let i = 0; i < outerStepsU; i++) {
+      const u = (i / outerStepsU) * Math.PI * 2;
+      const p = 2, q = 3;
+      const r = 180 + 40 * Math.cos(q * u);
+      const x = r * Math.cos(p * u);
+      const y = r * Math.sin(p * u);
+      const z = 80 * Math.sin(q * u);
+
+      for (let j = 0; j < outerStepsV; j++) {
+        const v = (j / outerStepsV) * Math.PI * 2;
+        // Harmonic Surface Noise Displacement
+        const noise = Math.sin(u * 5 + animTime * 2.0) * Math.cos(v * 3 + animTime * 1.5) * 6.0;
+        const tubeR = 26 + noise;
+
+        const px = x + tubeR * Math.cos(v) * Math.cos(u);
+        const py = y + tubeR * Math.cos(v) * Math.sin(u);
+        const pz = z + tubeR * Math.sin(v);
+
+        let pt = rotateX({ x: px, y: py, z: pz }, renderAngleX);
+        pt = rotateY(pt, renderAngleY);
+        pt = rotateZ(pt, renderAngleZ);
+
+        const scale = fov / (fov + pt.z + 300);
+        outerPoints.push({
+          x: centerX + pt.x * scale,
+          y: centerY + pt.y * scale,
+          z: pt.z
+        });
+      }
+    }
+
+    for (let i = 0; i < outerStepsU; i++) {
+      for (let j = 0; j < outerStepsV; j++) {
+        const current = i * outerStepsV + j;
+        const nextV = i * outerStepsV + ((j + 1) % outerStepsV);
+        const nextU = ((i + 1) % outerStepsU) * outerStepsV + j;
+        outerLines.push([current, nextV], [current, nextU]);
+      }
+    }
+
     ctx.lineWidth = 0.65;
-    for (let i = 0; i < lines.length; i++) {
-      const p1 = projectedPoints[lines[i][0]];
-      const p2 = projectedPoints[lines[i][1]];
-
-      const depthAlpha = Math.max(0.08, Math.min(0.65, (p1.z + 200) / 400));
-      
+    for (let i = 0; i < outerLines.length; i++) {
+      const p1 = outerPoints[outerLines[i][0]];
+      const p2 = outerPoints[outerLines[i][1]];
+      const depthAlpha = Math.max(0.06, Math.min(0.65, (p1.z + 220) / 440));
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
-      ctx.strokeStyle = strokeColor + depthAlpha + ')';
+      ctx.strokeStyle = outerStrokeBase + depthAlpha + ')';
       ctx.stroke();
     }
 
-    // Render Traveling Energy Photons
-    photons.forEach(pt => {
+    // --- 2. GENERATE & DRAW SECONDARY INNER CORE MESH ---
+    const innerPoints = [];
+    const innerLines = [];
+
+    for (let i = 0; i < innerStepsU; i++) {
+      const u = (i / innerStepsU) * Math.PI * 2;
+      const p = 3, q = 2; // Inverse winding pattern
+      const r = (180 + 30 * Math.cos(q * u)) * 0.68;
+      const x = r * Math.cos(p * u);
+      const y = r * Math.sin(p * u);
+      const z = 60 * Math.sin(q * u) * 0.68;
+
+      for (let j = 0; j < innerStepsV; j++) {
+        const v = (j / innerStepsV) * Math.PI * 2;
+        const innerNoise = Math.cos(u * 8 - animTime * 3.0) * 4.0;
+        const tubeR = 18 + innerNoise;
+
+        const px = x + tubeR * Math.cos(v) * Math.cos(u);
+        const py = y + tubeR * Math.cos(v) * Math.sin(u);
+        const pz = z + tubeR * Math.sin(v);
+
+        let pt = rotateX({ x: px, y: py, z: pz }, innerAngleX);
+        pt = rotateY(pt, innerAngleY);
+        pt = rotateZ(pt, innerAngleZ);
+
+        const scale = fov / (fov + pt.z + 300);
+        innerPoints.push({
+          x: centerX + pt.x * scale,
+          y: centerY + pt.y * scale,
+          z: pt.z
+        });
+      }
+    }
+
+    for (let i = 0; i < innerStepsU; i++) {
+      for (let j = 0; j < innerStepsV; j++) {
+        const current = i * innerStepsV + j;
+        const nextV = i * innerStepsV + ((j + 1) % innerStepsV);
+        const nextU = ((i + 1) % innerStepsU) * innerStepsV + j;
+        innerLines.push([current, nextV], [current, nextU]);
+      }
+    }
+
+    ctx.lineWidth = 0.55;
+    for (let i = 0; i < innerLines.length; i++) {
+      const p1 = innerPoints[innerLines[i][0]];
+      const p2 = innerPoints[innerLines[i][1]];
+      const depthAlpha = Math.max(0.08, Math.min(0.75, (p1.z + 200) / 400));
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.strokeStyle = innerStrokeBase + (depthAlpha * 0.85) + ')';
+      ctx.stroke();
+    }
+
+    // --- 3. RENDER TRACK PHOTONS ---
+    trackPhotons.forEach(pt => {
       pt.progress += pt.speed;
       if (pt.progress > Math.PI * 2) pt.progress = 0;
 
       const u = pt.progress;
-      const r = 180 + 40 * Math.cos(3 * u);
-      const x = r * Math.cos(2 * u);
-      const y = r * Math.sin(2 * u);
-      const z = 80 * Math.sin(3 * u);
+      let px, py, pz;
 
-      const tubeR = 25;
-      const px = x + tubeR * Math.cos(pt.vOffset) * Math.cos(u);
-      const py = y + tubeR * Math.cos(pt.vOffset) * Math.sin(u);
-      const pz = z + tubeR * Math.sin(pt.vOffset);
+      if (!pt.isInner) {
+        const r = 180 + 40 * Math.cos(3 * u);
+        const x = r * Math.cos(2 * u);
+        const y = r * Math.sin(2 * u);
+        const z = 80 * Math.sin(3 * u);
+        const tubeR = 26;
+        px = x + tubeR * Math.cos(pt.vOffset) * Math.cos(u);
+        py = y + tubeR * Math.cos(pt.vOffset) * Math.sin(u);
+        pz = z + tubeR * Math.sin(pt.vOffset);
 
-      let rPt = rotateX({ x: px, y: py, z: pz }, renderAngleX);
-      rPt = rotateY(rPt, renderAngleY);
-      rPt = rotateZ(rPt, renderAngleZ);
+        let rPt = rotateX({ x: px, y: py, z: pz }, renderAngleX);
+        rPt = rotateY(rPt, renderAngleY);
+        rPt = rotateZ(rPt, renderAngleZ);
+
+        const scale = fov / (fov + rPt.z + 300);
+        const screenX = centerX + rPt.x * scale;
+        const screenY = centerY + rPt.y * scale;
+
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, Math.max(1.5, 3.5 * scale), 0, Math.PI * 2);
+        ctx.fillStyle = currentTheme === 'light' ? '#B89655' : '#FFFFFF';
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = '#DFC38A';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      } else {
+        const r = (180 + 30 * Math.cos(2 * u)) * 0.68;
+        const x = r * Math.cos(3 * u);
+        const y = r * Math.sin(3 * u);
+        const z = 60 * Math.sin(2 * u) * 0.68;
+        const tubeR = 18;
+        px = x + tubeR * Math.cos(pt.vOffset) * Math.cos(u);
+        py = y + tubeR * Math.cos(pt.vOffset) * Math.sin(u);
+        pz = z + tubeR * Math.sin(pt.vOffset);
+
+        let rPt = rotateX({ x: px, y: py, z: pz }, innerAngleX);
+        rPt = rotateY(rPt, innerAngleY);
+        rPt = rotateZ(rPt, innerAngleZ);
+
+        const scale = fov / (fov + rPt.z + 300);
+        const screenX = centerX + rPt.x * scale;
+        const screenY = centerY + rPt.y * scale;
+
+        ctx.beginPath();
+        ctx.arc(screenX, screenY, Math.max(1.2, 3.0 * scale), 0, Math.PI * 2);
+        ctx.fillStyle = currentTheme === 'light' ? '#DFC38A' : '#FFDF9E';
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#B89655';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    });
+
+    // --- 4. RENDER 140 AMBIENT VORTEX DUST PARTICLES ---
+    vortexParticles.forEach(vp => {
+      vp.angle += vp.orbitSpeed;
+      const vx = vp.orbitRadius * Math.cos(vp.angle) * Math.cos(vp.elevation);
+      const vy = vp.orbitRadius * Math.sin(vp.angle) * Math.cos(vp.elevation);
+      const vz = vp.orbitRadius * Math.sin(vp.elevation);
+
+      let rPt = rotateX({ x: vx, y: vy, z: vz }, renderAngleX * 0.8);
+      rPt = rotateY(rPt, renderAngleY * 0.8);
 
       const scale = fov / (fov + rPt.z + 300);
       const screenX = centerX + rPt.x * scale;
       const screenY = centerY + rPt.y * scale;
 
+      const alphaPulse = 0.2 + 0.5 * Math.sin(animTime * 2 + vp.alphaOffset);
+      const pAlpha = Math.max(0.1, Math.min(0.85, (rPt.z + 250) / 500)) * alphaPulse;
+
       ctx.beginPath();
-      ctx.arc(screenX, screenY, Math.max(1.5, 3.5 * scale), 0, Math.PI * 2);
-      ctx.fillStyle = currentTheme === 'light' ? '#B89655' : '#FFFFFF';
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = '#DFC38A';
+      ctx.arc(screenX, screenY, vp.size * scale, 0, Math.PI * 2);
+      ctx.fillStyle = currentTheme === 'light'
+        ? `rgba(184, 146, 85, ${pAlpha})`
+        : `rgba(223, 195, 138, ${pAlpha})`;
       ctx.fill();
-      ctx.shadowBlur = 0;
     });
 
     requestAnimationFrame(animate);

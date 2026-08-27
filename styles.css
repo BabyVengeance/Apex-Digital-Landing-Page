@@ -1724,23 +1724,27 @@ h1, h2, h3, h4, h5, h6 {
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
-  color: var(--text-muted);
+  color: #ffffff;
   font-family: var(--font-body);
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s ease;
+  opacity: 0.85;
 }
 
 .legal-tab-btn:hover {
-  color: var(--text-white);
+  color: #ffffff;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .legal-tab-btn.active {
   color: var(--champagne);
   border-bottom-color: var(--champagne);
-  background: rgba(212, 175, 55, 0.06);
+  background: rgba(212, 175, 55, 0.08);
+  opacity: 1;
 }
 
 .legal-modal-body {

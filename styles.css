@@ -109,7 +109,7 @@ body {
   width: 100%;
   height: 100%;
   background: #040405;
-  z-index: 10000;
+  z-index: 999999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -120,6 +120,14 @@ body {
 #cinematic-loader.loaded {
   opacity: 0;
   visibility: hidden;
+}
+
+/* Hide Chatbot Advisor Button While Preloader Engine is Initializing */
+#cinematic-loader:not(.loaded) ~ #apex-chatbot-container,
+#cinematic-loader:not(.loaded) ~ * #apex-chatbot-container {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .loader-ring {

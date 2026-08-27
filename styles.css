@@ -120,14 +120,7 @@ body {
 #cinematic-loader.loaded {
   opacity: 0;
   visibility: hidden;
-}
-
-/* Hide Chatbot Advisor Button While Preloader Engine is Initializing */
-#cinematic-loader:not(.loaded) ~ #apex-chatbot-container,
-#cinematic-loader:not(.loaded) ~ * #apex-chatbot-container {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+  pointer-events: none;
 }
 
 .loader-ring {
@@ -1840,6 +1833,19 @@ h1, h2, h3, h4, h5, h6 {
   right: 28px;
   z-index: 99999;
   font-family: var(--font-body);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+}
+
+#cinematic-loader.loaded ~ #apex-chatbot-container,
+#apex-chatbot-container.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 /* Floating Trigger Button */

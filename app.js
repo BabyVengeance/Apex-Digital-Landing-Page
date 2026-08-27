@@ -55,9 +55,14 @@ window.toggleChatbotWindow = function(forceOpen) {
    ========================================================================== */
 function initPreloader() {
   const loader = document.getElementById('cinematic-loader');
-  if (!loader) return;
+  const chatbot = document.getElementById('apex-chatbot-container');
+  if (!loader) {
+    if (chatbot) chatbot.classList.add('visible');
+    return;
+  }
   setTimeout(() => {
     loader.classList.add('loaded');
+    if (chatbot) chatbot.classList.add('visible');
   }, 1100);
 }
 

@@ -256,9 +256,6 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
       return data.text.trim();
     }
 
-      return text.trim();
-    }
-
     deriveCTA(userText, answerText) {
       const q = (userText || "").toLowerCase();
       const a = (answerText || "").toLowerCase();

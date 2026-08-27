@@ -1103,24 +1103,42 @@ function initChatbotWidget() {
   const formEl = document.getElementById('chat-form');
   const inputEl = document.getElementById('chat-input');
 
-  if (!trigger || !windowEl || (!window.ApexLLMEngine && !window.ApexRAGEngine)) return;
+  if (!trigger || !windowEl) return;
 
-  const llmEngine = window.ApexLLMEngine 
-    ? new window.ApexLLMEngine(window.APEX_KB_CORPUS)
-    : new window.ApexRAGEngine(window.APEX_KB_CORPUS);
+  // Global Fail-Safe Toggle Function
+  window.toggleChatbotWindow = function() {
+    const isHidden = windowEl.classList.contains('hidden');
+    if (isHidden) {
+      windowEl.classList.remove('hidden');
+      if (inputEl) inputEl.focus();
+    } else {
+      windowEl.classList.add('hidden');
+    }
+  };
 
   // Toggle Chat Visibility
-  trigger.addEventListener('click', () => {
-    windowEl.classList.toggle('hidden');
-    if (!windowEl.classList.contains('hidden')) {
-      inputEl.focus();
-    }
+  trigger.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.toggleChatbotWindow();
   });
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       windowEl.classList.add('hidden');
     });
+  }
+
+  let llmEngineInstance = null;
+  function getLLMEngine() {
+    if (!llmEngineInstance) {
+      if (window.ApexLLMEngine) {
+        llmEngineInstance = new window.ApexLLMEngine(window.APEX_KB_CORPUS);
+      } else if (window.ApexRAGEngine) {
+        llmEngineInstance = new window.ApexRAGEngine(window.APEX_KB_CORPUS);
+      }
+    }
+    return llmEngineInstance;
   }
 
   // Populate Quick Prompts with SVG Vectors (NO EMOJIS)
@@ -1182,10 +1200,10 @@ function initChatbotWidget() {
   if (formEl) {
     formEl.addEventListener('submit', (e) => {
       e.preventDefault();
-      const val = inputEl.value.trim();
+      const val = inputEl ? inputEl.value.trim() : '';
       if (!val) return;
       submitUserQuery(val);
-      inputEl.value = '';
+      if (inputEl) inputEl.value = '';
     });
   }
 
@@ -1197,7 +1215,17 @@ function initChatbotWidget() {
     showTypingIndicator();
 
     try {
-      const answer = await llmEngine.query(userText);
+      const engine = getLLMEngine();
+      let answer;
+      if (engine) {
+        answer = await engine.query(userText);
+      } else {
+        answer = {
+          title: "Apex Digital Web Architecture & Growth",
+          text: "Welcome to Apex Digital SA! How can we assist with your web build or software project today?",
+          cta: { text: "Claim Free Demo Website", action: "openModal" }
+        };
+      }
       removeTypingIndicator();
       appendBotMessage(answer);
     } catch (error) {

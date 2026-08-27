@@ -1552,7 +1552,7 @@
   <!-- APEX RAG CHATBOT WIDGET -->
   <div id="apex-chatbot-container">
     <!-- Floating Trigger Button (Gold Apex Logo) -->
-    <button id="chatbot-trigger" aria-label="Open Apex Results Assistant">
+    <button id="chatbot-trigger" onclick="toggleChatbotWindow()" aria-label="Open Apex Results Assistant">
       <div class="trigger-icon">
         <img src="assets/images/logo-icon-gold.webp" alt="Apex Logo" class="trigger-logo-img" width="24" height="24" loading="lazy">
       </div>
@@ -1576,7 +1576,7 @@
             <p class="chat-subtitle">Online 24/7 • Instant Web & Growth Advisor</p>
           </div>
         </div>
-        <button id="chatbot-close" aria-label="Close Chat Window">
+        <button id="chatbot-close" onclick="toggleChatbotWindow()" aria-label="Close Chat Window">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>

@@ -742,6 +742,68 @@ function closeModal() {
   if (modal) modal.classList.remove('active');
 }
 
+function openLegalModal(tabId = 'popia') {
+  const modal = document.getElementById('legal-modal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    switchLegalTab(tabId);
+  }
+}
+
+function closeLegalModal() {
+  const modal = document.getElementById('legal-modal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+function switchLegalTab(tabId) {
+  const tabs = document.querySelectorAll('.legal-tab-btn');
+  const contents = document.querySelectorAll('.legal-tab-content');
+
+  tabs.forEach(tab => {
+    if (tab.dataset.tab === tabId) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  contents.forEach(content => {
+    if (content.id === `legal-tab-${tabId}`) {
+      content.classList.add('active');
+    } else {
+      content.classList.remove('active');
+    }
+  });
+}
+
+// Global window mappings
+window.openLegalModal = openLegalModal;
+window.closeLegalModal = closeLegalModal;
+window.switchLegalTab = switchLegalTab;
+
+// Close modals when clicking backdrop or pressing Escape key
+document.addEventListener('click', (e) => {
+  const legalModal = document.getElementById('legal-modal');
+  if (legalModal && e.target === legalModal) {
+    closeLegalModal();
+  }
+  const modal = document.getElementById('modal');
+  if (modal && e.target === modal) {
+    closeModal();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeLegalModal();
+    closeModal();
+  }
+});
+
 async function handleFormSubmit(e) {
   e.preventDefault();
   const form = e.target;
@@ -1044,7 +1106,7 @@ function initChatbotWidget() {
     `;
 
     messagesEl.appendChild(msgDiv);
-    scrollToBottom();
+    scrollToMessageTop(msgDiv);
   }
 
   function showTypingIndicator() {
@@ -1072,6 +1134,17 @@ function initChatbotWidget() {
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
+  function scrollToMessageTop(msgEl) {
+    if (!msgEl || !messagesEl) return;
+    const msgRect = msgEl.getBoundingClientRect();
+    const containerRect = messagesEl.getBoundingClientRect();
+    const relativeTop = msgRect.top - containerRect.top + messagesEl.scrollTop - 12;
+    messagesEl.scrollTo({
+      top: Math.max(0, relativeTop),
+      behavior: 'smooth'
+    });
+  }
+
   function escapeHtml(str) {
     return str.replace(/[&<>"']/g, function(m) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
@@ -1095,59 +1168,95 @@ function initChatbotWidget() {
     // Clean up any remaining orphaned double asterisks
     html = html.replace(/\*\*/g, '');
 
-    // Process lines for lists (- or * or 1.)
     const lines = html.split('\n');
     let inList = false;
-    let listType = 'ul';
+    let listType = null;
     let result = [];
 
-    lines.forEach(line => {
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i];
       let trimmed = line.trim();
 
-      // Skip heading tags from list paragraph wrapping
+      if (!trimmed) {
+        // Lookahead to see if next non-empty line is a list item of the same list
+        let nextNonEmpty = null;
+        for (let j = i + 1; j < lines.length; j++) {
+          if (lines[j].trim()) {
+            nextNonEmpty = lines[j].trim();
+            break;
+          }
+        }
+        
+        if (inList && nextNonEmpty) {
+          const isNextUl = /^[-*•]\s/.test(nextNonEmpty);
+          const isNextOl = /^\d+[\.\)]\s/.test(nextNonEmpty);
+          if ((listType === 'ul' && isNextUl) || (listType === 'ol' && isNextOl)) {
+            // Keep list open, skip empty line
+            continue;
+          }
+        }
+
+        if (inList) {
+          result.push(listType === 'ul' ? '</ul>' : '</ol>');
+          inList = false;
+          listType = null;
+        }
+        continue;
+      }
+
+      // Check for headings
       if (trimmed.startsWith('<h3>') || trimmed.startsWith('<h4>')) {
         if (inList) {
           result.push(listType === 'ul' ? '</ul>' : '</ol>');
           inList = false;
+          listType = null;
         }
         result.push(trimmed);
-        return;
+        continue;
       }
 
-      // Check if line is a bullet point (- or * or •)
-      if (trimmed.startsWith('- ') || trimmed.startsWith('* ') || trimmed.startsWith('• ')) {
-        if (!inList || listType !== 'ul') {
-          if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
-          result.push('<ul>');
+      const isUl = /^[-*•]\s/.test(trimmed);
+      const isOl = /^\d+[\.\)]\s/.test(trimmed);
+
+      if (isUl || isOl) {
+        const currentType = isUl ? 'ul' : 'ol';
+        if (!inList || listType !== currentType) {
+          if (inList) {
+            result.push(listType === 'ul' ? '</ul>' : '</ol>');
+          }
+          result.push(currentType === 'ul' ? '<ul>' : '<ol>');
           inList = true;
-          listType = 'ul';
+          listType = currentType;
         }
-        let content = trimmed.substring(2).trim();
+
+        let content = isUl 
+          ? trimmed.replace(/^[-*•]\s/, '').trim() 
+          : trimmed.replace(/^\d+[\.\)]\s/, '').trim();
+
         result.push(`<li>${content}</li>`);
-      } 
-      // Check if line is a numbered list (1., 2., etc.)
-      else if (/^\d+\.\s/.test(trimmed)) {
-        if (!inList || listType !== 'ol') {
-          if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
-          result.push('<ol>');
-          inList = true;
-          listType = 'ol';
-        }
-        let content = trimmed.replace(/^\d+\.\s/, '').trim();
-        result.push(`<li>${content}</li>`);
-      } 
-      else {
+      } else {
         if (inList) {
-          result.push(listType === 'ul' ? '</ul>' : '</ol>');
-          inList = false;
+          // If sub-description under existing list item, append inside previous <li>
+          if (result.length > 0 && result[result.length - 1].endsWith('</li>')) {
+            let lastLi = result.pop();
+            lastLi = lastLi.substring(0, lastLi.length - 5);
+            lastLi += `<div class="chat-subtext">${trimmed}</div></li>`;
+            result.push(lastLi);
+            continue;
+          } else {
+            result.push(listType === 'ul' ? '</ul>' : '</ol>');
+            inList = false;
+            listType = null;
+          }
         }
-        if (trimmed.length > 0) {
-          result.push(`<p>${trimmed}</p>`);
-        }
-      }
-    });
 
-    if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
+        result.push(`<p>${trimmed}</p>`);
+      }
+    }
+
+    if (inList) {
+      result.push(listType === 'ul' ? '</ul>' : '</ol>');
+    }
 
     return result.join('');
   }

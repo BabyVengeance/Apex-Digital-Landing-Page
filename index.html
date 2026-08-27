@@ -1265,6 +1265,10 @@
               <button type="submit" id="intake-submit-btn" class="btn-champagne" style="width: 100%;">
                 Submit Website Intake Protocol
               </button>
+              <p class="form-popia-note">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>POPIA Compliant: Your data is encrypted &amp; processed strictly to handle your project request. Zero spam.</span>
+              </p>
             </div>
 
             <div class="form-full">
@@ -1309,8 +1313,12 @@
           <input type="email" name="email" class="form-input" placeholder="name@company.com" required>
         </div>
         <button type="submit" id="modal-submit-btn" class="btn-champagne" style="width: 100%;">
-          Request Free Consultation & Demo Website
+          Request Free Consultation &amp; Demo Website
         </button>
+        <p class="form-popia-note" style="justify-content: center; margin-top: 12px;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>POPIA Secure: Your contact details are never shared or sold.</span>
+        </p>
         <div id="modal-form-status"
           style="margin-top: 14px; display: none; font-size: 0.95rem; text-align: center; border-radius: 8px; padding: 12px;">
         </div>
@@ -1318,6 +1326,7 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -1336,11 +1345,6 @@
             <li><a href="#services">Apex Starter Build</a></li>
             <li><a href="#services">Apex Standard Build</a></li>
             <li><a href="#services">Apex Pro Build</a></li>
-            <li><a href="#services">E-Commerce Stores</a></li>
-            <li><a href="#services">Website Redesign</a></li>
-            <li><a href="#services">Custom Web Apps</a></li>
-            <li><a href="#services">AI Automation</a></li>
-            <li><a href="#services">GEO &amp; SEO Services</a></li>
           </ul>
         </div>
 
@@ -1351,6 +1355,16 @@
             <li><a href="#simulator">Speed Simulator</a></li>
             <li><a href="#portfolio">Featured Builds (LaserGen)</a></li>
             <li><a href="#impact">Performance Metrics</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Legal &amp; Governance</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="openLegalModal('popia'); return false;">POPIA Privacy Policy</a></li>
+            <li><a href="#" onclick="openLegalModal('terms'); return false;">Terms of Service &amp; IP</a></li>
+            <li><a href="#" onclick="openLegalModal('cookies'); return false;">Cookie &amp; Local Data Policy</a></li>
+            <li><a href="#" onclick="openLegalModal('paia'); return false;">PAIA Manual &amp; Notice</a></li>
           </ul>
         </div>
 
@@ -1412,12 +1426,127 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 Apex Digital SA (Pty) Ltd. Reg: 2026/237102/07. All rights reserved. High-Performance Digital
-          Engineering.</div>
-        <div>POPIA &amp; Data Privacy Compliant</div>
+        <div>&copy; 2026 Apex Digital SA (Pty) Ltd. Reg: 2026/237102/07. All rights reserved.</div>
+        <div class="footer-legal-links">
+          <a href="#" onclick="openLegalModal('popia'); return false;">POPIA Privacy Policy</a>
+          <span>&bull;</span>
+          <a href="#" onclick="openLegalModal('terms'); return false;">Terms of Service</a>
+          <span>&bull;</span>
+          <a href="#" onclick="openLegalModal('cookies'); return false;">Cookie Policy</a>
+          <span>&bull;</span>
+          <a href="#" onclick="openLegalModal('paia'); return false;">PAIA Manual</a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <!-- APEX LEGAL & GOVERNANCE POLICY MODAL -->
+  <div class="modal-overlay" id="legal-modal">
+    <div class="modal-content legal-modal-content border-beam-card">
+      <div class="legal-modal-header">
+        <h3>APEX DIGITAL <span class="text-champagne-gradient">LEGAL &amp; GOVERNANCE</span></h3>
+        <button class="modal-close" onclick="closeLegalModal()">&times;</button>
+      </div>
+      
+      <div class="legal-nav-tabs">
+        <button class="legal-tab-btn active" data-tab="popia" onclick="switchLegalTab('popia')">1. POPIA Privacy Policy</button>
+        <button class="legal-tab-btn" data-tab="terms" onclick="switchLegalTab('terms')">2. Terms of Service &amp; IP</button>
+        <button class="legal-tab-btn" data-tab="cookies" onclick="switchLegalTab('cookies')">3. Cookie &amp; Local Data</button>
+        <button class="legal-tab-btn" data-tab="paia" onclick="switchLegalTab('paia')">4. PAIA &amp; Info Officer</button>
+      </div>
+
+      <div class="legal-modal-body">
+        <!-- Tab 1: POPIA Privacy Policy -->
+        <div class="legal-tab-content active" id="legal-tab-popia">
+          <h4>Protection of Personal Information Act (POPIA) Notice</h4>
+          <p>Apex Digital SA (Pty) Ltd (Registration No: 2026/237102/07) is committed to protecting your privacy in full compliance with the South African Protection of Personal Information Act, No. 4 of 2013 (POPIA).</p>
+
+          <h4>1. Information We Collect</h4>
+          <p>We collect personal information directly from you when you submit a website intake form, request a custom demo, or interact with our digital tools. This includes:</p>
+          <ul>
+            <li>Full Name and Company Details</li>
+            <li>Direct Email Address and WhatsApp / Telephone Contact Number</li>
+            <li>Project Requirements, Budget Allocations, and Technical Specifications</li>
+            <li>Technical Server Logs (IP address, browser type, referrer headers for security telemetry)</li>
+          </ul>
+
+          <h4>2. Purpose &amp; Lawful Basis of Processing</h4>
+          <p>Your personal data is collected under Section 11(1)(a)-(b) of POPIA for the explicit purposes of:</p>
+          <ul>
+            <li>Evaluating technical requirements and preparing custom project proposals or statements of work (SOW).</li>
+            <li>Scheduling 1-on-1 strategy consultations with our Lead Systems Architect.</li>
+            <li>Delivering bespoke custom code engineering, web application hosting, and post-launch maintenance.</li>
+          </ul>
+
+          <h4>3. Data Security &amp; Third-Party Transfers</h4>
+          <p>All data submitted through our platforms is encrypted in transit using SSL/TLS encryption. Apex Digital SA does <strong>not</strong> sell, rent, or monetize client or prospect data. Data is shared strictly with infrastructure providers essential to service delivery (e.g., encrypted form dispatch handlers and cloud hosting nodes).</p>
+
+          <h4>4. Your Rights as a Data Subject</h4>
+          <p>Under Sections 23 &amp; 24 of POPIA, you have the right to:</p>
+          <ul>
+            <li>Request confirmation of whether we hold your personal information.</li>
+            <li>Request correction, destruction, or deletion of your personal records.</li>
+            <li>Object to processing on reasonable grounds.</li>
+          </ul>
+          <p>To exercise your rights, contact our Information Officer at <a href="mailto:apexdigtl@gmail.com" class="chat-link">apexdigtl@gmail.com</a>.</p>
+        </div>
+
+        <!-- Tab 2: Terms of Service & Code Ownership -->
+        <div class="legal-tab-content" id="legal-tab-terms">
+          <h4>Terms of Service &amp; Custom Architecture IP</h4>
+          <p>By accessing or interacting with Apex Digital SA platforms and services, you agree to these Terms of Service.</p>
+
+          <h4>1. 100% Code Ownership Guarantee</h4>
+          <p>Upon full settlement of project engineering invoices, Apex Digital SA assigns 100% full custom source code ownership, repository access, and design assets to the client. Clients operate free from monthly builder lock-ins or proprietary platform subscriptions.</p>
+
+          <h4>2. Pricing Metrics &amp; Scope Benchmarks</h4>
+          <p>Published tier pricing (Starter from R1,500, Standard from R5,000, Pro from R10,000) and performance metrics (sub-0.4s load speed, 99/100 PageSpeed) represent standardized engineering benchmarks. Formal project scopes, SLAs, and deliverables are governed by an executed Statement of Work (SOW).</p>
+
+          <h4>3. Limitation of Liability</h4>
+          <p>Apex Digital SA disclaims liability for indirect, consequential, or third-party service disruptions, including DNS registrar outages, client-side domain misconfigurations, or external API provider downtime.</p>
+
+          <h4>4. Governing Law &amp; Jurisdiction</h4>
+          <p>These terms are governed exclusively by the laws of the Republic of South Africa. Any disputes are subject to the exclusive jurisdiction of the High Court of South Africa (KwaZulu-Natal Local Division, Durban).</p>
+        </div>
+
+        <!-- Tab 3: Cookie & Local Storage Policy -->
+        <div class="legal-tab-content" id="legal-tab-cookies">
+          <h4>Cookie &amp; Local Browser Storage Notice</h4>
+          <p>Apex Digital SA prioritizes lightweight, privacy-first web engineering. We do <strong>not</strong> deploy invasive cross-site tracking cookies or third-party advertising pixels.</p>
+
+          <h4>1. Essential Functional Storage</h4>
+          <p>Our platform uses standard client-side browser storage (<code>localStorage</code> &amp; <code>sessionStorage</code>) strictly for functional operation:</p>
+          <ul>
+            <li><strong>Chatbot State</strong>: Remembers your active chat session and conversation history during your visit.</li>
+            <li><strong>Theme Preference</strong>: Stores your preferred visual mode (dark/light theme).</li>
+            <li><strong>Security Tokens</strong>: Anti-spam form tokens to prevent automated bot submissions.</li>
+          </ul>
+
+          <h4>2. Managing Local Storage</h4>
+          <p>You can clear your local storage and cookies at any time via your browser settings without affecting core document access.</p>
+        </div>
+
+        <!-- Tab 4: PAIA Manual & Information Officer -->
+        <div class="legal-tab-content" id="legal-tab-paia">
+          <h4>PAIA Manual &amp; Information Officer Notice</h4>
+          <p>In accordance with Section 51 of the Promotion of Access to Information Act, No. 2 of 2000 (PAIA), Apex Digital SA maintains records required for corporate governance and regulatory compliance.</p>
+
+          <h4>1. Information Officer Details</h4>
+          <ul>
+            <li><strong>Entity Name</strong>: Apex Digital SA (Pty) Ltd</li>
+            <li><strong>Registration Number</strong>: 2026/237102/07</li>
+            <li><strong>Designated Information Officer</strong>: Rohan Ramlall (Lead Architect)</li>
+            <li><strong>Email</strong>: <a href="mailto:apexdigtl@gmail.com" class="chat-link">apexdigtl@gmail.com</a></li>
+            <li><strong>Telephone / WhatsApp</strong>: +27 69 522 4226</li>
+            <li><strong>Headquarters</strong>: Durban, KwaZulu-Natal, South Africa</li>
+          </ul>
+
+          <h4>2. Requesting Records</h4>
+          <p>Requests for access to records under PAIA must be submitted on the prescribed Form 2 to the Information Officer email address above.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- APEX RAG CHATBOT WIDGET -->
   <div id="apex-chatbot-container">

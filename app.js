@@ -31,28 +31,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   GLOBAL CHATBOT TOGGLE FAILSAFE (PARSED IMMEDIATELY)
+   GLOBAL CHATBOT TOGGLE CONTROLLER
    ========================================================================== */
-window.toggleChatbotWindow = function(e) {
-  if (e && e.preventDefault) e.preventDefault();
+window.toggleChatbotWindow = function(forceOpen) {
   const windowEl = document.getElementById('chatbot-window');
   const inputEl = document.getElementById('chat-input');
   if (!windowEl) return;
 
-  const isHidden = windowEl.classList.contains('hidden');
-  if (isHidden) {
+  const shouldOpen = (typeof forceOpen === 'boolean') 
+    ? forceOpen 
+    : windowEl.classList.contains('hidden');
+
+  if (shouldOpen) {
     windowEl.classList.remove('hidden');
-    windowEl.style.opacity = '1';
-    windowEl.style.visibility = 'visible';
-    windowEl.style.pointerEvents = 'auto';
-    windowEl.style.transform = 'translateY(0) scale(1)';
-    if (inputEl) setTimeout(() => inputEl.focus(), 50);
+    if (inputEl) setTimeout(() => inputEl.focus(), 80);
   } else {
     windowEl.classList.add('hidden');
-    windowEl.style.opacity = '0';
-    windowEl.style.visibility = 'hidden';
-    windowEl.style.pointerEvents = 'none';
-    windowEl.style.transform = 'translateY(20px) scale(0.95)';
   }
 };
 
@@ -1131,17 +1125,6 @@ function initChatbotWidget() {
 
   if (!trigger || !windowEl) return;
 
-  // Global Fail-Safe Toggle Function
-  window.toggleChatbotWindow = function() {
-    const isHidden = windowEl.classList.contains('hidden');
-    if (isHidden) {
-      windowEl.classList.remove('hidden');
-      if (inputEl) inputEl.focus();
-    } else {
-      windowEl.classList.add('hidden');
-    }
-  };
-
   // Toggle Chat Visibility
   trigger.addEventListener('click', (e) => {
     e.preventDefault();
@@ -1151,7 +1134,7 @@ function initChatbotWidget() {
   if (closeBtn) {
     closeBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      windowEl.classList.add('hidden');
+      window.toggleChatbotWindow(false);
     });
   }
 

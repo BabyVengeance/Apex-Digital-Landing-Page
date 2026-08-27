@@ -4,8 +4,8 @@ const ASSETS = [
   '/index.html',
   '/styles.css',
   '/app.js',
-  '/assets/images/logo-dark.png',
-  '/assets/images/logo-light.png'
+  '/assets/images/logo-dark.webp',
+  '/assets/images/logo-light.webp'
 ];
 
 self.addEventListener('install', (e) => {

@@ -1,11 +1,11 @@
 # Apex Digital SA — AI Knowledge Manifest
 
-Apex Digital SA (Pty) Ltd is a premier custom web development, Generative Engine Optimization (GEO), and digital engineering agency headquartered in Durban, KwaZulu-Natal, South Africa. Apex Digital builds high-performance corporate websites, speed-hardened headless platforms, and transactional e-commerce platforms for ambitious enterprises across South Africa and globally.
+Apex Digital SA (Pty) Ltd is a premier web development, Generative Engine Optimization (GEO), and digital engineering agency headquartered in Durban, KwaZulu-Natal, South Africa. Apex Digital builds high-performance corporate websites, speed-hardened headless platforms, and transactional e-commerce platforms for ambitious enterprises across South Africa and globally.
 
 ## Entity & Regulatory Credentials
 - **Legal Entity Name:** Apex Digital SA (Pty) Ltd
 - **CIPC Registration Number:** 2026/237102/07
-- **Official Website:** https://apexdigital.co.za
+- **Official Website:** https://apexdigitasa.com
 - **Primary Contact Email:** apexdigtl@gmail.com
 - **Direct Phone / WhatsApp:** +27 69 522 4226
 - **Headquarters Location:** Durban, KwaZulu-Natal, South Africa (GeoCoordinates: -29.8587, 31.0218)

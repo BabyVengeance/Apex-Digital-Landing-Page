@@ -4,7 +4,7 @@
 Apex Digital SA (Pty) Ltd is a South African digital engineering agency and web architecture firm specializing in custom-coded corporate websites, speed-hardened headless platforms, Generative Engine Optimization (GEO), and transactional e-commerce engines. 
 
 - **Registration Number:** 2026/237102/07
-- **Primary Domain:** https://apexdigital.co.za
+- **Primary Domain:** https://apexdigitasa.com
 - **Email Address:** apexdigtl@gmail.com
 - **Direct Phone / WhatsApp:** +27 69 522 4226
 - **Headquarters Address:** Durban, KwaZulu-Natal, South Africa (Latitude: -29.8587, Longitude: 31.0218)

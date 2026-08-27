@@ -118,7 +118,7 @@ Every website build includes structured search engine optimization, Google Searc
 - **Core Web Vitals Guarantee**: 99/100 Google PageSpeed scores with WebP images & layout shift protection.
 
 A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant mobile loading nationwide.`,
-      cta: { text: "Test Speed Simulator", action: "scrollSimulator" }
+      cta: { text: "Calculate Project ROI & Scope", action: "scrollSection:simulator" }
     },
     {
       id: "why_apex_vs_others",
@@ -130,7 +130,7 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
 - **Security**: Zero vulnerability to public plugin exploits or automated database breaches.
 - **Conversion Rate**: Tailored user flows built specifically for your sales process without template limits.
 - **Ownership & Costs**: 100% custom code ownership with zero monthly builder fees or lock-ins.`,
-      cta: { text: "Get Your Free Demo Site", action: "openModal" }
+      cta: { text: "See Code Architecture", action: "scrollSection:architecture" }
     },
     {
       id: "ecommerce_integrations",
@@ -164,7 +164,7 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
 - **Phone / WhatsApp**: [+27 69 522 4226](tel:+27695224226)
 - **Email**: [Apexdigtl@gmail.com](mailto:Apexdigtl@gmail.com)
 - **HQ**: Durban, KwaZulu-Natal (Serving clients nationwide across SA & globally)`,
-      cta: { text: "Send Us a Message", action: "openModal" }
+      cta: { text: "Chat Directly on WhatsApp", action: "openWhatsApp" }
     }
   ];
 
@@ -186,9 +186,9 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
       iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`
     },
     { 
-      label: "Sub-Second Speed", 
-      query: "How fast do your websites load?",
-      iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`
+      label: "Calculate Project ROI", 
+      query: "How do I calculate deliverables and ROI for my project?",
+      iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>`
     },
     { 
       label: "Build Process & SLA", 
@@ -246,8 +246,8 @@ F. CONTACT COORDINATES:
 - CONCISE, HIGH-CONVERTING & DIRECT: Keep responses brief, direct, and punchy. South African business owners value clear, scan-friendly answers. Avoid long preamble fluff or wordy closing paragraphs.
 - FULL INFORMATION RETENTION: Retain all essential metrics (sub-0.4s load speed, 99/100 PageSpeed, pricing tiers starting at R1,500 / R5,000 / R10,000, contact details: 069 522 4226 / Apexdigtl@gmail.com), but present them in tight, structured bullet points.
 - CLEAN LIST NUMBERING: When listing items (such as case studies or steps), use clean sequential numbered lists (1., 2., 3., 4.) or bullet points (- ). Keep each list item to 1–2 lines max.
-- CASE STUDY BRIEFS: When asked for case studies or results, list each build as 1 punchy line (e.g. 1. **LaserGen** ([lasergen.co.za](https://lasergen.co.za)): Industrial laser refurbishment site with sub-second loading & quote capture.) Do not output separate multi-line sub-paragraphs for each project.
-- ACTIONABLE CALL TO ACTION: Conclude with a single brief, high-status invitation to claim a free custom demo website or schedule a 15-minute consultation with Lead Architect Rohan Ramlall (WhatsApp 069 522 4226).
+- CASE STUDY BRIEFS: When asked for case studies or results, list each build as 1 punchy line.
+- ACTIONABLE CALL TO ACTION: Conclude with a brief invitation to explore our live platform portfolio, calculate project ROI, compare build tiers, or claim a free custom demo website.
 
 ====================================================================
 3. STRICT SECURITY PROTOCOL & GUARDRAILS
@@ -270,34 +270,23 @@ F. CONTACT COORDINATES:
         return this.ragFallback.query(userText);
       }
 
-      // Add user message to memory
       this.history.push({
         role: "user",
         parts: [{ text: userText }]
       });
 
-      // Maintain last 10 messages for memory efficiency
       if (this.history.length > 10) {
         this.history = this.history.slice(-10);
       }
 
       try {
         const answerText = await this.callGeminiAPI(PRIMARY_MODEL);
-        
-        // Add model answer to history
         this.history.push({
           role: "model",
           parts: [{ text: answerText }]
         });
-
-        // Determine dynamic CTA button action
         const cta = this.deriveCTA(userText, answerText);
-
-        return {
-          title: null,
-          text: answerText,
-          cta: cta
-        };
+        return { title: null, text: answerText, cta: cta };
       } catch (err) {
         console.warn("Primary Gemini model failed, trying fallback model...", err);
         try {
@@ -306,14 +295,9 @@ F. CONTACT COORDINATES:
             role: "model",
             parts: [{ text: fallbackText }]
           });
-          return {
-            title: null,
-            text: fallbackText,
-            cta: this.deriveCTA(userText, fallbackText)
-          };
+          return { title: null, text: fallbackText, cta: this.deriveCTA(userText, fallbackText) };
         } catch (fallbackErr) {
           console.error("Gemini API Error, reverting to local RAG engine:", fallbackErr);
-          // Rollback failed user message from history
           this.history.pop();
           return this.ragFallback.query(userText);
         }
@@ -358,17 +342,47 @@ F. CONTACT COORDINATES:
     }
 
     deriveCTA(userText, answerText) {
-      const combined = (userText + " " + answerText).toLowerCase();
+      const q = (userText || "").toLowerCase();
+      const a = (answerText || "").toLowerCase();
+      const combined = q + " " + a;
 
-      if (combined.includes("speed") || combined.includes("simulator") || combined.includes("load time") || combined.includes("performance")) {
-        return { text: "Run Speed Simulator", action: "scrollSimulator" };
-      }
-      
-      if (combined.includes("price") || combined.includes("quote") || combined.includes("package") || combined.includes("starter") || combined.includes("pro") || combined.includes("demo") || combined.includes("contact")) {
-        return { text: "Claim Free Custom Demo", action: "openModal" };
+      // 1. Direct WhatsApp / Phone Contact
+      if (q.includes("whatsapp") || q.includes("phone") || q.includes("call") || q.includes("number") || q.includes("chat directly") || q.includes("talk") || q.includes("reach out")) {
+        return { text: "Chat Directly on WhatsApp", action: "openWhatsApp" };
       }
 
-      return { text: "Get Your Free Demo Site", action: "openModal" };
+      // 2. Investment & ROI Calculator Section (#simulator)
+      if (combined.includes("roi") || combined.includes("calculator") || combined.includes("investment") || combined.includes("deliverables") || combined.includes("conversion lift") || combined.includes("impact")) {
+        return { text: "Calculate Project ROI & Scope", action: "scrollSection:simulator" };
+      }
+
+      // 3. Real Client Portfolio & Works (#portfolio)
+      if (combined.includes("case study") || combined.includes("portfolio") || combined.includes("lasergen") || combined.includes("compass") || combined.includes("boss rides") || combined.includes("ayesha") || combined.includes("cato ridge") || combined.includes("example") || combined.includes("proof") || combined.includes("work") || combined.includes("showcase")) {
+        return { text: "Explore Live Client Portfolio", action: "scrollSection:portfolio" };
+      }
+
+      // 4. Website Packages & Pricing Tiers (#services)
+      if (combined.includes("package") || combined.includes("pricing") || combined.includes("cost") || combined.includes("price") || combined.includes("r1,500") || combined.includes("r5,000") || combined.includes("r10,000") || combined.includes("starter") || combined.includes("standard") || combined.includes("pro") || combined.includes("tier")) {
+        return { text: "Compare Build Tiers & Pricing", action: "scrollSection:services" };
+      }
+
+      // 5. Code Architecture & Technical Performance (#architecture)
+      if (combined.includes("architecture") || combined.includes("hand-coded") || combined.includes("vanilla") || combined.includes("wordpress vs") || combined.includes("speed") || combined.includes("load time") || combined.includes("page speed") || combined.includes("latency")) {
+        return { text: "See Code Architecture", action: "scrollSection:architecture" };
+      }
+
+      // 6. Agency Manifesto & About (#agency)
+      if (combined.includes("manifesto") || combined.includes("agency") || combined.includes("philosophy") || combined.includes("about") || combined.includes("who is apex") || combined.includes("rohan")) {
+        return { text: "Read Agency Manifesto", action: "scrollSection:agency" };
+      }
+
+      // 7. Frequently Asked Questions & Timelines (#faq)
+      if (combined.includes("faq") || combined.includes("timeline") || combined.includes("how long") || combined.includes("turnaround") || combined.includes("popia") || combined.includes("domain") || combined.includes("hosting")) {
+        return { text: "Explore FAQ & Timelines", action: "scrollSection:faq" };
+      }
+
+      // 8. Custom Demo / Intake Consultation Modal (Default Fallback)
+      return { text: "Claim Free Custom Demo Website", action: "openModal" };
     }
 
     clearHistory() {

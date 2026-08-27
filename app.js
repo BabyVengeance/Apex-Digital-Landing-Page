@@ -1399,11 +1399,28 @@ function initChatbotWidget() {
 
 // Global Chat CTA Trigger Handler
 window.handleChatCTA = function(action) {
+  if (!action) return;
+
   if (action === 'openModal') {
     if (typeof openModal === 'function') openModal();
+  } else if (action === 'openWhatsApp') {
+    window.open('https://wa.me/27695224226', '_blank', 'noopener,noreferrer');
+  } else if (action.startsWith('scrollSection:')) {
+    const targetId = action.replace('scrollSection:', '');
+    const el = document.getElementById(targetId);
+    if (el) {
+      const chatbotWin = document.getElementById('chatbot-window');
+      if (chatbotWin && window.innerWidth <= 768) {
+        chatbotWin.classList.add('hidden');
+      }
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   } else if (action === 'scrollSimulator') {
     const el = document.getElementById('simulator');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    const el = document.getElementById(action);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 };
 

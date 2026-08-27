@@ -31,6 +31,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
+   GLOBAL CHATBOT TOGGLE FAILSAFE (PARSED IMMEDIATELY)
+   ========================================================================== */
+window.toggleChatbotWindow = function(e) {
+  if (e && e.preventDefault) e.preventDefault();
+  const windowEl = document.getElementById('chatbot-window');
+  const inputEl = document.getElementById('chat-input');
+  if (!windowEl) return;
+
+  const isHidden = windowEl.classList.contains('hidden');
+  if (isHidden) {
+    windowEl.classList.remove('hidden');
+    windowEl.style.opacity = '1';
+    windowEl.style.visibility = 'visible';
+    windowEl.style.pointerEvents = 'auto';
+    windowEl.style.transform = 'translateY(0) scale(1)';
+    if (inputEl) setTimeout(() => inputEl.focus(), 50);
+  } else {
+    windowEl.classList.add('hidden');
+    windowEl.style.opacity = '0';
+    windowEl.style.visibility = 'hidden';
+    windowEl.style.pointerEvents = 'none';
+    windowEl.style.transform = 'translateY(20px) scale(0.95)';
+  }
+};
+
+/* ==========================================================================
    1. CINEMATIC PRE-LOADER BOOT SEQUENCE & KINETIC HERO REVEAL
    ========================================================================== */
 function initPreloader() {

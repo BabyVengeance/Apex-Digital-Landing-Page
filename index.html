@@ -391,8 +391,8 @@
             WE ENGINEER <span class="text-champagne-gradient">DIGITAL ECOSYSTEMS</span>, NOT JUST WEBSITES.
           </h2>
 
-          <!-- Interactive Code-Driven Ecosystem Node Network Engine -->
-          <div class="ecosystem-canvas-card border-beam-card" id="ecosystem-canvas-card">
+          <!-- Interactive Code-Driven Ecosystem Node Network Engine (Desktop) -->
+          <div class="ecosystem-canvas-card border-beam-card desktop-only" id="ecosystem-canvas-card">
             <canvas id="ecosystem-canvas"></canvas>
 
             <!-- Central Gold Apex Logo Emblem -->
@@ -1015,7 +1015,45 @@
   <!-- Interactive Revenue & Competitor Leak Calculator -->
   <section class="auditor-section" id="revenue-simulator">
     <div class="container">
-      <div class="auditor-card border-beam-card">
+      <!-- Dedicated High-Velocity Mobile Diagnostic Card (Mobile Only) -->
+      <div class="mobile-diagnostic-card mobile-only border-beam-card">
+        <div class="section-header" style="margin-bottom: 20px;">
+          <span class="section-tag">04 // 1-TAP LEAK DIAGNOSTIC</span>
+          <h2 class="section-title">HOW MUCH REVENUE DO <span class="text-champagne-gradient">COMPETITORS TAKE?</span></h2>
+          <p class="section-subtitle">Select your business model below for an instant local market leakage assessment.</p>
+        </div>
+
+        <div class="mobile-diag-step-label">Select Business Model:</div>
+        <div class="mobile-diag-btn-group">
+          <button type="button" class="diag-sector-btn active" onclick="selectMobileSector('b2b', this)">
+            🏢 Commercial &amp; B2B
+          </button>
+          <button type="button" class="diag-sector-btn" onclick="selectMobileSector('trade', this)">
+            ⚡ Local Trade &amp; Services
+          </button>
+          <button type="button" class="diag-sector-btn" onclick="selectMobileSector('retail', this)">
+            🛍️ E-Commerce &amp; Retail
+          </button>
+        </div>
+
+        <div class="mobile-diag-scorecard">
+          <span class="diag-metric-label" id="mobile-loss-title">Estimated Commercial Deals Lost to Page 1 Competitors</span>
+          <div class="mobile-loss-number text-champagne-gradient" id="mobile-loss-val">R 125,000 / mo</div>
+          <div class="mobile-annual-row">
+            <span>Annual Uncaptured Opportunity:</span>
+            <strong id="mobile-annual-val">R 1,500,000 / yr</strong>
+          </div>
+          <p class="mobile-diag-desc" id="mobile-loss-desc">
+            Corporate procurement managers research online before requesting quotes. Having no website or an unoptimized presence causes high-ticket corporate contracts to go to verified competitors.
+          </p>
+          <button onclick="openModal()" class="btn-champagne mobile-diag-cta" style="width: 100%;">
+            CLAIM YOUR DEMO &amp; STOP MARKET LEAK &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Desktop Full Simulation Engine (Desktop Only) -->
+      <div class="auditor-card border-beam-card desktop-only">
         <div class="section-header" style="margin-bottom: 28px;">
           <span class="section-tag">04 // REVENUE &amp; COMPETITOR DIAGNOSTIC</span>
           <h2 class="section-title">VERIFIABLE <span class="text-champagne-gradient">COMPETITOR REVENUE LEAK CALCULATOR</span></h2>
@@ -1228,25 +1266,22 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label">Business Email *</label>
-              <input type="email" name="email" class="form-input" placeholder="e.g. john@company.co.za" required>
+              <label class="form-label">WhatsApp / Direct Number *</label>
+              <input type="tel" name="phone" class="form-input" placeholder="e.g. +27 82 123 4567" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label">Company / Organization *</label>
-              <input type="text" name="company" class="form-input" placeholder="e.g. Acme Corporation" required>
+              <label class="form-label">Business Email *</label>
+              <input type="email" name="email" class="form-input" placeholder="e.g. john@company.co.za" required>
             </div>
 
             <div class="form-group">
               <label class="form-label">Desired Digital Service / Package *</label>
               <select name="package" class="form-select" required>
                 <option value="" disabled selected>Select Digital Service / Package</option>
-                <option value="Apex Starter Build (Single-Page Landing Page)">Apex Starter Build (Single-Page Landing
-                  Page)</option>
-                <option value="Apex Standard Build (3-5 Pages Multi-Page Site)">Apex Standard Build (3-5 Pages
-                  Multi-Page Site)</option>
-                <option value="Apex Pro Build (5-10 Pages + Custom Tools)">Apex Pro Build (5-10 Pages + Custom Tools)
-                </option>
+                <option value="Apex Starter Build (Single-Page Landing Page)">Apex Starter Build (Single-Page Landing Page)</option>
+                <option value="Apex Standard Build (3-5 Pages Multi-Page Site)">Apex Standard Build (3-5 Pages Multi-Page Site)</option>
+                <option value="Apex Pro Build (5-10 Pages + Custom Tools)">Apex Pro Build (5-10 Pages + Custom Tools)</option>
                 <option value="Transactional E-Commerce Store">Transactional E-Commerce Store</option>
                 <option value="Website Redesign & Platform Refresh">Website Redesign &amp; Platform Refresh</option>
                 <option value="Custom Web Application / Web App">Custom Web Application / Web App</option>
@@ -1256,14 +1291,18 @@
             </div>
 
             <div class="form-group form-full">
-              <label class="form-label">Website Scope & Goals</label>
-              <textarea name="message" class="form-textarea"
-                placeholder="Describe your target audience, existing site bottlenecks, or specific feature requirements..."></textarea>
+              <details class="form-optional-accordion">
+                <summary>+ Add Specific Project Details / Notes (Optional)</summary>
+                <div class="optional-textarea-wrapper">
+                  <textarea name="message" class="form-textarea"
+                    placeholder="Describe your target audience, existing bottlenecks, or specific feature requirements..."></textarea>
+                </div>
+              </details>
             </div>
 
-            <div class="form-full" style="margin-top: 12px;">
+            <div class="form-full" style="margin-top: 8px;">
               <button type="submit" id="intake-submit-btn" class="btn-champagne" style="width: 100%;">
-                Submit Website Intake Protocol
+                Submit Website Intake Protocol &rarr;
               </button>
               <p class="form-popia-note">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>

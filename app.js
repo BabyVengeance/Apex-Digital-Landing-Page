@@ -1899,4 +1899,50 @@ function initEcosystemCanvas() {
   render();
 }
 
+/* ==========================================================================
+   MOBILE 1-TAP MARKET LEAK DIAGNOSTIC HANDLER
+   ========================================================================== */
+const mobileDiagnosticData = {
+  trade: {
+    monthly: 'R 45,000 / mo',
+    annual: 'R 540,000 / yr',
+    lossTitle: 'Estimated Revenue Handed to Competitors Every Month',
+    desc: 'Local emergency & maintenance buyers call the top 3 Google results. Without a high-speed landing page, 80%+ of high-intent phone enquiries go directly to competing contractors.'
+  },
+  b2b: {
+    monthly: 'R 125,000 / mo',
+    annual: 'R 1,500,000 / yr',
+    lossTitle: 'Estimated Commercial Deals Lost to Page 1 Competitors',
+    desc: 'Corporate procurement managers research online before requesting quotes. Having no website or an unoptimized presence causes high-ticket corporate contracts to go to verified competitors.'
+  },
+  retail: {
+    monthly: 'R 85,000 / mo',
+    annual: 'R 1,020,000 / yr',
+    lossTitle: 'Estimated Direct Consumer & E-Commerce Revenue Lost',
+    desc: 'Slow mobile load speeds bleed 53% of mobile buyers. An Apex custom-coded storefront with PayFast/Yoco integration stops customer drop-off.'
+  }
+};
+
+function selectMobileSector(sectorKey, btnEl) {
+  const data = mobileDiagnosticData[sectorKey];
+  if (!data) return;
+
+  const allBtns = document.querySelectorAll('.diag-sector-btn');
+  allBtns.forEach(b => b.classList.remove('active'));
+  if (btnEl) {
+    btnEl.classList.add('active');
+  }
+
+  const lossEl = document.getElementById('mobile-loss-val');
+  const annualEl = document.getElementById('mobile-annual-val');
+  const descEl = document.getElementById('mobile-loss-desc');
+  const titleEl = document.getElementById('mobile-loss-title');
+
+  if (lossEl) lossEl.textContent = data.monthly;
+  if (annualEl) annualEl.textContent = data.annual;
+  if (descEl) descEl.textContent = data.desc;
+  if (titleEl) titleEl.textContent = data.lossTitle;
+}
+
+
 

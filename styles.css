@@ -3016,6 +3016,17 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 24px;
 }
 
+.sim-status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto 36px auto;
+  gap: 16px;
+  width: 100%;
+}
+
 .sim-status-step-label {
   font-size: 0.78rem;
   font-family: var(--font-display);
@@ -3023,6 +3034,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.1em;
   color: var(--champagne);
   text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2px;
 }
 
 /* Services Category Tab Panel Animations & Height Controls */
@@ -3051,12 +3064,15 @@ h1, h2, h3, h4, h5, h6 {
 /* Digital Footprint Status Toggle Styling (Desktop) */
 .sim-status-toggle {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(10, 10, 14, 0.95);
   padding: 6px;
   border-radius: 40px;
   border: 1px solid rgba(212, 175, 55, 0.35);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15);
   gap: 6px;
+  margin: 0 auto;
   max-width: 100%;
 }
 
@@ -3098,10 +3114,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [data-theme="light"] .status-btn.active {
-  background: #09090b;
-  color: #ffffff;
-  border-color: #b89655;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #dfc38a 0%, #b89655 100%);
+  color: #08080c;
+  border-color: #a6843c;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(184, 146, 85, 0.3);
 }
 
 .simulator-mode-container {
@@ -3112,11 +3129,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .simulator-mode-toggle {
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(14, 14, 18, 0.9);
   padding: 5px;
   border-radius: 40px;
   border: 1px solid rgba(212, 175, 55, 0.25);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .sim-mode-btn {

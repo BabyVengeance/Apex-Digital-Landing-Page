@@ -1092,22 +1092,28 @@
             <p class="auditor-desc" id="input-desc">Adjust local monthly search volume and deal size to calculate lost revenue handed to competitors.</p>
 
             <div class="simulator-controls">
-              <!-- Slider 1: Traffic / Search Demand -->
+              <!-- Slider 1: Traffic / Search Demand with Editable Direct Number -->
               <div class="sim-control-group">
                 <div class="sim-label-row">
-                  <label class="form-label" id="demand-label">Monthly Local Industry Searches</label>
-                  <span class="sim-value-badge" id="traffic-badge">5,000 / mo</span>
+                  <label class="form-label" id="demand-label" for="sim-traffic-input">Monthly Local Industry Searches</label>
+                  <div class="sim-input-badge-wrapper" title="Click to type exact search volume">
+                    <input type="number" id="sim-traffic-input" class="sim-number-input" min="1" max="1000000" value="5000" oninput="syncTrafficFromInput(this.value)" aria-label="Exact monthly searches">
+                    <span class="sim-input-unit">/ mo</span>
+                  </div>
                 </div>
-                <input type="range" id="sim-traffic" min="500" max="20000" step="500" value="5000" class="sim-range-slider" oninput="updateRevenueSimulator()">
+                <input type="range" id="sim-traffic" min="50" max="25000" step="50" value="5000" class="sim-range-slider" oninput="syncTrafficFromSlider(this.value)" aria-label="Monthly searches slider">
               </div>
 
-              <!-- Slider 2: Deal / Order Value -->
+              <!-- Slider 2: Deal / Order Value with Editable Direct Number -->
               <div class="sim-control-group">
                 <div class="sim-label-row">
-                  <label class="form-label" id="value-label">Average Client / Deal Value (ZAR)</label>
-                  <span class="sim-value-badge" id="value-badge">R 15,000</span>
+                  <label class="form-label" id="value-label" for="sim-value-input">Average Client / Deal Value (ZAR)</label>
+                  <div class="sim-input-badge-wrapper" title="Click to type exact deal value">
+                    <span class="sim-input-currency">R</span>
+                    <input type="number" id="sim-value-input" class="sim-number-input" min="1" max="10000000" value="15000" oninput="syncValueFromInput(this.value)" aria-label="Exact deal value">
+                  </div>
                 </div>
-                <input type="range" id="sim-value" min="1500" max="150000" step="1000" value="15000" class="sim-range-slider" oninput="updateRevenueSimulator()">
+                <input type="range" id="sim-value" min="250" max="250000" step="250" value="15000" class="sim-range-slider" oninput="syncValueFromSlider(this.value)" aria-label="Deal value slider">
               </div>
 
               <!-- Speed Tier Selector (Hidden when No-Website selected, active for Outdated Website) -->

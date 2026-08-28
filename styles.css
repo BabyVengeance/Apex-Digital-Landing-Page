@@ -3393,16 +3393,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [data-theme="light"] .sim-mode-btn.active {
-  background: #09090b;
-  color: #ffffff;
-  border-color: #b89655;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #dfc38a 0%, #b89655 100%);
+  color: #08080c;
+  border-color: #a6843c;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(184, 146, 85, 0.3);
 }
 
 [data-theme="light"] .sim-value-badge {
-  background: #09090b;
-  color: #d4af37;
-  border-color: rgba(184, 146, 85, 0.4);
+  background: #ffffff;
+  color: #8a6d32;
+  border: 1.5px solid #d4af37;
+  box-shadow: 0 2px 8px rgba(184, 146, 85, 0.18);
+  font-weight: 700;
 }
 
 [data-theme="light"] .sim-range-slider {
@@ -3428,10 +3431,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [data-theme="light"] .sim-speed-btn.active {
-  background: #09090b;
-  border-color: #b89655;
-  color: #ffffff;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #dfc38a 0%, #b89655 100%);
+  border-color: #a6843c;
+  color: #08080c;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(184, 146, 85, 0.3);
 }
 
 [data-theme="light"] .simulator-scorecard {
@@ -3650,6 +3654,78 @@ h1, h2, h3, h4, h5, h6 {
 
 .optional-textarea-wrapper {
   width: 100%;
+}
+
+
+/* Interactive Editable Number Badges in Simulator */
+.sim-input-badge-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(14, 14, 18, 0.95);
+  border: 1.5px solid var(--border-champagne);
+  border-radius: 6px;
+  padding: 4px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  cursor: text;
+}
+
+.sim-input-badge-wrapper:hover,
+.sim-input-badge-wrapper:focus-within {
+  border-color: var(--champagne-bright);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}
+
+.sim-number-input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: var(--champagne) !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+  width: 75px !important;
+  text-align: right !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  -moz-appearance: textfield;
+}
+
+.sim-number-input::-webkit-outer-spin-button,
+.sim-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sim-input-unit,
+.sim-input-currency {
+  color: var(--champagne);
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-display);
+  user-select: none;
+}
+
+[data-theme="light"] .sim-input-badge-wrapper {
+  background: #ffffff;
+  border: 1.5px solid #d4af37;
+  box-shadow: 0 2px 8px rgba(184, 146, 85, 0.18);
+}
+
+[data-theme="light"] .sim-input-badge-wrapper:hover,
+[data-theme="light"] .sim-input-badge-wrapper:focus-within {
+  border-color: #8a6d32;
+  box-shadow: 0 0 12px rgba(184, 146, 85, 0.35);
+}
+
+[data-theme="light"] .sim-number-input {
+  color: #18181b !important;
+}
+
+[data-theme="light"] .sim-input-unit,
+[data-theme="light"] .sim-input-currency {
+  color: #8a6d32;
 }
 
 /* ==========================================================================
@@ -4637,10 +4713,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   [data-theme="light"] .diag-sector-btn.active {
-    background: #09090b !important;
-    color: #ffffff !important;
-    border-color: #b89655 !important;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
+    background: linear-gradient(135deg, #dfc38a 0%, #b89655 100%) !important;
+    color: #08080c !important;
+    border-color: #a6843c !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(184, 146, 85, 0.3) !important;
   }
 
   [data-theme="light"] .mobile-diag-scorecard {

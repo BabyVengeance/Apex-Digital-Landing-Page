@@ -1563,6 +1563,38 @@ window.setDigitalStatus = function(status) {
   window.updateRevenueSimulator();
 };
 
+window.syncTrafficFromSlider = function(val) {
+  const input = document.getElementById('sim-traffic-input');
+  if (input) input.value = val;
+  window.updateRevenueSimulator();
+};
+
+window.syncTrafficFromInput = function(val) {
+  const slider = document.getElementById('sim-traffic');
+  const num = parseInt(val, 10);
+  if (!isNaN(num) && num > 0) {
+    if (slider) slider.value = Math.min(Math.max(num, 50), 25000);
+    window.updateRevenueSimulator();
+  }
+};
+
+window.syncValueFromSlider = function(val) {
+  const input = document.getElementById('sim-value-input');
+  if (input) input.value = val;
+  window.updateRevenueSimulator();
+};
+
+window.syncValueFromInput = function(val) {
+  const slider = document.getElementById('sim-value');
+  const num = parseInt(val, 10);
+  if (!isNaN(num) && num > 0) {
+    const minVal = currentSimMode === 'b2b' ? 250 : 50;
+    const maxVal = currentSimMode === 'b2b' ? 250000 : 25000;
+    if (slider) slider.value = Math.min(Math.max(num, minVal), maxVal);
+    window.updateRevenueSimulator();
+  }
+};
+
 window.setSimulatorMode = function(mode) {
   currentSimMode = mode;
   const b2bBtn = document.getElementById('sim-mode-b2b');
@@ -1572,20 +1604,23 @@ window.setSimulatorMode = function(mode) {
   
   const valueLabel = document.getElementById('value-label');
   const valueSlider = document.getElementById('sim-value');
+  const valueInput = document.getElementById('sim-value-input');
   
   if (valueLabel && valueSlider) {
     if (mode === 'b2b') {
       valueLabel.innerText = "Average Client / Deal Value (ZAR)";
-      valueSlider.min = 1500;
-      valueSlider.max = 150000;
-      valueSlider.step = 1000;
+      valueSlider.min = 250;
+      valueSlider.max = 250000;
+      valueSlider.step = 250;
       valueSlider.value = 15000;
+      if (valueInput) valueInput.value = 15000;
     } else {
       valueLabel.innerText = "Average Order / Transaction Value (ZAR)";
-      valueSlider.min = 150;
-      valueSlider.max = 15000;
-      valueSlider.step = 100;
+      valueSlider.min = 50;
+      valueSlider.max = 25000;
+      valueSlider.step = 50;
       valueSlider.value = 1200;
+      if (valueInput) valueInput.value = 1200;
     }
   }
   
@@ -1600,12 +1635,12 @@ window.setSpeedTier = function(button, speed) {
 };
 
 window.updateRevenueSimulator = function() {
-  const trafficEl = document.getElementById('sim-traffic');
-  const valueEl = document.getElementById('sim-value');
+  const trafficEl = document.getElementById('sim-traffic-input') || document.getElementById('sim-traffic');
+  const valueEl = document.getElementById('sim-value-input') || document.getElementById('sim-value');
   if (!trafficEl || !valueEl) return;
   
-  const traffic = parseInt(trafficEl.value, 10);
-  const dealValue = parseInt(valueEl.value, 10);
+  const traffic = parseInt(trafficEl.value, 10) || 5000;
+  const dealValue = parseInt(valueEl.value, 10) || 15000;
   
   const trafficBadge = document.getElementById('traffic-badge');
   const valueBadge = document.getElementById('value-badge');

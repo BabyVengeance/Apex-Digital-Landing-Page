@@ -2953,349 +2953,76 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   APEX DIGITAL SA — SOVEREIGN MINIMALISM MOBILE OPTIMIZATION SYSTEM
-   Features: Glass Drawer Nav, Dual-SVG Hamburger Toggle, Dedicated Mobile Ecosystem Grid,
-   & Single-Column Calculator Deliverables Matrix
+   FLAGSHIP SPOTLIGHT & MODAL COMPONENT BASE STYLES (DESKTOP)
    ========================================================================== */
-
-/* Hide mobile ecosystem pills on desktop */
-.mobile-ecosystem-pills {
-  display: none;
-}
-
-/* Mobile Menu Toggle Button Styles */
-.mobile-menu-toggle {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-  background: rgba(255, 255, 255, 0.05);
+.flagship-card {
+  background: var(--surface-card);
   border: 1px solid var(--border-champagne);
-  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.flagship-content-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.flagship-info-col {
+  flex: 1;
+  min-width: 280px;
+}
+
+.flagship-cta-col {
+  flex-shrink: 0;
+}
+
+.flagship-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.flagship-domain {
   color: var(--champagne);
-  cursor: pointer;
-  z-index: 10001;
-  padding: 0;
-  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.mobile-menu-toggle .close-icon {
-  display: none;
+.flagship-desc {
+  max-width: 800px;
+  font-size: 1.05rem;
 }
 
-.mobile-menu-toggle.active .hamburger-icon {
-  display: none;
+.flagship-btn {
+  padding: 14px 24px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.mobile-menu-toggle.active .close-icon {
-  display: block;
+.modal-title {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.modal-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.sim-status-step-label {
+  font-size: 0.78rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.1em;
   color: var(--champagne);
-}
-
-[data-theme="light"] .mobile-menu-toggle {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(184, 146, 85, 0.4);
-}
-
-/* Hide desktop custom cursor artifacts on touch screens */
-@media (hover: none) and (pointer: coarse) {
-  #cursor-dot, #cursor-outline {
-    display: none !important;
-  }
-}
-
-/* Tablet & Mobile Layout Breakpoint (max-width: 1024px) */
-@media (max-width: 1024px) {
-  .mobile-menu-toggle {
-    display: inline-flex;
-  }
-
-  .nav-container {
-    position: relative;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: var(--bg-pitch);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem 2rem 2rem 2rem;
-    gap: 1.25rem;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-20px);
-    transition: opacity 0.3s var(--ease-drawer), transform 0.3s var(--ease-drawer), visibility 0.3s;
-    z-index: 10000;
-    overflow-y: auto;
-  }
-
-  .nav-container.mobile-open .nav-links {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
-  .nav-link {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--text-ivory);
-    padding: 12px 24px;
-    width: 100%;
-    max-width: 340px;
-    text-align: center;
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    border: 1px solid var(--border-subtle);
-    background: rgba(255, 255, 255, 0.02);
-  }
-
-  .nav-link:active, .nav-link:hover {
-    border-color: var(--champagne);
-    color: var(--champagne);
-    background: rgba(223, 195, 138, 0.08);
-  }
-
-  .nav-cta-btn {
-    display: none;
-  }
-
-  body.menu-open {
-    overflow: hidden;
-  }
-}
-
-/* Mobile Devices Breakpoint (max-width: 768px) */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
-  section {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
-
-  /* Minimum 48px Touch Targets */
-  button, a.btn-champagne, a.btn-outline-luxury, .nav-social-btn, .theme-toggle-btn, .work-filter-btn, .calc-tier-btn, .faq-trigger, .chatbot-toggle-btn {
-    min-height: 48px;
-    min-width: 48px;
-  }
-
-  /* Hero Section Mobile */
-  .hero {
-    min-height: auto;
-    padding-top: 6rem;
-    padding-bottom: 3.5rem;
-  }
-
-  #hero-wireframe-canvas {
-    height: 240px;
-    opacity: 0.55;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 8.5vw, 3.2rem);
-    line-height: 1.1;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 1rem;
-  }
-
-  .hero-actions .btn-champagne, .hero-actions .btn-outline-luxury {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-  }
-
-  /* --- "HOW IT WORKS" / ECOSYSTEM SECTION MOBILE FRIENDLY OVERHAUL --- */
-  .ecosystem-canvas-card {
-    height: auto;
-    min-height: 220px;
-    padding: 1.5rem 1rem;
-  }
-
-  #ecosystem-canvas {
-    height: 180px !important;
-  }
-
-  /* Hide overlapping floating corner tags on mobile */
-  .ecosystem-canvas-card .node-tag {
-    display: none !important;
-  }
-
-  /* Display clean dedicated mobile ecosystem grid */
-  .mobile-ecosystem-pills {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 1.25rem;
-    width: 100%;
-  }
-
-  .mobile-pill-card {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 12px;
-    background: var(--surface-card);
-    border: 1px solid var(--border-champagne);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  }
-
-  .mobile-pill-card .pill-icon {
-    font-size: 1rem;
-    flex-shrink: 0;
-  }
-
-  .mobile-pill-card .pill-text {
-    font-family: var(--font-display);
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--text-white);
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  /* --- INVESTMENT & DELIVERABLES ROI CALCULATOR MOBILE FRIENDLY OVERHAUL --- */
-  .calc-btn-group {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
-    width: 100% !important;
-  }
-
-  .calc-tier-btn {
-    width: 100% !important;
-    min-height: 52px !important;
-    padding: 12px 16px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-  }
-
-  .calc-results-container {
-    margin-top: 24px !important;
-  }
-
-  .calc-results-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
-    width: 100% !important;
-  }
-
-  .calc-result-card {
-    width: 100% !important;
-    box-sizing: border-box !important;
-    padding: 1.5rem 1.25rem !important;
-  }
-
-  .sim-metrics-subgrid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    width: 100% !important;
-  }
-
-  .sim-metric-box {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    padding: 14px 16px !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    border-radius: 10px !important;
-    border: 1px solid var(--border-subtle) !important;
-  }
-
-  .sim-metric-num {
-    font-size: 1.3rem !important;
-    font-weight: 700 !important;
-    color: var(--champagne) !important;
-    font-family: var(--font-display) !important;
-  }
-
-  .sim-metric-label {
-    font-size: 0.8rem !important;
-    color: var(--text-muted) !important;
-    text-align: right !important;
-  }
-
-  /* Single Column Layout For All Grids */
-  .agency-pillars-grid,
-  .services-grid,
-  .capabilities-grid,
-  .portfolio-grid,
-  .metrics-grid,
-  .footer-grid,
-  .audit-grid,
-  .simulator-grid,
-  .architecture-grid,
-  .faq-grid,
-  .tech-stack-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.25rem !important;
-  }
-
-  .col-4, .col-6, .col-12 {
-    grid-column: span 1 !important;
-    width: 100% !important;
-  }
-
-  /* Form Input Fixes */
-  .form-group input,
-  .form-group select,
-  .form-group textarea,
-  .form-input {
-    font-size: 16px !important;
-    min-height: 48px;
-    padding: 12px 16px;
-  }
-
-  /* Consultation Modal */
-  .modal-content {
-    padding: 1.5rem 1.25rem;
-    max-height: 90vh;
-    width: 95%;
-  }
-
-  /* Floating Chatbot */
-  .chat-widget-window {
-    width: calc(100vw - 32px) !important;
-    right: 16px !important;
-    bottom: 80px !important;
-  }
-}
-
-/* Small Screens (max-width: 480px) */
-@media (max-width: 480px) {
-  .mobile-ecosystem-pills {
-    grid-template-columns: 1fr;
-  }
-
+  text-transform: uppercase;
 }
 
 /* Services Category Tab Panel Animations & Height Controls */
@@ -3321,7 +3048,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
 }
 
-/* Digital Footprint Status Toggle Styling */
+/* Digital Footprint Status Toggle Styling (Desktop) */
 .sim-status-toggle {
   display: inline-flex;
   background: rgba(10, 10, 14, 0.95);
@@ -3522,7 +3249,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
-/* Scorecard Container & Components */
+/* Scorecard Container & Components (Desktop) */
 .simulator-scorecard {
   padding: 32px;
   background: linear-gradient(145deg, rgba(16, 16, 22, 0.95), rgba(8, 8, 12, 0.98));
@@ -3642,9 +3369,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 16px;
 }
 
-/* ==========================================================================
-   LIGHT MODE OVERRIDES FOR REVENUE SIMULATOR ([data-theme="light"])
-   ========================================================================== */
+/* Light Mode Overrides for Revenue Simulator */
 [data-theme="light"] .auditor-sub-title {
   color: #09090b;
 }
@@ -3756,8 +3481,1021 @@ h1, h2, h3, h4, h5, h6 {
   color: #8a6d32;
 }
 
+/* ==========================================================================
+   MASTER SOVEREIGN MINIMALISM RESPONSIVE OPTIMIZATION SYSTEM
+   Unified Cascading Breakpoints: Tablet (1024px) • Mobile (768px) • Compact (480px)
+   ========================================================================== */
 
+/* Hide mobile ecosystem pills on desktop */
+.mobile-ecosystem-pills {
+  display: none;
+}
 
+/* Mobile Menu Toggle Button Styles */
+.mobile-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-champagne);
+  border-radius: 10px;
+  color: var(--champagne);
+  cursor: pointer;
+  z-index: 10001;
+  padding: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
 
+.mobile-menu-toggle .close-icon {
+  display: none;
+}
 
+.mobile-menu-toggle.active .hamburger-icon {
+  display: none;
+}
 
+.mobile-menu-toggle.active .close-icon {
+  display: block;
+  color: var(--champagne);
+}
+
+[data-theme="light"] .mobile-menu-toggle {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(184, 146, 85, 0.4);
+}
+
+/* Hide desktop custom cursor artifacts on touch screens */
+@media (hover: none) and (pointer: coarse) {
+  #cursor-dot, #cursor-outline, .cursor-dot, .cursor-outline {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   1. TABLET BREAKPOINT (max-width: 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  .nav-container {
+    position: relative;
+    padding: 0 20px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--bg-pitch);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem 2rem 2rem;
+    gap: 1.25rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: opacity 0.3s var(--ease-drawer), transform 0.3s var(--ease-drawer), visibility 0.3s;
+    z-index: 10000;
+    overflow-y: auto;
+  }
+
+  .nav-container.mobile-open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-ivory);
+    padding: 12px 24px;
+    width: 100%;
+    max-width: 340px;
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .nav-link:active, .nav-link:hover {
+    border-color: var(--champagne);
+    color: var(--champagne);
+    background: rgba(223, 195, 138, 0.08);
+  }
+
+  .nav-cta-btn {
+    display: none;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .col-8, .col-4, .col-6 {
+    grid-column: span 12;
+  }
+
+  .arch-display-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   2. MASTER MOBILE BREAKPOINT (max-width: 768px)
+   Addresses all 5 UI defects: Leaking forms, squashed toggle pills,
+   oversized headings, clipped scorecard numbers, and sliced portfolio text.
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Global Containment */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  section {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Universal 48px Minimum Touch Footprint */
+  button,
+  a.btn-champagne,
+  a.btn-outline-luxury,
+  .nav-social-btn,
+  .theme-toggle-btn,
+  .work-filter-btn,
+  .calc-tier-btn,
+  .faq-trigger,
+  .chatbot-toggle-btn,
+  .status-btn,
+  .sim-mode-btn,
+  .sim-speed-btn,
+  .arch-tab-btn,
+  .service-tab-btn {
+    min-height: 48px;
+    min-width: 48px;
+    box-sizing: border-box;
+  }
+
+  /* Universal Card Padding Normalization (Eliminates desktop 44px-64px blowout) */
+  .strategy-card,
+  .auditor-card,
+  .simulator-card,
+  .arch-display-card,
+  .capability-card,
+  .impact-card,
+  .modal-content,
+  .simulator-scorecard,
+  .agency-pillar-card,
+  .flagship-card {
+    padding: 1.5rem 1.1rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 8px !important;
+  }
+
+  /* Fluid Typography Scaling */
+  .section-title {
+    font-size: clamp(1.45rem, 6.5vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
+  }
+
+  .section-subtitle {
+    font-size: clamp(0.85rem, 3.6vw, 0.98rem) !important;
+    line-height: 1.6 !important;
+  }
+
+  .card-title {
+    font-size: clamp(1.2rem, 5vw, 1.7rem) !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .card-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 20px !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .card-num {
+    font-size: 0.72rem !important;
+    margin-bottom: 12px !important;
+    letter-spacing: 0.06em !important;
+    word-break: break-word !important;
+  }
+
+  /* Single Column Grid Layouts */
+  .agency-pillars-grid,
+  .services-grid,
+  .capabilities-grid,
+  .portfolio-grid,
+  .metrics-grid,
+  .footer-grid,
+  .audit-grid,
+  .simulator-grid,
+  .architecture-grid,
+  .faq-grid,
+  .tech-stack-grid,
+  .impact-grid,
+  .calculator-controls-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+  }
+
+  .col-4, .col-6, .col-8, .col-12 {
+    grid-column: span 1 !important;
+    width: 100% !important;
+  }
+
+  /* --- HERO SECTION MOBILE --- */
+  .hero {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 3.5rem;
+  }
+
+  #hero-wireframe-canvas {
+    height: 240px;
+    opacity: 0.55;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 8vw, 3rem);
+    line-height: 1.12;
+    word-break: break-word;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .hero-actions .btn-champagne,
+  .hero-actions .btn-outline-luxury {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-top: 2.5rem;
+  }
+
+  /* --- ECOSYSTEM SECTION MOBILE --- */
+  .ecosystem-canvas-card {
+    height: auto;
+    min-height: 200px;
+    padding: 1.25rem 1rem;
+  }
+
+  #ecosystem-canvas {
+    height: 160px !important;
+  }
+
+  .ecosystem-canvas-card .node-tag {
+    display: none !important;
+  }
+
+  .mobile-ecosystem-pills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  .mobile-pill-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--surface-card);
+    border: 1px solid var(--border-champagne);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-pill-card .pill-text {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  /* --- SERVICES CATEGORY TABS MOBILE --- */
+  .services-tabs {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-bottom: 24px !important;
+  }
+
+  .service-tab-btn {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 12px 14px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* --- SCREENSHOT 1 FIX: STRATEGY & INTAKE FORM CONTAINMENT --- */
+  .strategy-section {
+    padding: 3.5rem 0 !important;
+  }
+
+  .form-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-group, .form-full {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .form-label {
+    font-size: 0.74rem !important;
+    letter-spacing: 0.06em !important;
+    margin-bottom: 6px !important;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 16px !important; /* Prevents mobile iOS auto-zoom */
+    padding: 12px 14px !important;
+    min-height: 48px !important;
+    border-radius: 6px !important;
+    outline: none !important;
+  }
+
+  .form-select {
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    max-width: 100% !important;
+    padding-right: 32px !important;
+  }
+
+  .form-textarea {
+    min-height: 110px !important;
+    resize: vertical !important;
+  }
+
+  .form-popia-note {
+    font-size: 0.72rem !important;
+    line-height: 1.45 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    margin-top: 10px !important;
+  }
+
+  /* --- SCREENSHOT 2 & 3 FIX: COMPETITOR REVENUE LEAK DIAGNOSTIC OVERHAUL --- */
+  .auditor-section {
+    padding: 3.5rem 0 !important;
+  }
+
+  .sim-status-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-bottom: 24px !important;
+    box-sizing: border-box !important;
+  }
+
+  .sim-status-step-label {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.08em !important;
+    text-align: center !important;
+  }
+
+  /* Stacked Full-Width Pill Buttons Eliminate Squashed Text */
+  .sim-status-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+    padding: 6px !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .status-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 10px 14px !important;
+    font-size: 0.76rem !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .simulator-mode-container {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+
+  .simulator-mode-toggle {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+    gap: 6px !important;
+    padding: 5px !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .sim-mode-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 8px 6px !important;
+    font-size: 0.7rem !important;
+    line-height: 1.25 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .auditor-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  .auditor-input-col,
+  .auditor-results-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .auditor-sub-title,
+  #scorecard-title,
+  #input-title {
+    font-size: clamp(1.02rem, 4.5vw, 1.2rem) !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+    margin-bottom: 8px !important;
+  }
+
+  .auditor-desc,
+  #input-desc {
+    font-size: 0.86rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .simulator-controls {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 18px !important;
+    margin-top: 14px !important;
+    width: 100% !important;
+  }
+
+  .sim-label-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .sim-label-row .form-label {
+    font-size: 0.74rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .sim-value-badge {
+    font-size: 0.78rem !important;
+    padding: 4px 10px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  .sim-speed-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .sim-speed-btn {
+    font-size: 0.74rem !important;
+    padding: 10px 6px !important;
+    min-height: 48px !important;
+    text-align: center !important;
+  }
+
+  .simulator-scorecard {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1.25rem 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  .simulator-scorecard .panel-label {
+    font-size: 0.66rem !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.05em !important;
+    word-break: break-word !important;
+  }
+
+  .monthly-loss-display {
+    font-size: clamp(1.55rem, 6.8vw, 2.3rem) !important;
+    line-height: 1.15 !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    margin-bottom: 10px !important;
+  }
+
+  .monthly-loss-sub {
+    font-size: 0.85rem !important;
+  }
+
+  .annual-loss-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+    padding-top: 12px !important;
+  }
+
+  .annual-loss-label {
+    font-size: 0.76rem !important;
+  }
+
+  .annual-loss-val {
+    font-size: 0.98rem !important;
+  }
+
+  .conv-gap-container {
+    margin-top: 18px !important;
+  }
+
+  .conv-gap-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    font-size: 0.74rem !important;
+  }
+
+  .citation-box {
+    margin-top: 18px !important;
+    padding: 12px !important;
+    font-size: 0.72rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .sim-cta-btn {
+    font-size: 0.76rem !important;
+    padding: 14px 10px !important;
+    min-height: 48px !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
+    margin-top: 18px !important;
+  }
+
+  /* --- SCREENSHOT 4 FIX: ARCHITECTURE MATRIX --- */
+  .arch-tabs {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .arch-tab-btn {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 12px 14px !important;
+    font-size: 0.78rem !important;
+    min-height: 48px !important;
+    line-height: 1.3 !important;
+  }
+
+  .arch-display-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 1.25rem 1rem !important;
+  }
+
+  .arch-info {
+    width: 100% !important;
+  }
+
+  .arch-info h3,
+  #arch-title {
+    font-size: clamp(1.2rem, 5.2vw, 1.75rem) !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+    margin-bottom: 12px !important;
+  }
+
+  .arch-info p,
+  #arch-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .arch-feature-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  .arch-feature-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .arch-feature-item svg {
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+  }
+
+  .arch-visual {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .flow-node {
+    padding: 10px 10px !important;
+  }
+
+  .flow-node .node-title {
+    font-size: 0.7rem !important;
+  }
+
+  .flow-node .node-val {
+    font-size: 0.65rem !important;
+  }
+
+  /* --- SCREENSHOT 5 FIX: FLAGSHIP SPOTLIGHT (LASERGEN) & PORTFOLIO --- */
+  .flagship-card {
+    padding: 1.5rem 1.1rem !important;
+    margin-bottom: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .flagship-content-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  .flagship-info-col,
+  .flagship-cta-col {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .flagship-title {
+    font-size: clamp(1.22rem, 5.5vw, 1.8rem) !important;
+    line-height: 1.25 !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    margin-bottom: 10px !important;
+  }
+
+  .flagship-domain {
+    font-size: 0.9em !important;
+    word-break: break-all !important;
+  }
+
+  .flagship-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 16px !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .flagship-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+  }
+
+  .works-list-container {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .work-list-item {
+    padding: 16px 12px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+
+  .work-item-left {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .work-item-right {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .card-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  .card-tag {
+    font-size: 0.7rem !important;
+    padding: 4px 8px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* --- INVESTMENT CALCULATOR DELIVERABLES GENERATOR --- */
+  .calc-btn-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .calc-tier-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 10px 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .calc-results-container {
+    margin-top: 20px !important;
+  }
+
+  .calc-results-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  .calc-result-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.25rem 1rem !important;
+  }
+
+  .sim-metrics-subgrid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .sim-metric-box {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 12px 14px !important;
+  }
+
+  .sim-metric-num {
+    font-size: 1.2rem !important;
+  }
+
+  .sim-metric-label {
+    font-size: 0.76rem !important;
+  }
+
+  /* --- FAQ SECTION MOBILE --- */
+  .faq-trigger {
+    padding: 16px 14px !important;
+    font-size: 0.92rem !important;
+    line-height: 1.4 !important;
+    gap: 10px !important;
+  }
+
+  .faq-content p {
+    padding: 0 14px 18px 14px !important;
+    font-size: 0.85rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* --- MODAL POPUP MOBILE --- */
+  .modal-overlay {
+    padding: 12px !important;
+  }
+
+  .modal-content {
+    width: 100% !important;
+    max-width: 460px !important;
+    padding: 1.5rem 1.1rem !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  .modal-title {
+    font-size: 1.35rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .modal-subtitle {
+    font-size: 0.85rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 18px !important;
+  }
+
+  /* --- FLOATING CHATBOT WIDGET MOBILE --- */
+  #apex-chatbot-container {
+    bottom: 12px !important;
+    right: 12px !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+
+  #chatbot-trigger {
+    min-height: 44px !important;
+    padding: 5px 12px 5px 6px !important;
+    gap: 8px !important;
+  }
+
+  .trigger-icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .trigger-label {
+    font-size: 0.74rem !important;
+  }
+
+  .trigger-badge {
+    font-size: 0.58rem !important;
+    padding: 2px 5px !important;
+  }
+
+  .chatbot-window {
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 85vh !important;
+    max-width: 100vw !important;
+    max-height: 85vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    border-bottom: none !important;
+  }
+}
+
+/* ==========================================================================
+   3. EXTRA COMPACT MOBILE BREAKPOINT (max-width: 480px)
+   Ultra-narrow devices (iPhone SE, Galaxy A-series, 320px–480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .strategy-card,
+  .auditor-card,
+  .simulator-card,
+  .arch-display-card,
+  .capability-card,
+  .impact-card,
+  .modal-content,
+  .simulator-scorecard,
+  .flagship-card {
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.4rem) !important;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+  }
+
+  .stat-item {
+    padding: 10px 6px !important;
+  }
+
+  .stat-number {
+    font-size: 1.4rem !important;
+  }
+
+  .stat-label {
+    font-size: 0.65rem !important;
+  }
+
+  .arch-visual {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mobile-ecosystem-pills {
+    grid-template-columns: 1fr !important;
+  }
+
+  .monthly-loss-display {
+    font-size: clamp(1.4rem, 7.5vw, 1.95rem) !important;
+  }
+
+  .annual-loss-val {
+    font-size: 0.92rem !important;
+  }
+
+  .status-btn {
+    font-size: 0.72rem !important;
+    padding: 9px 8px !important;
+  }
+
+  .sim-mode-btn {
+    font-size: 0.68rem !important;
+    padding: 6px 4px !important;
+  }
+}

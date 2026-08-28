@@ -1478,20 +1478,45 @@ function initWorkPreviews() {
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
   let isHovered = false;
+  let hasInitPos = false;
   
   window.addEventListener('mousemove', (e) => {
     targetX = e.clientX;
     targetY = e.clientY;
+    if (!hasInitPos) {
+      currentX = targetX;
+      currentY = targetY;
+      hasInitPos = true;
+    }
   });
   
   function tick() {
     if (isHovered) {
-      const lerpFactor = 0.15;
+      const lerpFactor = 0.18;
       currentX += (targetX - currentX) * lerpFactor;
       currentY += (targetY - currentY) * lerpFactor;
       
-      preview.style.left = `${currentX + 24}px`;
-      preview.style.top = `${currentY + 24}px`;
+      const previewWidth = 340;
+      const previewHeight = 191;
+      const offset = 24;
+      
+      let left = currentX + offset;
+      let top = currentY + offset;
+      
+      // Smart viewport boundary detection: flip if overflowing screen
+      if (left + previewWidth > window.innerWidth - 20) {
+        left = currentX - previewWidth - offset;
+      }
+      if (top + previewHeight > window.innerHeight - 20) {
+        top = currentY - previewHeight - offset;
+      }
+      
+      // Prevent offscreen negative bounds
+      if (left < 16) left = 16;
+      if (top < 16) top = 16;
+      
+      preview.style.left = `${left}px`;
+      preview.style.top = `${top}px`;
     }
     requestAnimationFrame(tick);
   }
@@ -1501,10 +1526,27 @@ function initWorkPreviews() {
     const previewSrc = item.getAttribute('data-preview');
     if (!previewSrc) return;
     
-    item.addEventListener('mouseenter', () => {
+    // Preload image for instantaneous zero-latency preview
+    const preloadImg = new Image();
+    preloadImg.src = previewSrc;
+    
+    item.addEventListener('mouseenter', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!isHovered || !hasInitPos) {
+        currentX = targetX;
+        currentY = targetY;
+        hasInitPos = true;
+      }
+      
       img.src = previewSrc;
       preview.classList.add('active');
       isHovered = true;
+    });
+    
+    item.addEventListener('mousemove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
     });
     
     item.addEventListener('mouseleave', () => {

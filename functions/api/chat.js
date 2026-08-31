@@ -4,8 +4,8 @@
    Secures Gemini API key on the backend via Cloudflare Pages context.env
    ========================================================================== */
 
-const PRIMARY_MODEL = "gemini-2.5-flash";
-const FALLBACK_MODEL = "gemini-2.0-flash";
+const PRIMARY_MODEL = "gemini-2.0-flash";
+const FALLBACK_MODEL = "gemini-1.5-flash";
 
 const APEX_SYSTEM_PROMPT = `You are the Lead AI Web & Systems Architect for Apex Digital SA. Your mission is to provide concise, direct, authoritative, and high-converting guidance to South African business owners, executives, and founders on high-performance premium web development, e-commerce architectures, and local search dominance.
 
@@ -59,7 +59,8 @@ const corsHeaders = {
 };
 
 async function callGemini(modelName, apiKey, history) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(apiKey)}`;
+  const cleanKey = (apiKey || "").trim();
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(cleanKey)}`;
 
   const payload = {
     system_instruction: {
@@ -82,7 +83,7 @@ async function callGemini(modelName, apiKey, history) {
 
   if (!response.ok) {
     const errData = await response.json().catch(() => ({}));
-    throw new Error(errData.error?.message || `HTTP ${response.status}`);
+    throw new Error(errData.error?.message || `HTTP ${response.status} from Google Gemini API`);
   }
 
   const data = await response.json();
@@ -129,7 +130,7 @@ export async function onRequestPost(context) {
     try {
       answerText = await callGemini(PRIMARY_MODEL, apiKey, formattedHistory);
     } catch (primaryErr) {
-      console.warn("Primary Gemini model failed, falling back to 2.0 Flash:", primaryErr);
+      console.warn("Primary Gemini model failed, falling back to 1.5 Flash:", primaryErr);
       answerText = await callGemini(FALLBACK_MODEL, apiKey, formattedHistory);
     }
 

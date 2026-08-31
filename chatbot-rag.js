@@ -232,13 +232,23 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
     }
 
     async callProxyAPI(userText) {
+      const historyPayload = this.history
+        .slice(0, -1)
+        .slice(-6)
+        .map(h => ({
+          role: h.role === "user" ? "user" : "assistant",
+          content: h.parts?.[0]?.text || h.content || ""
+        }))
+        .filter(h => h.content);
+
       const response = await fetch(this.endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          message: userText
+          message: userText,
+          history: historyPayload
         })
       });
 

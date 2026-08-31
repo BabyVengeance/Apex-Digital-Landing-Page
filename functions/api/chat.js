@@ -1,12 +1,16 @@
 // Comprehensive Knowledge Base for Server-Side Guardrail Fallbacks
 const KNOWLEDGE_BASE = [
   {
+    intents: ["hi", "hello", "hey", "greetings", "good morning", "good day", "who are you"],
+    reply: "Hello. I am **Vector**, Lead Systems Architect & AI Advisor for Apex Digital SA. We design and build ultra-fast, bespoke web architectures and custom software platforms engineered to eliminate bounce rates and drive qualified inbound revenue. Are you looking to scope a new website build, upgrade existing infrastructure, or explore our packages?"
+  },
+  {
     intents: ["on the fence", "why get a website", "need a website", "why a website", "worth it", "benefit", "small business website"],
-    reply: "For a small business in South Africa, a website is your 24/7 digital storefront that builds instant credibility, captures high-intent Google search traffic, and converts visitors directly into WhatsApp leads. Unlike social media algorithms that throttle your reach, an **Apex Starter Build (Starting at R1,500)** gives you 100% custom code ownership, sub-second speed, and direct client capture with zero ongoing platform fees. Would you like to chat with our team on WhatsApp at 069 522 4226 to see what a custom build could do for your business?"
+    reply: "For a growing South African business, a bespoke website is your primary high-converting revenue asset. Social media platforms restrict your organic reach through algorithmic paywalls, whereas an **Apex Build** guarantees you 100% custom code ownership, sub-0.4s load speed, and direct Google search indexing that captures high-intent commercial buyers. Our **Apex Starter Build (from R1,500)** provides an immediate, credible digital anchor with zero monthly platform fees. Would you like to review our scope on WhatsApp at 069 522 4226 or claim a free custom demo?"
   },
   {
     intents: ["package", "packages", "pricing", "price", "cost", "how much", "rate", "quote", "tier", "small business", "build"],
-    reply: "For small businesses, the **Apex Business Build (Starting at R5,000)** is our most popular package. It delivers a 3–5 page custom commercial architecture with direct WhatsApp integration, booking tools, sub-0.4s load speeds, and Google search indexing. If you need a fast 1–2 page entry page, our **Apex Starter Build (Starting at R1,500)** is also available. Would you like to discuss your requirements or message us on WhatsApp at 069 522 4226?"
+    reply: "Apex Digital SA structures 3 bespoke website architecture tiers based on your business stage:\n\n1. **Apex Starter Build (Starting at R1,500)**: 1–2 page hand-coded landing page for solo businesses and single-offer launches. Sub-second speed and direct lead capture.\n2. **Apex Business Build (Starting at R5,000)**: 3–5 page commercial engine (Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat, calendar booking embeds, quote intake calculators, and Google SEO indexing.\n3. **Apex Enterprise Build (Starting at R10,000+)**: 5–10+ bespoke pages, custom interactive calculators, CRM webhooks, and 1st month SLA maintenance.\n\nAll builds feature 100% custom code with zero monthly builder fees. Would you like to scope a package on WhatsApp at 069 522 4226?"
   },
   {
     intents: ["starter", "single page", "landing page", "entry", "cheap", "r1500", "r1,500"],
@@ -37,7 +41,7 @@ function getKnowledgeFallback(userQuery) {
       return item.reply;
     }
   }
-  return "Hello! I'm Vector from Apex Digital. We engineer bespoke, sub-second web platforms and software solutions designed to double conversion rates. How can I assist you with your project today? You can also message us directly on WhatsApp at 069 522 4226.";
+  return "Hello. I am Vector, Lead Systems Architect at Apex Digital SA. We engineer bespoke, sub-second web platforms and software solutions designed to double conversion rates. How can I assist with your project architecture today? You can also connect with us on WhatsApp at 069 522 4226.";
 }
 
 function sanitizeAndGuardrail(text, userQuery) {
@@ -92,11 +96,17 @@ function sanitizeAndGuardrail(text, userQuery) {
   return clean;
 }
 
-const SYSTEM_PROMPT = `You are Vector, the lead AI digital advisor for Apex Digital SA (apexdigitalsa.com), a premier web architecture and custom software engineering studio based in Durban, South Africa.
+const SYSTEM_PROMPT = `You are VECTOR, the Lead AI Systems Architect & Digital Growth Strategist for Apex Digital SA (apexdigitalsa.com).
+
+YOUR IMMUTABLE IDENTITY & VOICE:
+- Identity: You are Vector, the lead technical architect and commercial systems strategist for Apex Digital SA, based in Durban, South Africa.
+- Persona & Demeanor: High-agency, sharp, authoritative, articulate, and technically precise. You represent an elite engineering studio.
+- Linguistic Signature: You NEVER speak like a generic, subservient, casual chatbot ("Hey! How can we help? Let us know what you're after"). You speak with confident authority, clarity, and commercial focus.
+- When greeting or introducing yourself, state: "I am Vector, Lead Systems Architect at Apex Digital SA."
 
 MASTER KNOWLEDGE BASE:
 1. Build Tiers & Pricing:
-   - Apex Starter Build (From R1,500): 1–2 page hand-coded single landing page. Sub-second mobile loading, direct lead capture, zero monthly builder fees. Ideal for startups and single-service businesses.
+   - Apex Starter Build (From R1,500): 1–2 page custom hand-coded single landing page. Sub-second mobile loading, direct lead capture, zero monthly builder fees. Ideal for startups, solo businesses, and single-offer launches.
    - Apex Business Build (From R5,000): 3–5 page custom commercial architecture (Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat, booking embeds, quote calculators, Google SEO indexing. Ideal for established South African businesses.
    - Apex Enterprise Build (From R10,000+): 5–10+ bespoke pages, custom interactive calculators, multi-step customer workflows, CRM integration, 1st month SLA maintenance.
 2. Technical Architecture & Value:
@@ -107,18 +117,19 @@ MASTER KNOWLEDGE BASE:
 3. Contact Details:
    - WhatsApp / Phone: 069 522 4226 (+27 69 522 4226)
    - Email: Apexdigtl@gmail.com
-   - Location: Durban, KwaZulu-Natal (Serving clients nationwide)
+   - Studio HQ: Durban, KwaZulu-Natal (Serving clients nationwide across SA)
 
 CONVERSATION & COMPLETENESS RULES:
+- Maintain your distinct identity as Vector consistently across every turn of conversation.
 - ALWAYS provide a FULL, COMPLETE, AND COHESIVE answer from start to finish. Never leave a thought or sentence unfinished.
-- Keep your answers direct, punchy, and concise (aim for 2–3 brief paragraphs or 3 tight bullet points max).
-- Skip generic introductory filler and get straight to answering the user's specific question.
-- Always conclude naturally with a clear next step (e.g. messaging on WhatsApp at 069 522 4226 or booking a consultation).
+- Keep your answers direct, punchy, and structured (typically 2–3 brief paragraphs or tight bullet points).
+- Skip generic introductory filler and get straight to addressing the user's specific query.
+- Conclude naturally with a clear next step (e.g. messaging on WhatsApp at 069 522 4226 or claiming a free custom demo).
 - CRITICAL: Output ONLY your direct customer response. NEVER include safety classification headers (like "User Safety: safe"), internal thoughts, or draft notes.`;
 
 export async function onRequestPost(context) {
   try {
-    const { message } = await context.request.json();
+    const { message, history } = await context.request.json();
 
     if (!message || typeof message !== "string" || !message.trim()) {
       return new Response(JSON.stringify({ error: "Message is required." }), {
@@ -146,6 +157,32 @@ export async function onRequestPost(context) {
       "openrouter/free"
     ];
 
+    // Build structured conversation turns
+    const messagesPayload = [
+      {
+        role: "system",
+        content: SYSTEM_PROMPT
+      }
+    ];
+
+    // Inject recent conversation history for persistent context and identity
+    if (Array.isArray(history) && history.length > 0) {
+      for (const turn of history.slice(-6)) {
+        if (turn && turn.role && turn.content) {
+          messagesPayload.push({
+            role: turn.role === "assistant" || turn.role === "model" ? "assistant" : "user",
+            content: String(turn.content).trim()
+          });
+        }
+      }
+    }
+
+    // Append current user message
+    messagesPayload.push({
+      role: "user",
+      content: message.trim()
+    });
+
     // Call OpenRouter completions endpoint with 800 tokens buffer for complete responses
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
@@ -158,16 +195,7 @@ export async function onRequestPost(context) {
       body: JSON.stringify({
         model: modelOrder[0],
         models: modelOrder,
-        messages: [
-          {
-            role: "system",
-            content: SYSTEM_PROMPT
-          },
-          {
-            role: "user",
-            content: message.trim()
-          }
-        ],
+        messages: messagesPayload,
         temperature: 0.6,
         max_tokens: 800
       })

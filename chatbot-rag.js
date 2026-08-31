@@ -233,8 +233,6 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
 
     async callProxyAPI(userText) {
       const payload = {
-        history: this.history,
-        userText: userText,
         contents: this.history.length > 0 ? this.history : [{ parts: [{ text: userText }] }]
       };
 

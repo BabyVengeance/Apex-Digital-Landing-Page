@@ -60,3 +60,5 @@ build/
 out/
 .next/
 coverage/
+apex-digital-landing-page-worker/
+.wrangler/

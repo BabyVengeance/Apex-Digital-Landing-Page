@@ -10,21 +10,26 @@
   const APEX_KB_CORPUS = [
     {
       id: "packages_overview",
-      intents: ["package", "packages", "pricing", "cost", "how much", "tier", "options", "price", "rate", "quote", "build"],
-      title: "Apex Custom Website Build Packages",
-      response: `Apex Digital SA offers 3 structured website build tiers tailored to your business growth phase and revenue goals, starting at R1,500 and scaling up to R10,000+:
+      intents: ["package", "packages", "pricing", "cost", "how much", "tier", "options", "price", "rate", "quote", "build", "budget"],
+      title: "Apex Custom Website Build Packages & Price Estimates",
+      response: `Here is our estimated investment range for custom website builds:
 
-- **Apex Starter Build (Starting at R1,500)**: 1 custom core page (Single Landing Page). Engineered for focused service offerings, direct-response lead generation, sub-second mobile loading, and POPIA privacy compliance.
-- **Apex Standard Build (Starting at R5,000)**: Our most popular multi-page commercial architecture (3–5 structured pages: Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat integration, calendar/booking link embeds, custom lead intake capture, and Google search indexing with rich snippets.
-- **Apex Pro Build (Starting at R10,000+)**: Market dominance platform (5–10 structured pages). Includes interactive business calculators, search entity authority, multi-step lead workflows, and priority SLA support.
+- **Apex Starter Build**: R1,500 – R3,500 (starting at R1,500)
+  * 1 custom core page (Single Landing Page). High-speed lead capture, mobile-first design, built-in POPIA compliance.
 
-We build across custom code (HTML5/CSS3/JS/React) and leading CMS platforms (WordPress, Shopify, Webflow, Wix) tailored to your operational needs.`,
+- **Apex Standard Build**: R5,000 – R8,000 (starting at R5,000)
+  * 3–5 structured pages (Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat, calendar booking embeds, custom intake forms, and Google SEO indexing.
+
+- **Apex Pro Build**: R8,000 – R10,000+ (starts at R8,000)
+  * 5–10 structured pages. Includes interactive business calculators, multi-step lead workflows, search entity authority, and priority SLA maintenance.
+
+We build across custom code (HTML5/CSS3/JS/React) and leading CMS platforms (WordPress, Shopify, Webflow, Wix).`,
       cta: { text: "Compare Build Tiers & Pricing", action: "scrollSection:services" }
     },
     {
       id: "starter_tier",
-      intents: ["starter", "starter build", "basic site", "single page", "landing page", "entry level", "r1500", "r1,500"],
-      title: "Apex Starter Build (Starting at R1,500)",
+      intents: ["starter", "starter build", "basic site", "single page", "landing page", "entry level"],
+      title: "Apex Starter Build",
       response: `The **Apex Starter Build** is designed for startups, freelancers, and single-offer businesses that need a rapid, highly credible online footprint:
 
 ### Key Deliverables:
@@ -38,8 +43,8 @@ Ideal for running paid ad campaigns, launching a new service, or establishing a 
     },
     {
       id: "standard_tier",
-      intents: ["standard", "standard build", "commercial site", "5 page", "normal site", "booking widget", "whatsapp chat", "r5000", "r5,000", "small business"],
-      title: "Apex Standard Build (Starting at R5,000)",
+      intents: ["standard", "standard build", "commercial site", "5 page", "normal site", "booking widget", "whatsapp chat", "small business"],
+      title: "Apex Standard Build",
       response: `Our **Apex Standard Build** is our flagship multi-page commercial website system, engineered to establish strong industry authority and double visitor conversion rates:
 
 ### Key Deliverables:
@@ -53,8 +58,8 @@ Built for established service providers, logistics firms, medical practices, rea
     },
     {
       id: "pro_tier",
-      intents: ["pro", "pro build", "full website", "complete site", "automation", "best package", "top tier", "r10000", "r10,000", "market dominance", "10000+"],
-      title: "Apex Pro Build (Starting at R10,000+)",
+      intents: ["pro", "pro build", "full website", "complete site", "automation", "best package", "top tier", "market dominance"],
+      title: "Apex Pro Build",
       response: `The **Apex Pro Build** is our premier growth engine for businesses seeking market dominance, advanced customer routing, and administrative automation:
 
 ### Advanced Capabilities:
@@ -158,7 +163,7 @@ We analyze your business model and recommend the ideal technology stack for maxi
   const QUICK_PROMPTS = [
     { 
       label: "Packages & Pricing", 
-      query: "What are your website build packages and prices?",
+      query: "What are your website build packages and price estimates?",
       iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`
     },
     { 
@@ -174,7 +179,7 @@ We analyze your business model and recommend the ideal technology stack for maxi
     { 
       label: "Calculate Project ROI", 
       query: "How do I calculate deliverables and ROI for my project?",
-      iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>`
+      iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="18.01"/></svg>`
     },
     { 
       label: "Platforms & Tech", 
@@ -277,7 +282,7 @@ We analyze your business model and recommend the ideal technology stack for maxi
       }
 
       // 4. Website Packages & Pricing Tiers (#services)
-      if (combined.includes("package") || combined.includes("pricing") || combined.includes("cost") || combined.includes("price") || combined.includes("r1,500") || combined.includes("r5,000") || combined.includes("r10,000") || combined.includes("starter") || combined.includes("standard") || combined.includes("pro") || combined.includes("tier")) {
+      if (combined.includes("package") || combined.includes("pricing") || combined.includes("cost") || combined.includes("price") || combined.includes("r1,500") || combined.includes("r5,000") || combined.includes("r8,000") || combined.includes("r10,000") || combined.includes("starter") || combined.includes("standard") || combined.includes("pro") || combined.includes("tier")) {
         return { text: "Compare Build Tiers & Pricing", action: "scrollSection:services" };
       }
 
@@ -371,9 +376,9 @@ We analyze your business model and recommend the ideal technology stack for maxi
         text: `At Apex Digital SA, we engineer high-performance web systems across custom code (HTML/CSS/JS/React), WordPress, Shopify, and Wix, designed specifically to generate qualified leads and maximize conversion rates.
 
 ### Core Website Build Tiers:
-- **Apex Starter Build (Starting at R1,500)**: 1 custom core page (Single Landing Page).
-- **Apex Standard Build (Starting at R5,000)**: 3–5 page commercial engine with WhatsApp chat, booking tools, or quote intake.
-- **Apex Pro Build (Starting at R10,000+)**: 5–10 page market dominance platform with custom calculators and CRM workflows.
+- **Apex Starter Build**: Single-page core web footprint engineered for direct lead capture.
+- **Apex Standard Build**: 3–5 page commercial engine with WhatsApp chat, booking tools, or quote intake.
+- **Apex Pro Build**: 5–10 page market dominance platform with custom calculators and CRM workflows.
 
 Would you like to explore a specific package, review our real client case studies, or claim a free custom demo website?`,
         cta: { text: "Claim Free Demo Website", action: "openModal" }

@@ -2,47 +2,47 @@
 const KNOWLEDGE_BASE = [
   {
     intents: ["hi", "hello", "hey", "greetings", "good morning", "good day", "who are you"],
-    reply: "Hello. I am **Vector**, Lead Systems Architect & AI Advisor for Apex Digital SA. We engineer high-performance web systems and digital platforms across custom code, WordPress, Shopify, and Wix, built to drive qualified inbound revenue. Are you looking to scope a new website build, upgrade an existing site, or explore our packages?"
+    reply: "Hello. I am **Vector**, Lead Systems Architect & AI Advisor for Apex Digital SA. We engineer high-performance web systems and digital platforms across custom code, WordPress, Shopify, and Wix, built to drive qualified inbound revenue. Are you looking to scope a new website build, upgrade an existing site, or explore our services?"
   },
   {
-    intents: ["on the fence", "why get a website", "need a website", "why a website", "worth it", "benefit", "small business website"],
-    reply: "For a growing South African business, a professional website is your primary 24/7 revenue engine. Social media algorithms throttle your organic reach, whereas an **Apex Build** gives you complete asset ownership, sub-second speed, and direct Google search indexing to capture high-intent commercial buyers. Our **Apex Starter Build (from R1,500)** provides an immediate, credible digital presence, while our **Apex Standard Build (from R5,000)** provides a full 3–5 page commercial footprint. Would you like to review our scope on WhatsApp at 069 522 4226 or claim a free custom demo?"
+    intents: ["on the fence", "why get a website", "need a website", "why a website", "worth it", "benefit", "small business website", "flower store", "business owner"],
+    reply: "For a growing South African business, a professional website is your primary 24/7 revenue engine:\n\n- **100% Asset Ownership**: Unlike social media channels that restrict organic reach behind ad algorithms, your website is your owned digital real estate.\n- **Instant Credibility & Trust**: High-intent buyers look for verified web presence before requesting quotes or placing orders.\n- **Direct Google Search Capture**: Rank locally on Google Search and get cited in AI search engines (ChatGPT, Gemini, Perplexity).\n- **Frictionless Conversion**: Integrated WhatsApp click-to-chat and direct intake forms turn visitors into paying clients.\n\nWould you like to discuss the right website scope for your business or message us on WhatsApp at 069 522 4226?"
   },
   {
-    intents: ["package", "packages", "pricing", "price", "cost", "how much", "rate", "quote", "tier", "small business", "build", "scope"],
-    reply: "Apex Digital SA offers 3 structured website build tiers based on your business stage:\n\n1. **Apex Starter Build (Starting at R1,500)**: 1 custom core page (Single Landing Page). High-speed lead capture, mobile-first design, POPIA compliance.\n2. **Apex Standard Build (Starting at R5,000)**: 3–5 structured pages (Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat, calendar/booking embeds, custom lead intake forms, and Google SEO indexing with rich snippets.\n3. **Apex Pro Build (Starting at R10,000+)**: 5–10 structured pages. Interactive business calculators, multi-step lead workflows, search entity authority, and priority SLA maintenance.\n\nWe build on custom code as well as WordPress, Shopify, and Wix. Would you like to scope a package on WhatsApp at 069 522 4226?"
+    intents: ["package", "packages", "pricing", "price", "cost", "how much", "rate", "quote", "tier", "budget"],
+    reply: "Here is our estimated investment range for custom website builds:\n\n- **Apex Starter Build**: R1,500 – R3,500 (starting at R1,500)\n  * 1 custom core page (Single Landing Page). High-speed lead capture, mobile-first design, built-in POPIA compliance.\n\n- **Apex Standard Build**: R5,000 – R8,000 (starting at R5,000)\n  * 3–5 structured pages (Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat, calendar booking embeds, custom intake forms, and Google SEO indexing.\n\n- **Apex Pro Build**: R8,000 – R10,000+ (starts at R8,000)\n  * 5–10 structured pages. Includes interactive business calculators, multi-step lead workflows, search entity authority, and priority SLA maintenance.\n\nWe build on custom code as well as WordPress, Shopify, and Wix. Would you like to scope a build for your budget on WhatsApp at 069 522 4226?"
   },
   {
-    intents: ["starter", "starter build", "single page", "landing page", "entry", "cheap", "r1500", "r1,500"],
-    reply: "The **Apex Starter Build (Starting at R1,500)** includes a 1 custom core page single landing page engineered for direct lead capture, sub-second mobile loading speeds, POPIA compliant contact forms, and full asset ownership. Connect with us on WhatsApp at 069 522 4226 to get started."
+    intents: ["starter", "starter build", "single page", "landing page", "entry"],
+    reply: "The **Apex Starter Build** is our single-page web footprint:\n\n- **Scope**: 1 custom core landing page engineered for direct lead capture.\n- **Features**: Sub-second mobile loading speeds, POPIA compliant contact forms, WhatsApp integration.\n- **Ownership**: 100% full asset ownership with zero monthly builder locks.\n\nConnect with us on WhatsApp at 069 522 4226 to get started."
   },
   {
-    intents: ["standard", "standard build", "5 page", "commercial site", "r5000", "r5,000", "small business"],
-    reply: "The **Apex Standard Build (Starting at R5,000)** is our most popular multi-page commercial website tier. It covers 3–5 structured pages (Home, About, Services, Showcase/Portfolio, Contact) with direct WhatsApp integration, booking engine embeds, custom quote calculators, and Google search indexing. Message us on WhatsApp at 069 522 4226 to discuss your project."
+    intents: ["standard", "standard build", "5 page", "commercial site", "small business"],
+    reply: "The **Apex Standard Build** is our flagship multi-page commercial website system:\n\n- **Scope**: 3–5 structured pages (Home, About, Services, Showcase/Portfolio, Contact).\n- **Integrations**: Direct WhatsApp click-to-chat, calendar booking embeds, custom quote intake calculators.\n- **Search Authority**: Semantic HTML5, structured Schema markup, Google Search Console indexing.\n\nMessage us on WhatsApp at 069 522 4226 to discuss your project scope."
   },
   {
-    intents: ["pro", "pro build", "r10000", "r10,000", "market dominance", "10000+"],
-    reply: "The **Apex Pro Build (Starting at R10,000+)** is our premier tier for high-growth businesses. It features 5–10 structured pages, interactive business calculators, multi-step lead workflows, search entity authority, and priority SLA maintenance support. Reach out on WhatsApp at 069 522 4226 to scope your build."
+    intents: ["pro", "pro build", "market dominance"],
+    reply: "The **Apex Pro Build** is our premier tier for high-growth businesses:\n\n- **Scope**: 5–10 structured pages with custom UI/UX design systems.\n- **Advanced Tools**: Interactive pricing calculators, multi-step lead workflows, CRM webhook routing.\n- **Search Authority**: Complete Google search entity alignment and Generative Engine Optimization (GEO) for AI citations.\n\nReach out on WhatsApp at 069 522 4226 to scope your project."
   },
   {
     intents: ["platform", "platforms", "wordpress", "wix", "shopify", "woocommerce", "webflow", "tech stack", "technology"],
-    reply: "Apex Digital SA works across **all leading platforms and technologies**. We engineer custom code (HTML5, CSS3, Vanilla JS, React, Node) for ultra-fast custom platforms, and build robust, scalable solutions on **WordPress/WooCommerce**, **Shopify**, and **Wix** depending on your team's workflow and business needs."
+    reply: "Apex Digital SA works across **all leading web platforms**:\n\n- **Custom Code (HTML5, CSS3, Vanilla JS, React, Node)**: Ultra-fast rendering, sub-0.4s load times, 99/100 Google PageSpeed.\n- **WordPress & WooCommerce**: Content-rich commercial platforms with easy team publishing.\n- **Shopify**: High-volume retail e-commerce with automated shipping & South African payment gateways.\n- **Wix & Webflow**: Modular business sites with intuitive visual dashboards."
   },
   {
     intents: ["ecommerce", "e-commerce", "online store", "shop", "payfast", "yoco", "ozow", "shipping", "tunl"],
-    reply: "We build high-converting transactional e-commerce stores across Shopify, WooCommerce, Wix, and custom code. All stores integrate local South African payment gateways (PayFast, Yoco, Ozow) and automated shipping integrations (Courier Guy, Tunl, DHL)."
+    reply: "We build high-converting transactional e-commerce stores across Shopify, WooCommerce, Wix, and custom code:\n\n- **Payment Gateways**: PayFast, Yoco, Ozow & Peach Payments for ZAR card and EFT checkout.\n- **Shipping Integrations**: Automated rate calculations with Courier Guy, Tunl, and DHL.\n- **Conversion Features**: Abandoned cart recovery, product configurators, and mobile checkout."
   },
   {
     intents: ["contact", "phone", "whatsapp", "email", "call", "number", "location", "address", "durban"],
-    reply: "You can reach Apex Digital SA directly via WhatsApp or phone at **+27 69 522 4226** or by email at **Apexdigtl@gmail.com**. Our engineering studio is based in Durban, KwaZulu-Natal, and we build digital systems for clients nationwide across South Africa."
+    reply: "You can reach Apex Digital SA directly via:\n\n- **WhatsApp / Phone**: [+27 69 522 4226](tel:+27695224226)\n- **Email**: [Apexdigtl@gmail.com](mailto:Apexdigtl@gmail.com)\n- **Studio HQ**: Durban, KwaZulu-Natal (Serving clients nationwide across SA & globally)"
   },
   {
     intents: ["seo", "google", "ranking", "search", "visibility", "geo", "ai search"],
-    reply: "Every Apex Digital build includes complete technical SEO: clean semantic structure, JSON-LD Schema markup, XML sitemaps, Google Search Console indexing, and Generative Engine Optimization (GEO) for AI search citations (ChatGPT, Gemini, Perplexity)."
+    reply: "Every Apex Digital build includes complete technical SEO:\n\n- **Technical Foundation**: Semantic HTML5, JSON-LD Schema markup & sub-second loading.\n- **Search Launchpad**: XML sitemaps, Google Search Console indexing & rich snippets.\n- **Generative Engine Optimization (GEO)**: Entity authority graphs for AI search citations (ChatGPT, Gemini, Perplexity)."
   },
   {
     intents: ["portfolio", "case study", "lasergen", "compass", "boss rides", "ayesha", "cato ridge", "property"],
-    reply: "Our proven client platforms include **LaserGen** (industrial laser tech), **Compass Logistics** (SADC freight quote portal), **Boss Rides** (luxury vehicle customizer & showcase), **Global Colour Correct** (Shopify global store), **Ayesha M Jewellery** (3D configurator store), **Cato Ridge Land** (industrial plot portal), and **Commercial Property Hub** (real estate investment portal)."
+    reply: "Our proven client platforms include:\n\n1. **LaserGen** ([lasergen.co.za](https://lasergen.co.za)): Industrial laser cleaning platform.\n2. **Compass Logistics** ([compasslogistics.co.za](https://compasslogistics.co.za)): SADC freight logistics portal.\n3. **Boss Rides** ([bossrides.co.za](https://bossrides.co.za)): Luxury automotive showcase.\n4. **Global Colour Correct** ([globalcolourcorrect.com](https://globalcolourcorrect.com)): Shopify global cosmetics store.\n5. **Ayesha M Jewellery** ([ayesham.co.za](https://ayesham.co.za)): Custom e-commerce store with 3D product configurator.\n6. **Cato Ridge Land** ([catoridge.netlify.app](https://catoridge.netlify.app)): Industrial land development portal.\n7. **Commercial Property Hub** ([propertyportfolio.netlify.app](https://propertyportfolio.netlify.app)): Real estate investment portal."
   }
 ];
 
@@ -115,16 +115,28 @@ YOUR IMMUTABLE IDENTITY & VOICE:
 - Persona & Tone: High-agency, authoritative, articulate, professional, and commercially sharp.
 - Self-Introduction: When greeting or asked who you are, state: "I am Vector, Lead Systems Architect at Apex Digital SA."
 
-MASTER KNOWLEDGE BASE (AUDITED & EXACT):
-1. Website Build Tiers & Exact Names:
-   - Apex Starter Build (Starting at R1,500): 1 custom core page (Single Landing Page). High-speed direct lead generation, mobile touch optimization, POPIA compliance. Ideal for solo businesses, startups, single-offer launches.
-   - Apex Standard Build (Starting at R5,000): 3–5 structured pages (Home, About, Services, Showcase/Portfolio, Contact). Includes WhatsApp click-to-chat integration, calendar/booking links, custom quote intake calculators, and Google search indexing. Ideal for established commercial businesses.
-   - Apex Pro Build (Starting at R10,000+): 5–10 structured pages. Interactive business calculators, multi-step lead workflows, search entity authority, and priority SLA maintenance.
-   * CRITICAL RULE: The exact tier names are ONLY "Starter Build", "Standard Build", and "Pro Build". NEVER invent names like "Business Build" or "Enterprise Build".
+STRICT PRICING DISCLOSURE RULES:
+- NEVER mention prices, costs, or Rand figures UNLESS the user explicitly asks about pricing, cost, rates, budget, or quotes.
+- If the user asks general advice or recommendations (e.g. "I have a flower shop", "what package do I need?"), explain the features, value, and scope of the tiers WITHOUT volunteering prices.
+- When the user EXPLICITLY asks for pricing, cost estimates, or budget ranges, output ONLY these exact estimates:
+  • Apex Starter Build: R1,500 – R3,500 (starting at R1,500)
+  • Apex Standard Build: R5,000 – R8,000 (starting at R5,000)
+  • Apex Pro Build: R8,000 – R10,000+ (starts at R8,000)
+
+RESPONSE FORMATTING & SCANNABILITY:
+- Structure all comparisons, recommendations, and tier listings using clean bullet points (`- `) and distinct line breaks.
+- NEVER lump tier options or pricing into dense walls of text. Make information easy to scan and digest at a glance.
+
+MASTER KNOWLEDGE BASE:
+1. Website Build Tiers & Exact Scope:
+   - Apex Starter Build: 1 custom core page (Single Landing Page). High-speed lead generation, mobile touch optimization, POPIA compliance. Ideal for solo businesses, startups, single-offer launches.
+   - Apex Standard Build: 3–5 structured pages (Home, About, Services, Showcase/Portfolio, Contact). Includes WhatsApp click-to-chat, calendar/booking links, custom quote intake calculators, and Google search indexing. Ideal for established commercial businesses.
+   - Apex Pro Build: 5–10 structured pages. Interactive business calculators, multi-step lead workflows, search entity authority, and priority SLA maintenance.
+   * CRITICAL RULE: The exact tier names are ONLY "Starter Build", "Standard Build", and "Pro Build". NEVER invent names like "Business Build".
 
 2. Multi-Platform & Technology Philosophy:
    - Apex Digital SA works across ALL leading web platforms: Custom Code (HTML5, CSS3, Vanilla JS, React, Node), WordPress & WooCommerce, Shopify, and Wix.
-   - CRITICAL RULE: NEVER downplay, criticize, or bash WordPress, Wix, Shopify, or any CMS platform. We are multi-platform engineering experts who tailor the right platform to the client's needs and budget.
+   - CRITICAL RULE: NEVER downplay or criticize WordPress, Wix, Shopify, or any CMS platform. We are multi-platform engineering experts who tailor the right platform to the client's needs.
 
 3. Complete Digital Services:
    - Core Web Platforms (Starter, Standard, Pro)
@@ -134,23 +146,14 @@ MASTER KNOWLEDGE BASE (AUDITED & EXACT):
    - AI Automation & AI-Ops Engines (24/7 RAG chatbots, lead-to-viewing routing, CRM sync)
    - GEO & SEO Authority Services (Google Search indexing, JSON-LD Schema markup, Generative Engine Optimization for AI citations)
 
-4. Case Studies & Proven Work:
-   - LaserGen (lasergen.co.za) - Industrial laser cleaning platform.
-   - Compass Logistics (compasslogistics.co.za) - SADC freight logistics portal.
-   - Boss Rides (bossrides.co.za) - Luxury automotive showcase & vehicle customizer.
-   - Global Colour Correct (globalcolourcorrect.com) - Global Shopify store with Tunl shipping.
-   - Ayesha M Jewellery (ayesham.co.za) - Custom e-commerce store with 3D product configurator.
-   - Cato Ridge Land (catoridge.netlify.app) - Industrial land development portal.
-   - Commercial Property Hub (propertyportfolio.netlify.app) - Commercial real estate investment hub.
-
-5. Direct Contact:
+4. Direct Contact:
    - WhatsApp / Phone: 069 522 4226 (+27 69 522 4226)
    - Email: Apexdigtl@gmail.com
    - Studio HQ: Durban, KwaZulu-Natal (Engineering nationwide solutions across South Africa)
 
 CONVERSATION & COMPLETENESS RULES:
 - ALWAYS provide a FULL, COMPLETE, AND COHESIVE answer from start to finish. Never leave thoughts or sentences unfinished.
-- Keep responses direct, punchy, and structured (typically 2–3 brief paragraphs or tight bullet points).
+- Skip generic introductory filler and get straight to addressing the user's specific query.
 - Conclude naturally with a clear next step (e.g. messaging on WhatsApp at 069 522 4226 or claiming a free custom demo).
 - CRITICAL: Output ONLY your direct customer dialogue. NEVER include safety classification headers (like "User Safety: safe"), internal thoughts, or draft notes.`;
 

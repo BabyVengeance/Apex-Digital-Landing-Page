@@ -156,11 +156,11 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
     },
     {
       id: "contact_location",
-      intents: ["contact", "phone", "whatsapp", "email", "address", "location", "durban", "rohan", "reach out", "call"],
-      title: "Contact Apex Digital SA Lead Systems Architect",
-      response: `Connect directly with our technical leadership:
+      intents: ["contact", "phone", "whatsapp", "email", "address", "location", "durban", "vector", "reach out", "call", "team"],
+      title: "Contact Apex Digital SA Engineering Team",
+      response: `Connect directly with our technical web architecture & engineering team:
 
-- **Lead Architect**: Rohan Ramlall
+- **Technical Team**: Apex Digital SA Systems Architecture Unit
 - **Phone / WhatsApp**: [+27 69 522 4226](tel:+27695224226)
 - **Email**: [Apexdigtl@gmail.com](mailto:Apexdigtl@gmail.com)
 - **HQ**: Durban, KwaZulu-Natal (Serving clients nationwide across SA & globally)`,
@@ -298,7 +298,7 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
       }
 
       // 6. Agency Manifesto & About (#agency)
-      if (combined.includes("manifesto") || combined.includes("agency") || combined.includes("philosophy") || combined.includes("about") || combined.includes("who is apex") || combined.includes("rohan")) {
+      if (combined.includes("manifesto") || combined.includes("agency") || combined.includes("philosophy") || combined.includes("about") || combined.includes("who is apex") || combined.includes("team") || combined.includes("vector")) {
         return { text: "Read Agency Manifesto", action: "scrollSection:agency" };
       }
 

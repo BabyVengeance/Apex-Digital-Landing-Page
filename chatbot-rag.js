@@ -237,23 +237,32 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
         userText: userText
       };
 
-      const response = await fetch(this.proxyEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
+      const endpoints = ["/api/chat", "/.netlify/functions/chat"];
+      let lastError = null;
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || `HTTP ${response.status}`);
+      for (const endpoint of endpoints) {
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            if (data && data.text) {
+              return data.text.trim();
+            }
+          } else {
+            const errData = await response.json().catch(() => ({}));
+            lastError = new Error(errData.error || `HTTP ${response.status} from ${endpoint}`);
+          }
+        } catch (fetchErr) {
+          lastError = fetchErr;
+        }
       }
 
-      const data = await response.json();
-      if (!data.text) {
-        throw new Error("Empty response from Netlify LLM Proxy");
-      }
-
-      return data.text.trim();
+      throw lastError || new Error("Failed to reach serverless AI endpoint");
     }
 
     deriveCTA(userText, answerText) {

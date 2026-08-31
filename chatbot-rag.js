@@ -12,11 +12,11 @@
       id: "packages_overview",
       intents: ["package", "packages", "pricing", "cost", "how much", "tier", "options", "price", "rate", "quote", "build"],
       title: "Apex Custom Website Build Packages",
-      response: `Apex Digital SA engineers 3 bespoke website build tiers tailored to your business growth phase and revenue goals:
+      response: `Apex Digital SA engineers 3 bespoke website build tiers tailored to your business growth phase and revenue goals, starting at R1,500 and scaling up to R10,000+:
 
 - **Apex Starter Build (Starting at R1,500)**: A high-impact 1–2 page hand-coded single landing page. Engineered for focused service offerings, immediate lead capture, sub-second mobile loading, and total POPIA compliance. Includes direct contact form handlers and zero monthly builder fees.
 - **Apex Business Build (Starting at R5,000)**: Our flagship 3–5 page custom commercial architecture (Home, About, Services, Showcase, Contact). Built for established South African businesses requiring WhatsApp click-to-chat integration, online booking widgets, custom intake calculators, and initial Google search indexing with rich snippets.
-- **Apex Enterprise Build (Starting at R10,000)**: Complete market dominance platform (5–10 bespoke pages). Includes custom interactive tools, multi-step lead routing, CRM webhooks, sub-0.4s speed tuning, full Google search launchpad, and 1st month free priority maintenance & SLA.
+- **Apex Enterprise Build (Starting at R10,000+)**: Complete market dominance platform (5–10+ bespoke pages). Includes custom interactive tools, multi-step lead routing, CRM webhooks, sub-0.4s speed tuning, full Google search launchpad, and 1st month free priority maintenance & SLA.
 
 All builds feature 100% custom hand-crafted code (HTML5, CSS3, Vanilla JS) with zero monthly builder locks or hidden licensing fees.`,
       cta: { text: "Claim Free Custom Demo", action: "openModal" }
@@ -53,12 +53,12 @@ Built for established service providers, logistics firms, real estate agencies, 
     },
     {
       id: "pro_tier",
-      intents: ["pro", "enterprise", "full website", "complete site", "automation", "best package", "top tier", "r10000", "dominance"],
-      title: "Apex Pro Build (Starting at R10,000)",
+      intents: ["pro", "enterprise", "full website", "complete site", "automation", "best package", "top tier", "r10000", "dominance", "10000+"],
+      title: "Apex Pro Build (Starting at R10,000+)",
       response: `The **Apex Pro Build** is our premier growth engine for businesses seeking market dominance and maximum administrative automation:
 
 ### Advanced Capabilities:
-- **Scope**: 5–10 bespoke pages with tailored UI/UX design systems.
+- **Scope**: 5–10+ bespoke pages with tailored UI/UX design systems.
 - **Interactive Engines**: Custom programmatic pricing calculators, multi-step customer onboarding workflows, and CRM webhook routing.
 - **Search & Speed Launchpad**: Complete Google search entity alignment, sub-0.4s speed tuning, and sub-second asset delivery.
 - **Included SLA**: First month of dedicated web engineering & technical maintenance free of charge.

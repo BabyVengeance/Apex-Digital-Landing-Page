@@ -9,11 +9,11 @@ export async function onRequestPost(context) {
       });
     }
 
-    const rawApiKey = context.env.GROQ_API_KEY;
+    const apiKey = context.env.OPENROUTER_API_KEY;
 
-    if (!rawApiKey) {
+    if (!apiKey) {
       return new Response(
-        JSON.stringify({ error: "GROQ_API_KEY environment variable is not configured in Cloudflare." }),
+        JSON.stringify({ error: "OPENROUTER_API_KEY environment variable is not configured." }),
         {
           status: 500,
           headers: { "Content-Type": "application/json" }
@@ -21,112 +21,45 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Sanitize API key (strip quotes, spaces, accidental newlines)
-    const apiKey = rawApiKey.trim().replace(/^["']|["']$/g, '');
-
-    // Auto-discover active models authorized for this exact API Key
-    let availableModels = [];
-    try {
-      const modelsRes = await fetch("https://api.groq.com/openai/v1/models", {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${apiKey}`
-        }
-      });
-      if (modelsRes.ok) {
-        const modelsData = await modelsRes.json();
-        availableModels = (modelsData.data || []).map(m => m.id);
-      }
-    } catch (e) {
-      // Fall back to static candidates if discovery endpoint fails
-    }
-
-    // Priority candidates
-    const defaultCandidates = [
-      "llama-3.3-70b-versatile",
-      "llama-3.1-8b-instant",
-      "llama-3.1-70b-versatile",
-      "llama3-70b-8192",
-      "llama3-8b-8192",
-      "mixtral-8x7b-32768",
-      "gemma2-9b-it"
-    ];
-
-    let modelsToTry = [];
-    if (availableModels.length > 0) {
-      // Filter out non-chat models (whisper, embeddings, guard, tts)
-      const validChatModels = availableModels.filter(m => 
-        !m.includes("whisper") && 
-        !m.includes("embed") && 
-        !m.includes("guard") &&
-        !m.includes("tts")
-      );
-      
-      const prioritized = defaultCandidates.filter(c => validChatModels.includes(c));
-      const others = validChatModels.filter(c => !defaultCandidates.includes(c));
-      modelsToTry = [...prioritized, ...others];
-    }
-
-    if (modelsToTry.length === 0) {
-      modelsToTry = defaultCandidates;
-    }
-
-    let reply = null;
-    let lastError = null;
-
-    const systemPrompt = "You are Vector, the digital AI assistant for Apex Digital, a premium web development and software solutions agency based in Durban, South Africa. Answer inquiries helpfully, concisely, and professionally. Guide prospective clients toward booking consultations or messaging via WhatsApp at 069 522 4226.";
-
-    for (const model of modelsToTry) {
-      try {
-        const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${apiKey}`
+    // Call OpenRouter completions endpoint using openrouter/free
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey.trim()}`,
+        "HTTP-Referer": "https://apexdigitalsa.com",
+        "X-Title": "Apex Digital SA"
+      },
+      body: JSON.stringify({
+        model: "openrouter/free",
+        messages: [
+          {
+            role: "system",
+            content: "You are Vector, the digital AI assistant for Apex Digital, a premium web development and software solutions studio based in Durban, South Africa. Answer inquiries helpfully, concisely, and professionally. Guide prospective clients toward booking consultations or messaging via WhatsApp at 069 522 4226."
           },
-          body: JSON.stringify({
-            model: model,
-            messages: [
-              {
-                role: "system",
-                content: systemPrompt
-              },
-              {
-                role: "user",
-                content: message
-              }
-            ],
-            temperature: 0.7,
-            max_tokens: 300
-          })
-        });
+          {
+            role: "user",
+            content: message
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: 300
+      })
+    });
 
-        if (groqResponse.ok) {
-          const data = await groqResponse.json();
-          reply = data.choices?.[0]?.message?.content;
-          if (reply) break;
-        } else {
-          const errText = await groqResponse.text();
-          lastError = { status: groqResponse.status, details: errText, model };
-        }
-      } catch (err) {
-        lastError = { error: err.message, model };
-      }
-    }
-
-    if (!reply) {
+    if (!response.ok) {
+      const errorData = await response.text();
       return new Response(
-        JSON.stringify({ 
-          error: "Groq API request failed", 
-          details: lastError,
-          availableModelsDiscovered: availableModels 
-        }),
+        JSON.stringify({ error: "OpenRouter API request failed", details: errorData }),
         {
-          status: 502,
+          status: response.status,
           headers: { "Content-Type": "application/json" }
         }
       );
     }
+
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "Thank you for contacting Apex Digital. How can we assist you with your project today?";
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,

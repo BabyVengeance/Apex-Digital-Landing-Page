@@ -197,11 +197,11 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
     }
   ];
 
-  // RAG & Dynamic Gemini LLM Engine Implementation (Netlify Proxy Architecture)
+  // Dynamic Gemini LLM Engine Implementation (Cloudflare Serverless Function Endpoint)
   class ApexLLMEngine {
     constructor(corpus) {
       this.corpus = corpus;
-      this.proxyEndpoint = "/.netlify/functions/chat";
+      this.endpoint = "/api/chat";
       this.ragFallback = new ApexRAGEngine(corpus);
       this.history = [];
     }
@@ -225,46 +225,39 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
         const cta = this.deriveCTA(userText, answerText);
         return { title: null, text: answerText, cta: cta };
       } catch (err) {
-        console.warn("Netlify LLM Function unavailable, reverting to client-side RAG engine:", err);
+        console.warn("Cloudflare Serverless Endpoint (/api/chat) unreachable, falling back to client-side RAG:", err);
         this.history.pop(); // Remove pending user message from history on error
         return this.ragFallback.query(userText);
       }
     }
 
     async callProxyAPI(userText) {
-      const payload = {
-        contents: this.history.length > 0 ? this.history : [{ parts: [{ text: userText }] }]
-      };
+      const response = await fetch(this.endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: userText
+        })
+      });
 
-      const endpoints = ["/api/chat"];
-      let lastError = null;
-
-      for (const endpoint of endpoints) {
-        try {
-          const response = await fetch(endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-
-          if (response.ok) {
-            const data = await response.json();
-            if (data && typeof data.text === "string" && data.text) {
-              return data.text.trim();
-            }
-            if (data && data.candidates?.[0]?.content?.parts?.[0]?.text) {
-              return data.candidates[0].content.parts[0].text.trim();
-            }
-          } else {
-            const errData = await response.json().catch(() => ({}));
-            lastError = new Error(errData.error || `HTTP ${response.status} from ${endpoint}`);
-          }
-        } catch (fetchErr) {
-          lastError = fetchErr;
-        }
+      if (!response.ok) {
+        const errData = await response.json().catch(() => ({}));
+        throw new Error(errData.error || `HTTP ${response.status} from ${this.endpoint}`);
       }
 
-      throw lastError || new Error("Failed to reach serverless AI endpoint");
+      const data = await response.json();
+      const reply =
+        data.reply ||
+        (data.candidates?.[0]?.content?.parts?.[0]?.text) ||
+        data.text;
+
+      if (!reply || typeof reply !== "string") {
+        throw new Error("Invalid response format received from /api/chat");
+      }
+
+      return reply.trim();
     }
 
     deriveCTA(userText, answerText) {

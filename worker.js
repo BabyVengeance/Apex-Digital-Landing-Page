@@ -1,68 +1,125 @@
 /**
- * Apex Digital Landing Page — Worker Entry Point
+ * Apex Digital Landing Page — Cloudflare Worker Entry Point
  *
- * This file does two things:
- * 1. Proxies chatbot POST requests from /api/chat to the Gemini API
- *    using the GEMINI_API_KEY secret (so the key never reaches the browser).
- * 2. Serves all other requests from your static assets.
- *
- * IMPORTANT: Keep this file in your project root alongside wrangler.toml.
- * If you deploy with Wrangler without this file, it will wipe the Worker
- * code and all bindings (including the GEMINI_API_KEY secret).
+ * 1. Proxies chatbot POST requests from /api/chat to Google Gemini API
+ *    using the GEMINI_API_KEY secret (server-side security).
+ * 2. Handles CORS preflight (OPTIONS).
+ * 3. Serves all static landing page assets via env.ASSETS.
  */
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Content-Type": "application/json",
+};
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // ------------------------------------------------------------------
-    // /api/chat — Server-side proxy for the Gemini API
-    // ------------------------------------------------------------------
-    // Your frontend chatbot JS should POST to /api/chat with a Gemini-style
-    // request body. This Worker injects the API key server-side and forwards
-    // the request to Google's Gemini API. The response is passed straight
-    // back to the browser.
-    //
-    // Example frontend call:
-    //   fetch("/api/chat", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       contents: [{ parts: [{ text: userMessage }] }]
-    //     })
-    //   })
-    // ------------------------------------------------------------------
+    // 1. CORS Preflight
+    if (url.pathname === "/api/chat" && request.method === "OPTIONS") {
+      return new Response(null, {
+        status: 204,
+        headers: corsHeaders,
+      });
+    }
+
+    // 2. Chatbot Serverless Proxy
     if (url.pathname === "/api/chat" && request.method === "POST") {
       try {
-        const body = await request.text();
+        const apiKey = env.GEMINI_API_KEY;
 
-        const geminiUrl =
-          "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" +
-          env.GEMINI_API_KEY;
+        if (!apiKey) {
+          return new Response(
+            JSON.stringify({
+              error: "GEMINI_API_KEY secret is not set in Cloudflare Worker bindings. Please run: wrangler secret put GEMINI_API_KEY",
+            }),
+            {
+              status: 503,
+              headers: corsHeaders,
+            }
+          );
+        }
 
-        const geminiResp = await fetch(geminiUrl, {
+        let rawBody = {};
+        try {
+          rawBody = await request.json();
+        } catch {
+          rawBody = {};
+        }
+
+        // Format payload to comply strictly with Gemini REST API specifications
+        let formattedContents = [];
+
+        if (Array.isArray(rawBody.contents) && rawBody.contents.length > 0) {
+          formattedContents = rawBody.contents;
+        } else if (Array.isArray(rawBody.history) && rawBody.history.length > 0) {
+          formattedContents = rawBody.history;
+        } else if (rawBody.userText || rawBody.message || rawBody.prompt) {
+          formattedContents = [
+            {
+              role: "user",
+              parts: [{ text: rawBody.userText || rawBody.message || rawBody.prompt }],
+            },
+          ];
+        } else {
+          formattedContents = [
+            {
+              role: "user",
+              parts: [{ text: "Hello" }],
+            },
+          ];
+        }
+
+        const geminiPayload = {
+          contents: formattedContents,
+        };
+
+        const primaryModel = "gemini-2.0-flash";
+        const fallbackModel = "gemini-1.5-flash";
+
+        let geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${primaryModel}:generateContent?key=${encodeURIComponent(apiKey.trim())}`;
+
+        let geminiResp = await fetch(geminiUrl, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: body,
+          body: JSON.stringify(geminiPayload),
         });
+
+        // Fallback to 1.5 Flash if 2.0 returns an error
+        if (!geminiResp.ok && geminiResp.status !== 400 && geminiResp.status !== 403) {
+          geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${fallbackModel}:generateContent?key=${encodeURIComponent(apiKey.trim())}`;
+          geminiResp = await fetch(geminiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(geminiPayload),
+          });
+        }
 
         const geminiData = await geminiResp.text();
 
         return new Response(geminiData, {
           status: geminiResp.status,
-          headers: { "Content-Type": "application/json" },
+          headers: corsHeaders,
         });
       } catch (err) {
-        return new Response(JSON.stringify({ error: err.message }), {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        });
+        return new Response(
+          JSON.stringify({ error: err.message || "Internal Worker error" }),
+          {
+            status: 500,
+            headers: corsHeaders,
+          }
+        );
       }
     }
 
-    // ------------------------------------------------------------------
-    // All other requests — serve static assets
-    // ------------------------------------------------------------------
-    return env.ASSETS.fetch(request);
+    // 3. Serve static assets for all other routes
+    if (env.ASSETS && typeof env.ASSETS.fetch === "function") {
+      return env.ASSETS.fetch(request);
+    }
+
+    return fetch(request);
   },
 };

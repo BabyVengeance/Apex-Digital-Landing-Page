@@ -1,9 +1,10 @@
-const CACHE_NAME = 'apex-cache-v6';
+const CACHE_NAME = 'apex-cache-v7';
 const ASSETS = [
   '/',
   '/index.html',
   '/styles.css',
   '/app.js',
+  '/chatbot-rag.js',
   '/assets/images/logo-dark.webp',
   '/assets/images/logo-light.webp'
 ];
@@ -28,6 +29,11 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  // CRITICAL: Never intercept POST requests or backend API endpoints
+  if (e.request.method !== 'GET' || e.request.url.includes('/api/')) {
+    return;
+  }
+
   if (e.request.mode === 'navigate' || e.request.url.endsWith('.js') || e.request.url.endsWith('.html') || e.request.url.endsWith('.css')) {
     e.respondWith(
       fetch(e.request).then((networkResponse) => {

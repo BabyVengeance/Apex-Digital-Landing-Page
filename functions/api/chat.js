@@ -9,7 +9,6 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Pull API key securely from Cloudflare Pages Environment Variables
     const apiKey = context.env.GEMINI_API_KEY;
 
     if (!apiKey) {
@@ -22,12 +21,20 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Query Gemini 1.5 Flash via REST endpoint
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    // Configure headers to support both Bearer tokens (AQ./ya29.) and standard keys
+    const headers = { "Content-Type": "application/json" };
+    if (apiKey.startsWith("AQ.") || apiKey.startsWith("ya29.")) {
+      headers["Authorization"] = `Bearer ${apiKey.trim()}`;
+    } else {
+      headers["x-goog-api-key"] = apiKey.trim();
+    }
 
-    const geminiResponse = await fetch(url, {
+    // Direct endpoint without URL query parameters
+    const endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
+
+    const geminiResponse = await fetch(endpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: headers,
       body: JSON.stringify({
         contents: [
           {
@@ -73,13 +80,12 @@ export async function onRequestPost(context) {
   }
 }
 
-// Support CORS preflight if needed
 export async function onRequestOptions() {
   return new Response(null, {
     status: 204,
     headers: {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization, x-goog-api-key",
       "Access-Control-Allow-Methods": "POST, OPTIONS"
     }
   });

@@ -1,9 +1,0 @@
-# Netlify Canonical Domain & HTTPS Redirect Rules
-# Target domain: apexdigitasa.com
-
-# Proxy Netlify Serverless Functions
-/.netlify/functions/*  /.netlify/functions/:splat  200
-
-# Canonical 301 Redirect (Optional for secondary domain)
-# http://apexdigital.co.za/*  https://apexdigitasa.com/:splat  301!
-# https://apexdigital.co.za/*  https://apexdigitasa.com/:splat  301!

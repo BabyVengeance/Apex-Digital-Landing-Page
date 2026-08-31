@@ -236,7 +236,7 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
         contents: this.history.length > 0 ? this.history : [{ parts: [{ text: userText }] }]
       };
 
-      const endpoints = ["/api/chat", "/.netlify/functions/chat"];
+      const endpoints = ["/api/chat"];
       let lastError = null;
 
       for (const endpoint of endpoints) {

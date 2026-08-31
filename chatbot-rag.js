@@ -9,6 +9,21 @@
   // Structured Apex Digital Master Knowledge Corpus (Audited & Accurate)
   const APEX_KB_CORPUS = [
     {
+      id: "trade_plumbing_recommendation",
+      intents: ["plumbing", "plumber", "electrician", "contractor", "trade", "local service", "dentist", "clinic", "flower", "business type"],
+      title: "Recommended Web Package for Local Service & Trade Businesses",
+      response: `For a local service business like a plumbing, trade, or contracting firm, the **Apex Standard Build** is the ideal commercial engine:
+
+### Key Features for Service Businesses:
+- **3–5 Structured Commercial Pages**: Home, Core Services (Emergency Repairs, Installations, Maintenance), About Us, Client Reviews, and Contact.
+- **Direct WhatsApp Lead Capture**: Instant click-to-chat for urgent callouts and emergency service quotes.
+- **Custom Intake Forms**: Mobile-optimized intake forms for instant quote requests and job scheduling.
+- **Google Local Search Visibility**: Structured Schema entity graphs and Search Console setup so local customers find you first on Google.
+
+Would you like to discuss your project scope or message us directly on WhatsApp at 069 522 4226?`,
+      cta: { text: "Calculate Project ROI & Scope", action: "scrollSection:simulator" }
+    },
+    {
       id: "packages_overview",
       intents: ["package", "packages", "pricing", "cost", "how much", "tier", "options", "price", "rate", "quote", "build", "budget"],
       title: "Apex Custom Website Build Packages & Price Estimates",

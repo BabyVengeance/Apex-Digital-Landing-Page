@@ -1,6 +1,10 @@
 // Comprehensive Knowledge Base for Server-Side Guardrail Fallbacks
 const KNOWLEDGE_BASE = [
   {
+    intents: ["on the fence", "why get a website", "need a website", "why a website", "worth it", "benefit", "small business website"],
+    reply: "For a small business in South Africa, a website is your 24/7 digital storefront that builds instant credibility, captures high-intent Google search traffic, and converts visitors directly into WhatsApp leads. Unlike social media algorithms that throttle your reach, an **Apex Starter Build (Starting at R1,500)** gives you 100% custom code ownership, sub-second speed, and direct client capture with zero ongoing platform fees. Would you like to chat with our team on WhatsApp at 069 522 4226 to see what a custom build could do for your business?"
+  },
+  {
     intents: ["package", "packages", "pricing", "price", "cost", "how much", "rate", "quote", "tier", "small business", "build"],
     reply: "For small businesses, the **Apex Business Build (Starting at R5,000)** is our most popular package. It delivers a 3–5 page custom commercial architecture with direct WhatsApp integration, booking tools, sub-0.4s load speeds, and Google search indexing. If you need a fast 1–2 page entry page, our **Apex Starter Build (Starting at R1,500)** is also available. Would you like to discuss your requirements or message us on WhatsApp at 069 522 4226?"
   },
@@ -45,7 +49,7 @@ function sanitizeAndGuardrail(text, userQuery) {
   clean = clean.replace(/<think>[\s\S]*?<\/think>/gi, "");
   clean = clean.replace(/```(?:thinking|thought|reasoning)[\s\S]*?```/gi, "");
 
-  // 2. Strip safety evaluation / moderation artifacts (e.g. "User Safety: safe", "Safety: safe")
+  // 2. Strip safety evaluation / moderation artifacts
   clean = clean.replace(/^(?:user\s+safety|safety\s+assessment|safety\s+evaluation|safety|content\s+safety|moderation|harm\s+evaluation):\s*[^\n]+\n*/gim, "");
   clean = clean.replace(/\[\s*(?:user\s+safety|safety\s+assessment|safety\s+evaluation|safety):\s*[^\]]+\]/gim, "");
 
@@ -67,7 +71,20 @@ function sanitizeAndGuardrail(text, userQuery) {
   // 4. Strip surrounding quotation marks
   clean = clean.replace(/^["“]([\s\S]*)["”]$/, "$1").trim();
 
-  // 5. Guardrail check: if output is too short, degenerate, or contains leftover safety labels
+  // 5. Detect and repair abrupt sentence truncation (e.g. cut off mid-sentence)
+  if (clean.length > 50 && !/[.!?)"'*\s]$/.test(clean.trim())) {
+    const lastPunctuation = Math.max(
+      clean.lastIndexOf("."),
+      clean.lastIndexOf("!"),
+      clean.lastIndexOf("?"),
+      clean.lastIndexOf("\n")
+    );
+    if (lastPunctuation > 40) {
+      clean = clean.substring(0, lastPunctuation + 1).trim();
+    }
+  }
+
+  // 6. Guardrail check: if output is too short, degenerate, or contains leftover safety labels
   if (clean.length < 25 || /^(?:safe|unsafe|user\s+safety|none|n\/a|ok)$/i.test(clean)) {
     return getKnowledgeFallback(userQuery);
   }
@@ -82,7 +99,7 @@ MASTER KNOWLEDGE BASE:
    - Apex Starter Build (From R1,500): 1–2 page hand-coded single landing page. Sub-second mobile loading, direct lead capture, zero monthly builder fees. Ideal for startups and single-service businesses.
    - Apex Business Build (From R5,000): 3–5 page custom commercial architecture (Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat, booking embeds, quote calculators, Google SEO indexing. Ideal for established South African businesses.
    - Apex Enterprise Build (From R10,000+): 5–10+ bespoke pages, custom interactive calculators, multi-step customer workflows, CRM integration, 1st month SLA maintenance.
-2. Technical Architecture:
+2. Technical Architecture & Value:
    - 100% custom hand-crafted code (HTML5, CSS3, Vanilla JS).
    - Sub-0.4s load speed, 99/100 Google PageSpeed score.
    - Zero WordPress/Elementor plugin bloat, zero security exploits, zero monthly builder lock-ins.
@@ -92,11 +109,12 @@ MASTER KNOWLEDGE BASE:
    - Email: Apexdigtl@gmail.com
    - Location: Durban, KwaZulu-Natal (Serving clients nationwide)
 
-CONVERSATION & GUARDRAIL RULES:
-- Answer inquiries helpfully, concisely, and professionally based on the facts above.
-- Recommend the best package based on what the client asks.
-- Guide prospects toward booking consultations or messaging via WhatsApp at 069 522 4226.
-- CRITICAL: Output ONLY your direct answer to the customer. NEVER include safety classification headers (like "User Safety: safe"), system tags, internal thoughts, or draft notes.`;
+CONVERSATION & COMPLETENESS RULES:
+- ALWAYS provide a FULL, COMPLETE, AND COHESIVE answer from start to finish. Never leave a thought or sentence unfinished.
+- Keep your answers direct, punchy, and concise (aim for 2–3 brief paragraphs or 3 tight bullet points max).
+- Skip generic introductory filler and get straight to answering the user's specific question.
+- Always conclude naturally with a clear next step (e.g. messaging on WhatsApp at 069 522 4226 or booking a consultation).
+- CRITICAL: Output ONLY your direct customer response. NEVER include safety classification headers (like "User Safety: safe"), internal thoughts, or draft notes.`;
 
 export async function onRequestPost(context) {
   try {
@@ -128,7 +146,7 @@ export async function onRequestPost(context) {
       "openrouter/free"
     ];
 
-    // Call OpenRouter completions endpoint
+    // Call OpenRouter completions endpoint with 800 tokens buffer for complete responses
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -151,7 +169,7 @@ export async function onRequestPost(context) {
           }
         ],
         temperature: 0.6,
-        max_tokens: 300
+        max_tokens: 800
       })
     });
 

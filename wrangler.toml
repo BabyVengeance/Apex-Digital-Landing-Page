@@ -1,19 +1,9 @@
-# Apex Digital Landing Page — Wrangler Configuration
-#
-# IMPORTANT: The `main` field below tells Wrangler to deploy the Worker
-# entry point (worker.js) alongside your static assets. Without this,
-# `wrangler deploy` wipes the Worker code and all bindings.
-
 name = "apex-digital-landing-page"
 main = "worker.js"
-compatibility_date = "2026-08-28"
+compatibility_date = "2026-08-31"
 
-# Static assets configuration
-# Points to the project root containing index.html, styles.css, app.js, assets, etc.
 [assets]
-binding = "ASSETS"
-directory = "."
+directory = "./"
 
-# The GEMINI_API_KEY secret is NOT defined here — it's managed separately.
-# Add it once via:  wrangler secret put GEMINI_API_KEY
-# After that, Wrangler remembers it and it survives future deploys.
+[secrets]
+required = ["GEMINI_API_KEY"]

@@ -1261,29 +1261,79 @@ function initChatbotWidget() {
     scrollToBottom();
   }
 
+  let activeTypingTimer = null;
+  let activeTypingFinalizer = null;
+
+  function finishCurrentTyping() {
+    if (activeTypingTimer) {
+      clearInterval(activeTypingTimer);
+      activeTypingTimer = null;
+    }
+    if (typeof activeTypingFinalizer === 'function') {
+      activeTypingFinalizer();
+      activeTypingFinalizer = null;
+    }
+  }
+
   function appendBotMessage(answer) {
+    // Finalize any previously active stream immediately
+    finishCurrentTyping();
+
     const msgDiv = document.createElement('div');
     msgDiv.className = 'message bot-message';
 
-    let formattedText = formatMarkdown(answer.text);
-    let ctaHtml = '';
-    if (answer.cta) {
-      ctaHtml = `<button class="chat-cta-btn" onclick="handleChatCTA('${answer.cta.action}')">
-        ${escapeHtml(answer.cta.text)}
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>`;
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+
+    if (answer.title) {
+      const titleP = document.createElement('p');
+      titleP.className = 'msg-title';
+      titleP.textContent = answer.title;
+      contentDiv.appendChild(titleP);
     }
 
-    msgDiv.innerHTML = `
-      <div class="message-content">
-        ${answer.title ? `<p class="msg-title">${escapeHtml(answer.title)}</p>` : ''}
-        ${formattedText}
-        ${ctaHtml}
-      </div>
-    `;
+    const textContainer = document.createElement('div');
+    textContainer.className = 'bot-text-stream';
+    contentDiv.appendChild(textContainer);
 
+    msgDiv.appendChild(contentDiv);
     messagesEl.appendChild(msgDiv);
     scrollToMessageTop(msgDiv);
+
+    const fullText = (answer.text || '').trim();
+    if (!fullText) return;
+
+    let charIndex = 0;
+    const totalLength = fullText.length;
+    // Dynamic typing speed: fast, fluid, natural cadence
+    const chunkSize = totalLength > 400 ? 5 : (totalLength > 200 ? 3 : 2);
+    const intervalMs = 18;
+
+    activeTypingFinalizer = () => {
+      textContainer.innerHTML = formatMarkdown(fullText);
+      if (answer.cta && !contentDiv.querySelector('.chat-cta-btn')) {
+        const ctaBtn = document.createElement('button');
+        ctaBtn.className = 'chat-cta-btn fade-in';
+        ctaBtn.onclick = () => handleChatCTA(answer.cta.action);
+        ctaBtn.innerHTML = `
+          ${escapeHtml(answer.cta.text)}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        `;
+        contentDiv.appendChild(ctaBtn);
+      }
+      scrollToBottom();
+    };
+
+    activeTypingTimer = setInterval(() => {
+      charIndex += chunkSize;
+      if (charIndex >= totalLength) {
+        finishCurrentTyping();
+      } else {
+        const slice = fullText.slice(0, charIndex);
+        textContainer.innerHTML = formatMarkdown(slice) + '<span class="chat-typing-cursor"></span>';
+        scrollToBottom();
+      }
+    }, intervalMs);
   }
 
   function showTypingIndicator() {

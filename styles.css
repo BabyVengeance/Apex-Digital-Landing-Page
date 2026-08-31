@@ -2182,6 +2182,31 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
+.chat-cta-btn.fade-in {
+  animation: fadeInBtn 0.35s ease forwards;
+}
+
+@keyframes fadeInBtn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-typing-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: var(--champagne, #d4af37);
+  margin-left: 3px;
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: cursorBlink 0.7s infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 /* Suggested Quick Prompts */
 .chat-quick-prompts {
   padding: 10px 16px;

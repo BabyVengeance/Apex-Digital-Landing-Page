@@ -21,43 +21,77 @@ export async function onRequestPost(context) {
       );
     }
 
-    // Call Groq Cloud REST Endpoint
-    const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey.trim()}`
-      },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [
-          {
-            role: "system",
-            content: "You are the digital AI assistant for Apex Digital, a premium web development and software solutions studio based in Durban, South Africa. Answer inquiries helpfully, concisely, and professionally. Guide prospective clients toward booking consultations or messaging via WhatsApp."
-          },
-          {
-            role: "user",
-            content: message
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 350
-      })
-    });
+    // Resilient model fallback sequence to guarantee high-availability
+    const preferredModel = context.env.GROQ_MODEL ? [context.env.GROQ_MODEL] : [];
+    const candidateModels = [
+      ...preferredModel,
+      "llama-3.1-8b-instant",
+      "llama3-70b-8192",
+      "llama3-8b-8192",
+      "mixtral-8x7b-32768",
+      "gemma2-9b-it"
+    ];
 
-    if (!groqResponse.ok) {
-      const errorData = await groqResponse.text();
+    // Remove duplicates while preserving order
+    const modelsToTry = [...new Set(candidateModels)];
+
+    let reply = null;
+    let lastError = null;
+
+    const systemPrompt = "You are the digital AI assistant for Apex Digital, a premium web development and software solutions studio based in Durban, South Africa. Answer inquiries helpfully, concisely, and professionally. Guide prospective clients toward booking consultations or messaging via WhatsApp.";
+
+    for (const model of modelsToTry) {
+      try {
+        const groqResponse = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey.trim()}`
+          },
+          body: JSON.stringify({
+            model: model,
+            messages: [
+              {
+                role: "system",
+                content: systemPrompt
+              },
+              {
+                role: "user",
+                content: message
+              }
+            ],
+            temperature: 0.7,
+            max_tokens: 350
+          })
+        });
+
+        if (groqResponse.ok) {
+          const data = await groqResponse.json();
+          reply = data.choices?.[0]?.message?.content;
+          if (reply) break;
+        } else {
+          const errText = await groqResponse.text();
+          lastError = { status: groqResponse.status, details: errText, model };
+          // If model is not found, continue to next candidate model
+          continue;
+        }
+      } catch (reqErr) {
+        lastError = { error: reqErr.message, model };
+      }
+    }
+
+    if (!reply) {
       return new Response(
-        JSON.stringify({ error: "Groq API request failed", details: errorData }),
+        JSON.stringify({ 
+          error: "Groq API request failed across all candidate models", 
+          details: lastError 
+        }),
         {
-          status: groqResponse.status,
+          status: 502,
           headers: { "Content-Type": "application/json" }
         }
       );
     }
-
-    const data = await groqResponse.json();
-    const reply = data.choices?.[0]?.message?.content || "Thank you for contacting Apex Digital. How can we help you today?";
 
     return new Response(JSON.stringify({ reply }), {
       status: 200,

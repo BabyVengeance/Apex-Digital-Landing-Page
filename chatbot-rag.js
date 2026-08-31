@@ -234,7 +234,8 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
     async callProxyAPI(userText) {
       const payload = {
         history: this.history,
-        userText: userText
+        userText: userText,
+        contents: this.history.length > 0 ? this.history : [{ parts: [{ text: userText }] }]
       };
 
       const endpoints = ["/api/chat", "/.netlify/functions/chat"];
@@ -250,8 +251,11 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
 
           if (response.ok) {
             const data = await response.json();
-            if (data && data.text) {
+            if (data && typeof data.text === "string" && data.text) {
               return data.text.trim();
+            }
+            if (data && data.candidates?.[0]?.content?.parts?.[0]?.text) {
+              return data.candidates[0].content.parts[0].text.trim();
             }
           } else {
             const errData = await response.json().catch(() => ({}));

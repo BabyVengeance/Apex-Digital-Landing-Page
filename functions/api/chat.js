@@ -115,9 +115,15 @@ export async function onRequestPost(context) {
     }
 
     const body = await context.request.json().catch(() => ({}));
-    const { history, userText } = body;
+    let formattedHistory = [];
 
-    let formattedHistory = Array.isArray(history) ? history : [];
+    if (Array.isArray(body.contents)) {
+      formattedHistory = body.contents;
+    } else if (Array.isArray(body.history)) {
+      formattedHistory = body.history;
+    }
+
+    const userText = body.userText || body.message || body.prompt || (body.contents?.[0]?.parts?.[0]?.text);
     if (userText && (!formattedHistory.length || formattedHistory[formattedHistory.length - 1].role !== "user")) {
       formattedHistory.push({ role: "user", parts: [{ text: userText }] });
     }
@@ -135,7 +141,10 @@ export async function onRequestPost(context) {
     }
 
     return new Response(
-      JSON.stringify({ text: answerText }),
+      JSON.stringify({
+        text: answerText,
+        candidates: [{ content: { parts: [{ text: answerText }] } }]
+      }),
       { status: 200, headers: corsHeaders }
     );
   } catch (error) {

@@ -1,169 +1,155 @@
 /* ==========================================================================
    APEX DIGITAL SA — HIGH-INTELLIGENCE RAG & LLM CHATBOT ENGINE
-   Deep Technical Context • Sovereign Security Guardrails • Zero Fluff
+   Deep Technical Context • Multi-Platform Engineering • Zero Fluff
    ========================================================================== */
 
 (function () {
   'use strict';
 
-  // Structured Apex Digital Master Knowledge Corpus (Deep, Exhaustive Responses)
+  // Structured Apex Digital Master Knowledge Corpus (Audited & Accurate)
   const APEX_KB_CORPUS = [
     {
       id: "packages_overview",
       intents: ["package", "packages", "pricing", "cost", "how much", "tier", "options", "price", "rate", "quote", "build"],
       title: "Apex Custom Website Build Packages",
-      response: `Apex Digital SA engineers 3 bespoke website build tiers tailored to your business growth phase and revenue goals, starting at R1,500 and scaling up to R10,000+:
+      response: `Apex Digital SA offers 3 structured website build tiers tailored to your business growth phase and revenue goals, starting at R1,500 and scaling up to R10,000+:
 
-- **Apex Starter Build (Starting at R1,500)**: A high-impact 1–2 page hand-coded single landing page. Engineered for focused service offerings, immediate lead capture, sub-second mobile loading, and total POPIA compliance. Includes direct contact form handlers and zero monthly builder fees.
-- **Apex Business Build (Starting at R5,000)**: Our flagship 3–5 page custom commercial architecture (Home, About, Services, Showcase, Contact). Built for established South African businesses requiring WhatsApp click-to-chat integration, online booking widgets, custom intake calculators, and initial Google search indexing with rich snippets.
-- **Apex Enterprise Build (Starting at R10,000+)**: Complete market dominance platform (5–10+ bespoke pages). Includes custom interactive tools, multi-step lead routing, CRM webhooks, sub-0.4s speed tuning, full Google search launchpad, and 1st month free priority maintenance & SLA.
+- **Apex Starter Build (Starting at R1,500)**: 1 custom core page (Single Landing Page). Engineered for focused service offerings, direct-response lead generation, sub-second mobile loading, and POPIA privacy compliance.
+- **Apex Standard Build (Starting at R5,000)**: Our most popular multi-page commercial architecture (3–5 structured pages: Home, About, Services, Showcase, Contact). Includes WhatsApp click-to-chat integration, calendar/booking link embeds, custom lead intake capture, and Google search indexing with rich snippets.
+- **Apex Pro Build (Starting at R10,000+)**: Market dominance platform (5–10 structured pages). Includes interactive business calculators, search entity authority, multi-step lead workflows, and priority SLA support.
 
-All builds feature 100% custom hand-crafted code (HTML5, CSS3, Vanilla JS) with zero monthly builder locks or hidden licensing fees.`,
-      cta: { text: "Claim Free Custom Demo", action: "openModal" }
+We build across custom code (HTML5/CSS3/JS/React) and leading CMS platforms (WordPress, Shopify, Webflow, Wix) tailored to your operational needs.`,
+      cta: { text: "Compare Build Tiers & Pricing", action: "scrollSection:services" }
     },
     {
       id: "starter_tier",
-      intents: ["starter", "basic site", "cheap website", "single page", "landing page", "entry level", "r1500"],
+      intents: ["starter", "starter build", "basic site", "single page", "landing page", "entry level", "r1500", "r1,500"],
       title: "Apex Starter Build (Starting at R1,500)",
-      response: `The **Apex Starter Build** is designed for ambitious startups, freelancers, and single-offer businesses that need a rapid, highly credible online presence:
+      response: `The **Apex Starter Build** is designed for startups, freelancers, and single-offer businesses that need a rapid, highly credible online footprint:
 
-### What's Included:
-- **Scope**: 1–2 custom hand-coded pages (Home & Contact/Lead Capture).
-- **Performance**: Sub-second loading speed guaranteed (sub-0.4s average), mobile touch target optimization, and zero Elementor/WordPress plugin bloat.
-- **Compliance & Security**: Native SSL configuration, POPIA privacy policy compliance, and anti-spam form handlers.
-- **Ownership**: 100% custom code ownership with no ongoing builder subscription costs.
+### Key Deliverables:
+- **Scope**: 1 custom core landing page engineered for direct lead capture.
+- **Performance**: Sub-second loading speed, mobile touch target optimization, and clean conversion UX.
+- **Compliance & Security**: Native SSL encryption, POPIA privacy compliance, and anti-spam contact form handlers.
+- **Ownership**: Complete asset ownership with high-performance edge hosting setup.
 
-Ideal for running paid ad traffic, launching a new service, or replacing an outdated template site.`,
-      cta: { text: "Request Starter Scope", action: "openModal" }
+Ideal for running paid ad campaigns, launching a new service, or establishing a credible digital home base.`,
+      cta: { text: "Claim Free Custom Demo", action: "openModal" }
     },
     {
       id: "standard_tier",
-      intents: ["standard", "business website", "5 page", "normal site", "booking widget", "whatsapp chat", "r5000", "commercial"],
+      intents: ["standard", "standard build", "commercial site", "5 page", "normal site", "booking widget", "whatsapp chat", "r5000", "r5,000", "small business"],
       title: "Apex Standard Build (Starting at R5,000)",
-      response: `Our **Apex Standard Build** is our most popular multi-page commercial architecture, engineered to establish strong industry authority and double visitor conversion rates:
+      response: `Our **Apex Standard Build** is our flagship multi-page commercial website system, engineered to establish strong industry authority and double visitor conversion rates:
 
 ### Key Deliverables:
-- **Scope**: 3–5 structured pages (Home, About, Core Services, Portfolio/Showcase, Contact).
+- **Scope**: 3–5 structured pages (Home, About, Services, Showcase/Portfolio, Contact).
 - **Interactive Tools**: WhatsApp direct click-to-chat integration, calendar booking link embed, or custom quote intake calculator.
-- **Google Visibility**: Clean HTML5 semantic hierarchy, open-graph social previews, and baseline Google search indexing setup.
-- **Speed Engineering**: Hand-crafted CSS/JS animations with sub-0.4s page load speeds.
+- **Google Search Visibility**: Clean semantic hierarchy, open-graph social previews, structured Schema markup, and Google Search Console indexing.
+- **Performance**: High-speed mobile-first design with smooth responsive animations.
 
-Built for established service providers, logistics firms, real estate agencies, and commercial vendors looking for continuous qualified inbound leads.`,
-      cta: { text: "Request Standard Quote", action: "openModal" }
+Built for established service providers, logistics firms, medical practices, real estate agencies, and commercial vendors looking for continuous qualified inbound leads.`,
+      cta: { text: "Calculate Project ROI & Scope", action: "scrollSection:simulator" }
     },
     {
       id: "pro_tier",
-      intents: ["pro", "enterprise", "full website", "complete site", "automation", "best package", "top tier", "r10000", "dominance", "10000+"],
+      intents: ["pro", "pro build", "full website", "complete site", "automation", "best package", "top tier", "r10000", "r10,000", "market dominance", "10000+"],
       title: "Apex Pro Build (Starting at R10,000+)",
-      response: `The **Apex Pro Build** is our premier growth engine for businesses seeking market dominance and maximum administrative automation:
+      response: `The **Apex Pro Build** is our premier growth engine for businesses seeking market dominance, advanced customer routing, and administrative automation:
 
 ### Advanced Capabilities:
-- **Scope**: 5–10+ bespoke pages with tailored UI/UX design systems.
+- **Scope**: 5–10 structured pages with tailored bespoke UI/UX design systems.
 - **Interactive Engines**: Custom programmatic pricing calculators, multi-step customer onboarding workflows, and CRM webhook routing.
-- **Search & Speed Launchpad**: Complete Google search entity alignment, sub-0.4s speed tuning, and sub-second asset delivery.
-- **Included SLA**: First month of dedicated web engineering & technical maintenance free of charge.
+- **Search & Entity Authority**: Complete Google search entity alignment, Generative Engine Optimization (GEO) for AI citations, and sub-0.4s speed tuning.
+- **Included SLA**: Priority web engineering & technical maintenance support.
 
-Designed for high-growth enterprises that need bespoke tools, zero performance bottlenecks, and a platform that scales seamlessly.`,
+Designed for high-growth enterprises that need bespoke tools, zero performance bottlenecks, and a scalable digital platform.`,
       cta: { text: "Request Pro Blueprint", action: "openModal" }
     },
     {
-      id: "maintenance_plans",
-      intents: ["maintenance", "monthly", "care", "upkeep", "hosting", "support", "after launch", "sla"],
-      title: "Hosting, Support & Post-Launch Security",
-      response: `Every website built by Apex Digital SA includes high-performance edge hosting, SSL security certification, and automated POPIA privacy protocols by default.
+      id: "platforms_technologies",
+      intents: ["platform", "platforms", "wordpress", "wix", "shopify", "woocommerce", "webflow", "technology", "tech stack", "custom code", "cms"],
+      title: "Multi-Platform Engineering: Custom Code, WordPress, Shopify & Wix",
+      response: `Apex Digital SA is platform-agnostic. We engineer high-performing web platforms across all leading technologies based on your specific business goals, budget, and operational requirements:
 
-- **Included Edge Infrastructure**: Lightning-fast edge server hosting, automatic SSL encryption, and POPIA privacy form security built into your project.
-- **In-House Managed**: Clean, maintainable hand-coded architecture that is 100% self-managed post-launch with zero mandatory monthly fees.
-- **On-Demand Developer Support**: Available whenever you need structural updates, new page additions, or feature expansions.`,
-      cta: { text: "Discuss Website Project", action: "openModal" }
+- **Custom Code (HTML5, CSS3, Vanilla JS, React, Node)**: For businesses requiring maximum performance, sub-0.4s load speed, 99/100 Google PageSpeed scores, and bespoke web apps.
+- **WordPress & WooCommerce**: For content-rich platforms, blogs, and scalable e-commerce where teams want easy self-managed content publishing.
+- **Shopify**: For high-volume transactional retail e-commerce with automated shipping, PayFast/Yoco gateways, and inventory sync.
+- **Wix & Webflow**: For modular, visually expressive business sites with intuitive client dashboards.
+
+We analyze your business model and recommend the ideal technology stack for maximum return on investment.`,
+      cta: { text: "See Code Architecture", action: "scrollSection:architecture" }
+    },
+    {
+      id: "ecommerce_integrations",
+      intents: ["ecommerce", "e-commerce", "online store", "shop", "payfast", "yoco", "ozow", "shipping", "payments", "tunl", "courier"],
+      title: "Transactional E-Commerce & Payment Gateways",
+      response: `We build high-converting online stores engineered for South African & global commerce across Shopify, WooCommerce, Wix, and bespoke custom code:
+
+- **Local Payment Gateways**: PayFast, Yoco, Ozow & Peach Payments for instant ZAR card and EFT checkout.
+- **Automated Shipping**: Live rate calculations & order routing with Courier Guy, Tunl international & DHL.
+- **Conversion Tools**: Abandoned cart recovery, dynamic product configurators, and friction-free mobile checkouts.`,
+      cta: { text: "Request E-Commerce Scope", action: "openModal" }
+    },
+    {
+      id: "redesign_refresh",
+      intents: ["redesign", "refresh", "revamp", "upgrade site", "slow site", "fix website", "overhaul"],
+      title: "Website Redesign & Platform Overhaul",
+      response: `Our **Website Redesign & Refresh** service modernizes your existing web assets with:
+
+- **Boutique UI/UX Overhaul**: Modern, high-conversion visual systems built for high-trust user engagement.
+- **Speed & Code Hardening**: Optimizing assets, scripts, and layout shift to bring load times under 1 second.
+- **Mobile Conversion Refactoring**: Touch-optimized layouts with clear action triggers.
+- **Zero Downtime Migration**: Seamless migration preserving your existing SEO rankings and domain authority.`,
+      cta: { text: "Audit My Current Website", action: "openModal" }
+    },
+    {
+      id: "ai_automation",
+      intents: ["ai", "automation", "agent", "chatbot", "rag", "crm", "workflow", "leads routing"],
+      title: "AI Automation & AI-Ops Workflow Engines",
+      response: `Apex Digital integrates autonomous AI systems to streamline your operations 24/7:
+
+- **24/7 Custom RAG Chatbots**: Intelligent, context-grounded AI advisors that qualify leads and answer customer questions instantly.
+- **Lead-to-Viewing & Intake Routing**: Programmatic lead qualification and routing directly into your CRM or WhatsApp.
+- **Operational Workflow Agents**: Automated administrative intake and customer communication flows.`,
+      cta: { text: "Discuss AI Integration", action: "openModal" }
+    },
+    {
+      id: "seo_google_visibility",
+      intents: ["seo", "google", "ranking", "search engine", "find on google", "first page", "visibility", "traffic", "geo", "ai search"],
+      title: "Google Search & AI Visibility Strategy (GEO & SEO)",
+      response: `We structure every site to get discovered by local buyers actively searching on Google and AI search engines:
+
+1. **Technical SEO**: Clean semantic HTML5, JSON-LD Schema entity markup & 99/100 PageSpeed scores.
+2. **Search Launchpad**: Comprehensive XML sitemaps, Google Search Console indexing & rich snippet setup.
+3. **Generative Engine Optimization (GEO)**: Structured entity graphs so your business gets cited inside AI search engines (ChatGPT, Gemini, Perplexity).`,
+      cta: { text: "Audit My Google Ranking", action: "openModal" }
     },
     {
       id: "case_studies_results",
       intents: ["case study", "results", "proof", "examples", "portfolio", "success", "clients", "lasergen", "compass", "boss rides", "colour correct", "ayesha m", "cato ridge", "property portfolio"],
       title: "Featured Client Builds & Empirical Results",
-      response: `Apex Digital SA has engineered high-speed, custom web platforms across industrial, automotive, real estate, and e-commerce verticals:
+      response: `Apex Digital SA has engineered high-performing web platforms across industrial, logistics, automotive, real estate, and e-commerce verticals:
 
 1. **LaserGen** ([lasergen.co.za](https://lasergen.co.za)): Industrial laser refurbishment platform with sub-second mobile loading & direct quote capture.
 2. **Compass Logistics** ([compasslogistics.co.za](https://compasslogistics.co.za)): SADC B2B freight logistics portal with automated quote request routing.
-3. **Boss Rides** ([bossrides.co.za](https://bossrides.co.za)): Luxury automotive showcase with interactive specs and direct booking pathways.
+3. **Boss Rides** ([bossrides.co.za](https://bossrides.co.za)): Luxury automotive customization & vehicle showcase portal.
 4. **Global Colour Correct** ([globalcolourcorrect.com](https://globalcolourcorrect.com)): International e-commerce store with Shopify & Tunl global shipping.
-5. **Ayesha M** ([ayesham.co.za](https://ayesham.co.za)): Boutique fashion store with custom Mag Case 3D product configurator & PayFast checkout.
+5. **Ayesha M Jewellery** ([ayesham.co.za](https://ayesham.co.za)): Custom e-commerce store with 3D Mag Case product configurator & PayFast checkout.
 6. **Cato Ridge Land** ([catoridge.netlify.app](https://catoridge.netlify.app)): Commercial & industrial land development portal for investor lead generation.
-7. **Commercial Real Estate Portfolio** ([propertyportfolio.netlify.app](https://propertyportfolio.netlify.app)): High-yield property investment hub optimized for speed and lead capture.
-
-All builds feature sub-0.4s speeds, 99/100 Google PageSpeed scores, zero CMS plugin bloat, and 100% custom code ownership.`,
-      cta: { text: "See Live Builds in Portfolio", action: "openModal" }
-    },
-    {
-      id: "seo_google_visibility",
-      intents: ["seo", "google", "ranking", "search engine", "find on google", "first page", "visibility", "traffic", "leads", "geo"],
-      title: "Google Search & Local Visibility Strategy",
-      response: `We structure every site to get discovered by local buyers actively searching on Google:
-
-1. **Technical SEO**: Clean semantic HTML5, JSON-LD Schema markup & 99/100 PageSpeed scores.
-2. **Search Launchpad**: Comprehensive XML sitemaps, Google Search Console indexing & rich snippet setup.
-3. **Generative Engine Optimization (GEO)**: Structured entity data for AI search citations (ChatGPT, Gemini, Perplexity).
-
-Every website build includes structured search engine optimization, Google Search Console indexing, and rich snippet setup.`,
-      cta: { text: "Audit My Google Ranking", action: "openModal" }
-    },
-    {
-      id: "speed_performance",
-      intents: ["speed", "fast", "latency", "slow website", "loading", "mobile", "core web vitals", "performance"],
-      title: "Sub-Second Loading Speed & Performance Engineering",
-      response: `Website speed directly dictates your lead conversion rate and Google ranking:
-
-- **Sub-0.4s Page Loading**: Custom hand-coded sites load in under 0.4s, eliminating bounce rate.
-- **Zero Plugin Overhead**: Lightweight Vanilla JS & CSS instead of 30+ heavy WordPress plugins.
-- **Core Web Vitals Guarantee**: 99/100 Google PageSpeed scores with WebP images & layout shift protection.
-
-A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant mobile loading nationwide.`,
-      cta: { text: "Calculate Project ROI & Scope", action: "scrollSection:simulator" }
-    },
-    {
-      id: "why_apex_vs_others",
-      intents: ["why apex", "different", "wordpress vs custom", "agency", "freelancer", "wix", "squarespace", "elementor", "template"],
-      title: "Why Custom Code Outranks Generic Template Builders",
-      response: `Why bespoke hand-coded architecture outperforms template builders (WordPress, Wix, Squarespace):
-
-- **Speed**: Sub-0.4s load speed vs 3.5s+ for heavy WordPress/Elementor templates.
-- **Security**: Zero vulnerability to public plugin exploits or automated database breaches.
-- **Conversion Rate**: Tailored user flows built specifically for your sales process without template limits.
-- **Ownership & Costs**: 100% custom code ownership with zero monthly builder fees or lock-ins.`,
-      cta: { text: "See Code Architecture", action: "scrollSection:architecture" }
-    },
-    {
-      id: "ecommerce_integrations",
-      intents: ["ecommerce", "e-commerce", "online store", "payfast", "yoco", "tunl", "shipping", "payments", "shopify"],
-      title: "Transactional E-Commerce & Payment Gateways",
-      response: `We build high-converting online stores engineered for South African & global commerce:
-
-- **Local Payment Gateways**: PayFast, Yoco, Ozow & Peach Payments for instant ZAR card and EFT checkout.
-- **Automated Shipping**: Live rate calculations & order routing with Courier Guy, Tunl international & DHL.
-- **Conversion Tools**: Abandoned cart recovery, dynamic product configurators & friction-free mobile checkouts.`,
-      cta: { text: "Request E-Commerce Blueprint", action: "openModal" }
-    },
-    {
-      id: "popia_security",
-      intents: ["popia", "privacy", "security", "data", "gdpr", "compliance", "ssl", "protection"],
-      title: "POPIA Data Protection & Security Protocols",
-      response: `All Apex Digital builds natively conform to South African POPIA privacy laws:
-
-- **Secure Data Handling**: Form submission data is encrypted and transmitted directly without storage leaks.
-- **Privacy Controls**: Transparent consent notices, cookie policy integration & standard SSL encryption.
-- **Zero Exploit Risk**: Clean hand-crafted code eliminating plugin vulnerability vectors.`,
-      cta: { text: "Discuss Security Requirements", action: "openModal" }
+7. **Commercial Property Hub** ([propertyportfolio.netlify.app](https://propertyportfolio.netlify.app)): Real estate investment portal with yield metrics and broker routing.`,
+      cta: { text: "Explore Live Client Portfolio", action: "scrollSection:portfolio" }
     },
     {
       id: "contact_location",
       intents: ["contact", "phone", "whatsapp", "email", "address", "location", "durban", "vector", "reach out", "call", "team"],
       title: "Contact Apex Digital SA Engineering Team",
-      response: `Connect directly with our technical web architecture & engineering team:
+      response: `Connect directly with our web architecture & engineering team:
 
 - **Technical Team**: Apex Digital SA Systems Architecture Unit
 - **Phone / WhatsApp**: [+27 69 522 4226](tel:+27695224226)
 - **Email**: [Apexdigtl@gmail.com](mailto:Apexdigtl@gmail.com)
-- **HQ**: Durban, KwaZulu-Natal (Serving clients nationwide across SA & globally)`,
+- **HQ**: Durban, KwaZulu-Natal (Serving clients nationwide across South Africa & globally)`,
       cta: { text: "Chat Directly on WhatsApp", action: "openWhatsApp" }
     }
   ];
@@ -172,7 +158,7 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
   const QUICK_PROMPTS = [
     { 
       label: "Packages & Pricing", 
-      query: "What are your website packages and prices?",
+      query: "What are your website build packages and prices?",
       iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`
     },
     { 
@@ -191,13 +177,13 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
       iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="8" y1="18" x2="8" y2="18.01"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>`
     },
     { 
-      label: "Build Process & SLA", 
-      query: "How long does a build take and what support is included?",
-      iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`
+      label: "Platforms & Tech", 
+      query: "What platforms and technologies do you build with?",
+      iconSvg: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`
     }
   ];
 
-  // Dynamic Gemini LLM Engine Implementation (Cloudflare Serverless Function Endpoint)
+  // Dynamic LLM Engine Implementation (Cloudflare Serverless Function Endpoint)
   class ApexLLMEngine {
     constructor(corpus) {
       this.corpus = corpus;
@@ -226,7 +212,7 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
         return { title: null, text: answerText, cta: cta };
       } catch (err) {
         console.warn("Cloudflare Serverless Endpoint (/api/chat) unreachable, falling back to client-side RAG:", err);
-        this.history.pop(); // Remove pending user message from history on error
+        this.history.pop();
         return this.ragFallback.query(userText);
       }
     }
@@ -295,8 +281,8 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
         return { text: "Compare Build Tiers & Pricing", action: "scrollSection:services" };
       }
 
-      // 5. Code Architecture & Technical Performance (#architecture)
-      if (combined.includes("architecture") || combined.includes("hand-coded") || combined.includes("vanilla") || combined.includes("wordpress vs") || combined.includes("speed") || combined.includes("load time") || combined.includes("page speed") || combined.includes("latency")) {
+      // 5. Code Architecture & Technical Platforms (#architecture)
+      if (combined.includes("architecture") || combined.includes("hand-coded") || combined.includes("vanilla") || combined.includes("wordpress") || combined.includes("shopify") || combined.includes("wix") || combined.includes("webflow") || combined.includes("speed") || combined.includes("load time") || combined.includes("page speed") || combined.includes("latency")) {
         return { text: "See Code Architecture", action: "scrollSection:architecture" };
       }
 
@@ -310,7 +296,7 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
         return { text: "Explore FAQ & Timelines", action: "scrollSection:faq" };
       }
 
-      // 8. Custom Demo / Intake Consultation Modal (Default Fallback)
+      // 8. Custom Demo / Consultation Modal (Default Fallback)
       return { text: "Claim Free Custom Demo Website", action: "openModal" };
     }
 
@@ -382,12 +368,12 @@ A 1-second delay reduces conversions by up to 20%. Apex Digital ensures instant 
     getFallbackResponse(userQuery = "") {
       return {
         title: "Apex Digital Web Architecture & Growth",
-        text: `At Apex Digital SA, we engineer custom, sub-second web architectures designed specifically to generate qualified leads and double sales conversion rates.
+        text: `At Apex Digital SA, we engineer high-performance web systems across custom code (HTML/CSS/JS/React), WordPress, Shopify, and Wix, designed specifically to generate qualified leads and maximize conversion rates.
 
 ### Core Website Build Tiers:
-- **Apex Starter Build (Starting at R1,500)**: 1–2 page hand-coded single landing page.
-- **Apex Business Build (Starting at R5,000)**: 3–5 page custom business engine with WhatsApp chat, booking tools, or quote calculators.
-- **Apex Enterprise Build (Starting at R10,000)**: 5–10 page bespoke dominance platform with custom calculators and CRM workflows.
+- **Apex Starter Build (Starting at R1,500)**: 1 custom core page (Single Landing Page).
+- **Apex Standard Build (Starting at R5,000)**: 3–5 page commercial engine with WhatsApp chat, booking tools, or quote intake.
+- **Apex Pro Build (Starting at R10,000+)**: 5–10 page market dominance platform with custom calculators and CRM workflows.
 
 Would you like to explore a specific package, review our real client case studies, or claim a free custom demo website?`,
         cta: { text: "Claim Free Demo Website", action: "openModal" }

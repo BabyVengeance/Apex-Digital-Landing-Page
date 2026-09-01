@@ -1625,34 +1625,40 @@ h1, h2, h3, h4, h5, h6 {
 .footer-social-strip {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 14px;
 }
 
+.footer-social-btn,
 .footer-social-icon {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: var(--surface-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-muted);
+  background: var(--surface-card, #121214);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1));
+  color: var(--text-muted, #94a3b8);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+  flex-shrink: 0;
 }
 
+.footer-social-btn:hover,
 .footer-social-icon:hover {
   transform: translateY(-2px);
-  border-color: var(--border-champagne);
-  color: var(--gold-champagne);
-  background: var(--surface-card-hover);
-  box-shadow: 0 0 10px var(--champagne-glow);
+  border-color: var(--border-champagne, rgba(232, 185, 35, 0.4));
+  color: var(--gold-champagne, #E8B923);
+  background: var(--surface-card-hover, #1a1a1e);
+  box-shadow: 0 0 12px var(--champagne-glow, rgba(232, 185, 35, 0.25));
 }
 
+.footer-social-btn svg,
 .footer-social-icon svg {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .footer-title {
@@ -1686,29 +1692,44 @@ h1, h2, h3, h4, h5, h6 {
 .footer-review-badge {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 7px !important;
-  padding: 6px 11px !important;
+  gap: 8px !important;
+  padding: 8px 14px !important;
   background: rgba(232, 185, 35, 0.08) !important;
-  border: 1px solid rgba(232, 185, 35, 0.3) !important;
-  border-radius: 6px !important;
-  color: var(--gold-champagne) !important;
-  font-size: 0.78rem !important;
+  border: 1px solid rgba(232, 185, 35, 0.4) !important;
+  border-radius: 8px !important;
+  color: #E8B923 !important;
+  font-size: 0.82rem !important;
   font-weight: 600 !important;
   text-decoration: none !important;
   transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast) !important;
 }
 
 .footer-review-badge:hover {
-  background: rgba(232, 185, 35, 0.18) !important;
-  border-color: var(--gold-champagne) !important;
-  color: #fff !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 0 12px var(--champagne-glow) !important;
+  background: rgba(232, 185, 35, 0.2) !important;
+  border-color: #E8B923 !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 16px rgba(232, 185, 35, 0.35) !important;
 }
 
+.footer-review-badge span {
+  color: #E8B923 !important;
+  font-weight: 600 !important;
+  transition: color var(--transition-fast);
+}
+
+.footer-review-badge:hover span {
+  color: #FFFFFF !important;
+}
+
+.footer-review-star,
 .footer-review-badge svg {
-  color: var(--gold-champagne) !important;
+  fill: #E8B923 !important;
+  color: #E8B923 !important;
+  width: 16px !important;
+  height: 16px !important;
   flex-shrink: 0 !important;
+  filter: drop-shadow(0 0 4px rgba(232, 185, 35, 0.7)) !important;
 }
 
 .footer-bottom {

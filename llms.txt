@@ -11,8 +11,10 @@ Apex Digital SA (Pty) Ltd is a premier web development, Generative Engine Optimi
 - **Headquarters Location:** Durban, KwaZulu-Natal, South Africa (GeoCoordinates: -29.8587, 31.0218)
 - **Legal Compliance Standard:** 100% POPIA (Protection of Personal Information Act) Data Privacy Compliant by Default
 - **Social & Consensus Anchors:**
+  - LinkedIn: https://www.linkedin.com/company/apex-digital-southafrica/
   - Instagram: https://www.instagram.com/apexdigital_sa/
   - Linktree: https://linktr.ee/ApexDigital_
+  - Google Business Profile: https://share.google/1nVQq2o9XWzpIxlK1
   - CIPC Registration Verification: https://eservices.cipc.co.za/CompanySearch.aspx?reg=2026/237102/07
 
 ## Core Engineering Capabilities

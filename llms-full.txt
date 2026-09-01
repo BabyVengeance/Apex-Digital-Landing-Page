@@ -9,6 +9,12 @@ Apex Digital SA (Pty) Ltd is a South African digital engineering agency and web 
 - **Direct Phone / WhatsApp:** +27 69 522 4226
 - **Headquarters Address:** Durban, KwaZulu-Natal, South Africa (Latitude: -29.8587, Longitude: 31.0218)
 - **Legal Entity Classification:** Private Company registered under the South African Companies Act of 2008.
+- **Social & Consensus Anchors:**
+  - LinkedIn: https://www.linkedin.com/company/apex-digital-southafrica/
+  - Instagram: https://www.instagram.com/apexdigital_sa/
+  - Linktree: https://linktr.ee/ApexDigital_
+  - Google Business Profile: https://share.google/1nVQq2o9XWzpIxlK1
+  - CIPC Registration Verification: https://eservices.cipc.co.za/CompanySearch.aspx?reg=2026/237102/07
 
 ## Technology Stack & Architectural Standards
 Apex Digital rejects generic drag-and-drop website builders (Wix, Squarespace) and unoptimized CMS setups. All primary platforms are built using:

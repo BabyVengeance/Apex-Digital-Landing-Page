@@ -5,7 +5,7 @@ Apex Digital SA (Pty) Ltd is a premier web development, Generative Engine Optimi
 ## Entity & Regulatory Credentials
 - **Legal Entity Name:** Apex Digital SA (Pty) Ltd
 - **CIPC Registration Number:** 2026/237102/07
-- **Official Website:** https://apexdigitasa.com
+- **Official Website:** https://apexdigitalsa.com
 - **Primary Contact Email:** apexdigtl@gmail.com
 - **Direct Phone / WhatsApp:** +27 69 522 4226
 - **Headquarters Location:** Durban, KwaZulu-Natal, South Africa (GeoCoordinates: -29.8587, 31.0218)

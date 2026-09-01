@@ -25,5 +25,5 @@ User-agent: CCBot
 Allow: /
 
 # Sitemap & LLMs Plain-Text Specifications
-Sitemap: https://apexdigitasa.com/sitemap.xml
-LLMs-Txt: https://apexdigitasa.com/llms.txt
+Sitemap: https://apexdigitalsa.com/sitemap.xml
+LLMs-Txt: https://apexdigitalsa.com/llms.txt

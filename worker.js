@@ -166,9 +166,23 @@ export default {
       }
     }
 
-    // 3. Serve static assets for all other routes
+    // 3. Serve static assets for all other routes with 404 fallback
     if (env.ASSETS && typeof env.ASSETS.fetch === "function") {
-      return env.ASSETS.fetch(request);
+      let assetResp = await env.ASSETS.fetch(request);
+      if (assetResp.status === 404 && request.method === "GET") {
+        try {
+          const notFoundUrl = new URL("/404.html", request.url);
+          const notFoundResp = await env.ASSETS.fetch(new Request(notFoundUrl, request));
+          if (notFoundResp.ok) {
+            return new Response(notFoundResp.body, {
+              status: 404,
+              statusText: "Not Found",
+              headers: notFoundResp.headers,
+            });
+          }
+        } catch (_) {}
+      }
+      return assetResp;
     }
 
     return fetch(request);

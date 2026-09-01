@@ -5078,40 +5078,6 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.5;
 }
 
-.error-diagnostics-hud {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 16px 28px;
-  padding: 14px 24px;
-  background: rgba(14, 14, 20, 0.7);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  backdrop-filter: blur(12px);
-  margin-top: 8px;
-}
-
-.error-diag-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Space Grotesk', monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  color: var(--text-dim);
-  text-transform: uppercase;
-}
-
-.error-diag-item strong {
-  color: var(--text-ivory);
-  font-weight: 600;
-}
-
-.error-diag-item .diag-status-ok {
-  color: #38ef7d;
-}
-
 /* ==========================================================================
    404 LIGHT THEME ENGINE — PURE CRISP WHITE & HIGH CONTRAST
    ========================================================================== */
@@ -5179,25 +5145,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #707080;
 }
 
-[data-theme="light"] .error-diagnostics-hud {
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
-}
-
-[data-theme="light"] .error-diag-item {
-  color: #5C5C6E;
-}
-
-[data-theme="light"] .error-diag-item strong {
-  color: #0A0A0E;
-}
-
-[data-theme="light"] .error-diag-item .diag-status-ok {
-  color: #0d8a43;
-  font-weight: 700;
-}
-
 @media (max-width: 680px) {
   .error-main-content {
     padding: 100px 16px 40px;
@@ -5211,13 +5158,7 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
     gap: 14px;
   }
-
-  .error-diagnostics-hud {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    width: 100%;
-  }
 }
+
 
 

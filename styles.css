@@ -1889,7 +1889,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 992px) {
   .nav-container { padding: 0 24px; }
   .nav-links { display: none; }
-  .nav-logo { height: 75px; }
+  .nav-logo { height: 60px; }
   .footer-brand img { height: 80px; }
   .col-8, .col-4, .col-6 { grid-column: span 12; }
   .arch-display-card { grid-template-columns: 1fr; }
@@ -3841,11 +3841,16 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-diag-cta {
   width: 100%;
   min-height: 48px;
-  padding: 14px 10px;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  line-height: 1.3;
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
   text-align: center;
+  white-space: normal !important;
+  word-break: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Form Optional Details Accordion */
@@ -4128,8 +4133,6 @@ h1, h2, h3, h4, h5, h6 {
   button,
   a.btn-champagne,
   a.btn-outline-luxury,
-  .nav-social-btn,
-  .theme-toggle-btn,
   .work-filter-btn,
   .calc-tier-btn,
   .faq-trigger,
@@ -4142,6 +4145,121 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 48px;
     min-width: 48px;
     box-sizing: border-box;
+  }
+
+  /* Sovereign Mobile Navigation Bar Containment & Precision Sizing */
+  .navbar {
+    padding: 8px 0 !important;
+  }
+
+  .navbar.scrolled {
+    padding: 6px 0 !important;
+  }
+
+  .nav-container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .nav-brand {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .nav-logo {
+    height: 52px !important;
+    width: auto !important;
+    max-width: 65px !important;
+    transition: height var(--transition-smooth);
+  }
+
+  .navbar.scrolled .nav-logo {
+    height: 40px !important;
+    max-width: 50px !important;
+  }
+
+  .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Calibrated navbar button footprints with zero-collision 48px tap targets */
+  .nav-actions .nav-social-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .nav-actions .nav-social-btn::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    left: -6px;
+    right: -6px;
+  }
+
+  .nav-actions .theme-toggle-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    position: relative !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box;
+  }
+
+  .nav-actions .theme-toggle-btn::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+  }
+
+  .mobile-menu-toggle {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    flex-shrink: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+  }
+
+  /* Universal Mobile CTA Button Safety & Wrapping */
+  .btn-champagne,
+  .btn-outline-luxury {
+    white-space: normal !important;
+    text-align: center;
+    line-height: 1.35;
+  }
+
+  .calc-cta-btn,
+  #calc-cta-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    padding: 13px 20px !important;
+    font-size: 0.88rem !important;
+    white-space: normal !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
+    box-sizing: border-box !important;
   }
 
   /* Universal Card Padding Normalization (Eliminates desktop 44px-64px blowout) */
@@ -5139,6 +5257,48 @@ h1, h2, h3, h4, h5, h6 {
   .sim-mode-btn {
     font-size: 0.68rem !important;
     padding: 6px 4px !important;
+  }
+
+  /* Ultra-compact Mobile Navbar Alignment */
+  .nav-container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    gap: 6px !important;
+  }
+
+  .nav-logo {
+    height: 48px !important;
+    max-width: 58px !important;
+  }
+
+  .navbar.scrolled .nav-logo {
+    height: 38px !important;
+    max-width: 46px !important;
+  }
+
+  .nav-actions {
+    gap: 4px !important;
+  }
+
+  .nav-actions .nav-social-btn {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+
+  .nav-actions .theme-toggle-btn {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+
+  .mobile-menu-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
   }
 }
 

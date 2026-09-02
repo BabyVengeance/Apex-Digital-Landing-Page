@@ -4,8 +4,6 @@
    Emil Kowalski Micro-Interactions, 3D Photon Shaders, & ROI Speed Simulator
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap');
-
 /* Default Root: Dark Theme */
 :root, [data-theme="dark"] {
   --bg-pitch: #040405;
@@ -490,6 +488,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   overflow: hidden;
   border-bottom: 1px solid var(--border-subtle);
+  contain: layout;
 }
 
 #hero-wireframe-canvas {
@@ -539,6 +538,8 @@ h1, h2, h3, h4, h5, h6 {
 .hero-title .word {
   display: inline-block;
   white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
 }
 
 .hero-title .char {

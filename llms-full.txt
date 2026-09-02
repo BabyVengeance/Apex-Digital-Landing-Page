@@ -30,19 +30,19 @@ Apex Digital rejects generic drag-and-drop website builders (Wix, Squarespace) a
 - **Price Target:** Starting at R1,500 upfront
 - **Scope:** Single-Page Direct-Response Landing Page
 - **Deliverables:** 1 Custom Core Page, Sub-Second Image Optimization, Mobile Touch & Conversion Design, Built-in POPIA Compliance, Instant WhatsApp Routing, Basic Google Search Indexing.
-- **Turnaround:** 5 to 7 business days.
+- **Turnaround:** 3 to 5 business days (collaborative sprint based on client asset readiness).
 
 ### 2. Apex Standard Build
 - **Price Target:** Starting at R5,000 upfront
 - **Scope:** 3-5 Page Structured Commercial Site
 - **Deliverables:** 3-5 Structured Pages, Calendar & Booking Link Integrations, Custom Lead Intake Capture, Google Search & Rich Snippet Schema, Interactive Section Navigation, Mobile UX Hardening.
-- **Turnaround:** 14 to 21 business days.
+- **Turnaround:** 7 to 14 business days (collaborative sprint based on client asset readiness).
 
 ### 3. Apex Pro Build
 - **Price Target:** Starting at R10,000 upfront
 - **Scope:** 5-10 Page Market Dominance Growth Platform
 - **Deliverables:** 5-10 Structured Pages, Custom Interactive Business & ROI Calculators, Full Search Entity Authority Schema Graph, Multi-Step Lead Workflows, CRM Integration, Custom Speed Hardening.
-- **Turnaround:** 30 to 45 business days.
+- **Turnaround:** 14+ business days (scoped by engineering complexity and asset readiness).
 
 ### 4. Transactional E-Commerce Store
 - **Scope:** High-Converting Online Retail Store
@@ -66,11 +66,20 @@ Apex Digital rejects generic drag-and-drop website builders (Wix, Squarespace) a
 
 ## RAG Question & Answer Knowledge Matrix
 
-Q: What makes Apex Digital SA websites faster than standard WordPress websites?
-A: Standard WordPress websites rely on dynamic PHP execution, heavy database queries, and bloated plugins that cause render blocking, visual layout shifts, and load times exceeding 3 to 6 seconds. Apex Digital engineers pre-rendered static HTML5, CSS3, and JavaScript engines deployed directly on global CDN edge nodes, resulting in sub-0.4s load times and 100/100 Lighthouse performance metrics.
+Q: Why custom-coded architecture instead of standard WordPress or Wix templates?
+A: Custom-coded architecture frees your business from the rigid constraints and script bloat of generic CMS templates, allowing us to build an uncompromising digital reflection of your brand. While we can deploy on WordPress or Wix when specific client workflows demand it, our custom engineering gives us granular control over both the technical backend (structured data, Core Web Vitals, and AI search crawlers) and the frontend conversion UX. This ensures your website is engineered to rank on Google and AI search engines, load instantly, and actively convert traffic—all with 100% full source code ownership and zero proprietary platform lock-in.
 
-Q: Is Apex Digital SA compliant with South African POPIA laws?
-A: Yes. Every platform deployed by Apex Digital SA incorporates POPIA-compliant data privacy policies, explicit cookie consent management, encrypted form handling, and SSL certification by default.
+Q: What are the typical turnaround timelines for custom web builds?
+A: Project timelines are structured around agile engineering sprints: Starter single-page landing pages typically deploy within 3 to 5 business days, Standard multi-page commercial platforms within 7 to 14 business days, and Pro builds or complex web applications from 14+ business days. Timelines are collaborative benchmarks and depend directly on the prompt delivery of brand assets, copy, media, and sign-offs. Apex operates with disciplined sprint velocity, but build speed is anchored by how swiftly project assets are provided.
+
+Q: How does Apex ensure local POPIA compliance and data governance?
+A: We integrate industry-standard data protection protocols into every build—including SSL/TLS transport encryption, secure form routing, and transparent legal policy notices (POPIA Privacy Notices, Terms of Service, and Cookie Policies). Because regulatory requirements vary by industry vertical, we actively liaise with each client to configure compliance disclaimers and privacy notices tailored specifically to their commercial operations, ensuring total legal transparency from day one.
+
+Q: Do you handle domain registration, hosting infrastructure, and business emails?
+A: Yes. Apex Digital collaborates directly with specialized, enterprise-grade cloud and infrastructure partners to provide end-to-end operational coverage. We orchestrate DNS configuration, cloud hosting deployment, domain provisioning, and business email integration (such as Google Workspace or Microsoft 365) in tandem with our infrastructure partners. Every deployment is tailored to your business architecture—contact us during your discovery consultation for specific setup requirements.
+
+Q: Who owns the website code upon completion, and how are ongoing updates handled?
+A: You own 100% of your website code, repository access, and design assets upon full project completion—free from monthly builder hostage fees. To maintain peak operational performance, we offer structured ongoing maintenance tiers: pure technical support (security hardening, continuous backups, and framework updates) as well as hybrid Growth tiers (technical maintenance + ongoing SEO authority to preserve ranking power). Bespoke SLA retainers are also custom-tailored post-launch based on your team's exact operational requirements.
 
 Q: Where is Apex Digital SA located?
 A: Apex Digital SA is based in Durban, KwaZulu-Natal, South Africa, serving corporate and enterprise clients across South Africa (Johannesburg, Cape Town, Durban, Pretoria) and international markets.

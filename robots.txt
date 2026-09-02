@@ -2,8 +2,11 @@
 User-agent: *
 Allow: /
 
-# Explicit AI Model & Search Scraper Permissions
+# Explicit AI Model & Conversational Search Scraper Permissions
 User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
@@ -12,10 +15,16 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
 Allow: /
 
 User-agent: Bytespider
@@ -27,3 +36,4 @@ Allow: /
 # Sitemap & LLMs Plain-Text Specifications
 Sitemap: https://apexdigitalsa.com/sitemap.xml
 LLMs-Txt: https://apexdigitalsa.com/llms.txt
+LLMs-Full-Txt: https://apexdigitalsa.com/llms-full.txt

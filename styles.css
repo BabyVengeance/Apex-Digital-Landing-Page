@@ -3680,11 +3680,40 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 48px;
   display: flex;
   align-items: center;
+  gap: 12px;
+}
+
+.diag-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--champagne);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.diag-btn-icon svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--champagne);
+  transition: stroke 0.25s ease, transform 0.25s ease;
 }
 
 .diag-sector-btn:hover {
   border-color: var(--border-champagne);
   background: rgba(212, 175, 55, 0.08);
+}
+
+.diag-sector-btn:hover .diag-btn-icon {
+  background: rgba(212, 175, 55, 0.12);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
 }
 
 .diag-sector-btn.active {
@@ -3693,6 +3722,16 @@ h1, h2, h3, h4, h5, h6 {
   color: #ffffff;
   font-weight: 700;
   box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.diag-sector-btn.active .diag-btn-icon {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--champagne);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.diag-btn-text {
+  flex: 1;
 }
 
 .mobile-diag-scorecard {
@@ -3745,6 +3784,58 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-muted);
   line-height: 1.55;
   margin: 6px 0 12px 0;
+}
+
+.mobile-diag-citation {
+  margin: 8px 0 16px 0 !important;
+  padding: 12px !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 8px !important;
+  font-size: 0.74rem !important;
+  line-height: 1.5 !important;
+}
+
+.mobile-diag-citation .citation-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: var(--champagne) !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  margin-bottom: 6px !important;
+}
+
+.mobile-diag-citation .citation-title svg {
+  color: var(--champagne);
+  flex-shrink: 0;
+}
+
+.mobile-citation-disclaimer {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  font-size: 0.67rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  opacity: 0.85;
+}
+
+[data-theme="light"] .mobile-diag-citation {
+  background: rgba(184, 146, 85, 0.06) !important;
+  border-color: rgba(184, 146, 85, 0.3) !important;
+  color: #3f3f46 !important;
+}
+
+[data-theme="light"] .mobile-diag-citation .citation-title {
+  color: #8a6d32 !important;
+}
+
+[data-theme="light"] .mobile-citation-disclaimer {
+  border-top-color: rgba(0, 0, 0, 0.08);
+  color: #71717a;
 }
 
 .mobile-diag-cta {
@@ -4192,12 +4283,32 @@ h1, h2, h3, h4, h5, h6 {
   .mobile-pill-card {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     padding: 10px 12px;
     background: var(--surface-card);
     border: 1px solid var(--border-champagne);
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-pill-card .pill-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 6px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    color: var(--champagne);
+    flex-shrink: 0;
+  }
+
+  .mobile-pill-card .pill-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--champagne);
   }
 
   .mobile-pill-card .pill-text {
@@ -4859,6 +4970,36 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 14px rgba(184, 146, 85, 0.3) !important;
   }
 
+  [data-theme="light"] .diag-btn-icon {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
+    color: #8a6d32 !important;
+  }
+
+  [data-theme="light"] .diag-btn-icon svg {
+    stroke: #8a6d32 !important;
+  }
+
+  [data-theme="light"] .diag-sector-btn.active .diag-btn-icon {
+    background: rgba(8, 8, 12, 0.15) !important;
+    border-color: rgba(8, 8, 12, 0.3) !important;
+    color: #08080c !important;
+  }
+
+  [data-theme="light"] .diag-sector-btn.active .diag-btn-icon svg {
+    stroke: #08080c !important;
+  }
+
+  [data-theme="light"] .mobile-pill-card .pill-icon {
+    background: rgba(184, 146, 85, 0.12) !important;
+    border-color: rgba(184, 146, 85, 0.3) !important;
+    color: #8a6d32 !important;
+  }
+
+  [data-theme="light"] .mobile-pill-card .pill-icon svg {
+    stroke: #8a6d32 !important;
+  }
+
   [data-theme="light"] .mobile-diag-scorecard {
     background: #ffffff !important;
     border-color: rgba(184, 146, 85, 0.35) !important;
@@ -4887,6 +5028,47 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 85vh !important;
     border-radius: 20px 20px 0 0 !important;
     border-bottom: none !important;
+  }
+
+  /* --- MOBILE FOOTER STREAMLINING: BRAND IDENTITY + DIRECT CONTACT ONLY --- */
+  .footer-nav-col {
+    display: none !important;
+  }
+
+  .footer {
+    padding: 3rem 0 2.25rem 0 !important;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.75rem !important;
+    margin-bottom: 1.75rem !important;
+  }
+
+  .footer-brand {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 1.5rem;
+  }
+
+  .footer-brand p {
+    max-width: 100% !important;
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .footer-contact-col .footer-title {
+    margin-bottom: 0.85rem !important;
+    color: var(--champagne) !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .footer-social-links {
+    gap: 12px !important;
+  }
+
+  [data-theme="light"] .footer-brand {
+    border-bottom-color: rgba(0, 0, 0, 0.08) !important;
   }
 }
 

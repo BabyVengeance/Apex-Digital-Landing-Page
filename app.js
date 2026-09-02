@@ -2059,23 +2059,26 @@ function initEcosystemCanvas() {
    MOBILE 1-TAP MARKET LEAK DIAGNOSTIC HANDLER
    ========================================================================== */
 const mobileDiagnosticData = {
-  trade: {
-    monthly: 'R 45,000 / mo',
-    annual: 'R 540,000 / yr',
-    lossTitle: 'Estimated Revenue Handed to Competitors Every Month',
-    desc: 'Local emergency & maintenance buyers call the top 3 Google results. Without a high-speed landing page, 80%+ of high-intent phone enquiries go directly to competing contractors.'
-  },
   b2b: {
     monthly: 'R 125,000 / mo',
     annual: 'R 1,500,000 / yr',
-    lossTitle: 'Estimated Commercial Deals Lost to Page 1 Competitors',
-    desc: 'Corporate procurement managers research online before requesting quotes. Having no website or an unoptimized presence causes high-ticket corporate contracts to go to verified competitors.'
+    lossTitle: 'Estimated Commercial Revenue Lost to Page 1 Competitors',
+    desc: 'Corporate procurement officers and commercial buyers research vendors online before issuing tenders or RFQs. Operating with no website or an outdated profile forfeits high-value corporate deals to competitors ranking on Page 1.',
+    citation: 'Sources: Gartner B2B Buyer Journey Study (74% of B2B procurement decisions research online prior to contact) & BrightLocal Consumer Survey (81% evaluate web credibility before hiring).'
+  },
+  trade: {
+    monthly: 'R 45,000 / mo',
+    annual: 'R 540,000 / yr',
+    lossTitle: 'Estimated Monthly Revenue Conceded to Local Competitors',
+    desc: 'Emergency and scheduled service seekers call the top 3 results on Google Maps and search results. Lacking a mobile-first, high-speed landing page diverts high-intent client calls directly to competing local contractors.',
+    citation: 'Sources: Google Consumer Search Insights (76% of local mobile queries result in same-day calls or visits) & Backlinko/Chitika SERP CTR Distribution (top 3 Google positions absorb 68.7% of search clicks).'
   },
   retail: {
     monthly: 'R 85,000 / mo',
     annual: 'R 1,020,000 / yr',
-    lossTitle: 'Estimated Direct Consumer & E-Commerce Revenue Lost',
-    desc: 'Slow mobile load speeds bleed 53% of mobile buyers. An Apex custom-coded storefront with PayFast/Yoco integration stops customer drop-off.'
+    lossTitle: 'Estimated Consumer Cart & Direct Revenue Forfeited',
+    desc: 'Slow mobile load speeds bleed 53% of mobile shoppers before they can view a product. A lightweight, speed-hardened Apex storefront with localized PayFast/Yoco payment integration stops bounce drop-off.',
+    citation: 'Sources: Google / SOASTA Mobile Performance Benchmark (53% of mobile visits abandon if load exceeds 3 seconds) & Deloitte Digital Study (a 0.1s load improvement yields up to an 8.4% lift in retail conversions).'
   }
 };
 
@@ -2093,11 +2096,13 @@ function selectMobileSector(sectorKey, btnEl) {
   const annualEl = document.getElementById('mobile-annual-val');
   const descEl = document.getElementById('mobile-loss-desc');
   const titleEl = document.getElementById('mobile-loss-title');
+  const citEl = document.getElementById('mobile-citation-text');
 
   if (lossEl) lossEl.textContent = data.monthly;
   if (annualEl) annualEl.textContent = data.annual;
   if (descEl) descEl.textContent = data.desc;
   if (titleEl) titleEl.textContent = data.lossTitle;
+  if (citEl && data.citation) citEl.textContent = data.citation;
 }
 
 

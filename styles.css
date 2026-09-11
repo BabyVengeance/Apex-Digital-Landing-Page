@@ -2628,6 +2628,16 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1) translate3d(0, 0, 0);
 }
 
+/* Strictly disable floating portfolio previews on mobile viewports & touch devices */
+@media (max-width: 1024px), (hover: none), (pointer: coarse) {
+  .portfolio-hover-preview {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
 /* ==========================================================================
    INTERACTIVE SPEED AUDITOR WIDGET
    ========================================================================== */

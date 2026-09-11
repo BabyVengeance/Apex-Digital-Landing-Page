@@ -1545,12 +1545,16 @@ function initWorkPreviews() {
   const items = document.querySelectorAll('.work-list-item');
   if (!preview || !img || items.length === 0) return;
   
+  // Strictly allow previews only on desktop with fine mouse pointer
+  const isDesktop = () => window.innerWidth > 1024 && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  
   let targetX = 0, targetY = 0;
   let currentX = 0, currentY = 0;
   let isHovered = false;
   let hasInitPos = false;
   
   window.addEventListener('mousemove', (e) => {
+    if (!isDesktop()) return;
     targetX = e.clientX;
     targetY = e.clientY;
     if (!hasInitPos) {
@@ -1561,7 +1565,7 @@ function initWorkPreviews() {
   });
   
   function tick() {
-    if (isHovered) {
+    if (isHovered && isDesktop()) {
       const lerpFactor = 0.18;
       currentX += (targetX - currentX) * lerpFactor;
       currentY += (targetY - currentY) * lerpFactor;
@@ -1587,6 +1591,9 @@ function initWorkPreviews() {
       
       preview.style.left = `${left}px`;
       preview.style.top = `${top}px`;
+    } else if (!isDesktop() && preview.classList.contains('active')) {
+      preview.classList.remove('active');
+      isHovered = false;
     }
     requestAnimationFrame(tick);
   }
@@ -1596,11 +1603,14 @@ function initWorkPreviews() {
     const previewSrc = item.getAttribute('data-preview');
     if (!previewSrc) return;
     
-    // Preload image for instantaneous zero-latency preview
-    const preloadImg = new Image();
-    preloadImg.src = previewSrc;
+    // Preload image for instantaneous zero-latency preview on desktop
+    if (isDesktop()) {
+      const preloadImg = new Image();
+      preloadImg.src = previewSrc;
+    }
     
     item.addEventListener('mouseenter', (e) => {
+      if (!isDesktop()) return;
       targetX = e.clientX;
       targetY = e.clientY;
       if (!isHovered || !hasInitPos) {
@@ -1615,14 +1625,23 @@ function initWorkPreviews() {
     });
     
     item.addEventListener('mousemove', (e) => {
+      if (!isDesktop()) return;
       targetX = e.clientX;
       targetY = e.clientY;
     });
     
     item.addEventListener('mouseleave', () => {
+      if (!isDesktop()) return;
       preview.classList.remove('active');
       isHovered = false;
     });
+  });
+
+  window.addEventListener('resize', () => {
+    if (!isDesktop() && preview.classList.contains('active')) {
+      preview.classList.remove('active');
+      isHovered = false;
+    }
   });
 }
 

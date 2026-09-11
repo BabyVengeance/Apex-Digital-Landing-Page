@@ -1674,6 +1674,7 @@
   </div>
 
   <!-- APEX RAG CHATBOT WIDGET -->
+  <div id="chatbot-backdrop" class="chatbot-backdrop hidden" aria-hidden="true"></div>
   <div id="apex-chatbot-container">
     <!-- Floating Trigger Button (Gold Apex Logo) -->
     <button id="chatbot-trigger" aria-label="Open Apex Results Assistant">
@@ -1685,7 +1686,12 @@
     </button>
 
     <!-- Chat Window Container -->
-    <div id="chatbot-window" class="chatbot-window hidden">
+    <div id="chatbot-window" class="chatbot-window hidden" role="dialog" aria-modal="true" aria-label="Vector AI Assistant">
+      <!-- Mobile Drawer Grab Handle -->
+      <div class="chat-sheet-handle-wrap" id="chat-sheet-handle-wrap" title="Drag down or tap to close">
+        <div class="chat-sheet-handle"></div>
+      </div>
+
       <!-- Chat Header -->
       <div class="chat-header">
         <div class="chat-header-info">

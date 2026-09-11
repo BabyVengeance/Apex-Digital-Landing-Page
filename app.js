@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
    ========================================================================== */
 window.toggleChatbotWindow = function(forceOpen) {
   const windowEl = document.getElementById('chatbot-window');
+  const containerEl = document.getElementById('apex-chatbot-container');
+  const backdropEl = document.getElementById('chatbot-backdrop');
   const inputEl = document.getElementById('chat-input');
   if (!windowEl) return;
 
@@ -44,9 +46,20 @@ window.toggleChatbotWindow = function(forceOpen) {
 
   if (shouldOpen) {
     windowEl.classList.remove('hidden');
-    if (inputEl) setTimeout(() => inputEl.focus(), 80);
+    if (backdropEl) backdropEl.classList.remove('hidden');
+    if (containerEl) containerEl.classList.add('chat-open');
+    if (window.innerWidth <= 768) {
+      document.body.classList.add('chat-modal-open');
+    }
+    // Auto-focus on desktop, but avoid triggering premature virtual keyboard zoom on touch devices
+    if (inputEl && window.innerWidth > 768) {
+      setTimeout(() => inputEl.focus(), 100);
+    }
   } else {
     windowEl.classList.add('hidden');
+    if (backdropEl) backdropEl.classList.add('hidden');
+    if (containerEl) containerEl.classList.remove('chat-open');
+    document.body.classList.remove('chat-modal-open');
   }
 };
 
@@ -388,10 +401,11 @@ function initWireframeCanvas() {
     const innerAngleX = renderAngleX + 0.45;
     const innerAngleY = -renderAngleY * 1.35;
     const innerAngleZ = -renderAngleZ * 0.8;
-
-    const centerX = width * 0.55;
-    const centerY = height * 0.48;
-    const fov = 450;
+    const isMobile = width < 768;
+    const scaleFactor = isMobile ? Math.min(width / 500, 0.68) : 1.0;
+    const centerX = isMobile ? width * 0.5 : width * 0.55;
+    const centerY = isMobile ? Math.min(Math.max(height * 0.26, 210), 290) : height * 0.48;
+    const fov = isMobile ? 380 : 450;
 
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const outerStrokeBase = currentTheme === 'light' ? 'rgba(184, 146, 85, ' : 'rgba(223, 195, 138, ';
@@ -404,16 +418,16 @@ function initWireframeCanvas() {
     for (let i = 0; i < outerStepsU; i++) {
       const u = (i / outerStepsU) * Math.PI * 2;
       const p = 2, q = 3;
-      const r = 180 + 40 * Math.cos(q * u);
+      const r = (180 + 40 * Math.cos(q * u)) * scaleFactor;
       const x = r * Math.cos(p * u);
       const y = r * Math.sin(p * u);
-      const z = 80 * Math.sin(q * u);
+      const z = 80 * Math.sin(q * u) * scaleFactor;
 
       for (let j = 0; j < outerStepsV; j++) {
         const v = (j / outerStepsV) * Math.PI * 2;
         // Harmonic Surface Noise Displacement
         const noise = Math.sin(u * 5 + animTime * 2.0) * Math.cos(v * 3 + animTime * 1.5) * 6.0;
-        const tubeR = 26 + noise;
+        const tubeR = (26 + noise) * scaleFactor;
 
         const px = x + tubeR * Math.cos(v) * Math.cos(u);
         const py = y + tubeR * Math.cos(v) * Math.sin(u);
@@ -460,15 +474,15 @@ function initWireframeCanvas() {
     for (let i = 0; i < innerStepsU; i++) {
       const u = (i / innerStepsU) * Math.PI * 2;
       const p = 3, q = 2; // Inverse winding pattern
-      const r = (180 + 30 * Math.cos(q * u)) * 0.68;
+      const r = (180 + 30 * Math.cos(q * u)) * 0.68 * scaleFactor;
       const x = r * Math.cos(p * u);
       const y = r * Math.sin(p * u);
-      const z = 60 * Math.sin(q * u) * 0.68;
+      const z = 60 * Math.sin(q * u) * 0.68 * scaleFactor;
 
       for (let j = 0; j < innerStepsV; j++) {
         const v = (j / innerStepsV) * Math.PI * 2;
         const innerNoise = Math.cos(u * 8 - animTime * 3.0) * 4.0;
-        const tubeR = 18 + innerNoise;
+        const tubeR = (18 + innerNoise) * scaleFactor;
 
         const px = x + tubeR * Math.cos(v) * Math.cos(u);
         const py = y + tubeR * Math.cos(v) * Math.sin(u);
@@ -517,11 +531,11 @@ function initWireframeCanvas() {
       let px, py, pz;
 
       if (!pt.isInner) {
-        const r = 180 + 40 * Math.cos(3 * u);
+        const r = (180 + 40 * Math.cos(3 * u)) * scaleFactor;
         const x = r * Math.cos(2 * u);
         const y = r * Math.sin(2 * u);
-        const z = 80 * Math.sin(3 * u);
-        const tubeR = 26;
+        const z = 80 * Math.sin(3 * u) * scaleFactor;
+        const tubeR = 26 * scaleFactor;
         px = x + tubeR * Math.cos(pt.vOffset) * Math.cos(u);
         py = y + tubeR * Math.cos(pt.vOffset) * Math.sin(u);
         pz = z + tubeR * Math.sin(pt.vOffset);
@@ -542,11 +556,11 @@ function initWireframeCanvas() {
         ctx.fill();
         ctx.shadowBlur = 0;
       } else {
-        const r = (180 + 30 * Math.cos(2 * u)) * 0.68;
+        const r = (180 + 30 * Math.cos(2 * u)) * 0.68 * scaleFactor;
         const x = r * Math.cos(3 * u);
         const y = r * Math.sin(3 * u);
-        const z = 60 * Math.sin(2 * u) * 0.68;
-        const tubeR = 18;
+        const z = 60 * Math.sin(2 * u) * 0.68 * scaleFactor;
+        const tubeR = 18 * scaleFactor;
         px = x + tubeR * Math.cos(pt.vOffset) * Math.cos(u);
         py = y + tubeR * Math.cos(pt.vOffset) * Math.sin(u);
         pz = z + tubeR * Math.sin(pt.vOffset);
@@ -560,10 +574,10 @@ function initWireframeCanvas() {
         const screenY = centerY + rPt.y * scale;
 
         ctx.beginPath();
-        ctx.arc(screenX, screenY, Math.max(1.2, 3.0 * scale), 0, Math.PI * 2);
-        ctx.fillStyle = currentTheme === 'light' ? '#DFC38A' : '#FFDF9E';
+        ctx.arc(screenX, screenY, Math.max(1.2, 2.8 * scale), 0, Math.PI * 2);
+        ctx.fillStyle = currentTheme === 'light' ? '#B89655' : '#DFC38A';
         ctx.shadowBlur = 10;
-        ctx.shadowColor = '#B89655';
+        ctx.shadowColor = '#DFC38A';
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -1171,6 +1185,29 @@ function initChatbotWidget() {
       window.toggleChatbotWindow(false);
     });
   }
+
+  const backdrop = document.getElementById('chatbot-backdrop');
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.toggleChatbotWindow(false);
+    });
+  }
+
+  const handleWrap = document.getElementById('chat-sheet-handle-wrap');
+  if (handleWrap) {
+    handleWrap.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.toggleChatbotWindow(false);
+    });
+  }
+
+  // Global Escape key dismiss
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && windowEl && !windowEl.classList.contains('hidden')) {
+      window.toggleChatbotWindow(false);
+    }
+  });
 
   let llmEngineInstance = null;
   function getLLMEngine() {

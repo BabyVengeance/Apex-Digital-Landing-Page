@@ -83,48 +83,13 @@ function initHeroKineticReveal() {
   const heroTitle = document.getElementById('hero-title');
   if (!heroTitle) return;
 
-  // Non-destructive DOM walker: preserves <br>, spans (gradient classes), and structural layout
-  function splitTextToWordsAndChars(node) {
-    const fragment = document.createDocumentFragment();
-    Array.from(node.childNodes).forEach(child => {
-      if (child.nodeType === Node.TEXT_NODE) {
-        const text = child.textContent;
-        const tokens = text.split(/(\s+)/);
-        tokens.forEach(token => {
-          if (/^\s+$/.test(token)) {
-            fragment.appendChild(document.createTextNode(token));
-          } else if (token.length > 0) {
-            const wordSpan = document.createElement('span');
-            wordSpan.className = 'word';
-            token.split('').forEach(c => {
-              const charSpan = document.createElement('span');
-              charSpan.className = 'char';
-              charSpan.textContent = c;
-              wordSpan.appendChild(charSpan);
-            });
-            fragment.appendChild(wordSpan);
-          }
-        });
-      } else if (child.nodeName === 'BR') {
-        fragment.appendChild(document.createElement('br'));
-      } else if (child.nodeType === Node.ELEMENT_NODE) {
-        const cloned = child.cloneNode(false);
-        cloned.appendChild(splitTextToWordsAndChars(child));
-        fragment.appendChild(cloned);
-      }
-    });
-    return fragment;
-  }
-
-  const processedTree = splitTextToWordsAndChars(heroTitle);
-  heroTitle.innerHTML = '';
-  heroTitle.appendChild(processedTree);
+  const inners = heroTitle.querySelectorAll('.hero-title-inner');
 
   setTimeout(() => {
-    if (typeof gsap !== 'undefined') {
-      gsap.fromTo("#hero-title .char",
+    if (typeof gsap !== 'undefined' && inners.length > 0) {
+      gsap.fromTo(inners,
         { y: "115%", opacity: 0 },
-        { y: "0%", opacity: 1, stagger: 0.015, duration: 0.7, ease: "power4.out" }
+        { y: "0%", opacity: 1, stagger: 0.12, duration: 0.8, ease: "power4.out" }
       );
       gsap.fromTo("#hero-desc",
         { y: 20, opacity: 0 },
@@ -132,6 +97,8 @@ function initHeroKineticReveal() {
       );
     } else {
       heroTitle.classList.add('revealed');
+      const desc = document.getElementById('hero-desc');
+      if (desc) desc.style.opacity = '1';
     }
   }, 1100);
 }

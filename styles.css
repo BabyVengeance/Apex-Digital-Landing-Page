@@ -529,28 +529,27 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   margin-bottom: 24px;
   letter-spacing: -0.02em;
-  line-height: 1.12;
+  line-height: 1.15;
   text-wrap: balance;
   word-break: normal;
   overflow-wrap: normal;
 }
 
-.hero-title .word {
-  display: inline-block;
-  white-space: nowrap;
+.hero-title-line {
+  display: block;
   overflow: hidden;
-  vertical-align: top;
+  padding-bottom: 4px;
 }
 
-.hero-title .char {
+.hero-title-inner {
   display: inline-block;
   transform: translateY(115%);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 0.6s var(--ease-out), opacity 0.6s ease;
+  transition: transform 0.75s var(--ease-out), opacity 0.75s ease;
 }
 
-.hero-title.revealed .char {
+.hero-title.revealed .hero-title-inner {
   transform: translateY(0);
   opacity: 1;
 }

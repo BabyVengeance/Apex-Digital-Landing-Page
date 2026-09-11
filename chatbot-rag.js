@@ -203,16 +203,40 @@ We analyze your business model and recommend the ideal technology stack for maxi
     }
   ];
 
-  // Dynamic LLM Engine Implementation (Cloudflare Serverless Function Endpoint)
   class ApexLLMEngine {
     constructor(corpus) {
       this.corpus = corpus;
       this.endpoint = "/api/chat";
       this.ragFallback = new ApexRAGEngine(corpus);
       this.history = [];
+      this.cache = new Map();
     }
 
     async query(userText) {
+      const normalizedKey = (userText || "").trim().toLowerCase();
+
+      // 1. Instant Cache Hit (0ms Latency)
+      if (this.cache.has(normalizedKey)) {
+        const cached = this.cache.get(normalizedKey);
+        this.history.push({ role: "user", parts: [{ text: userText }] });
+        this.history.push({ role: "model", parts: [{ text: cached.text }] });
+        if (this.history.length > 10) this.history = this.history.slice(-10);
+        return { title: cached.title, text: cached.text, cta: cached.cta };
+      }
+
+      // 2. Instant Quick-Prompt / High-Confidence Local KB Fast-Path
+      const quickMatch = QUICK_PROMPTS.find(p => p.query.toLowerCase() === normalizedKey);
+      if (quickMatch) {
+        const localRes = this.ragFallback.query(userText);
+        if (localRes && localRes.text) {
+          this.cache.set(normalizedKey, localRes);
+          this.history.push({ role: "user", parts: [{ text: userText }] });
+          this.history.push({ role: "model", parts: [{ text: localRes.text }] });
+          if (this.history.length > 10) this.history = this.history.slice(-10);
+          return localRes;
+        }
+      }
+
       this.history.push({
         role: "user",
         parts: [{ text: userText }]
@@ -229,11 +253,14 @@ We analyze your business model and recommend the ideal technology stack for maxi
           parts: [{ text: answerText }]
         });
         const cta = this.deriveCTA(userText, answerText);
-        return { title: null, text: answerText, cta: cta };
+        const result = { title: null, text: answerText, cta: cta };
+        this.cache.set(normalizedKey, result);
+        return result;
       } catch (err) {
         console.warn("Cloudflare Serverless Endpoint (/api/chat) unreachable, falling back to client-side RAG:", err);
         this.history.pop();
-        return this.ragFallback.query(userText);
+        const fallbackRes = this.ragFallback.query(userText);
+        return fallbackRes;
       }
     }
 
@@ -247,31 +274,45 @@ We analyze your business model and recommend the ideal technology stack for maxi
         }))
         .filter(h => h.content);
 
-      const response = await fetch(this.endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          message: userText,
-          history: historyPayload
-        })
-      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 6000);
 
-      if (!response.ok) {
-        const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.error || `HTTP ${response.status} from ${this.endpoint}`);
+      try {
+        const response = await fetch(this.endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          signal: controller.signal,
+          body: JSON.stringify({
+            message: userText,
+            history: historyPayload
+          })
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          throw new Error(errData.error || `HTTP ${response.status} from ${this.endpoint}`);
+        }
+
+        const data = await response.json();
+        const reply =
+          data.reply ||
+          (data.candidates?.[0]?.content?.parts?.[0]?.text) ||
+          data.text;
+
+        if (!reply || typeof reply !== "string") {
+          throw new Error("Invalid response format received from /api/chat");
+        }
+
+        return reply.trim();
+      } catch (fetchErr) {
+        clearTimeout(timeoutId);
+        throw fetchErr;
       }
-
-      const data = await response.json();
-      const reply =
-        data.reply ||
-        (data.candidates?.[0]?.content?.parts?.[0]?.text) ||
-        data.text;
-
-      if (!reply || typeof reply !== "string") {
-        throw new Error("Invalid response format received from /api/chat");
-      }
+    }
 
       return reply.trim();
     }

@@ -1309,7 +1309,7 @@ function initChatbotWidget() {
   }
 
   function appendBotMessage(answer) {
-    // Finalize any previously active stream immediately
+    // Finalize any active stream immediately
     finishCurrentTyping();
 
     const msgDiv = document.createElement('div');
@@ -1329,42 +1329,27 @@ function initChatbotWidget() {
     textContainer.className = 'bot-text-stream';
     contentDiv.appendChild(textContainer);
 
+    const fullText = (answer.text || '').trim();
+    if (fullText) {
+      textContainer.innerHTML = formatMarkdown(fullText);
+    }
+
+    if (answer.cta) {
+      const ctaBtn = document.createElement('button');
+      ctaBtn.className = 'chat-cta-btn fade-in';
+      ctaBtn.onclick = () => handleChatCTA(answer.cta.action);
+      ctaBtn.innerHTML = `
+        ${escapeHtml(answer.cta.text)}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      `;
+      contentDiv.appendChild(ctaBtn);
+    }
+
     msgDiv.appendChild(contentDiv);
     messagesEl.appendChild(msgDiv);
+
+    // Anchor viewport to the top of Vector's response so the client never has to scroll up
     scrollToMessageTop(msgDiv);
-
-    const fullText = (answer.text || '').trim();
-    if (!fullText) return;
-
-    let charIndex = 0;
-    const totalLength = fullText.length;
-    // Dynamic typing speed: fast, fluid, natural cadence
-    const chunkSize = totalLength > 400 ? 5 : (totalLength > 200 ? 3 : 2);
-    const intervalMs = 18;
-
-    activeTypingFinalizer = () => {
-      textContainer.innerHTML = formatMarkdown(fullText);
-      if (answer.cta && !contentDiv.querySelector('.chat-cta-btn')) {
-        const ctaBtn = document.createElement('button');
-        ctaBtn.className = 'chat-cta-btn fade-in';
-        ctaBtn.onclick = () => handleChatCTA(answer.cta.action);
-        ctaBtn.innerHTML = `
-          ${escapeHtml(answer.cta.text)}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        `;
-        contentDiv.appendChild(ctaBtn);
-      }
-    };
-
-    activeTypingTimer = setInterval(() => {
-      charIndex += chunkSize;
-      if (charIndex >= totalLength) {
-        finishCurrentTyping();
-      } else {
-        const slice = fullText.slice(0, charIndex);
-        textContainer.innerHTML = formatMarkdown(slice) + '<span class="chat-typing-cursor"></span>';
-      }
-    }, intervalMs);
   }
 
   function showTypingIndicator() {
@@ -1395,12 +1380,14 @@ function initChatbotWidget() {
   function scrollToMessageTop(msgEl) {
     if (!msgEl || !messagesEl) return;
     requestAnimationFrame(() => {
-      const msgRect = msgEl.getBoundingClientRect();
-      const containerRect = messagesEl.getBoundingClientRect();
-      const relativeTop = msgRect.top - containerRect.top + messagesEl.scrollTop - 12;
-      messagesEl.scrollTo({
-        top: Math.max(0, relativeTop),
-        behavior: 'smooth'
+      requestAnimationFrame(() => {
+        const msgRect = msgEl.getBoundingClientRect();
+        const containerRect = messagesEl.getBoundingClientRect();
+        const relativeTop = msgRect.top - containerRect.top + messagesEl.scrollTop - 12;
+        messagesEl.scrollTo({
+          top: Math.max(0, relativeTop),
+          behavior: 'smooth'
+        });
       });
     });
   }

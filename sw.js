@@ -34,21 +34,36 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  if (e.request.mode === 'navigate' || e.request.url.endsWith('.js') || e.request.url.endsWith('.html') || e.request.url.endsWith('.css')) {
-    e.respondWith(
-      fetch(e.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, responseClone));
-        }
-        return networkResponse;
-      }).catch(() => caches.match(e.request))
-    );
-  } else {
-    e.respondWith(
-      caches.match(e.request).then((cachedResponse) => {
-        return cachedResponse || fetch(e.request);
-      })
-    );
+  try {
+    const url = new URL(e.request.url);
+    const pathname = url.pathname;
+
+    if (
+      e.request.mode === 'navigate' ||
+      pathname.endsWith('.js') ||
+      pathname.endsWith('.html') ||
+      pathname.endsWith('.css') ||
+      pathname === '/'
+    ) {
+      e.respondWith(
+        fetch(e.request)
+          .then((networkResponse) => {
+            if (networkResponse && networkResponse.status === 200) {
+              const responseClone = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => cache.put(e.request, responseClone));
+            }
+            return networkResponse;
+          })
+          .catch(() => caches.match(e.request))
+      );
+    } else {
+      e.respondWith(
+        caches.match(e.request).then((cachedResponse) => {
+          return cachedResponse || fetch(e.request);
+        })
+      );
+    }
+  } catch (_) {
+    // Pass through directly if URL parsing fails
   }
 });

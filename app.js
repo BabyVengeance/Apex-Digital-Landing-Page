@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initWorkPreviews();
   initEcosystemCanvas();
 
-  // Register service worker for offline edge caching
-  if ('serviceWorker' in navigator) {
+  // Register service worker for offline edge caching (production HTTPS only)
+  if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js').catch(err => {
         console.log('SW registration failed: ', err);

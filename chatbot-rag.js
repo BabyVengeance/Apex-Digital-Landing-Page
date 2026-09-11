@@ -265,17 +265,16 @@ We analyze your business model and recommend the ideal technology stack for maxi
     }
 
     async callProxyAPI(userText) {
-      const historyPayload = this.history
-        .slice(0, -1)
-        .slice(-6)
+      const contentsPayload = this.history
+        .slice(-8)
         .map(h => ({
-          role: h.role === "user" ? "user" : "assistant",
-          content: h.parts?.[0]?.text || h.content || ""
+          role: h.role === "model" || h.role === "assistant" ? "model" : "user",
+          parts: [{ text: h.parts?.[0]?.text || h.content || h.text || "" }]
         }))
-        .filter(h => h.content);
+        .filter(h => h.parts && h.parts[0] && h.parts[0].text);
 
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 6000);
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
 
       try {
         const response = await fetch(this.endpoint, {
@@ -286,7 +285,7 @@ We analyze your business model and recommend the ideal technology stack for maxi
           signal: controller.signal,
           body: JSON.stringify({
             message: userText,
-            history: historyPayload
+            contents: contentsPayload
           })
         });
 
@@ -312,9 +311,6 @@ We analyze your business model and recommend the ideal technology stack for maxi
         clearTimeout(timeoutId);
         throw fetchErr;
       }
-    }
-
-      return reply.trim();
     }
 
     deriveCTA(userText, answerText) {

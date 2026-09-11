@@ -98,9 +98,21 @@ export default {
         let formattedContents = [];
 
         if (Array.isArray(rawBody.contents) && rawBody.contents.length > 0) {
-          formattedContents = rawBody.contents;
+          formattedContents = rawBody.contents.map(item => ({
+            role: item.role === "assistant" || item.role === "model" ? "model" : "user",
+            parts: Array.isArray(item.parts) ? item.parts : [{ text: item.content || item.text || "" }]
+          }));
         } else if (Array.isArray(rawBody.history) && rawBody.history.length > 0) {
-          formattedContents = rawBody.history;
+          formattedContents = rawBody.history.map(item => ({
+            role: item.role === "assistant" || item.role === "model" ? "model" : "user",
+            parts: Array.isArray(item.parts) ? item.parts : [{ text: item.content || item.text || "" }]
+          }));
+          if (rawBody.message || rawBody.userText || rawBody.prompt) {
+            formattedContents.push({
+              role: "user",
+              parts: [{ text: rawBody.message || rawBody.userText || rawBody.prompt }]
+            });
+          }
         } else if (rawBody.userText || rawBody.message || rawBody.prompt) {
           formattedContents = [
             {

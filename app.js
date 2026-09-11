@@ -1350,7 +1350,6 @@ function initChatbotWidget() {
         `;
         contentDiv.appendChild(ctaBtn);
       }
-      scrollToBottom();
     };
 
     activeTypingTimer = setInterval(() => {
@@ -1360,7 +1359,6 @@ function initChatbotWidget() {
       } else {
         const slice = fullText.slice(0, charIndex);
         textContainer.innerHTML = formatMarkdown(slice) + '<span class="chat-typing-cursor"></span>';
-        scrollToBottom();
       }
     }, intervalMs);
   }
@@ -1392,12 +1390,14 @@ function initChatbotWidget() {
 
   function scrollToMessageTop(msgEl) {
     if (!msgEl || !messagesEl) return;
-    const msgRect = msgEl.getBoundingClientRect();
-    const containerRect = messagesEl.getBoundingClientRect();
-    const relativeTop = msgRect.top - containerRect.top + messagesEl.scrollTop - 12;
-    messagesEl.scrollTo({
-      top: Math.max(0, relativeTop),
-      behavior: 'smooth'
+    requestAnimationFrame(() => {
+      const msgRect = msgEl.getBoundingClientRect();
+      const containerRect = messagesEl.getBoundingClientRect();
+      const relativeTop = msgRect.top - containerRect.top + messagesEl.scrollTop - 12;
+      messagesEl.scrollTo({
+        top: Math.max(0, relativeTop),
+        behavior: 'smooth'
+      });
     });
   }
 

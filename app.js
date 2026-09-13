@@ -214,13 +214,21 @@ function initNavbarScroll() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
 
+  let ticking = false;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 40) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
-  });
+  }, { passive: true });
 }
 
 function initMobileMenu() {
@@ -745,11 +753,21 @@ function initScrollProgress() {
   const progress = document.getElementById('scroll-progress');
   if (!progress) return;
 
+  let ticking = false;
+
   window.addEventListener('scroll', () => {
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const currentProgress = (window.scrollY / totalHeight) * 100;
-    progress.style.width = `${currentProgress}%`;
-  });
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0) {
+          const currentProgress = (window.scrollY / totalHeight) * 100;
+          progress.style.width = `${currentProgress}%`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 }
 
 /* ==========================================================================
@@ -779,22 +797,7 @@ function init3DTiltCards() {
 }
 
 /* ==========================================================================
-   8. NAVBAR SCROLL GLASS EFFECT
-   ========================================================================== */
-function initNavbarScroll() {
-  const navbar = document.getElementById('navbar');
-  if (!navbar) return;
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  });
-}
-
-/* ==========================================================================
-   9. INTERACTIVE WEBSITE ARCHITECTURE TAB SWITCHER
+   8. INTERACTIVE WEBSITE ARCHITECTURE TAB SWITCHER
    ========================================================================== */
 const archData = {
   web: {
@@ -1517,6 +1520,9 @@ window.handleChatCTA = function(action) {
     if (typeof openModal === 'function') openModal();
   } else if (action === 'openWhatsApp') {
     window.open('https://wa.me/27695224226', '_blank', 'noopener,noreferrer');
+  } else if (action.startsWith('openUrl:')) {
+    const targetUrl = action.replace('openUrl:', '');
+    window.location.href = targetUrl;
   } else if (action.startsWith('scrollSection:')) {
     const targetId = action.replace('scrollSection:', '');
     const el = document.getElementById(targetId);

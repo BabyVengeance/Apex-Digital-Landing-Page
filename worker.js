@@ -50,6 +50,7 @@ Your mission is to provide authoritative, consultative, and high-converting guid
 3. VERIFIED CLIENT PROOF & LIVE PORTFOLIO LINKS
 ====================================================================
 When referencing client proof or case studies, always format them as clean markdown links:
+- ROI Case Studies & Financial Lift: [ROI Case Studies Showroom (10 Verified Studies)](https://apexdigitalsa.com/case-studies/)
 - Industrial Laser Tech: [LaserGen (lasergen.co.za)](https://lasergen.co.za)
 - B2B Freight Logistics: [Compass Logistics (compasslogistics.co.za)](https://compasslogistics.co.za)
 - Luxury Automotive: [Boss Rides (bossrides.co.za)](https://bossrides.co.za)

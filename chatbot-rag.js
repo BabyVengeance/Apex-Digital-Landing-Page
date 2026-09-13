@@ -147,10 +147,11 @@ We analyze your business model and recommend the ideal technology stack for maxi
     },
     {
       id: "case_studies_results",
-      intents: ["case study", "results", "proof", "examples", "portfolio", "success", "clients", "lasergen", "compass", "boss rides", "colour correct", "ayesha m", "cato ridge", "property portfolio"],
+      intents: ["case study", "case studies", "roi", "results", "proof", "examples", "portfolio", "success", "clients", "lasergen", "compass", "boss rides", "colour correct", "ayesha m", "cato ridge", "property portfolio"],
       title: "Featured Client Builds & Empirical Results",
       response: `Apex Digital SA has engineered high-performing web platforms across industrial, logistics, automotive, real estate, and e-commerce verticals:
 
+- **ROI Case Study Showroom** ([10 Verified Studies & Calculator](/case-studies/)): Explore 10 verified business case studies with financial lift breakdowns and an interactive digital revenue calculator.
 1. **LaserGen** ([lasergen.co.za](https://lasergen.co.za)): Industrial laser refurbishment platform with sub-second mobile loading & direct quote capture.
 2. **Compass Logistics** ([compasslogistics.co.za](https://compasslogistics.co.za)): SADC B2B freight logistics portal with automated quote request routing.
 3. **Boss Rides** ([bossrides.co.za](https://bossrides.co.za)): Luxury automotive customization & vehicle showcase portal.
@@ -158,7 +159,7 @@ We analyze your business model and recommend the ideal technology stack for maxi
 5. **Ayesha M Jewellery** ([ayesham.co.za](https://ayesham.co.za)): Custom e-commerce store with 3D Mag Case product configurator & PayFast checkout.
 6. **Cato Ridge Land** ([catoridge.netlify.app](https://catoridge.netlify.app)): Commercial & industrial land development portal for investor lead generation.
 7. **Commercial Property Hub** ([propertyportfolio.netlify.app](https://propertyportfolio.netlify.app)): Real estate investment portal with yield metrics and broker routing.`,
-      cta: { text: "Explore Live Client Portfolio", action: "scrollSection:portfolio" }
+      cta: { text: "Open ROI Case Studies", action: "openUrl:/case-studies/" }
     },
     {
       id: "contact_location",

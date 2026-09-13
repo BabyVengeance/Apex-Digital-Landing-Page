@@ -35,8 +35,19 @@ Apex Digital SA (Pty) Ltd is a premier web development, Generative Engine Optimi
 7. **AI Automation & AI-Ops Engines:** 24/7 custom RAG chatbot deployment, lead routing, and workflow agents.
 8. **GEO & SEO Authority Services:** Generative Engine Optimization schema graphs and technical SEO dominance.
 
-## Verified Live Client Deployments & Case Studies
-- **LaserGen (Flagship Build):** Industrial laser cleaning services platform. Features sub-0.4s speed, mobile-first UX, and direct lead pathways. URL: https://lasergen.co.za
+## Verified Live Client Deployments & ROI Case Studies
+- **ROI Case Study Showroom & Interactive Revenue Engine:** 10 verified business case studies across retail, logistics, beauty, hospitality, medical, fitness, and trades with an interactive digital revenue lift calculator. URL: https://apexdigitalsa.com/case-studies/
+  1. **Bathu Sneakers (Retail & E-Commerce):** Township hustle to national retail powerhouse; 180% YoY revenue growth and +98% digital sales surge.
+  2. **Yuppiechef (E-Commerce Exit):** Living room startup to R460M corporate acquisition; 300% YoY compounding.
+  3. **TC Logistics (Logistics & SADC Freight):** Zero web presence to automated inbound B2B quote engine in under 8 weeks.
+  4. **The Gentle Touch Salon (Beauty & Aesthetics):** Phone-dependent booking transformed to 24/7 digital booking, eliminating reservation errors.
+  5. **The Glen Boutique Hotel & Spa (Hospitality & Wellness):** Automated web upselling portal generating 272% ROI and +22% RevPAR lift.
+  6. **VIVA Gym (Fitness & Member Clubs):** 3-tap web onboarding replacing biometric bottlenecks to power franchise exit.
+  7. **Enduric Plumbing (Trades & Home Services):** Search dominance for emergency trades generating +303% organic traffic and +120% YoY leads.
+  8. **Aesthetica Contemporary Dentistry (Medical / Dental):** High-trust intake redesign yielding sustained +150% monthly booking lift and 2.5x conversion.
+  9. **Outsource Transport Provider (B2B Logistics):** Route-targeted portal growing traffic 6x to 75+ monthly B2B leads.
+  10. **Me-Pos Beauty Automation (Beauty & Salons):** Web-native booking + automated SMS confirmation driving +30% client acquisition in 6 months.
+- **LaserGen (Flagship Build):** Industrial laser cleaning services platform with sub-0.4s speed, mobile-first UX, and direct lead pathways. URL: https://lasergen.co.za
 - **Compass Logistics:** B2B quote engine and SADC freight portal. URL: https://compasslogistics.co.za
 - **Boss Rides:** Luxury automotive customization vehicle showcase. URL: https://bossrides.co.za/wordpress_5
 - **Colour Correct:** Global cosmetics e-commerce store with international shipping gateway. URL: https://globalcolourcorrect.com

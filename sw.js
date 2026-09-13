@@ -1,10 +1,14 @@
-const CACHE_NAME = 'apex-cache-v15';
+const CACHE_NAME = 'apex-cache-v18';
 const ASSETS = [
   '/',
   '/index.html',
   '/styles.css',
   '/app.js',
   '/chatbot-rag.js',
+  '/case-studies/',
+  '/case-studies/index.html',
+  '/case-studies/styles.css',
+  '/case-studies/app.js',
   '/assets/images/logo-dark.webp',
   '/assets/images/logo-light.webp',
   '/assets/images/logo-dark-no-text.webp',

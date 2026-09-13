@@ -1,8 +1,8 @@
-# Apex Digital SA — Search & AI Scraper Control Manifest
+# Apex Digital SA — Search & AI Agent Scraper Manifest
 User-agent: *
 Allow: /
 
-# Explicit AI Model & Conversational Search Scraper Permissions
+# Explicit AI Search & Conversational Agent Scraper Permissions
 User-agent: GPTBot
 Allow: /
 
@@ -27,13 +27,28 @@ Allow: /
 User-agent: GoogleOther
 Allow: /
 
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
 User-agent: Bytespider
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Diffbot
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
-# Sitemap & LLMs Plain-Text Specifications
+# Sitemap & LLM Discovery Plain-Text Specifications
 Sitemap: https://apexdigitalsa.com/sitemap.xml
 LLMs-Txt: https://apexdigitalsa.com/llms.txt
 LLMs-Full-Txt: https://apexdigitalsa.com/llms-full.txt

@@ -64,6 +64,22 @@ Apex Digital rejects generic drag-and-drop website builders (Wix, Squarespace) a
 - **Scope:** Search Engine & AI Citation Dominance
 - **Deliverables:** Generative Engine Optimization schema graphs, full technical & on-page SEO audits, structured JSON-LD entity graph, and Google AI search citation authority.
 
+### 9. ROI Case Study Showroom & Interactive Revenue Engine
+- **Scope:** Verified Commercial Proof & Financial Benchmarking
+- **Deliverables:** 10 verified business case studies (retail, logistics, beauty, hospitality, medical, fitness, trades), before-and-after conversion data, and an interactive digital revenue lift calculator for South African and global businesses.
+- **URL:** https://apexdigitalsa.com/case-studies/
+- **Case Study Breakdown:**
+  1. **Bathu Sneakers (Retail & E-Commerce):** Township hustle to national retail powerhouse. 180% YoY revenue growth and +98% digital sales surge.
+  2. **Yuppiechef (E-Commerce Exit):** Living room startup to R460M corporate acquisition. 300% YoY compounding.
+  3. **TC Logistics (Logistics & SADC Freight):** Zero web presence to automated inbound B2B quote engine in under 8 weeks.
+  4. **The Gentle Touch Salon (Beauty & Aesthetics):** Phone-dependent booking transformed to 24/7 digital booking, eliminating reservation errors.
+  5. **The Glen Boutique Hotel & Spa (Hospitality & Wellness):** Automated web upselling portal generating 272% ROI and +22% RevPAR lift.
+  6. **VIVA Gym (Fitness & Member Clubs):** 3-tap web onboarding replacing biometric bottlenecks to power franchise exit.
+  7. **Enduric Plumbing (Trades & Home Services):** Search dominance for emergency trades generating +303% organic traffic and +120% YoY leads.
+  8. **Aesthetica Contemporary Dentistry (Medical / Dental):** High-trust intake redesign yielding sustained +150% monthly booking lift and 2.5x conversion.
+  9. **Outsource Transport Provider (B2B Logistics):** Route-targeted portal growing traffic 6x to 75+ monthly B2B leads.
+  10. **Me-Pos Beauty Automation (Beauty & Salons):** Web-native booking + automated SMS confirmation driving +30% client acquisition in 6 months.
+
 ## RAG Question & Answer Knowledge Matrix
 
 Q: Why custom-coded architecture instead of standard WordPress or Wix templates?

@@ -1,6 +1,14 @@
-# Documentation & Project Notes
+# ==============================================================================
+# APEX DIGITAL — PRODUCTION .GITIGNORE
+# ==============================================================================
+
+# Documentation, Research & Knowledge Base
 docs/
-docs
+**/docs/
+**/research/
+Knowledge base/
+*.docx
+*.pdf
 
 # Generated Audit Scorecards & Reports
 *-scorecard.md
@@ -13,11 +21,12 @@ docs
 .DS_Store?
 ._*
 Thumbs.db
-db.lock
 ehthumbs.db
 Desktop.ini
+$RECYCLE.BIN/
+*.lnk
 
-# Node Dependencies & Logs
+# Node Dependencies & Package Manager Logs
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -27,12 +36,13 @@ lerna-debug.log*
 
 # Environment & Secret Files
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
 .dev.vars
 *.pem
+*.key
+*.cert
+*.crt
 
 # IDE & Text Editor Configuration
 .vscode/
@@ -44,8 +54,14 @@ lerna-debug.log*
 *.sw?
 *.swp
 *.swo
+*.sublime-project
+*.sublime-workspace
 
-# Temporary, Cache & Scratch Files
+# Cloudflare & Wrangler Runtime Cache
+.wrangler/
+apex-digital-landing-page-worker/
+
+# Temporary, Cache & Agent Scratch Files
 *.tmp
 *.temp
 *.bak
@@ -61,5 +77,3 @@ build/
 out/
 .next/
 coverage/
-apex-digital-landing-page-worker/
-.wrangler/

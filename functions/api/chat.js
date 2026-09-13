@@ -169,10 +169,12 @@ CONVERSATION & COMPLETENESS RULES:
 - CRITICAL: Output ONLY your direct customer dialogue. NEVER include safety classification headers (like "User Safety: safe"), internal thoughts, or draft notes.`;
 
 export async function onRequestPost(context) {
+  let message = "";
   try {
-    const { message, history } = await context.request.json();
+    const rawBody = await context.request.json().catch(() => ({}));
+    message = (rawBody.message || rawBody.userText || rawBody.prompt || "").trim();
 
-    if (!message || typeof message !== "string" || !message.trim()) {
+    if (!message) {
       return new Response(JSON.stringify({ error: "Message is required." }), {
         status: 400,
         headers: { "Content-Type": "application/json" }
@@ -207,13 +209,21 @@ export async function onRequestPost(context) {
     ];
 
     // Inject recent conversation history for persistent context and identity
-    if (Array.isArray(history) && history.length > 0) {
-      for (const turn of history.slice(-6)) {
-        if (turn && turn.role && turn.content) {
-          messagesPayload.push({
-            role: turn.role === "assistant" || turn.role === "model" ? "assistant" : "user",
-            content: String(turn.content).trim()
-          });
+    const rawHistory = Array.isArray(rawBody.history) 
+      ? rawBody.history 
+      : (Array.isArray(rawBody.contents) ? rawBody.contents : []);
+
+    if (rawHistory.length > 0) {
+      for (const turn of rawHistory.slice(-6)) {
+        if (turn) {
+          const role = turn.role === "assistant" || turn.role === "model" ? "assistant" : "user";
+          const content = turn.content || (Array.isArray(turn.parts) ? turn.parts.map(p => p.text || "").join("") : turn.text) || "";
+          if (content && String(content).trim()) {
+            messagesPayload.push({
+              role: role,
+              content: String(content).trim()
+            });
+          }
         }
       }
     }
@@ -221,7 +231,7 @@ export async function onRequestPost(context) {
     // Append current user message
     messagesPayload.push({
       role: "user",
-      content: message.trim()
+      content: message
     });
 
     // Call OpenRouter completions endpoint with 800 tokens buffer for complete responses

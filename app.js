@@ -189,7 +189,7 @@ function setTheme(theme) {
 
   if (theme === 'light') {
     if (navLogo) navLogo.src = 'assets/images/logo-light-no-text.webp';
-    if (footerLogo) footerLogo.src = 'assets/images/logo-light.webp';
+    if (footerLogo) footerLogo.src = 'assets/images/logo-light-no-text.webp';
     if (favicon) favicon.href = 'assets/images/logo-icon-black.webp';
     if (triggerLogo) triggerLogo.src = 'assets/images/logo-icon-black.webp';
     if (headerLogo) headerLogo.src = 'assets/images/logo-icon-black.webp';
@@ -199,7 +199,7 @@ function setTheme(theme) {
     }
   } else {
     if (navLogo) navLogo.src = 'assets/images/logo-dark-no-text.webp';
-    if (footerLogo) footerLogo.src = 'assets/images/logo-dark.webp';
+    if (footerLogo) footerLogo.src = 'assets/images/logo-dark-no-text.webp';
     if (favicon) favicon.href = 'assets/images/logo-icon-gold.webp';
     if (triggerLogo) triggerLogo.src = 'assets/images/logo-icon-gold.webp';
     if (headerLogo) headerLogo.src = 'assets/images/logo-icon-gold.webp';
@@ -369,10 +369,10 @@ function initWireframeCanvas() {
     const innerAngleY = -renderAngleY * 1.35;
     const innerAngleZ = -renderAngleZ * 0.8;
     const isMobile = width < 768;
-    const scaleFactor = isMobile ? Math.min(width / 500, 0.68) : 1.0;
-    const centerX = isMobile ? width * 0.5 : width * 0.55;
-    const centerY = isMobile ? Math.min(Math.max(height * 0.26, 210), 290) : height * 0.48;
-    const fov = isMobile ? 380 : 450;
+    const scaleFactor = isMobile ? Math.min(width / 500, 0.58) : 1.0;
+    const centerX = isMobile ? width * 0.67 : width * 0.55;
+    const centerY = isMobile ? Math.min(Math.max(height * 0.23, 195), 235) : height * 0.48;
+    const fov = isMobile ? 360 : 450;
 
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const outerStrokeBase = currentTheme === 'light' ? 'rgba(184, 146, 85, ' : 'rgba(223, 195, 138, ';
@@ -2072,23 +2072,23 @@ const mobileDiagnosticData = {
   b2b: {
     monthly: 'R 125,000 / mo',
     annual: 'R 1,500,000 / yr',
-    lossTitle: 'Estimated Commercial Revenue Lost to Page 1 Competitors',
-    desc: 'Corporate procurement officers and commercial buyers research vendors online before issuing tenders or RFQs. Operating with no website or an outdated profile forfeits high-value corporate deals to competitors ranking on Page 1.',
-    citation: 'Sources: Gartner B2B Buyer Journey Study (74% of B2B procurement decisions research online prior to contact) & BrightLocal Consumer Survey (81% evaluate web credibility before hiring).'
+    lossTitle: 'Estimated Monthly Revenue Lost to Competitors',
+    desc: 'When companies look for suppliers or services, they search online first. Without a professional website that shows up at the top, high-paying clients go straight to your competitors.',
+    citation: 'Gartner research shows 74% of business buyers research online before reaching out, and 81% judge your credibility by your website.'
   },
   trade: {
     monthly: 'R 45,000 / mo',
     annual: 'R 540,000 / yr',
-    lossTitle: 'Estimated Monthly Revenue Conceded to Local Competitors',
-    desc: 'Emergency and scheduled service seekers call the top 3 results on Google Maps and search results. Lacking a mobile-first, high-speed landing page diverts high-intent client calls directly to competing local contractors.',
-    citation: 'Sources: Google Consumer Search Insights (76% of local mobile queries result in same-day calls or visits) & Backlinko/Chitika SERP CTR Distribution (top 3 Google positions absorb 68.7% of search clicks).'
+    lossTitle: 'Estimated Monthly Revenue Lost to Competitors',
+    desc: 'When people need local services fast, they call the top 3 results on Google. If you don\'t have a fast mobile site, those phone calls and bookings go directly to competitors.',
+    citation: 'Google data shows 76% of people searching on mobile contact a business the same day, with top Google spots getting 70% of calls.'
   },
   retail: {
     monthly: 'R 85,000 / mo',
     annual: 'R 1,020,000 / yr',
-    lossTitle: 'Estimated Consumer Cart & Direct Revenue Forfeited',
-    desc: 'Slow mobile load speeds bleed 53% of mobile shoppers before they can view a product. A lightweight, speed-hardened Apex storefront with localized PayFast/Yoco payment integration stops bounce drop-off.',
-    citation: 'Sources: Google / SOASTA Mobile Performance Benchmark (53% of mobile visits abandon if load exceeds 3 seconds) & Deloitte Digital Study (a 0.1s load improvement yields up to an 8.4% lift in retail conversions).'
+    lossTitle: 'Estimated Monthly Sales Lost to Competitors',
+    desc: 'Over half of mobile shoppers leave if a website takes more than 3 seconds to load. A fast, easy-to-use online store with PayFast & Yoco turns visitors into paying customers.',
+    citation: 'Google studies confirm 53% of mobile shoppers leave slow websites, while fast checkouts directly increase orders.'
   }
 };
 

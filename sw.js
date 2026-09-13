@@ -1,4 +1,4 @@
-const CACHE_NAME = 'apex-cache-v14';
+const CACHE_NAME = 'apex-cache-v15';
 const ASSETS = [
   '/',
   '/index.html',
@@ -6,7 +6,9 @@ const ASSETS = [
   '/app.js',
   '/chatbot-rag.js',
   '/assets/images/logo-dark.webp',
-  '/assets/images/logo-light.webp'
+  '/assets/images/logo-light.webp',
+  '/assets/images/logo-dark-no-text.webp',
+  '/assets/images/logo-light-no-text.webp'
 ];
 
 self.addEventListener('install', (e) => {

@@ -4410,7 +4410,7 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 500px !important;
     z-index: 1 !important;
     pointer-events: none !important;
-    opacity: 0.45 !important;
+    opacity: 0.75 !important;
   }
 
   .hero-title {
@@ -5015,6 +5015,11 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.2 !important;
   }
 
+  /* --- IMPACT PERFORMANCE METRICS MOBILE (Reduced by 20% for visual hierarchy) --- */
+  .impact-metric {
+    font-size: 2.72rem !important;
+  }
+
   /* --- INVESTMENT CALCULATOR DELIVERABLES GENERATOR --- */
   .calc-btn-group {
     display: flex !important;
@@ -5473,6 +5478,10 @@ h1, h2, h3, h4, h5, h6 {
   .simulator-scorecard,
   .flagship-card {
     padding: 1.25rem 0.85rem !important;
+  }
+
+  .impact-metric {
+    font-size: 2.35rem !important;
   }
 
   .hero-title {

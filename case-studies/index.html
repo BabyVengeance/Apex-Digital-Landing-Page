@@ -284,7 +284,7 @@
                 <a href="#case-studies-vault" class="nav-link">Case Studies</a>
                 <a href="#why-website" class="nav-link">Why a Website</a>
                 <a href="#market-data" class="nav-link">Market Data</a>
-                <a href="/#strategy" class="nav-link nav-cta">Claim Demo</a>
+                <a href="../#strategy" onclick="openModal('Navigation Header'); return false;" class="nav-link nav-cta">Claim Demo</a>
             </nav>
             <div class="header-actions">
                 <!-- Light / Dark Theme Switcher Button -->
@@ -336,156 +336,244 @@
                     </div>
                 </div>
                 <div class="hero-content-right">
-                    <div class="hero-visual-container">
-                        <svg id="hero-growth-mesh" viewBox="0 0 500 500" width="100%" height="100%" aria-hidden="true">
-                            <defs>
-                                <!-- Ambient Glow Filters -->
-                                <radialGradient id="blue-glow" cx="30%" cy="40%" r="50%">
-                                    <stop offset="0%" stop-color="#0066FF" stop-opacity="0.15" />
-                                    <stop offset="100%" stop-color="#fafaf8" stop-opacity="0" />
-                                </radialGradient>
-                                <radialGradient id="gold-glow" cx="70%" cy="60%" r="50%">
-                                    <stop offset="0%" stop-color="#C8A84B" stop-opacity="0.12" />
-                                    <stop offset="100%" stop-color="#fafaf8" stop-opacity="0" />
-                                </radialGradient>
-                                
-                                <!-- Metallic Gradients -->
-                                <linearGradient id="gold-line-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0%" stop-color="#A6802C" />
-                                    <stop offset="50%" stop-color="#C8A84B" />
-                                    <stop offset="100%" stop-color="#F5E5BE" />
-                                </linearGradient>
-                                <linearGradient id="blue-line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="#0066FF" />
-                                    <stop offset="100%" stop-color="#00D2FF" />
-                                </linearGradient>
-                                <linearGradient id="grid-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" stop-color="rgba(0, 102, 255, 0.12)" />
-                                    <stop offset="100%" stop-color="rgba(200, 168, 75, 0.05)" />
-                                </linearGradient>
-                                
-                                <!-- Filter for Glow Effect -->
-                                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                                    <feGaussianBlur stdDeviation="8" result="blur" />
-                                    <feMerge>
-                                        <feMergeNode in="blur" />
-                                        <feMergeNode in="SourceGraphic" />
-                                    </feMerge>
-                                </filter>
-                            </defs>
-
-                            <!-- Ambient Background Lighting -->
-                            <rect width="500" height="500" fill="url(#blue-glow)" />
-                            <rect width="500" height="500" fill="url(#gold-glow)" />
-
-                            <g class="grid-sway">
-                                <!-- Infrastructure Node Grid Lines -->
-                                <path d="M 50,380 L 180,300 L 320,380 L 450,290" fill="none" stroke="url(#grid-grad)" stroke-width="1.5" />
-                                <path d="M 100,280 L 220,180 L 350,260 L 420,160" fill="none" stroke="url(#grid-grad)" stroke-width="1.2" />
-                                <path d="M 180,300 L 220,180" fill="none" stroke="url(#grid-grad)" stroke-width="1" stroke-dasharray="4,4" />
-                                <path d="M 320,380 L 350,260" fill="none" stroke="url(#grid-grad)" stroke-width="1" stroke-dasharray="4,4" />
-                                <path d="M 50,380 L 100,280" fill="none" stroke="url(#grid-grad)" stroke-width="1" stroke-dasharray="4,4" />
-                                <path d="M 450,290 L 420,160" fill="none" stroke="url(#grid-grad)" stroke-width="1" stroke-dasharray="4,4" />
-                                
-                                <!-- Connecting lines to growth curve -->
-                                <line x1="150" y1="318" x2="150" y2="385" stroke="rgba(200, 168, 75, 0.2)" stroke-width="1" stroke-dasharray="3,3" />
-                                <line x1="300" y1="200" x2="300" y2="280" stroke="rgba(0, 102, 255, 0.25)" stroke-width="1" stroke-dasharray="3,3" />
-                                
-                                <!-- Staggered Grid Nodes -->
-                                <circle cx="50" cy="380" r="4" fill="#0066FF" class="node-pulse" style="animation-delay: 0s;" />
-                                <circle cx="180" cy="300" r="3" fill="#C8A84B" class="node-pulse" style="animation-delay: 0.5s;" />
-                                <circle cx="320" cy="380" r="4.5" fill="#0066FF" class="node-pulse" style="animation-delay: 1.2s;" />
-                                <circle cx="450" cy="290" r="3.5" fill="#C8A84B" class="node-pulse" style="animation-delay: 0.8s;" />
-                                <circle cx="100" cy="280" r="3" fill="#0066FF" class="node-pulse" style="animation-delay: 1.5s;" />
-                                <circle cx="220" cy="180" r="4.5" fill="#C8A84B" class="node-pulse" style="animation-delay: 0.2s;" />
-                                <circle cx="350" cy="260" r="3" fill="#0066FF" class="node-pulse" style="animation-delay: 0.9s;" />
-                                <circle cx="420" cy="160" r="4" fill="#C8A84B" class="node-pulse" style="animation-delay: 1.8s;" />
-                            </g>
-
-                            <!-- The Compounding Growth Path (Gold glowing arcing curve) -->
-                            <!-- Underglow path -->
-                            <path class="growth-path-glow" d="M 50,450 C 130,420 220,340 300,200 C 340,130 400,80 450,50" fill="none" stroke="#C8A84B" stroke-width="6" opacity="0.3" filter="url(#glow)" />
-                            <!-- Solid curve -->
-                            <path class="growth-path" d="M 50,450 C 130,420 220,340 300,200 C 340,130 400,80 450,50" fill="none" stroke="url(#gold-line-grad)" stroke-width="3.5" stroke-linecap="round" />
-
-                            <!-- 3D Geometric Floating Shapes -->
-                            <!-- Translucent Gold Cube -->
-                            <g class="shape-float-gold" transform="translate(380, 110)">
-                                <polygon points="0,-18 16,-9 0,0 -16,-9" fill="url(#gold-line-grad)" opacity="0.75" />
-                                <polygon points="-16,-9 0,0 0,18 -16,9" fill="#A6802C" opacity="0.65" />
-                                <polygon points="0,0 16,-9 16,9 0,18" fill="#F5E5BE" opacity="0.85" />
-                                <polygon points="0,-18 16,-9 16,9 0,18 -16,9 -16,-9" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" />
-                                <line x1="0" y1="0" x2="0" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" />
-                                <line x1="0" y1="0" x2="-16" y2="-9" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" />
-                                <line x1="0" y1="0" x2="16" y2="-9" stroke="rgba(255,255,255,0.4)" stroke-width="0.75" />
-                            </g>
-
-                            <!-- Translucent Electric Blue Tetrahedron -->
-                            <g class="shape-float-blue" transform="translate(140, 310)">
-                                <polygon points="0,-18 14,8 -14,8" fill="url(#blue-line-grad)" opacity="0.7" />
-                                <polygon points="0,-18 14,8 0,2" fill="#0066FF" opacity="0.8" />
-                                <polygon points="0,-18 -14,8 0,2" fill="#00D2FF" opacity="0.6" />
-                                <polygon points="0,-18 14,8 -14,8" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.75" />
-                                <line x1="0" y1="-18" x2="0" y2="2" stroke="rgba(255,255,255,0.5)" stroke-width="0.75" />
-                                <line x1="14" y1="8" x2="0" y2="2" stroke="rgba(255,255,255,0.5)" stroke-width="0.75" />
-                                <line x1="-14" y1="8" x2="0" y2="2" stroke="rgba(255,255,255,0.5)" stroke-width="0.75" />
-                            </g>
-                        </svg>
-
-                        <!-- Growth Visualization Overlay KPI Badges -->
-                        <div class="viz-overlay-text viz-badge-top">
-                            <div class="viz-kpi-badge viz-kpi-badge--gold">
-                                <div class="viz-kpi-icon viz-kpi-icon--gold">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                                        <polyline points="17 6 23 6 23 12" />
+                    <div class="hero-telemetry-hud" id="hero-telemetry-hud" role="region" aria-label="Digital Growth Telemetry HUD">
+                        <!-- Top Telemetry Status Header -->
+                        <div class="hud-header">
+                            <div class="hud-status">
+                                <span class="hud-live-beacon">
+                                    <span class="hud-beacon-ring"></span>
+                                    <span class="hud-beacon-core"></span>
+                                </span>
+                                <span class="hud-status-text">PROVEN REVENUE IMPACT</span>
+                            </div>
+                            <div class="hud-meta-tags">
+                                <span class="hud-tag hud-tag--speed">
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                                     </svg>
+                                    0.4s SPEED
+                                </span>
+                                <span class="hud-tag hud-tag--proven">VERIFIED IN SA</span>
+                            </div>
+                        </div>
+
+                        <!-- Main Telemetry SVG Viewport -->
+                        <div class="hud-canvas-wrap">
+                            <svg id="hero-growth-mesh" viewBox="0 0 640 480" width="100%" height="100%" aria-hidden="true">
+                                <defs>
+                                     <!-- Background Ambient Light Fields -->
+                                     <radialGradient id="apex-ambient-glow" cx="60%" cy="30%" r="65%">
+                                         <stop offset="0%" stop-color="#DFC38A" stop-opacity="0.13" />
+                                         <stop offset="55%" stop-color="#0066FF" stop-opacity="0.05" />
+                                         <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+                                     </radialGradient>
+                                     <radialGradient id="apex-peak-burst" cx="88%" cy="12%" r="45%">
+                                         <stop offset="0%" stop-color="#F3E7D3" stop-opacity="0.25" />
+                                         <stop offset="45%" stop-color="#DFC38A" stop-opacity="0.09" />
+                                         <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+                                     </radialGradient>
+
+                                     <!-- Metallic Trajectory Gradients -->
+                                     <linearGradient id="apex-surge-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                                         <stop offset="0%" stop-color="#0066FF" />
+                                         <stop offset="35%" stop-color="#00D2FF" />
+                                         <stop offset="70%" stop-color="#DFC38A" />
+                                         <stop offset="100%" stop-color="#FFF5DF" />
+                                     </linearGradient>
+
+                                     <!-- Area Fill Beneath Trajectory -->
+                                     <linearGradient id="apex-area-fill" x1="0%" y1="0%" x2="0%" y2="100%">
+                                         <stop offset="0%" stop-color="#DFC38A" stop-opacity="0.14" />
+                                         <stop offset="50%" stop-color="#0066FF" stop-opacity="0.05" />
+                                         <stop offset="100%" stop-color="#000000" stop-opacity="0.0" />
+                                     </linearGradient>
+
+                                     <!-- Stagnant Baseline Gradient -->
+                                     <linearGradient id="baseline-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                         <stop offset="0%" stop-color="#8E8E9F" stop-opacity="0.35" />
+                                         <stop offset="100%" stop-color="#EF4444" stop-opacity="0.3" />
+                                     </linearGradient>
+
+                                     <!-- Soft Neon Filters -->
+                                     <filter id="hud-glow" x="-20%" y="-20%" width="140%" height="140%">
+                                         <feGaussianBlur stdDeviation="6" result="blur" />
+                                         <feMerge>
+                                             <feMergeNode in="blur" />
+                                             <feMergeNode in="SourceGraphic" />
+                                         </feMerge>
+                                     </filter>
+                                     <filter id="hud-intense-glow" x="-40%" y="-40%" width="180%" height="180%">
+                                         <feGaussianBlur stdDeviation="10" result="blur1" />
+                                         <feGaussianBlur stdDeviation="4" result="blur2" />
+                                         <feMerge>
+                                             <feMergeNode in="blur1" />
+                                             <feMergeNode in="blur2" />
+                                             <feMergeNode in="SourceGraphic" />
+                                         </feMerge>
+                                     </filter>
+                                 </defs>
+
+                                 <!-- Background Ambient Radials -->
+                                 <rect width="640" height="480" fill="url(#apex-ambient-glow)" />
+                                 <rect width="640" height="480" fill="url(#apex-peak-burst)" />
+
+                                 <!-- HUD Coordinate System / Grid Lines -->
+                                 <g class="hud-grid-group">
+                                     <!-- Horizontal Value Reference Axes -->
+                                     <line class="hud-grid-line" x1="52" y1="105" x2="600" y2="105" stroke-width="1" stroke-dasharray="2,4" />
+                                     <line class="hud-grid-line" x1="52" y1="190" x2="600" y2="190" stroke-width="1" stroke-dasharray="2,4" />
+                                     <line class="hud-grid-line" x1="52" y1="275" x2="600" y2="275" stroke-width="1" stroke-dasharray="2,4" />
+                                     <line class="hud-grid-baseline" x1="52" y1="365" x2="600" y2="365" stroke-width="1.2" />
+
+                                     <!-- Vertical Timeline Reference Axes -->
+                                     <line class="hud-grid-vert" x1="65" y1="55" x2="65" y2="375" stroke-width="1" stroke-dasharray="3,3" />
+                                     <line class="hud-grid-vert" x1="215" y1="55" x2="215" y2="375" stroke-width="1" stroke-dasharray="3,3" />
+                                     <line class="hud-grid-vert" x1="385" y1="55" x2="385" y2="375" stroke-width="1" stroke-dasharray="3,3" />
+                                     <line class="hud-grid-vert" x1="565" y1="55" x2="565" y2="375" stroke-width="1" stroke-dasharray="3,3" />
+
+                                     <!-- Coordinate Axis Ticks / Labels -->
+                                     <text class="hud-axis-text" x="40" y="109" font-size="9.5" text-anchor="end">10x</text>
+                                     <text class="hud-axis-text" x="40" y="194" font-size="9.5" text-anchor="end">5x</text>
+                                     <text class="hud-axis-text" x="40" y="279" font-size="9.5" text-anchor="end">2x</text>
+                                     <text class="hud-axis-text" x="40" y="369" font-size="9.5" text-anchor="end">1x</text>
+
+                                     <text class="hud-axis-text" x="65" y="394" font-size="9" text-anchor="middle">LAUNCH</text>
+                                     <text class="hud-axis-text" x="215" y="394" font-size="9" text-anchor="middle">MONTH 1</text>
+                                     <text class="hud-axis-text" x="385" y="394" font-size="9" text-anchor="middle">MONTH 3</text>
+                                     <text class="hud-axis-text" x="565" y="394" font-size="9" text-anchor="middle">SCALE</text>
+                                 </g>
+
+                                 <!-- Dual Trajectory Curves -->
+                                 <!-- Baseline Stagnant Curve (Standard Websites) -->
+                                 <g class="hud-baseline-trajectory">
+                                     <path d="M 65,365 C 160,368 270,374 400,380 C 475,383 530,382 600,385"
+                                           fill="none" stroke="url(#baseline-grad)" stroke-width="1.6" stroke-dasharray="4,4" />
+                                     <text x="65" y="430" fill="rgba(239, 68, 68, 0.85)" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" letter-spacing="0.04em">
+                                         ▼ TYPICAL WEBSITES (SLOW LOADS &amp; LOST LEADS)
+                                     </text>
+                                 </g>
+
+                                 <!-- Apex Compounding Trajectory Area Fill -->
+                                 <path class="apex-area-surge"
+                                       d="M 65,365 C 150,358 245,305 340,215 C 425,140 505,105 570,90 L 570,365 Z"
+                                       fill="url(#apex-area-fill)" />
+
+                                 <!-- Apex Underglow Path -->
+                                 <path class="apex-path-underglow"
+                                       d="M 65,365 C 150,358 245,305 340,215 C 425,140 505,105 570,90"
+                                       fill="none" stroke="url(#apex-surge-grad)" stroke-width="7" opacity="0.32" filter="url(#hud-intense-glow)" />
+
+                                 <!-- Apex Main Trajectory Solid Radiant Path -->
+                                 <path class="apex-path-solid"
+                                       d="M 65,365 C 150,358 245,305 340,215 C 425,140 505,105 570,90"
+                                       fill="none" stroke="url(#apex-surge-grad)" stroke-width="3.5" stroke-linecap="round" />
+
+                                 <!-- Milestone Radar Nodes along Curve -->
+                                 <!-- Node 1: Launch / Speed Gateway (x: 165, y: 345) -->
+                                 <g class="hud-node" transform="translate(165, 345)">
+                                     <circle r="12" fill="rgba(0,102,255,0.18)" class="node-radar-ring" />
+                                     <circle r="4" fill="#0066FF" stroke="#FFFFFF" stroke-width="1.5" />
+                                 </g>
+
+                                 <!-- Node 2: Inflection / Conversion Lift (x: 340, y: 215) -->
+                                 <g class="hud-node" transform="translate(340, 215)">
+                                     <circle r="14" fill="rgba(223,195,138,0.22)" class="node-radar-ring node-radar-ring--gold" />
+                                     <circle r="5" fill="#DFC38A" stroke="#FFFFFF" stroke-width="1.5" />
+                                 </g>
+
+                                 <!-- Node 3: Apex Peak Acceleration (x: 570, y: 90) -->
+                                 <g class="hud-node" transform="translate(570, 90)">
+                                     <circle r="16" fill="rgba(223,195,138,0.28)" class="node-radar-ring node-radar-ring--gold" />
+                                     <circle r="6" fill="#FFF5DF" stroke="#DFC38A" stroke-width="2" filter="url(#hud-glow)" />
+                                 </g>
+                            </svg>
+
+                            <!-- Streamlined Floating High-Status KPI Cards -->
+                            <!-- Badge 1: Peak Revenue (+180%) -->
+                            <div class="hud-floating-card hud-card-peak" role="group" aria-label="180% Revenue Growth Metric">
+                                <div class="hud-card-inner hud-card-inner--gold">
+                                    <div class="hud-pill-lead">
+                                        <div class="hud-icon-box hud-icon-box--gold">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                                <polyline points="17 6 23 6 23 12"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="hud-pill-data">
+                                            <div class="hud-pill-stat">
+                                                <span class="hud-val hud-val--gold">+180%</span>
+                                                <span class="hud-tag-mini hud-tag-mini--green">YEAR 1</span>
+                                            </div>
+                                            <span class="hud-pill-sub">REVENUE GROWTH</span>
+                                        </div>
+                                    </div>
+                                    <div class="hud-card-sparkline">
+                                        <svg width="34" height="14" viewBox="0 0 34 14" fill="none">
+                                            <path d="M 2,12 L 9,9 L 16,10 L 23,4 L 32,2" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <circle cx="32" cy="2" r="2" fill="#10B981"/>
+                                        </svg>
+                                    </div>
                                 </div>
-                                <div class="viz-kpi-content">
-                                    <span class="viz-kpi-value viz-kpi-value--gold">+180%</span>
-                                    <span class="viz-kpi-label">Revenue Growth</span>
+                            </div>
+
+                            <!-- Badge 2: Multiplier (10x Return on Investment) -->
+                            <div class="hud-floating-card hud-card-roi" role="group" aria-label="10x Return On Investment Metric">
+                                <div class="hud-card-inner hud-card-inner--blue">
+                                    <div class="hud-pill-lead">
+                                        <div class="hud-icon-box hud-icon-box--blue">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                            </svg>
+                                        </div>
+                                        <div class="hud-pill-data">
+                                            <div class="hud-pill-stat">
+                                                <span class="hud-val hud-val--blue">10x</span>
+                                                <span class="hud-tag-mini hud-tag-mini--blue">R1 ➔ R10</span>
+                                            </div>
+                                            <span class="hud-pill-sub">RETURN ON INVESTMENT</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Badge 3: Automated Sales (24/7 Always-On) -->
+                            <div class="hud-floating-card hud-card-sales" role="group" aria-label="24/7 Automated Sales Metric">
+                                <div class="hud-card-inner hud-card-inner--gold">
+                                    <div class="hud-pill-lead">
+                                        <div class="hud-icon-box hud-icon-box--gold">
+                                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <polyline points="12 6 12 12 16 14"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="hud-pill-data">
+                                            <div class="hud-pill-stat">
+                                                <span class="hud-val hud-val--gold">24/7</span>
+                                                <span class="hud-live-tag">
+                                                    <span class="hud-live-dot-green"></span>
+                                                    ACTIVE
+                                                </span>
+                                            </div>
+                                            <span class="hud-pill-sub">AUTOMATED SALES</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="viz-overlay-text viz-badge-mid">
-                            <div class="viz-kpi-badge viz-kpi-badge--blue">
-                                <div class="viz-kpi-icon viz-kpi-icon--blue">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                                        <circle cx="9" cy="7" r="4" />
-                                        <path d="M23 21v-2a4 4 0 00-3-3.87" />
-                                        <path d="M16 3.13a4 4 0 010 7.75" />
-                                    </svg>
-                                </div>
-                                <div class="viz-kpi-content">
-                                    <span class="viz-kpi-value viz-kpi-value--blue">10x</span>
-                                    <span class="viz-kpi-label">Digital ROI per R1</span>
-                                </div>
+                        <!-- Telemetry Footer Horizon -->
+                        <div class="hud-footer">
+                            <div class="hud-footer-left">
+                                <span class="hud-footer-caption">GROWTH COMPARISON</span>
+                                <span class="hud-footer-title">Apex Custom Website vs. Standard Templates</span>
                             </div>
-                        </div>
-
-                        <div class="viz-overlay-text viz-badge-bottom">
-                            <div class="viz-kpi-badge viz-kpi-badge--gold">
-                                <div class="viz-kpi-icon viz-kpi-icon--gold">
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10" />
-                                        <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                                        <line x1="9" y1="9" x2="9.01" y2="9" />
-                                        <line x1="15" y1="9" x2="15.01" y2="9" />
+                            <div class="hud-footer-right">
+                                <span class="hud-footer-badge">
+                                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                                     </svg>
-                                </div>
-                                <div class="viz-kpi-content">
-                                    <span class="viz-kpi-value viz-kpi-value--gold">24/7</span>
-                                    <span class="viz-kpi-label">Always-On Sales</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="viz-headline">
-                            <div class="viz-headline-text">
-                                Your growth trajectory
-                                <span>With a high-performance website</span>
+                                    10 Case Studies
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -777,7 +865,7 @@
 
                             <!-- Dynamic Action Pod -->
                             <div class="calc-action-pod" id="calc-action-pod">
-                                <a href="/#strategy" class="calc-cta-btn calc-cta-primary" id="calc-cta-demo">
+                                <a href="../#strategy" onclick="openModal('ROI Calculator Model'); return false;" class="calc-cta-btn calc-cta-primary" id="calc-cta-demo">
                                     Claim Free <span id="calc-cta-industry-label">Demo</span> Website &rarr;
                                 </a>
                                 <a href="https://wa.me/27695224226" class="calc-cta-btn calc-cta-whatsapp" id="calc-cta-whatsapp" target="_blank" rel="noopener">
@@ -884,7 +972,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: Shopify SA Official Case Studies · Daily Entrepreneur SA</div>
-                            <a href="/#strategy" class="case-micro-cta">Claim Similar E-Commerce Engine &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('Bathu: E-Commerce Engine'); return false;" class="case-micro-cta">Claim Similar E-Commerce Engine &rarr;</a>
                         </div>
                     </div>
 
@@ -941,7 +1029,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: UCT Graduate School of Business · FinGlobal Financial Reporting</div>
-                            <a href="/#strategy" class="case-micro-cta">Engineer Your Online Store &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('Yuppiechef: Bespoke E-Commerce Store'); return false;" class="case-micro-cta">Engineer Your Online Store &rarr;</a>
                         </div>
                     </div>
 
@@ -998,7 +1086,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: Digitlab SA B2B Case Library — "From Offline to Online"</div>
-                            <a href="/#strategy" class="case-micro-cta">Claim B2B Lead Engine &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('TC Logistics: B2B Lead Engine'); return false;" class="case-micro-cta">Claim B2B Lead Engine &rarr;</a>
                         </div>
                     </div>
 
@@ -1055,7 +1143,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: Beau Digital Local SEO & Web Development Case Repositories</div>
-                            <a href="/#strategy" class="case-micro-cta">Build Automated Booking Flow &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('The Gentle Touch: Automated Booking Flow'); return false;" class="case-micro-cta">Build Automated Booking Flow &rarr;</a>
                         </div>
                     </div>
 
@@ -1116,7 +1204,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: RoomRaccoon SA Hospitality & Wellness Performance Audits</div>
-                            <a href="/#strategy" class="case-micro-cta">Claim Hospitality Engine &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('The Glen: Hospitality Upsell Engine'); return false;" class="case-micro-cta">Claim Hospitality Engine &rarr;</a>
                         </div>
                     </div>
 
@@ -1173,7 +1261,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: KRS Software Engineering SA Corporate Case Archives</div>
-                            <a href="/#strategy" class="case-micro-cta">Claim Membership Architecture &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('VIVA Gym: Membership Architecture'); return false;" class="case-micro-cta">Claim Membership Architecture &rarr;</a>
                         </div>
                     </div>
 
@@ -1230,7 +1318,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: WebFX Verified Service Portfolios · Bruni &amp; Campisi HVAC</div>
-                            <a href="/#strategy" class="case-micro-cta">Claim Trades Lead Engine &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('Enduric Plumbing: Trades Lead Engine'); return false;" class="case-micro-cta">Claim Trades Lead Engine &rarr;</a>
                         </div>
                     </div>
 
@@ -1287,7 +1375,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: Marketly Healthcare Conversion Analysis Data</div>
-                            <a href="/#strategy" class="case-micro-cta">Claim Medical Intake Engine &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('Aesthetica Dentistry: Medical Intake Engine'); return false;" class="case-micro-cta">Claim Medical Intake Engine &rarr;</a>
                         </div>
                     </div>
 
@@ -1344,7 +1432,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: JDR Group Transport Logistics Transformation Archives</div>
-                            <a href="/#strategy" class="case-micro-cta">Claim Freight Architecture &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('Outsource Transport: Freight Logistics Portal'); return false;" class="case-micro-cta">Claim Freight Architecture &rarr;</a>
                         </div>
                     </div>
 
@@ -1401,7 +1489,7 @@
                         </div>
                         <div class="case-card-footer">
                             <div class="case-source">Source: Me-Pos Small Business &amp; Beauty Sector Metrics</div>
-                            <a href="/#strategy" class="case-micro-cta">Build Automated Booking Flow &rarr;</a>
+                            <a href="../#strategy" onclick="openModal('Me-Pos: Automated Booking Flow'); return false;" class="case-micro-cta">Build Automated Booking Flow &rarr;</a>
                         </div>
                     </div>
 
@@ -1577,7 +1665,7 @@
                     <p class="cta-subtitle">10 businesses across retail, logistics, medical, hospitality, fitness, and trades all proved the same reality: a high-performance website is not an overhead expense — it is your highest-yielding capital asset. We engineer custom, conversion-hardened architectures before you commit.</p>
                     
                     <div class="cta-actions-group">
-                        <a href="/#strategy" class="btn-champagne-cta" id="cta-primary-demo">
+                        <a href="../#strategy" onclick="openModal('Case Studies Command Center'); return false;" class="btn-champagne-cta" id="cta-primary-demo">
                             Claim Your Free Demo Website &rarr;
                         </a>
                         <a href="https://wa.me/27695224226" class="btn-wa-cta" id="cta-whatsapp" target="_blank" rel="noopener">
@@ -1591,7 +1679,7 @@
 
                     <!-- Ecosystem Platform Matrix -->
                     <div class="platform-nav-grid">
-                        <a href="/#services" class="platform-nav-card">
+                        <a href="../#services" class="platform-nav-card">
                             <span class="platform-nav-icon">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 3h12l4 6-10 12L2 9z"/>
@@ -1610,7 +1698,7 @@
                                 </svg>
                             </span>
                         </a>
-                        <a href="/#architecture" class="platform-nav-card">
+                        <a href="../#architecture" class="platform-nav-card">
                             <span class="platform-nav-icon">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
@@ -1627,7 +1715,7 @@
                                 </svg>
                             </span>
                         </a>
-                        <a href="/#portfolio" class="platform-nav-card">
+                        <a href="../#portfolio" class="platform-nav-card">
                             <span class="platform-nav-icon">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
@@ -1648,7 +1736,7 @@
                                 </svg>
                             </span>
                         </a>
-                        <a href="/#faq" class="platform-nav-card">
+                        <a href="../#faq" class="platform-nav-card">
                             <span class="platform-nav-icon">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="10"/>
@@ -1679,17 +1767,17 @@
         <div class="container footer-container">
             <!-- Centralized Brand & Platform Navigation Block -->
             <div class="footer-center-block">
-                <a href="/" class="footer-logo-link" title="Apex Digital SA">
+                <a href="../" class="footer-logo-link" title="Apex Digital SA">
                     <img src="../assets/images/logo-dark-no-text.webp" alt="Apex Digital SA" class="footer-logo" id="footer-logo-img" width="130" height="56">
                 </a>
                 
                 <nav class="footer-nav" aria-label="Footer Navigation">
-                    <a href="/">Home</a>
-                    <a href="/#services">Packages</a>
-                    <a href="/#portfolio">Works</a>
-                    <a href="/#architecture">Tech Stack</a>
-                    <a href="/#faq">FAQ</a>
-                    <a href="/#strategy">Contact</a>
+                    <a href="../">Home</a>
+                    <a href="../#services">Packages</a>
+                    <a href="../#portfolio">Works</a>
+                    <a href="../#architecture">Tech Stack</a>
+                    <a href="../#faq">FAQ</a>
+                    <a href="../#strategy" onclick="openModal('Footer Strategy Navigation'); return false;">Contact</a>
                 </nav>
             </div>
 
@@ -1720,7 +1808,7 @@
 
     <!-- Mobile Floating Quick-Action Dock -->
     <div class="mobile-floating-dock" id="mobile-dock" aria-label="Quick Conversion Dock">
-        <a href="/#strategy" class="mobile-dock-btn mobile-dock-primary">
+        <a href="../#strategy" onclick="openModal('Mobile Floating Quick Action'); return false;" class="mobile-dock-btn mobile-dock-primary">
             Claim Free Demo &rarr;
         </a>
         <a href="https://wa.me/27695224226" class="mobile-dock-btn mobile-dock-wa" id="mobile-dock-wa" target="_blank" rel="noopener" aria-label="WhatsApp Apex Digital">
@@ -1731,7 +1819,55 @@
         </a>
     </div>
 
-    <script src="app.js?v=3.0"></script>
+    <!-- ── Strategy / Demo Request Intake Modal ───────────────────────── -->
+    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()" aria-label="Close Modal">&times;</button>
+            <div class="modal-badge">Direct Strategy Protocol</div>
+            <h3 class="modal-title" id="modal-title">
+                CLAIM YOUR <span class="accent-text">DEMO WEBSITE</span>
+            </h3>
+            <p class="modal-subtitle" id="modal-subtitle">
+                Connect directly with Apex Digital SA to claim a FREE Consultation + Demo Website custom-built for your business.
+            </p>
+
+            <form id="modal-form" action="https://formsubmit.co/Apexdigtl@gmail.com" method="POST"
+                onsubmit="handleModalSubmit(event)">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" id="modal-subject" value="Case Study Demo Website Request - Apex Digital SA">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="service_interest" id="modal-service-interest" value="Demo Website Request">
+
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label class="form-label" for="modal-name">Full Name</label>
+                    <input type="text" id="modal-name" name="name" class="form-input" placeholder="e.g. Johan van der Merwe" required autocomplete="name">
+                </div>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label class="form-label" for="modal-phone">Direct Contact Number / WhatsApp</label>
+                    <input type="tel" id="modal-phone" name="phone" class="form-input" placeholder="e.g. +27 82 123 4567" required autocomplete="tel">
+                </div>
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <label class="form-label" for="modal-email">Email Address</label>
+                    <input type="email" id="modal-email" name="email" class="form-input" placeholder="e.g. name@company.co.za" required autocomplete="email">
+                </div>
+                <button type="submit" id="modal-submit-btn" class="btn-champagne" style="width: 100%;">
+                    Request Free Consultation &amp; Demo Website &rarr;
+                </button>
+                <p class="form-popia-note" style="justify-content: center; margin-top: 14px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <span>POPIA Compliant: Your contact information is encrypted and strictly confidential.</span>
+                </p>
+                <div id="modal-form-status"
+                    style="margin-top: 14px; display: none; font-size: 0.95rem; text-align: center; border-radius: 8px; padding: 12px;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js?v=3.1"></script>
 </body>
 
 </html>

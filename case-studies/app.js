@@ -42,6 +42,134 @@ window.toggleTheme = toggleTheme;
 window.setTheme = setTheme;
 window.initThemeState = initThemeState;
 
+/* ==========================================================================
+   MODAL CONTROLS & FORMSUBMIT MAIL SERVICE INTEGRATION
+   ========================================================================== */
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/apexdigtl@gmail.com';
+
+function openModal(serviceTitle) {
+    const modal = document.getElementById('modal');
+    const subjectInput = document.getElementById('modal-subject');
+    const serviceInput = document.getElementById('modal-service-interest');
+    const subtitle = document.getElementById('modal-subtitle');
+
+    if (serviceTitle) {
+        if (subjectInput) subjectInput.value = `Case Study Request [${serviceTitle}] - Apex Digital SA`;
+        if (serviceInput) serviceInput.value = serviceTitle;
+        if (subtitle) {
+            subtitle.innerHTML = `Connect directly with Apex Digital SA to claim a FREE Consultation + Demo Website engineered for <strong>${serviceTitle}</strong>.`;
+        }
+    } else {
+        if (subjectInput) subjectInput.value = `Case Study Demo Website Request - Apex Digital SA`;
+        if (serviceInput) serviceInput.value = 'Demo Website Request';
+        if (subtitle) {
+            subtitle.innerHTML = `Connect directly with Apex Digital SA to claim a FREE Consultation + Demo Website custom-built for your business.`;
+        }
+    }
+
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        const nameInput = modal.querySelector('input[name="name"]');
+        if (nameInput && window.innerWidth > 768) {
+            setTimeout(() => nameInput.focus(), 150);
+        }
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+async function handleModalSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = document.getElementById('modal-submit-btn');
+    const statusDiv = document.getElementById('modal-form-status');
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Request Free Consultation & Demo Website &rarr;';
+
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Submitting Request...';
+    }
+
+    if (statusDiv) {
+        statusDiv.style.display = 'block';
+        statusDiv.style.backgroundColor = 'rgba(223, 195, 138, 0.12)';
+        statusDiv.style.color = '#dfc38a';
+        statusDiv.style.border = '1px solid rgba(223, 195, 138, 0.35)';
+        statusDiv.innerText = 'Transmitting your inquiry to Apex Systems Architect...';
+    }
+
+    try {
+        const formData = new FormData(form);
+        const payload = {};
+        formData.forEach((value, key) => { payload[key] = value; });
+
+        const response = await fetch(FORMSUBMIT_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (response.ok || result.success === "true" || result.success === true) {
+            if (statusDiv) {
+                statusDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.15)';
+                statusDiv.style.color = '#10B981';
+                statusDiv.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+                statusDiv.innerText = '✓ Demo Request Received! An Apex Systems Architect will contact you within 2-4 hours.';
+            }
+            form.reset();
+            setTimeout(() => {
+                closeModal();
+                if (statusDiv) statusDiv.style.display = 'none';
+            }, 3000);
+        } else {
+            throw new Error(result.message || 'Submission failed');
+        }
+    } catch (err) {
+        console.error('FormSubmit Modal Error:', err);
+        if (statusDiv) {
+            statusDiv.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
+            statusDiv.style.color = '#EF4444';
+            statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+            statusDiv.innerText = '⚠️ Transmission note: If not received, please contact us directly via WhatsApp at +27 69 522 4226 or apexdigtl@gmail.com.';
+        }
+    } finally {
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    }
+}
+
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.handleModalSubmit = handleModalSubmit;
+
+// Backdrop and Escape key modal listeners
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('modal');
+    if (modal && e.target === modal) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize theme state on DOM load
     initThemeState();
@@ -51,9 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainNav   = document.getElementById('main-nav');
 
     if (navToggle && mainNav) {
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            mainNav.classList.toggle('open');
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = mainNav.classList.toggle('open');
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
         // Close nav when a link is clicked (smooth scroll UX)
@@ -61,7 +192,18 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
                 mainNav.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (mainNav.classList.contains('open') && !mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+                navToggle.classList.remove('active');
+                mainNav.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
         });
     }
 
@@ -159,7 +301,11 @@ document.addEventListener('DOMContentLoaded', () => {
             calcCtaIndLabel.textContent = currentIndustryName ? currentIndustryName : 'Demo';
         }
         if (calcCtaDemo) {
-            calcCtaDemo.href = `/#strategy?industry=${encodeURIComponent(currentIndustryName)}&projected=${encodeURIComponent(formatCurrency(netIncrease))}`;
+            calcCtaDemo.href = `../#strategy?industry=${encodeURIComponent(currentIndustryName)}&projected=${encodeURIComponent(formatCurrency(netIncrease))}`;
+            calcCtaDemo.onclick = (e) => {
+                e.preventDefault();
+                openModal(`ROI Model: ${currentIndustryName || 'Custom'} (${formatCurrency(netIncrease)}/mo Projected Lift)`);
+            };
         }
 
         const waMsg = `Hi Apex Digital, I used your Case Studies ROI calculator for my ${currentIndustryName || 'business'} (${traffic.toLocaleString('en-ZA')} visits/mo). Based on our numbers, we modeled a projected net increase of ${formatCurrency(netIncrease)}/mo (${formatCurrency(annualLift)}/yr). I would like to claim a free demo website for my company.`;

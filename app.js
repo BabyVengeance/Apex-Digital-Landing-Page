@@ -377,10 +377,11 @@ function initWireframeCanvas() {
     const innerAngleY = -renderAngleY * 1.35;
     const innerAngleZ = -renderAngleZ * 0.8;
     const isMobile = width < 768;
-    const scaleFactor = isMobile ? Math.min(width / 500, 0.58) : 1.0;
-    const centerX = isMobile ? width * 0.67 : width * 0.55;
-    const centerY = isMobile ? Math.min(Math.max(height * 0.23, 195), 235) : height * 0.48;
-    const fov = isMobile ? 360 : 450;
+    const isTablet = width >= 768 && width < 1024;
+    const scaleFactor = isMobile ? Math.min(width / 440, 0.76) : (isTablet ? 0.88 : 1.0);
+    const centerX = isMobile ? width * 0.78 : (isTablet ? width * 0.68 : width * 0.55);
+    const centerY = isMobile ? Math.min(Math.max(height * 0.44, 300), 440) : (isTablet ? height * 0.46 : height * 0.48);
+    const fov = isMobile ? 380 : 450;
 
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const outerStrokeBase = currentTheme === 'light' ? 'rgba(184, 146, 85, ' : 'rgba(223, 195, 138, ';

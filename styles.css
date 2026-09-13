@@ -4148,8 +4148,20 @@ a.btn-champagne-inverse:active,
   }
 
   .nav-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     position: relative;
-    padding: 0 20px;
+    padding: 0 20px !important;
+    width: 100% !important;
+  }
+
+  .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+    gap: 8px !important;
   }
 
   .nav-links {
@@ -4207,8 +4219,16 @@ a.btn-champagne-inverse:active,
     background: rgba(223, 195, 138, 0.08);
   }
 
-  .nav-cta-btn {
-    display: none;
+  .nav-cta-btn,
+  .nav-casestudies-btn,
+  #nav-case-studies-btn {
+    display: none !important;
+  }
+
+  .nav-link.nav-link-casestudies {
+    border-color: rgba(223, 195, 138, 0.35);
+    color: var(--champagne);
+    background: rgba(223, 195, 138, 0.06);
   }
 
   body.menu-open {
@@ -4279,10 +4299,13 @@ a.btn-champagne-inverse:active,
   }
 
   .nav-container {
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    gap: 8px !important;
+    display: flex !important;
     justify-content: space-between !important;
+    align-items: center !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: 8px !important;
+    width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
@@ -4291,8 +4314,9 @@ a.btn-champagne-inverse:active,
     flex-shrink: 0 !important;
     display: inline-flex !important;
     align-items: center !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     padding: 2px 0 !important;
+    margin-right: auto !important;
   }
 
   .nav-logo {
@@ -4312,8 +4336,10 @@ a.btn-champagne-inverse:active,
   .nav-actions {
     display: flex !important;
     align-items: center !important;
+    justify-content: flex-end !important;
     gap: 6px !important;
     flex-shrink: 0 !important;
+    margin-left: auto !important;
   }
 
   /* Calibrated navbar button footprints with zero-collision 48px tap targets */

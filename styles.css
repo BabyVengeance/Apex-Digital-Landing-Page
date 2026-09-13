@@ -77,6 +77,11 @@
   padding: 0;
 }
 
+a, a:link, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -355,13 +360,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Inverse Luxury Champagne Button (Companion to Primary CTA) */
-.btn-champagne-inverse {
+.btn-champagne-inverse,
+a.btn-champagne-inverse,
+.btn-champagne-inverse:link,
+.btn-champagne-inverse:visited,
+.nav-casestudies-btn,
+a.nav-casestudies-btn,
+.nav-casestudies-btn:link,
+.nav-casestudies-btn:visited,
+#nav-case-studies-btn,
+#nav-case-studies-btn:visited {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   background: transparent;
-  color: var(--champagne);
+  color: var(--champagne) !important;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.8rem;
@@ -371,7 +385,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
   border: 1.5px solid var(--border-champagne);
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: none !important;
   min-height: 44px;
   box-shadow: 0 0 16px rgba(223, 195, 138, 0.08);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
@@ -392,9 +406,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .btn-champagne-inverse:hover {
+  .btn-champagne-inverse:hover,
+  a.btn-champagne-inverse:hover,
+  #nav-case-studies-btn:hover {
     background: var(--champagne-gradient);
-    color: #040405;
+    color: #040405 !important;
     border-color: var(--champagne);
     box-shadow: 0 0 28px var(--champagne-glow);
     transform: translateY(-2px);
@@ -405,20 +421,28 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.btn-champagne-inverse:active {
+.btn-champagne-inverse:active,
+a.btn-champagne-inverse:active,
+#nav-case-studies-btn:active {
   transform: scale(0.97);
 }
 
-[data-theme="light"] .btn-champagne-inverse {
+[data-theme="light"] .btn-champagne-inverse,
+[data-theme="light"] a.btn-champagne-inverse,
+[data-theme="light"] .btn-champagne-inverse:visited,
+[data-theme="light"] #nav-case-studies-btn,
+[data-theme="light"] #nav-case-studies-btn:visited {
   background: transparent;
-  color: #8a6d32;
+  color: #8a6d32 !important;
   border-color: #b89655;
   box-shadow: 0 0 12px rgba(184, 146, 85, 0.12);
 }
 
-[data-theme="light"] .btn-champagne-inverse:hover {
+[data-theme="light"] .btn-champagne-inverse:hover,
+[data-theme="light"] a.btn-champagne-inverse:hover,
+[data-theme="light"] #nav-case-studies-btn:hover {
   background: var(--champagne-gradient);
-  color: #ffffff;
+  color: #ffffff !important;
   border-color: #a6843c;
 }
 

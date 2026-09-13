@@ -157,15 +157,19 @@ img {
     border-bottom: 1px solid var(--border-light);
     position: sticky;
     top: 0;
-    z-index: 100;
-    padding: 0.85rem 0;
+    z-index: 1000;
+    padding: 12px 0;
     box-shadow: 0 1px 0 var(--border-light);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition: background-color var(--t-med), border-color var(--t-med);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: background-color var(--t-med), border-color var(--t-med), padding var(--t-med);
 }
 
 .header-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 44px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -177,6 +181,7 @@ img {
     height: 72px;
     width: auto;
     object-fit: contain;
+    filter: drop-shadow(0 0 12px var(--gold-glow));
     transition: opacity var(--t-fast), transform var(--t-fast);
 }
 
@@ -2858,6 +2863,14 @@ img {
 }
 
 @media (max-width: 768px) {
+    .header-container {
+        padding: 0 20px;
+    }
+
+    .logo {
+        height: 52px;
+    }
+
     .mobile-floating-dock {
         display: flex;
         position: fixed;

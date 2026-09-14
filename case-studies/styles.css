@@ -1514,6 +1514,7 @@ img {
     justify-content: center;
     margin: 1.5rem 0 2.5rem;
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
 }
 
@@ -1544,6 +1545,8 @@ img {
     font-size: 0.86rem;
     font-weight: 600;
     cursor: pointer;
+    flex-shrink: 0;
+    white-space: nowrap;
     transition: all var(--t-fast);
 }
 
@@ -2719,6 +2722,52 @@ img {
     .platform-nav-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Filter Wrapper on Tablet — Smooth Swipeable Pill Track */
+    .filter-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0.35rem 1rem 0.85rem;
+        margin: 1.25rem -1rem 2rem;
+        width: calc(100% + 2rem);
+        max-width: calc(100% + 2rem);
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+
+    .filter-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-tabs {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        width: max-content;
+        min-width: max-content;
+        gap: 0.45rem;
+        padding: 0.35rem;
+        box-sizing: border-box;
+    }
+
+    .filter-tab {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 0.55rem 0.95rem;
+        font-size: 0.82rem;
+        min-height: 42px;
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
 }
 
 /* ─── 2. MASTER MOBILE BREAKPOINT (max-width: 768px) ─────────────────────── */
@@ -2900,12 +2949,27 @@ img {
 
     /* Filter Wrapper on Mobile — Smooth Swipeable Pill Track */
     .filter-wrapper {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        display: flex;
         justify-content: flex-start;
-        padding: 0.25rem 0 0.85rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        padding: 0.35rem 1rem 0.85rem;
+        margin: 1rem -1rem 1.75rem;
+        width: calc(100% + 2rem);
+        max-width: calc(100% + 2rem);
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        cursor: grab;
+    }
+
+    .filter-wrapper.dragging {
+        cursor: grabbing;
+        user-select: none;
     }
 
     .filter-wrapper::-webkit-scrollbar {
@@ -2913,17 +2977,23 @@ img {
     }
 
     .filter-tabs {
+        display: inline-flex;
         flex-wrap: nowrap;
+        flex-shrink: 0;
         width: max-content;
+        min-width: max-content;
         gap: 0.35rem;
         padding: 0.35rem;
+        box-sizing: border-box;
     }
 
     .filter-tab {
+        flex-shrink: 0;
         white-space: nowrap;
         padding: 0.5rem 0.85rem;
         font-size: 0.8rem;
-        min-height: 38px;
+        min-height: 42px;
+        touch-action: manipulation;
     }
 
     /* Case Studies Cards on Mobile */

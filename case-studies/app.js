@@ -441,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ─── Sector Filter Logic ────────────────────────────────────────────
+    const filterWrapper = document.querySelector('.filter-wrapper');
     const filterTabs = document.querySelectorAll('.filter-tab');
     const caseCards  = document.querySelectorAll('.case-card');
 
@@ -453,6 +454,15 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.classList.add('active');
             tab.setAttribute('aria-selected', 'true');
 
+            // Smoothly center active tab in scrollable container on mobile
+            if (filterWrapper && window.innerWidth <= 1024) {
+                tab.scrollIntoView({
+                    behavior: 'smooth',
+                    inline: 'center',
+                    block: 'nearest'
+                });
+            }
+
             const filter = tab.dataset.filter;
 
             caseCards.forEach(card => {
@@ -464,6 +474,36 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // Drag-to-scroll support for trackpad & mouse users
+    if (filterWrapper) {
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
+
+        filterWrapper.addEventListener('mousedown', (e) => {
+            isDown = true;
+            filterWrapper.classList.add('dragging');
+            startX = e.pageX - filterWrapper.offsetLeft;
+            scrollLeft = filterWrapper.scrollLeft;
+        });
+
+        const stopDragging = () => {
+            isDown = false;
+            filterWrapper.classList.remove('dragging');
+        };
+
+        filterWrapper.addEventListener('mouseleave', stopDragging);
+        filterWrapper.addEventListener('mouseup', stopDragging);
+
+        filterWrapper.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - filterWrapper.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            filterWrapper.scrollLeft = scrollLeft - walk;
+        });
+    }
 
     // ─── Case Study Before/After Toggles ────────────────────────────────
     caseCards.forEach(card => {

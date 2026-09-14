@@ -336,6 +336,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hide duplicate Case Studies text link on desktop since the dedicated action button is active */
 @media (min-width: 993px) {
+  .mobile-only-nav-item,
   .nav-link-casestudies-item {
     display: none !important;
   }
@@ -551,6 +552,57 @@ a.btn-champagne-inverse:active,
 
 .btn-champagne:active {
   transform: scale(0.97);
+}
+
+/* Mobile Menu Toggle Button Base Styles */
+.mobile-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-champagne);
+  border-radius: 8px;
+  color: var(--champagne);
+  cursor: pointer;
+  position: relative;
+  z-index: 10005;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+  box-shadow: 0 0 14px var(--champagne-glow);
+}
+
+.mobile-menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
+
+.mobile-menu-toggle .close-icon {
+  display: none;
+}
+
+.mobile-menu-toggle .hamburger-icon {
+  display: block;
+}
+
+.mobile-menu-toggle.active .hamburger-icon,
+.nav-container.mobile-open .mobile-menu-toggle .hamburger-icon {
+  display: none !important;
+}
+
+.mobile-menu-toggle.active .close-icon,
+.nav-container.mobile-open .mobile-menu-toggle .close-icon {
+  display: block !important;
+}
+
+.mobile-menu-toggle.active,
+.nav-container.mobile-open .mobile-menu-toggle {
+  background: rgba(223, 195, 138, 0.16);
+  border-color: var(--champagne-light);
+  color: var(--champagne-light);
 }
 
 .btn-outline-luxury {
@@ -4180,6 +4232,8 @@ a.btn-champagne-inverse:active,
     justify-content: flex-end !important;
     margin-left: auto !important;
     gap: 8px !important;
+    position: relative !important;
+    z-index: 10005 !important;
   }
 
   .nav-links {

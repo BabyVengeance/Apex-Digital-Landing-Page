@@ -277,21 +277,22 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
-  padding: 0 44px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  padding: 0 clamp(20px, 3.5vw, 44px);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .nav-brand {
-  justify-self: start;
   display: flex;
   align-items: center;
   text-decoration: none;
+  z-index: 2;
 }
 
 .nav-logo {
-  height: 72px;
+  height: 68px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 12px var(--champagne-glow));
@@ -299,7 +300,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar.scrolled .nav-logo {
-  height: 56px;
+  height: 52px;
 }
 
 .nav-brand:hover .nav-logo {
@@ -307,20 +308,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-links {
-  justify-self: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(14px, 1.8vw, 24px);
   list-style: none;
   margin: 0;
   padding: 0;
+  z-index: 1;
 }
 
 .nav-link {
   color: var(--text-muted);
   text-decoration: none;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.80rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -328,6 +332,13 @@ h1, h2, h3, h4, h5, h6 {
   transition: color var(--transition-fast);
   position: relative;
   padding: 6px 2px;
+}
+
+/* Hide duplicate Case Studies text link on desktop since the dedicated action button is active */
+@media (min-width: 993px) {
+  .nav-link-casestudies-item {
+    display: none !important;
+  }
 }
 
 .nav-link::after {
@@ -353,10 +364,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-actions {
-  justify-self: end;
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-cta-btn {
+  padding: 10px 20px !important;
+  min-height: 40px !important;
+  font-size: 0.78rem !important;
 }
 
 /* Inverse Luxury Champagne Button (Companion to Primary CTA) */
@@ -378,15 +396,15 @@ a.nav-casestudies-btn,
   color: var(--champagne) !important;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 11.5px 24px;
+  padding: 10px 20px;
   border-radius: 3px;
   border: 1.5px solid var(--border-champagne);
   cursor: pointer;
   text-decoration: none !important;
-  min-height: 44px;
+  min-height: 40px;
   box-shadow: 0 0 16px rgba(223, 195, 138, 0.08);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
   position: relative;
@@ -4193,6 +4211,12 @@ a.btn-champagne-inverse:active,
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
+  }
+
+  .nav-links li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .nav-link {

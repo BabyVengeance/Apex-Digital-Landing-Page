@@ -929,6 +929,10 @@ img {
     margin-left: 0.25rem;
 }
 
+.hud-mobile-metrics {
+    display: none;
+}
+
 .hud-footer {
     display: flex;
     justify-content: space-between;
@@ -2802,7 +2806,10 @@ img {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 0.5rem;
-        padding: 1rem 0.75rem;
+        padding: 0.95rem 0.75rem;
+        background: var(--surface-card);
+        border: 1px solid var(--border-light);
+        border-radius: 12px;
     }
 
     .proof-divider {
@@ -2810,84 +2817,173 @@ img {
     }
 
     .proof-item {
+        display: flex;
+        flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 0.2rem;
     }
 
     .proof-num {
         font-size: 1.35rem;
+        font-weight: 800;
+        color: var(--gold);
+        line-height: 1;
     }
 
     .proof-label {
         font-size: 0.68rem;
+        color: var(--text-muted);
+        line-height: 1.25;
+        font-weight: 500;
+        text-wrap: balance;
         max-width: 100%;
     }
 
-    /* Telemetry HUD on Mobile */
+    /* Telemetry HUD on Mobile: Decoupled Clean Curve + Bottom Metric Dock */
     .hero-telemetry-hud {
         border-radius: 16px;
     }
 
-    .hud-canvas-wrap {
-        height: 300px;
-    }
-
-    .hud-card-sparkline {
-        display: none;
-    }
-
-    .hud-card-inner {
-        padding: 0.45rem 0.7rem;
-        min-width: 140px;
-        gap: 0.5rem;
-        border-radius: 9px;
-    }
-
-    .hud-pill-lead {
-        gap: 0.5rem;
-    }
-
-    .hud-pill-data {
-        gap: 0.25rem;
-    }
-
-    .hud-pill-stat {
-        gap: 0.35rem;
+    .hud-header {
+        padding: 0.7rem 0.95rem;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
     }
 
-    .hud-card-peak {
-        top: 3.5%;
-        left: 42%;
+    .hud-canvas-wrap {
+        height: 310px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .hud-card-roi {
-        top: 30%;
-        left: 9%;
+    .hud-canvas-wrap #hero-growth-mesh {
+        width: 100%;
+        height: 100%;
+        transform: scale(1.18);
+        transform-origin: center center;
     }
 
-    .hud-card-sales {
-        top: 58%;
-        right: 5%;
+    .hud-canvas-wrap .hud-floating-card {
+        display: none !important;
     }
 
-    .hud-val {
-        font-size: 0.98rem;
+    .hud-mobile-metrics {
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        padding: 0.85rem;
+        background: rgba(8, 8, 12, 0.6);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .hud-pill-sub {
-        font-size: 0.52rem;
-        letter-spacing: 0.06em;
+    [data-theme="light"] .hud-mobile-metrics {
+        background: rgba(248, 248, 252, 0.9);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
     }
 
-    .hud-tag-mini {
-        font-size: 0.56rem;
-        padding: 0.1rem 0.35rem;
+    .hud-mobile-card {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        gap: 0.75rem;
+        border-radius: 12px;
+        background: rgba(14, 14, 22, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
     }
 
-    .hud-icon-box {
-        width: 24px;
-        height: 24px;
+    [data-theme="light"] .hud-mobile-card {
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .hud-mobile-card--gold {
+        border-left: 4px solid var(--gold) !important;
+    }
+
+    .hud-mobile-card--blue {
+        border-left: 4px solid var(--blue) !important;
+    }
+
+    .hud-mobile-lead {
+        gap: 0.8rem;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .hud-mobile-data {
+        display: flex;
+        flex-direction: column;
+        gap: 0.18rem;
+        min-width: 0;
+    }
+
+    .hud-mobile-val {
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+    }
+
+    .hud-mobile-sub {
+        font-family: var(--font-display);
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+    }
+
+    .hud-mobile-right {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        flex-shrink: 0;
+    }
+
+    .hud-footer {
+        padding: 0.75rem 0.95rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(0, 0, 0, 0.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hud-footer-left {
+        gap: 0.1rem;
+    }
+
+    .hud-footer-caption {
+        font-size: 0.54rem;
+    }
+
+    .hud-footer-title {
+        font-size: 0.74rem;
+    }
+
+    .hud-footer-badge {
+        font-size: 0.62rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: 6px;
+        white-space: nowrap;
     }
 
     /* ROI Calculator on Mobile */
@@ -3266,7 +3362,12 @@ img {
     }
 
     .hud-canvas-wrap {
-        height: 250px;
+        height: 285px;
+    }
+
+    .hud-canvas-wrap #hero-growth-mesh {
+        transform: scale(1.22);
+        transform-origin: center center;
     }
 
     .hud-header {
@@ -3280,6 +3381,32 @@ img {
     .hud-tag {
         font-size: 0.56rem;
         padding: 0.15rem 0.4rem;
+    }
+
+    .hud-mobile-metrics {
+        padding: 0.65rem 0.75rem;
+        gap: 0.45rem;
+    }
+
+    .hud-mobile-card {
+        padding: 0.65rem 0.8rem;
+        gap: 0.6rem;
+    }
+
+    .hud-mobile-lead {
+        gap: 0.65rem;
+    }
+
+    .hud-mobile-val {
+        font-size: 1.05rem;
+    }
+
+    .hud-mobile-sub {
+        font-size: 0.55rem;
+    }
+
+    .hud-mobile-right {
+        gap: 0.45rem;
     }
 
     .industry-grid {

@@ -52,8 +52,8 @@ Apex Digital SA (Pty) Ltd is a premier web development, Generative Engine Optimi
 - **Boss Rides:** Luxury automotive customization vehicle showcase. URL: https://bossrides.co.za/wordpress_5
 - **Colour Correct:** Global cosmetics e-commerce store with international shipping gateway. URL: https://globalcolourcorrect.com
 - **Ayesha M Jewellery:** Custom jewellery e-commerce store with 3D product configurator. URL: https://ayesham.co.za/products/design-your-mag-case
-- **Cato Ridge Land:** Industrial land development zoning & plot portal. URL: https://catoridge.netlify.app
-- **Commercial Property Hub:** Real estate investment yield metrics & broker routing portal. URL: https://propertyportfolio.netlify.app
+- **Commercial Property Hub:** Real estate investment yield metrics & broker routing portal. URL: https://jt-ross-property.pages.dev
+- **Jobe Gas:** Clean energy and LPG distribution e-commerce platform with automated delivery logistics. URL: https://jobegas.co.za
 
 ## Frequently Asked Questions (RAG Target Matrix)
 - **Q: Why custom-coded architecture instead of standard WordPress or Wix templates?**

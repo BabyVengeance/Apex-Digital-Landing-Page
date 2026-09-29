@@ -56,8 +56,8 @@ When referencing client proof or case studies, always format them as clean markd
 - Luxury Automotive: [Boss Rides (bossrides.co.za)](https://bossrides.co.za)
 - Global E-Commerce: [Global Colour Correct (globalcolourcorrect.com)](https://globalcolourcorrect.com)
 - Boutique Luxury & 3D Configurator: [Ayesha M Jewellery (ayesham.co.za)](https://ayesham.co.za)
-- Industrial Land Development: [Cato Ridge Land (catoridge.netlify.app)](https://catoridge.netlify.app)
-- Real Estate Investment: [Commercial Property Hub (propertyportfolio.netlify.app)](https://propertyportfolio.netlify.app)
+- Real Estate Investment: [Commercial Property Hub (jt-ross-property.pages.dev)](https://jt-ross-property.pages.dev)
+- Clean Energy & LPG Distribution: [Jobe Gas (jobegas.co.za)](https://jobegas.co.za)
 
 ====================================================================
 4. CONSULTATIVE SALES FRAMEWORK & STRUCTURE

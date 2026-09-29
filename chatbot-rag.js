@@ -147,9 +147,9 @@ We analyze your business model and recommend the ideal technology stack for maxi
     },
     {
       id: "case_studies_results",
-      intents: ["case study", "case studies", "roi", "results", "proof", "examples", "portfolio", "success", "clients", "lasergen", "compass", "boss rides", "colour correct", "ayesha m", "cato ridge", "property portfolio"],
+      intents: ["case study", "case studies", "roi", "results", "proof", "examples", "portfolio", "success", "clients", "lasergen", "compass", "boss rides", "colour correct", "ayesha m", "property portfolio", "jobe gas", "jobegas"],
       title: "Featured Client Builds & Empirical Results",
-      response: `Apex Digital SA has engineered high-performing web platforms across industrial, logistics, automotive, real estate, and e-commerce verticals:
+      response: `Apex Digital SA has engineered high-performing web platforms across industrial, logistics, automotive, real estate, energy, and e-commerce verticals:
 
 - **ROI Case Study Showroom** ([10 Verified Studies & Calculator](/case-studies/)): Explore 10 verified business case studies with financial lift breakdowns and an interactive digital revenue calculator.
 1. **LaserGen** ([lasergen.co.za](https://lasergen.co.za)): Industrial laser refurbishment platform with sub-second mobile loading & direct quote capture.
@@ -157,8 +157,8 @@ We analyze your business model and recommend the ideal technology stack for maxi
 3. **Boss Rides** ([bossrides.co.za](https://bossrides.co.za)): Luxury automotive customization & vehicle showcase portal.
 4. **Global Colour Correct** ([globalcolourcorrect.com](https://globalcolourcorrect.com)): International e-commerce store with Shopify & Tunl global shipping.
 5. **Ayesha M Jewellery** ([ayesham.co.za](https://ayesham.co.za)): Custom e-commerce store with 3D Mag Case product configurator & PayFast checkout.
-6. **Cato Ridge Land** ([catoridge.netlify.app](https://catoridge.netlify.app)): Commercial & industrial land development portal for investor lead generation.
-7. **Commercial Property Hub** ([propertyportfolio.netlify.app](https://propertyportfolio.netlify.app)): Real estate investment portal with yield metrics and broker routing.`,
+6. **Commercial Property Hub** ([jt-ross-property.pages.dev](https://jt-ross-property.pages.dev)): Real estate investment portal with yield metrics and broker routing.
+7. **Jobe Gas** ([jobegas.co.za](https://jobegas.co.za)): Clean energy & LPG distribution e-commerce platform with automated delivery logistics.`,
       cta: { text: "Open ROI Case Studies", action: "openUrl:/case-studies/" }
     },
     {
@@ -330,7 +330,7 @@ We analyze your business model and recommend the ideal technology stack for maxi
       }
 
       // 3. Real Client Portfolio & Works (#portfolio)
-      if (combined.includes("case study") || combined.includes("portfolio") || combined.includes("lasergen") || combined.includes("compass") || combined.includes("boss rides") || combined.includes("ayesha") || combined.includes("cato ridge") || combined.includes("example") || combined.includes("proof") || combined.includes("work") || combined.includes("showcase")) {
+      if (combined.includes("case study") || combined.includes("portfolio") || combined.includes("lasergen") || combined.includes("compass") || combined.includes("boss rides") || combined.includes("ayesha") || combined.includes("jobe gas") || combined.includes("jobegas") || combined.includes("example") || combined.includes("proof") || combined.includes("work") || combined.includes("showcase")) {
         return { text: "Explore Live Client Portfolio", action: "scrollSection:portfolio" };
       }
 

@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
 
   <!-- GSAP & ScrollTrigger Animation Engines (Deferred for High INP Performance) -->
@@ -71,7 +71,11 @@
           "ApexDigital",
           "ApexDigital SA"
         ],
-        "taxID": "2026/237102/07",
+        "identifier": {
+          "@type": "PropertyValue",
+          "propertyID": "CIPC Company Registration Number",
+          "value": "2026/237102/07"
+        },
         "url": "https://apexdigitalsa.com",
         "logo": "https://apexdigitalsa.com/assets/images/logo-dark.webp",
         "image": "https://apexdigitalsa.com/assets/images/logo-dark.webp",
@@ -84,40 +88,48 @@
         "foundingDate": "2026",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Umhlanga Ridge",
           "addressLocality": "Durban",
           "addressRegion": "KwaZulu-Natal",
-          "postalCode": "4319",
           "addressCountry": "ZA"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -29.8587,
-          "longitude": 31.0218
         },
         "areaServed": [
           {
-            "@type": "Country",
-            "name": "South Africa"
+            "@type": "City",
+            "name": "Durban"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Umhlanga"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Ballito"
           },
           {
             "@type": "AdministrativeArea",
             "name": "KwaZulu-Natal"
           },
           {
-            "@type": "AdministrativeArea",
-            "name": "Gauteng"
+            "@type": "City",
+            "name": "Johannesburg"
           },
           {
-            "@type": "AdministrativeArea",
-            "name": "Western Cape"
+            "@type": "City",
+            "name": "Cape Town"
+          },
+          {
+            "@type": "City",
+            "name": "Pretoria"
+          },
+          {
+            "@type": "Country",
+            "name": "South Africa"
           }
         ],
         "sameAs": [
           "https://www.linkedin.com/company/apex-digital-southafrica/",
           "https://www.instagram.com/apexdigital_sa/",
           "https://linktr.ee/ApexDigital_",
-          "https://share.google/1nVQq2o9XWzpIxlK1",
           "https://eservices.cipc.co.za/CompanySearch.aspx?reg=2026/237102/07"
         ],
         "knowsAbout": [
@@ -422,7 +434,7 @@
 
       <div class="nav-actions">
         <!-- Light / Dark Theme Switcher Button -->
-        <button class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+        <button type="button" class="theme-toggle-btn" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
           <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
@@ -432,10 +444,10 @@
         <a href="/case-studies/" class="btn-champagne-inverse nav-casestudies-btn" id="nav-case-studies-btn">Case Studies</a>
 
         <!-- Primary CTA Button -->
-        <button class="btn-champagne nav-cta-btn" onclick="openModal()">Get Free Demo</button>
+        <button type="button" class="btn-champagne nav-cta-btn" onclick="openModal()">Get Free Demo</button>
 
         <!-- Mobile Menu Toggle Button -->
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+        <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
           <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -454,7 +466,7 @@
 
   <!-- Hero Section with 3D Parametric Wireframe Canvas Engine -->
   <section class="hero">
-    <canvas id="hero-wireframe-canvas"></canvas>
+    <canvas id="hero-wireframe-canvas" aria-hidden="true"></canvas>
 
     <div class="container">
       <div class="hero-content">
@@ -473,7 +485,7 @@
         </p>
 
         <div class="hero-actions">
-          <button class="btn-champagne" onclick="openModal()">
+          <button type="button" class="btn-champagne" onclick="openModal()">
             Claim Free Consultation + Demo Website
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
@@ -546,7 +558,7 @@
 
           <!-- Interactive Code-Driven Ecosystem Node Network Engine (Desktop) -->
           <div class="ecosystem-canvas-card border-beam-card desktop-only" id="ecosystem-canvas-card">
-            <canvas id="ecosystem-canvas"></canvas>
+            <canvas id="ecosystem-canvas" aria-hidden="true"></canvas>
 
             <!-- Central Gold Apex Logo Emblem -->
             <div class="ecosystem-center-badge">
@@ -643,13 +655,13 @@
 
       <!-- Category Tab Navigation Bar -->
       <div class="arch-tabs services-tabs" style="margin-bottom: 36px;">
-        <button class="arch-tab-btn service-tab-btn active" onclick="switchServiceTab('services-tab-1', event)">
+        <button type="button" class="arch-tab-btn service-tab-btn active" onclick="switchServiceTab('services-tab-1', event)">
           01 // Core Web Platforms
         </button>
-        <button class="arch-tab-btn service-tab-btn" onclick="switchServiceTab('services-tab-2', event)">
+        <button type="button" class="arch-tab-btn service-tab-btn" onclick="switchServiceTab('services-tab-2', event)">
           02 // Custom Web Apps &amp; E-Commerce
         </button>
-        <button class="arch-tab-btn service-tab-btn" onclick="switchServiceTab('services-tab-3', event)">
+        <button type="button" class="arch-tab-btn service-tab-btn" onclick="switchServiceTab('services-tab-3', event)">
           03 // AI Automation &amp; Search Authority
         </button>
       </div>
@@ -823,15 +835,15 @@
           <div class="calc-control-group">
             <label class="calc-label">Select Custom Website Build Tier</label>
             <div class="calc-btn-group" id="build-tier-group">
-              <button class="calc-tier-btn" data-tier="starter">
+              <button type="button" class="calc-tier-btn" data-tier="starter">
                 <span class="btn-tier-name">Starter Build</span>
                 <span class="btn-tier-price">Core Web Footprint</span>
               </button>
-              <button class="calc-tier-btn active" data-tier="standard">
+              <button type="button" class="calc-tier-btn active" data-tier="standard">
                 <span class="btn-tier-name">Standard Build</span>
                 <span class="btn-tier-price">Commercial Engine</span>
               </button>
-              <button class="calc-tier-btn" data-tier="pro">
+              <button type="button" class="calc-tier-btn" data-tier="pro">
                 <span class="btn-tier-name">Pro Build</span>
                 <span class="btn-tier-price">Market Dominance</span>
               </button>
@@ -1114,10 +1126,10 @@
       </div>
 
       <div class="arch-tabs">
-        <button class="arch-tab-btn active" onclick="switchTab('web', event)">01 // Custom Code Architecture</button>
-        <button class="arch-tab-btn" onclick="switchTab('cms', event)">02 // Custom Web App &amp; SaaS
+        <button type="button" class="arch-tab-btn active" onclick="switchTab('web', event)">01 // Custom Code Architecture</button>
+        <button type="button" class="arch-tab-btn" onclick="switchTab('cms', event)">02 // Custom Web App &amp; SaaS
           Architecture</button>
-        <button class="arch-tab-btn" onclick="switchTab('ecom', event)">03 // E-Commerce Architecture</button>
+        <button type="button" class="arch-tab-btn" onclick="switchTab('ecom', event)">03 // E-Commerce Architecture</button>
       </div>
 
       <div class="arch-display-card" id="arch-display">
@@ -1271,7 +1283,7 @@
             </span>
           </div>
 
-          <button onclick="openModal()" class="btn-champagne mobile-diag-cta" style="width: 100%;">
+          <button type="button" onclick="openModal()" class="btn-champagne mobile-diag-cta" style="width: 100%;">
             GET YOUR FREE DEMO WEBSITE &rarr;
           </button>
         </div>
@@ -1394,7 +1406,7 @@
                 <span id="citation-text">Calculations based on BrightLocal 2024 Study (81% of buyers research online before hiring) &amp; Google Local Search Intent Data (62% of clicks go to top local websites).</span>
               </div>
 
-              <button onclick="openModal()" class="btn-champagne sim-cta-btn" id="sim-cta-btn">
+              <button type="button" onclick="openModal()" class="btn-champagne sim-cta-btn" id="sim-cta-btn">
                 CAPTURE YOUR LOCAL MARKET REVENUE &rarr;
               </button>
             </div>
@@ -1417,55 +1429,55 @@
       <div class="faq-grid" style="max-width: 900px; margin: 0 auto;">
         <!-- FAQ Item 1 -->
         <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(event)">
+          <button type="button" class="faq-trigger" onclick="toggleFaq(event)" aria-expanded="false" aria-controls="faq-content-1">
             <span>Why custom-coded architecture instead of standard WordPress or Wix templates?</span>
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-content">
+          <div class="faq-content" id="faq-content-1">
             <p>Custom-coded architecture frees your business from the rigid constraints and script bloat of generic CMS templates, allowing us to build an uncompromising digital reflection of your brand. While we can deploy on WordPress or Wix when specific client workflows demand it, our custom engineering gives us granular control over both the technical backend (structured data, Core Web Vitals, and AI search crawlers) and the frontend conversion UX. This ensures your website is engineered to rank on Google and AI search engines, load instantly, and actively convert traffic—all with 100% full source code ownership and zero proprietary platform lock-in.</p>
           </div>
         </div>
 
         <!-- FAQ Item 2 -->
         <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(event)">
+          <button type="button" class="faq-trigger" onclick="toggleFaq(event)" aria-expanded="false" aria-controls="faq-content-2">
             <span>What are the typical turnaround timelines for custom web builds?</span>
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-content">
+          <div class="faq-content" id="faq-content-2">
             <p>Project timelines are structured around agile engineering sprints: Starter single-page landing pages typically deploy within 3 to 5 business days, Standard multi-page commercial platforms within 7 to 14 business days, and Pro builds or complex web applications from 14+ business days. Timelines are collaborative benchmarks and depend directly on the prompt delivery of brand assets, copy, media, and sign-offs. Apex operates with disciplined sprint velocity, but build speed is anchored by how swiftly project assets are provided.</p>
           </div>
         </div>
 
         <!-- FAQ Item 3 -->
         <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(event)">
+          <button type="button" class="faq-trigger" onclick="toggleFaq(event)" aria-expanded="false" aria-controls="faq-content-3">
             <span>How does Apex ensure local POPIA compliance and data governance?</span>
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-content">
+          <div class="faq-content" id="faq-content-3">
             <p>We integrate industry-standard data protection protocols into every build—including SSL/TLS transport encryption, secure form routing, and transparent legal policy notices (POPIA Privacy Notices, Terms of Service, and Cookie Policies). Because regulatory requirements vary by industry vertical, we actively liaise with each client to configure compliance disclaimers and privacy notices tailored specifically to their commercial operations, ensuring total legal transparency from day one.</p>
           </div>
         </div>
 
         <!-- FAQ Item 4 -->
         <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(event)">
+          <button type="button" class="faq-trigger" onclick="toggleFaq(event)" aria-expanded="false" aria-controls="faq-content-4">
             <span>Do you handle domain registration, hosting infrastructure, and business emails?</span>
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-content">
+          <div class="faq-content" id="faq-content-4">
             <p>Yes. Apex Digital collaborates directly with specialized, enterprise-grade cloud and infrastructure partners to provide end-to-end operational coverage. We orchestrate DNS configuration, cloud hosting deployment, domain provisioning, and business email integration (such as Google Workspace or Microsoft 365) in tandem with our infrastructure partners. Every deployment is tailored to your business architecture—contact us during your discovery consultation for specific setup requirements.</p>
           </div>
         </div>
 
         <!-- FAQ Item 5 -->
         <div class="faq-item">
-          <button class="faq-trigger" onclick="toggleFaq(event)">
+          <button type="button" class="faq-trigger" onclick="toggleFaq(event)" aria-expanded="false" aria-controls="faq-content-5">
             <span>Who owns the website code upon completion, and how are ongoing updates handled?</span>
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-content">
+          <div class="faq-content" id="faq-content-5">
             <p>You own 100% of your website code, repository access, and design assets upon full project completion—free from monthly builder hostage fees. To maintain peak operational performance, we offer structured ongoing maintenance tiers: pure technical support (security hardening, continuous backups, and framework updates) as well as hybrid Growth tiers (technical maintenance + ongoing SEO authority to preserve ranking power). Bespoke SLA retainers are also custom-tailored post-launch based on your team's exact operational requirements.</p>
           </div>
         </div>
@@ -1491,6 +1503,11 @@
           <input type="hidden" name="_subject" value="New Website Project Request - Apex Digital SA">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
+
+          <!-- Anti-Spam Honeypot Trap (Hidden from users) -->
+          <div class="hp-wrap" aria-hidden="true">
+            <input type="text" name="_apex_honey" class="hp-shield" tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="form-grid">
             <div class="form-group">
@@ -1533,6 +1550,14 @@
               </details>
             </div>
 
+            <div class="form-group form-full form-popia-group">
+              <label class="form-checkbox-label">
+                <input type="checkbox" name="popia_consent" id="intake-popia-consent" required class="form-checkbox">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">I consent to Apex Digital SA processing my project requirements in accordance with the <a href="#" onclick="openLegalModal('popia'); return false;">POPIA Privacy Policy</a>.</span>
+              </label>
+            </div>
+
             <div class="form-full" style="margin-top: 8px;">
               <button type="submit" id="intake-submit-btn" class="btn-champagne" style="width: 100%;">
                 Submit Website Intake Protocol &rarr;
@@ -1557,7 +1582,7 @@
   <!-- Modal Strategy Popup -->
   <div class="modal-overlay" id="modal">
     <div class="modal-content border-beam-card">
-      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <button type="button" class="modal-close" onclick="closeModal()" aria-label="Close Modal">&times;</button>
       <h3 class="modal-title">
         CLAIM YOUR <span class="text-champagne-gradient">DEMO WEBSITE</span>
       </h3>
@@ -1572,6 +1597,11 @@
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
 
+        <!-- Anti-Spam Honeypot Trap (Hidden from users) -->
+        <div class="hp-wrap" aria-hidden="true">
+          <input type="text" name="_apex_honey" class="hp-shield" tabindex="-1" autocomplete="off">
+        </div>
+
         <div class="form-group" style="margin-bottom: 16px;">
           <label class="form-label">Full Name</label>
           <input type="text" name="name" class="form-input" placeholder="Your Name" required>
@@ -1580,10 +1610,19 @@
           <label class="form-label">Direct Contact Number / WhatsApp</label>
           <input type="tel" name="phone" class="form-input" placeholder="e.g. +27 82 123 4567" required>
         </div>
-        <div class="form-group" style="margin-bottom: 24px;">
+        <div class="form-group" style="margin-bottom: 20px;">
           <label class="form-label">Email Address</label>
           <input type="email" name="email" class="form-input" placeholder="name@company.com" required>
         </div>
+
+        <div class="form-group form-popia-group" style="margin-bottom: 20px;">
+          <label class="form-checkbox-label">
+            <input type="checkbox" name="popia_consent" id="modal-popia-consent" required class="form-checkbox">
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-text">I consent to Apex Digital SA processing my project details in accordance with the <a href="#" onclick="openLegalModal('popia'); return false;">POPIA Privacy Policy</a>.</span>
+          </label>
+        </div>
+
         <button type="submit" id="modal-submit-btn" class="btn-champagne" style="width: 100%;">
           Request Free Consultation &amp; Demo Website
         </button>
@@ -1727,14 +1766,14 @@
     <div class="modal-content legal-modal-content border-beam-card">
       <div class="legal-modal-header">
         <h3>APEX DIGITAL <span class="text-champagne-gradient">LEGAL &amp; GOVERNANCE</span></h3>
-        <button class="modal-close" onclick="closeLegalModal()">&times;</button>
+        <button type="button" class="modal-close" onclick="closeLegalModal()" aria-label="Close Legal Governance Modal">&times;</button>
       </div>
       
       <div class="legal-nav-tabs">
-        <button class="legal-tab-btn active" data-tab="popia" onclick="switchLegalTab('popia')">1. POPIA Privacy Policy</button>
-        <button class="legal-tab-btn" data-tab="terms" onclick="switchLegalTab('terms')">2. Terms of Service &amp; IP</button>
-        <button class="legal-tab-btn" data-tab="cookies" onclick="switchLegalTab('cookies')">3. Cookie &amp; Local Data</button>
-        <button class="legal-tab-btn" data-tab="paia" onclick="switchLegalTab('paia')">4. PAIA &amp; Info Officer</button>
+        <button type="button" class="legal-tab-btn active" data-tab="popia" onclick="switchLegalTab('popia')">1. POPIA Privacy Policy</button>
+        <button type="button" class="legal-tab-btn" data-tab="terms" onclick="switchLegalTab('terms')">2. Terms of Service &amp; IP</button>
+        <button type="button" class="legal-tab-btn" data-tab="cookies" onclick="switchLegalTab('cookies')">3. Cookie &amp; Local Data</button>
+        <button type="button" class="legal-tab-btn" data-tab="paia" onclick="switchLegalTab('paia')">4. PAIA &amp; Info Officer</button>
       </div>
 
       <div class="legal-modal-body">
@@ -1834,7 +1873,7 @@
   <div id="chatbot-backdrop" class="chatbot-backdrop hidden" aria-hidden="true"></div>
   <div id="apex-chatbot-container">
     <!-- Floating Trigger Button (Gold Apex Logo) -->
-    <button id="chatbot-trigger" aria-label="Open Apex Results Assistant">
+    <button type="button" id="chatbot-trigger" aria-label="Open Apex Results Assistant">
       <div class="trigger-icon">
         <img src="assets/images/logo-icon-gold.webp" alt="Apex Logo" class="trigger-logo-img" width="24" height="24" loading="lazy">
       </div>
@@ -1863,7 +1902,7 @@
             <p class="chat-subtitle">Online 24/7 • Intelligent Web & Systems Architect</p>
           </div>
         </div>
-        <button id="chatbot-close" aria-label="Close Chat Window">
+        <button type="button" id="chatbot-close" aria-label="Close Chat Window">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>

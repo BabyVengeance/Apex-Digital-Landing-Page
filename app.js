@@ -73,10 +73,13 @@ function initPreloader() {
     if (chatbot) chatbot.classList.add('visible');
     return;
   }
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const delay = prefersReduced ? 0 : 180;
+
   setTimeout(() => {
     loader.classList.add('loaded');
     if (chatbot) chatbot.classList.add('visible');
-  }, 1100);
+  }, delay);
 }
 
 function initHeroKineticReveal() {
@@ -84,23 +87,26 @@ function initHeroKineticReveal() {
   if (!heroTitle) return;
 
   const inners = heroTitle.querySelectorAll('.hero-title-inner');
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const delay = prefersReduced ? 0 : 180;
 
   setTimeout(() => {
-    if (typeof gsap !== 'undefined' && inners.length > 0) {
+    if (typeof gsap !== 'undefined' && inners.length > 0 && !prefersReduced) {
       gsap.fromTo(inners,
         { y: "115%", opacity: 0 },
-        { y: "0%", opacity: 1, stagger: 0.12, duration: 0.8, ease: "power4.out" }
+        { y: "0%", opacity: 1, stagger: 0.08, duration: 0.6, ease: "power4.out" }
       );
       gsap.fromTo("#hero-desc",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: "power2.out", delay: 0.25 }
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: "power2.out", delay: 0.15 }
       );
     } else {
       heroTitle.classList.add('revealed');
+      inners.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
       const desc = document.getElementById('hero-desc');
       if (desc) desc.style.opacity = '1';
     }
-  }, 1100);
+  }, delay);
 }
 
 function initScrollAnimations() {
@@ -985,6 +991,35 @@ async function handleFormSubmit(e) {
   const statusDiv = document.getElementById('intake-form-status');
   const originalBtnText = submitBtn ? submitBtn.innerText : 'Submit Website Intake Protocol';
 
+  const formData = new FormData(form);
+
+  // Anti-Spam Honeypot Trap
+  if (formData.get('_apex_honey')) {
+    console.warn('Bot transmission intercepted by honeypot.');
+    if (statusDiv) {
+      statusDiv.style.display = 'block';
+      statusDiv.style.backgroundColor = 'rgba(40, 167, 69, 0.15)';
+      statusDiv.style.color = '#2ecc71';
+      statusDiv.style.border = '1px solid rgba(46, 204, 113, 0.4)';
+      statusDiv.innerText = '✓ Protocol Received! An Apex Systems Engineer will review your requirements.';
+    }
+    form.reset();
+    return;
+  }
+
+  // Affirmative POPIA Consent Verification
+  const popiaConsent = form.querySelector('input[name="popia_consent"]');
+  if (popiaConsent && !popiaConsent.checked) {
+    if (statusDiv) {
+      statusDiv.style.display = 'block';
+      statusDiv.style.backgroundColor = 'rgba(220, 53, 69, 0.15)';
+      statusDiv.style.color = '#e74c3c';
+      statusDiv.style.border = '1px solid rgba(231, 76, 60, 0.4)';
+      statusDiv.innerText = 'Please agree to the POPIA Privacy Policy consent checkbox before submitting.';
+    }
+    return;
+  }
+
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerText = 'Transmitting Protocol...';
@@ -999,9 +1034,9 @@ async function handleFormSubmit(e) {
   }
 
   try {
-    const formData = new FormData(form);
     const payload = {};
     formData.forEach((value, key) => { payload[key] = value; });
+    delete payload['_apex_honey'];
 
     const response = await fetch(FORMSUBMIT_ENDPOINT, {
       method: 'POST',
@@ -1019,7 +1054,7 @@ async function handleFormSubmit(e) {
         statusDiv.style.backgroundColor = 'rgba(40, 167, 69, 0.15)';
         statusDiv.style.color = '#2ecc71';
         statusDiv.style.border = '1px solid rgba(46, 204, 113, 0.4)';
-        statusDiv.innerText = '✓ Protocol Received! An Apex Systems Engineer will contact you at apexdigtl@gmail.com within 4 business hours.';
+        statusDiv.innerText = '✓ Protocol Received! An Apex Systems Engineer will contact you within 4 business hours.';
       }
       form.reset();
     } else {
@@ -1031,7 +1066,7 @@ async function handleFormSubmit(e) {
       statusDiv.style.backgroundColor = 'rgba(220, 53, 69, 0.15)';
       statusDiv.style.color = '#e74c3c';
       statusDiv.style.border = '1px solid rgba(231, 76, 60, 0.4)';
-      statusDiv.innerText = '⚠️ Transmission note: If this is your first submission, please confirm FormSubmit activation at apexdigtl@gmail.com, or reach out via WhatsApp at +27 69 522 4226.';
+      statusDiv.innerText = '⚠️ Transmission note: Please confirm via WhatsApp at +27 69 522 4226 if message fails to dispatch.';
     }
   } finally {
     if (submitBtn) {
@@ -1048,6 +1083,39 @@ async function handleModalSubmit(e) {
   const statusDiv = document.getElementById('modal-form-status');
   const originalBtnText = submitBtn ? submitBtn.innerText : 'Request Free Consultation & Demo Website';
 
+  const formData = new FormData(form);
+
+  // Anti-Spam Honeypot Trap
+  if (formData.get('_apex_honey')) {
+    console.warn('Bot transmission intercepted by modal honeypot.');
+    if (statusDiv) {
+      statusDiv.style.display = 'block';
+      statusDiv.style.backgroundColor = 'rgba(40, 167, 69, 0.15)';
+      statusDiv.style.color = '#2ecc71';
+      statusDiv.style.border = '1px solid rgba(46, 204, 113, 0.4)';
+      statusDiv.innerText = '✓ Demo Request Received! We will contact you immediately.';
+    }
+    form.reset();
+    setTimeout(() => {
+      closeModal();
+      if (statusDiv) statusDiv.style.display = 'none';
+    }, 2000);
+    return;
+  }
+
+  // Affirmative POPIA Consent Verification
+  const popiaConsent = form.querySelector('input[name="popia_consent"]');
+  if (popiaConsent && !popiaConsent.checked) {
+    if (statusDiv) {
+      statusDiv.style.display = 'block';
+      statusDiv.style.backgroundColor = 'rgba(220, 53, 69, 0.15)';
+      statusDiv.style.color = '#e74c3c';
+      statusDiv.style.border = '1px solid rgba(231, 76, 60, 0.4)';
+      statusDiv.innerText = 'Please agree to the POPIA Privacy Policy consent checkbox before submitting.';
+    }
+    return;
+  }
+
   if (submitBtn) {
     submitBtn.disabled = true;
     submitBtn.innerText = 'Submitting Request...';
@@ -1062,9 +1130,9 @@ async function handleModalSubmit(e) {
   }
 
   try {
-    const formData = new FormData(form);
     const payload = {};
     formData.forEach((value, key) => { payload[key] = value; });
+    delete payload['_apex_honey'];
 
     const response = await fetch(FORMSUBMIT_ENDPOINT, {
       method: 'POST',
@@ -1098,7 +1166,7 @@ async function handleModalSubmit(e) {
       statusDiv.style.backgroundColor = 'rgba(220, 53, 69, 0.15)';
       statusDiv.style.color = '#e74c3c';
       statusDiv.style.border = '1px solid rgba(231, 76, 60, 0.4)';
-      statusDiv.innerText = '⚠️ Request note: Please confirm FormSubmit activation at apexdigtl@gmail.com if needed, or reach out via WhatsApp at +27 69 522 4226.';
+      statusDiv.innerText = '⚠️ Transmission note: Please reach out directly on WhatsApp at +27 69 522 4226.';
     }
   } finally {
     if (submitBtn) {
@@ -1861,11 +1929,18 @@ window.toggleFaq = function(e) {
   
   const isActive = item.classList.contains('active');
   
-  // Close all other items
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+  // Close all other items and reset aria-expanded
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('active');
+    const btn = i.querySelector('.faq-trigger');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  });
   
   if (!isActive) {
     item.classList.add('active');
+    trigger.setAttribute('aria-expanded', 'true');
+  } else {
+    trigger.setAttribute('aria-expanded', 'false');
   }
 };
 

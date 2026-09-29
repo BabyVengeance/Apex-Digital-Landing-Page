@@ -1649,6 +1649,30 @@ img {
     white-space: nowrap;
 }
 
+.case-engine-tag.flagship-tag {
+    background: rgba(223, 195, 138, 0.12);
+    color: var(--gold);
+    border: 1px solid rgba(223, 195, 138, 0.35);
+}
+
+.case-engine-tag.benchmark-tag {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    border: 1px solid var(--border-medium);
+}
+
+[data-theme="light"] .case-engine-tag.flagship-tag {
+    background: rgba(184, 146, 85, 0.15);
+    color: #8A6D32;
+    border-color: rgba(184, 146, 85, 0.4);
+}
+
+[data-theme="light"] .case-engine-tag.benchmark-tag {
+    background: #f1f5f9;
+    color: #475569;
+    border-color: #cbd5e1;
+}
+
 [data-theme="light"] .case-engine-tag {
     background: #eaf2ff;
     color: #0052cc;
@@ -3467,4 +3491,105 @@ img {
         stroke-dashoffset: 0 !important;
         opacity: 1 !important;
     }
+}
+
+/* ─── 5. FORM SECURITY & POPIA AFFIRMATIVE CONSENT CONTROLS ──────────────── */
+.hp-wrap {
+    display: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    width: 0 !important;
+}
+
+.form-popia-group {
+    margin-top: 14px;
+    margin-bottom: 12px;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    user-select: none;
+    min-height: 48px;
+    padding: 4px 0;
+}
+
+.form-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-custom {
+    position: relative;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    background: rgba(14, 14, 20, 0.9);
+    border: 1.5px solid rgba(223, 195, 138, 0.35);
+    border-radius: 4px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .checkbox-custom {
+    background: #ffffff;
+    border-color: rgba(184, 146, 85, 0.4);
+}
+
+.form-checkbox-label:hover .checkbox-custom {
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(223, 195, 138, 0.25);
+}
+
+.form-checkbox:focus-visible ~ .checkbox-custom {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+.form-checkbox:checked ~ .checkbox-custom {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.checkbox-custom::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #040405;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+[data-theme="light"] .checkbox-custom::after {
+    border-color: #ffffff;
+}
+
+.form-checkbox:checked ~ .checkbox-custom::after {
+    display: block;
+}
+
+.checkbox-text a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.checkbox-text a:hover {
+    color: #ffffff;
 }

@@ -6077,5 +6077,108 @@ a.btn-champagne-inverse:active,
   }
 }
 
+/* ==========================================================================
+   FORM SECURITY (HONEYPOT) & POPIA AFFIRMATIVE CONSENT CONTROLS
+   ========================================================================== */
+.hp-wrap {
+  display: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+.form-popia-group {
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+
+.form-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  user-select: none;
+  min-height: 48px;
+  padding: 4px 0;
+}
+
+.form-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-custom {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  background: rgba(14, 14, 20, 0.9);
+  border: 1.5px solid var(--border-champagne);
+  border-radius: 4px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .checkbox-custom {
+  background: #FFFFFF;
+  border-color: rgba(184, 146, 85, 0.4);
+}
+
+.form-checkbox-label:hover .checkbox-custom {
+  border-color: var(--champagne);
+  box-shadow: 0 0 10px var(--champagne-glow);
+}
+
+.form-checkbox:focus-visible ~ .checkbox-custom {
+  outline: 2px solid var(--champagne);
+  outline-offset: 2px;
+}
+
+.form-checkbox:checked ~ .checkbox-custom {
+  background: var(--champagne);
+  border-color: var(--champagne);
+}
+
+.checkbox-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #040405;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+[data-theme="light"] .checkbox-custom::after {
+  border-color: #FFFFFF;
+}
+
+.form-checkbox:checked ~ .checkbox-custom::after {
+  display: block;
+}
+
+.checkbox-text a {
+  color: var(--champagne);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.checkbox-text a:hover {
+  color: var(--text-white);
+}
+
 
 

@@ -92,6 +92,39 @@ async function handleModalSubmit(e) {
     const statusDiv = document.getElementById('modal-form-status');
     const originalBtnText = submitBtn ? submitBtn.innerHTML : 'Request Free Consultation & Demo Website &rarr;';
 
+    const formData = new FormData(form);
+
+    // Anti-Spam Honeypot Trap
+    if (formData.get('_apex_honey')) {
+        console.warn('Bot transmission intercepted by case-studies honeypot.');
+        if (statusDiv) {
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.15)';
+            statusDiv.style.color = '#10B981';
+            statusDiv.style.border = '1px solid rgba(16, 185, 129, 0.4)';
+            statusDiv.innerText = '✓ Demo Request Received! An Apex Systems Architect will contact you.';
+        }
+        form.reset();
+        setTimeout(() => {
+            closeModal();
+            if (statusDiv) statusDiv.style.display = 'none';
+        }, 2000);
+        return;
+    }
+
+    // Affirmative POPIA Consent Verification
+    const popiaConsent = form.querySelector('input[name="popia_consent"]');
+    if (popiaConsent && !popiaConsent.checked) {
+        if (statusDiv) {
+            statusDiv.style.display = 'block';
+            statusDiv.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
+            statusDiv.style.color = '#EF4444';
+            statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.4)';
+            statusDiv.innerText = 'Please agree to the POPIA Privacy Policy consent checkbox before submitting.';
+        }
+        return;
+    }
+
     if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = 'Submitting Request...';
@@ -106,9 +139,9 @@ async function handleModalSubmit(e) {
     }
 
     try {
-        const formData = new FormData(form);
         const payload = {};
         formData.forEach((value, key) => { payload[key] = value; });
+        delete payload['_apex_honey'];
 
         const response = await fetch(FORMSUBMIT_ENDPOINT, {
             method: 'POST',
@@ -142,7 +175,7 @@ async function handleModalSubmit(e) {
             statusDiv.style.backgroundColor = 'rgba(239, 68, 68, 0.15)';
             statusDiv.style.color = '#EF4444';
             statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.4)';
-            statusDiv.innerText = '⚠️ Transmission note: If not received, please contact us directly via WhatsApp at +27 69 522 4226 or apexdigtl@gmail.com.';
+            statusDiv.innerText = '⚠️ Transmission note: Please reach out directly on WhatsApp at +27 69 522 4226.';
         }
     } finally {
         if (submitBtn) {

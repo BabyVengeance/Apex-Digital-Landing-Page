@@ -1,2 +1,8 @@
 # Apex Digital SA — Cloudflare Edge Redirect Configuration
 /case-studies    /case-studies/    301!
+/about           /#agency          301
+/services        /#services        301
+/work            /#portfolio       301
+/calculator      /#simulator       301
+/faq             /#faq             301
+/contact         /#strategy        301

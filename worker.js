@@ -77,6 +77,11 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // 0. Canonical Directory Trailing Slash Enforcement (SEO 301 Redirect)
+    if (url.pathname === "/case-studies") {
+      return Response.redirect(`${url.origin}/case-studies/`, 301);
+    }
+
     // 1. CORS Preflight
     if (url.pathname === "/api/chat" && request.method === "OPTIONS") {
       return new Response(null, {

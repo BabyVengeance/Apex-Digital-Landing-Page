@@ -45,7 +45,7 @@ window.initThemeState = initThemeState;
 /* ==========================================================================
    MODAL CONTROLS & FORMSUBMIT MAIL SERVICE INTEGRATION
    ========================================================================== */
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/apexdigtl@gmail.com';
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/3f8adf40568f4e569056df89472d0b74';
 
 function openModal(serviceTitle) {
     const modal = document.getElementById('modal');

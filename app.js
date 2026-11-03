@@ -1617,7 +1617,7 @@ window.handleChatCTA = function(action) {
 function initWorkPreviews() {
   const preview = document.getElementById('portfolio-hover-preview');
   const img = document.getElementById('hover-preview-img');
-  const items = document.querySelectorAll('.work-list-item');
+  const items = document.querySelectorAll('.work-list-item, .flagship-btn[data-preview]');
   if (!preview || !img || items.length === 0) return;
   
   // Strictly allow previews only on desktop with fine mouse pointer

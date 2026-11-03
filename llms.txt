@@ -47,7 +47,7 @@ Apex Digital SA (Pty) Ltd is a premier web development, Generative Engine Optimi
   8. **Aesthetica Contemporary Dentistry (Medical / Dental):** High-trust intake redesign yielding sustained +150% monthly booking lift and 2.5x conversion.
   9. **Outsource Transport Provider (B2B Logistics):** Route-targeted portal growing traffic 6x to 75+ monthly B2B leads.
   10. **Me-Pos Beauty Automation (Beauty & Salons):** Web-native booking + automated SMS confirmation driving +30% client acquisition in 6 months.
-- **LaserGen (Flagship Build):** Industrial laser cleaning services platform with sub-0.4s speed, mobile-first UX, and direct lead pathways. URL: https://lasergen.co.za
+- **Dr. Susan Johnson (Flagship Build):** Medical & surgical practice platform with sub-0.4s speed, mobile-first UX, and patient consultation pathways. URL: https://drsusanjohnson.co.za
 - **Compass Logistics:** B2B quote engine and SADC freight portal. URL: https://compasslogistics.co.za
 - **Boss Rides:** Luxury automotive customization vehicle showcase. URL: https://bossrides.co.za/wordpress_5
 - **Colour Correct:** Global cosmetics e-commerce store with international shipping gateway. URL: https://globalcolourcorrect.com

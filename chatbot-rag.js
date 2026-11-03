@@ -147,13 +147,13 @@ We analyze your business model and recommend the ideal technology stack for maxi
     },
     {
       id: "case_studies_results",
-      intents: ["case study", "case studies", "roi", "results", "proof", "examples", "portfolio", "success", "clients", "lasergen", "compass", "boss rides", "colour correct", "ayesha m", "property portfolio", "jobe gas", "jobegas"],
+      intents: ["case study", "case studies", "roi", "results", "proof", "examples", "portfolio", "success", "clients", "susan", "dr susan", "johnson", "compass", "boss rides", "colour correct", "ayesha m", "property portfolio", "jobe gas", "jobegas"],
       title: "Featured Client Builds & Empirical Results",
       response: `Apex Digital SA has engineered high-performing web platforms across industrial, logistics, automotive, real estate, energy, and e-commerce verticals:
 
 - **ROI Case Study Showroom** ([10 Verified Studies & Calculator](/case-studies/)): Explore 10 verified business case studies with financial lift breakdowns and an interactive digital revenue calculator.
-1. **LaserGen** ([lasergen.co.za](https://lasergen.co.za)): Industrial laser refurbishment platform with sub-second mobile loading & direct quote capture.
-2. **Compass Logistics** ([compasslogistics.co.za](https://compasslogistics.co.za)): SADC B2B freight logistics portal with automated quote request routing.
+1. **Dr. Susan Johnson (Flagship Build)** ([drsusanjohnson.co.za](https://drsusanjohnson.co.za)): Flagship medical practice platform featuring bespoke aesthetic typography, sub-0.4s loading speed, and frictionless patient consultation booking.
+3. **Compass Logistics** ([compasslogistics.co.za](https://compasslogistics.co.za)): SADC B2B freight logistics portal with automated quote request routing.
 3. **Boss Rides** ([bossrides.co.za](https://bossrides.co.za)): Luxury automotive customization & vehicle showcase portal.
 4. **Global Colour Correct** ([globalcolourcorrect.com](https://globalcolourcorrect.com)): International e-commerce store with Shopify & Tunl global shipping.
 5. **Ayesha M Jewellery** ([ayesham.co.za](https://ayesham.co.za)): Custom e-commerce store with 3D Mag Case product configurator & PayFast checkout.
@@ -330,7 +330,7 @@ We analyze your business model and recommend the ideal technology stack for maxi
       }
 
       // 3. Real Client Portfolio & Works (#portfolio)
-      if (combined.includes("case study") || combined.includes("portfolio") || combined.includes("lasergen") || combined.includes("compass") || combined.includes("boss rides") || combined.includes("ayesha") || combined.includes("jobe gas") || combined.includes("jobegas") || combined.includes("example") || combined.includes("proof") || combined.includes("work") || combined.includes("showcase")) {
+      if (combined.includes("case study") || combined.includes("portfolio") || combined.includes("susan") || combined.includes("dr susan") || combined.includes("johnson") || combined.includes("compass") || combined.includes("boss rides") || combined.includes("ayesha") || combined.includes("jobe gas") || combined.includes("jobegas") || combined.includes("example") || combined.includes("proof") || combined.includes("work") || combined.includes("showcase")) {
         return { text: "Explore Live Client Portfolio", action: "scrollSection:portfolio" };
       }
 

@@ -51,7 +51,7 @@ Your mission is to provide authoritative, consultative, and high-converting guid
 ====================================================================
 When referencing client proof or case studies, always format them as clean markdown links:
 - ROI Case Studies & Financial Lift: [ROI Case Studies Showroom (10 Verified Studies)](https://apexdigitalsa.com/case-studies/)
-- Industrial Laser Tech: [LaserGen (lasergen.co.za)](https://lasergen.co.za)
+- Flagship Medical Practice: [Dr. Susan Johnson (drsusanjohnson.co.za)](https://drsusanjohnson.co.za)
 - B2B Freight Logistics: [Compass Logistics (compasslogistics.co.za)](https://compasslogistics.co.za)
 - Luxury Automotive: [Boss Rides (bossrides.co.za)](https://bossrides.co.za)
 - Global E-Commerce: [Global Colour Correct (globalcolourcorrect.com)](https://globalcolourcorrect.com)

@@ -10,6 +10,13 @@ Knowledge base/
 *.docx
 *.pdf
 
+# Knowledge Hub - Client Raw Files & Local Context
+context/raw/
+context/**/*.pdf
+context/**/*.docx
+context/**/*.pptx
+context/**/*.zip
+
 # Generated Audit Scorecards & Reports
 *-scorecard.md
 *-geo-scorecard.md
